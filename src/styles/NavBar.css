@@ -1,0 +1,26 @@
+.NavBar {
+  background-color: #b9ffb8;
+  height: 35px;
+  overflow: hidden;
+}
+
+.NavBar__ul {
+  list-style-type: none;
+}
+
+.NavBar__li {
+  float: left;
+  padding: 10px;
+}
+
+.NavBar__li--logo {
+  font-weight: bold;
+}
+
+.NavBar__li--right {
+  float: right;
+}
+
+.NavBar__li a {
+  text-decoration: none;
+}
