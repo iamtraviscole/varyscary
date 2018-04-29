@@ -8,10 +8,10 @@ const NavBar = (props) => {
     <div className='NavBar'>
       <ul className='NavBar__ul'>
         <li className='NavBar__li NavBar__li--logo'>Monster Maker</li>
-        <li className='NavBar__li'><NavLink to='/'>Link1</NavLink></li>
-        <li className='NavBar__li'><NavLink to='/'>Link2</NavLink></li>
-        <li className='NavBar__li'><NavLink to='/'>Link3</NavLink></li>
-        <li className='NavBar__li NavBar__li--right'><NavLink to='/'>Link4</NavLink></li>
+        <li className='NavBar__li'><NavLink to='/'>Home</NavLink></li>
+        <li className='NavBar__li'><NavLink to='/username/monsters/new'>Make</NavLink></li>
+        <li className='NavBar__li'><NavLink to='/username/monsters'>Browse</NavLink></li>
+        <li className='NavBar__li NavBar__li--right'><NavLink to='/'>Log Out</NavLink></li>
       </ul>
     </div>
   )
