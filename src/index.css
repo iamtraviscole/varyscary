@@ -1,8 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
+  font-size: 100%;
+  color: #283c40;
+  background-color: #e5e8f4;
+}
+
+button {
+  font-family: inherit;
+  font-size: 100%;
+}
+
+a {
+  color: #283c40;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
