@@ -2,6 +2,10 @@
 
 }
 
+.Splash__h1 {
+  margin-bottom: 40px;
+}
+
 .Splash__ctr {
   position: absolute;
   left: 50%;
@@ -9,40 +13,33 @@
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   padding: 50px 100px;
-  background-color: var(--main-container);
+  background-color: var(--main-container-color);
   border-radius: 3px;
   text-align: center;
 }
 
-.Splash__signup-btn {
+.Splash__btn {
   display: inline-block;
   padding: 10px 0;
+  margin-bottom: 10px;
   width: 150px;
-  margin: 40px 0 10px 0;
   font-weight: 300;
-  color: var(--button-text);
-  border: 1px solid var(--main);
-  background-color: var(--main);
+  color: var(--button-text-color);
+  border: 1px solid var(--main-color);
+  background-color: var(--main-color);
   border-style: none;
   border-radius: 3px;
 }
 
-.Splash__signup-btn:hover {
-  background-color: var(--main-light);
+.Splash__btn:hover {
+  background-color: var(--main-light-color);
+  color: var(--button-text-color);
   text-decoration: none;
 }
 
-.Splash__login-btn {
-  display: inline-block;
-  padding: 10px 0;
-  width: 150px;
-  font-weight: 300;
-  color: inherit;
-  border: 1px solid var(--main-light);
+.Splash__btn--login {
+  background-color: var(--main-container-color);
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
   border-radius: 3px;
-}
-
-.Splash__login-btn:hover {
-  background-color: var(--main-light);
-  text-decoration: none;
 }

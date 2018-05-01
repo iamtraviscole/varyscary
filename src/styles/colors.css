@@ -1,12 +1,12 @@
 :root {
-  --background: #e5e8f4;
-  --main-container: white;
+  --background-color: #e5e8f4;
+  --main-container-color: white;
 
-  --main-text: #283c40;
-  --light-text: #677b80;
+  --main-text-color: #283c40;
+  --light-text-color: #677b80;
 
-  --button-text: white;
+  --button-text-color: white;
 
-  --main: #9771cd;
-  --main-light: #ac88de;
+  --main-color: #9771cd;
+  --main-light-color: #ac88de;
 }
