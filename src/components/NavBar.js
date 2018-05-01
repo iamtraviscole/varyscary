@@ -8,7 +8,7 @@ const NavBar = (props) => {
     <div className='NavBar'>
       <ul className='NavBar__ul'>
         <li className='NavBar__li NavBar__li--logo'>Monster Maker</li>
-        <li className='NavBar__li'><NavLink to='/username'>Home</NavLink></li>
+        <li className='NavBar__li'><NavLink to={'/' + props.username}>Home</NavLink></li>
         <li className='NavBar__li'><NavLink to='/monsters/new'>Make</NavLink></li>
         <li className='NavBar__li'><NavLink to='/monsters'>Browse</NavLink></li>
         <li className='NavBar__li NavBar__li--right'><NavLink to='/'>Log Out</NavLink></li>

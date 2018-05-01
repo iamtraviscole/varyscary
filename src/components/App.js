@@ -9,15 +9,18 @@ import NewMonster from './NewMonster'
 import Monsters from './Monsters'
 
 class App extends Component {
-  render() {
-    let isLoggedIn = true
+  state = {
+    isLoggedIn: true,
+    username: 'Peter'
+  }
 
+  render() {
     let homeComponent = Splash
     let navBar = null
 
-    if (isLoggedIn) {
+    if (this.state.isLoggedIn) {
       homeComponent = Home
-      navBar = <NavBar />
+      navBar = <NavBar username={this.state.username} />
     }
 
     return (
@@ -25,9 +28,9 @@ class App extends Component {
           {navBar}
           <Switch>
             <Route exact path='/' component={homeComponent} />
-            <AuthRoute exact path='/username' component={Home} isLoggedIn={isLoggedIn} />
-            <AuthRoute exact path='/monsters' component={Monsters} isLoggedIn={isLoggedIn} />
-            <AuthRoute exact path='/monsters/new' component={NewMonster} isLoggedIn={isLoggedIn} />
+            <AuthRoute exact path={'/' + this.state.username} component={Home} isLoggedIn={this.state.isLoggedIn} />
+            <Route exact path='/monsters' component={Monsters} />
+            <AuthRoute exact path='/monsters/new' component={NewMonster} isLoggedIn={this.state.isLoggedIn} />
           </Switch>
       </Fragment>
     )
