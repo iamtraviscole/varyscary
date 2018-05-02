@@ -1,5 +1,6 @@
 .NavBar {
   grid-area: header;
+  padding-top: 15px;
 }
 
 .NavBar__ul {
@@ -11,9 +12,25 @@
   padding: 10px;
 }
 
+.NavBar__ul:last-child {
+  margin-right: 15px;
+}
+
+.NavBar__li .material-icons {
+  color: var(--main-color);
+  letter-spacing: -6px;
+  font-size: 28px;
+  margin-top: -3px;
+}
+
+.NavBar__li .material-icons:hover {
+  color: var(--main-light-color);
+}
+
 .NavBar__li--logo {
   background-color: var(--main-color);
-  font-weight: bold;
+  margin-left: 15px;
+  border-radius: 3px;
 }
 
 .NavBar__right {
