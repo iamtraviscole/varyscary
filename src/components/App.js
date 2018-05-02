@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
+import '../styles/App.css'
+
 import AuthRoute from './AuthRoute'
 import NavBar from './NavBar'
 import Splash from './Splash'
@@ -24,7 +26,7 @@ class App extends Component {
     }
 
     return (
-      <Fragment>
+      <div className='App__grid-container'>
           {navBar}
           <Switch>
             <Route exact path='/' component={homeComponent} />
@@ -32,7 +34,7 @@ class App extends Component {
             <Route exact path='/monsters' component={Monsters} />
             <AuthRoute exact path='/monsters/new' component={NewMonster} isLoggedIn={this.state.isLoggedIn} />
           </Switch>
-      </Fragment>
+      </div>
     )
   }
 }

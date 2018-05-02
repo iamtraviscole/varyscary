@@ -1,21 +1,14 @@
-.Splash {
-
-}
-
-.Splash__h1 {
-  margin-bottom: 40px;
-}
-
 .Splash__ctr {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+  margin: auto;
+  grid-area: content;
   padding: 50px 100px;
   background-color: var(--main-container-color);
   border-radius: 3px;
   text-align: center;
+}
+
+.Splash__h1 {
+  margin-bottom: 40px;
 }
 
 .Splash__btn {
