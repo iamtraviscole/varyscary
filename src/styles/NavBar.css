@@ -1,7 +1,5 @@
 .NavBar {
-  background-color: #b9ffb8;
-  height: 35px;
-  overflow: hidden;
+  grid-area: header;
 }
 
 .NavBar__ul {
@@ -14,13 +12,10 @@
 }
 
 .NavBar__li--logo {
+  background-color: var(--main-color);
   font-weight: bold;
 }
 
-.NavBar__li--right {
+.NavBar__right {
   float: right;
-}
-
-.NavBar__li a {
-  text-decoration: none;
 }

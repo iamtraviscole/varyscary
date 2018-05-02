@@ -9,10 +9,12 @@ const NavBar = (props) => {
       <nav>
         <ul className='NavBar__ul'>
           <li className='NavBar__li NavBar__li--logo'>Monster Maker</li>
-          <li className='NavBar__li'><NavLink to={'/' + props.username}>Home</NavLink></li>
-          <li className='NavBar__li'><NavLink to='/monsters/new'>Make</NavLink></li>
-          <li className='NavBar__li'><NavLink to='/monsters'>Browse</NavLink></li>
-          <li className='NavBar__li NavBar__li--right'><NavLink to='/'>Log Out</NavLink></li>
+          <div className='NavBar__right'>
+            <li className='NavBar__li'><NavLink to={'/' + props.username}>Home</NavLink></li>
+            <li className='NavBar__li'><NavLink to='/monsters/new'>Make</NavLink></li>
+            <li className='NavBar__li'><NavLink to='/monsters'>Explore</NavLink></li>
+            <li className='NavBar__li NavBar__li--right'><NavLink to='/'>Log Out</NavLink></li>
+          </div>
         </ul>
       </nav>
     </div>
