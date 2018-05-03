@@ -1,0 +1,38 @@
+.DesktopNav {
+  grid-area: header;
+  padding-top: 15px;
+}
+
+.DesktopNav__ul {
+  list-style-type: none;
+}
+
+.DesktopNav__li {
+  float: left;
+  padding: 10px;
+}
+
+.DesktopNav__li--logo {
+  background-color: var(--main-color);
+  margin-left: 15px;
+  border-radius: 3px;
+}
+
+.DesktopNav__right {
+  float: right;
+}
+
+.DesktopNav__ul:last-child {
+  margin-right: 15px;
+}
+
+.DesktopNav__li .material-icons {
+  color: var(--main-color);
+  letter-spacing: -6px;
+  font-size: 28px;
+  margin-top: -3px;
+}
+
+.DesktopNav__li .material-icons:hover {
+  color: var(--main-light-color);
+}

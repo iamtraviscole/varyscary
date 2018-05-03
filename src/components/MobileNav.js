@@ -14,24 +14,31 @@ class MobileNav extends Component {
 
   render () {
     let nav = (
-      <nav className='MobileNav--closed'>
-        <div className='MobileNav__hamburger--closed'>
-          <i className='material-icons'>menu</i>
-        </div>
+      <nav className='MobileNav-closed'>
+        <ul className='MobileNav-closed__ul'>
+          <li className='MobileNav-closed__li MobileNav-closed__li--logo'>Monster Maker</li>
+          <div className='MobileNav-closed__right'>
+            <li className='MobileNav-closed__li'>
+              <NavLink to='/'>
+                <i className='material-icons'>menu</i>
+              </NavLink>
+            </li>
+          </div>
+        </ul>
       </nav>
     )
 
     if (this.state.showMobileNav) {
       nav = (
-        <nav className='MobileNav--open'>
-          <div className='MobileNav__hamburger--open'>
+        <nav className='MobileNav-open'>
+          <div className='MobileNav-open__hamburger'>
             <i className='material-icons'>menu</i>
           </div>
-          <ul className='MobileNav__ul--open'>
-            <li className='MobileNav__li--open'><NavLink to={'/' + this.props.username}>Home</NavLink></li>
-            <li className='MobileNav__li--open'><NavLink to='/monsters/new'>Make</NavLink></li>
-            <li className='MobileNav__li--open'><NavLink to='/monsters'>Explore</NavLink></li>
-            <li className='MobileNav__li--open'><NavLink to='/'>Log Out</NavLink></li>
+          <ul className='MobileNav-open__ul'>
+            <li className='MobileNav-open__li'><NavLink to={'/' + this.props.username}>Home</NavLink></li>
+            <li className='MobileNav-open__li'><NavLink to='/monsters/new'>Make</NavLink></li>
+            <li className='MobileNav-open__li'><NavLink to='/monsters'>Explore</NavLink></li>
+            <li className='MobileNav-open__li'><NavLink to='/'>Log Out</NavLink></li>
           </ul>
         </nav>
       )

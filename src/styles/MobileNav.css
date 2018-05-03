@@ -1,24 +1,47 @@
 /*  --- Closed Nav --- */
 
-.MobileNav--closed {
+.MobileNav-closed {
   grid-area: header;
   padding-top: 15px;
 }
 
-.MobileNav__hamburger--closed {
-  position: absolute;
-  top: 15px;
-  right: 15px;
+.MobileNav-closed__ul {
+  list-style-type: none;
 }
 
-.MobileNav__hamburger--closed:hover {
+.MobileNav-closed__li {
+  float: left;
+  padding: 10px;
+}
+
+.MobileNav-closed__li--logo {
+  background-color: var(--main-color);
+  margin-left: 15px;
+  border-radius: 3px;
+}
+
+.MobileNav-closed__right {
+  float: right;
+}
+
+.MobileNav-closed__right:last-child {
+  margin-right: 15px;
+}
+
+.MobileNav-closed__li .material-icons {
   color: var(--main-color);
+  font-size: 28px;
+  margin-top: -3px;
+}
+
+.MobileNav-closed__li.material-icons:hover {
+  color: var(--main-light-color);
 }
 
 
 /* --- Open Nav --- */
 
-.MobileNav--open {
+.MobileNav-open {
   display: table;
   width: 100vw;
   height: 100vh;
@@ -27,30 +50,35 @@
   /* transform: translateX(100vw); */
 }
 
-.MobileNav__hamburger--open {
+.MobileNav-open__hamburger {
   color: var(--button-text-color);
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 25px;
+  right: 25px;
 }
 
-.MobileNav__hamburger--open:hover {
+.MobileNav-open__hamburger .material-icons {
+  font-size: 28px;
+  margin-top: -3px;
+}
+
+.MobileNav-open__hamburger:hover {
   color: var(--main-text-color);
 }
 
-.MobileNav__ul--open {
+.MobileNav-open__ul {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
   list-style-type: none;
 }
 
-.MobileNav__li--open {
+.MobileNav-open__li {
   color: var(--button-text-color);
   padding: 10px;
 }
 
-.MobileNav__li--open a:hover {
+.MobileNav-open__li a:hover {
   text-decoration: none;
   color: var(--main-text-color);
 }

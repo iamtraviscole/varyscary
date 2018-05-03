@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import '../styles/App.css'
 
 import AuthRoute from './AuthRoute'
-import NavBar from './NavBar'
+import DesktopNav from './DesktopNav'
 import MobileNav from './MobileNav'
 import Splash from './Splash'
 import Home from './Home'
