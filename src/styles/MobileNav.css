@@ -1,0 +1,56 @@
+/*  --- Closed Nav --- */
+
+.MobileNav--closed {
+  grid-area: header;
+  padding-top: 15px;
+}
+
+.MobileNav__hamburger--closed {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.MobileNav__hamburger--closed:hover {
+  color: var(--main-color);
+}
+
+
+/* --- Open Nav --- */
+
+.MobileNav--open {
+  display: table;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: var(--main-color);
+  /* transform: translateX(100vw); */
+}
+
+.MobileNav__hamburger--open {
+  color: var(--button-text-color);
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.MobileNav__hamburger--open:hover {
+  color: var(--main-text-color);
+}
+
+.MobileNav__ul--open {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  list-style-type: none;
+}
+
+.MobileNav__li--open {
+  color: var(--button-text-color);
+  padding: 10px;
+}
+
+.MobileNav__li--open a:hover {
+  text-decoration: none;
+  color: var(--main-text-color);
+}
