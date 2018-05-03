@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import '../styles/App.css'
 
 import AuthRoute from './AuthRoute'
-import DesktopNav from './DesktopNav'
+import NavBar from './NavBar'
 import MobileNav from './MobileNav'
 import Splash from './Splash'
 import Home from './Home'
@@ -24,7 +24,7 @@ class App extends Component {
 
     if (this.state.isLoggedIn) {
       homeComponent = Home
-      navBar = <MobileNav username={this.state.username} />
+      navBar = <NavBar username={this.state.username} />
     }
 
     return (
