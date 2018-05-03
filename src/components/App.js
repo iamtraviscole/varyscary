@@ -5,7 +5,6 @@ import '../styles/App.css'
 
 import AuthRoute from './AuthRoute'
 import NavBar from './NavBar'
-import MobileNav from './MobileNav'
 import Splash from './Splash'
 import Home from './Home'
 import NewMonster from './NewMonster'
@@ -14,7 +13,7 @@ import Monsters from './Monsters'
 class App extends Component {
   state = {
     isLoggedIn: true,
-    userDevice: 'desktop',
+    userOnMobile: true,
     username: 'Peter'
   }
 

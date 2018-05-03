@@ -1,15 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { NavLink } from 'react-router-dom'
 
 import '../styles/NavBar.css'
 
+import SlideoutMenu from './SlideoutMenu'
+
 class NavBar extends Component {
   state = {
-    userOnMobile: true
+    userOnMobile: true,
+    showSlideout: false
+   }
+
+   handleSlideoutClick = () => {
+     this.setState({showSlideout: !this.state.showSlideout})
    }
 
   render () {
-
     let navItems = (
       <div className='NavBar__right'>
         <li className='NavBar__li'><NavLink to={'/' + this.props.username}>Home</NavLink></li>
@@ -27,7 +33,7 @@ class NavBar extends Component {
       navItems = (
         <div className='NavBar__right'>
           <li className='NavBar__li'>
-            <button className='NavBar__button'>
+            <button onClick={this.handleSlideoutClick} className='NavBar__button'>
               <i className='material-icons'>menu</i>
             </button>
           </li>
@@ -35,13 +41,24 @@ class NavBar extends Component {
       )
     }
 
+    let toggleSlideout = 'hide'
+    if (this.state.showSlideout) toggleSlideout = 'show'
+
     return (
-      <nav className='NavBar'>
-        <ul className='NavBar__ul'>
-          <li className='NavBar__li NavBar__li--logo'>Monster Maker</li>
+      <Fragment>
+        {this.state.userOnMobile
+          ? <SlideoutMenu
+              toggleSlideout={toggleSlideout}
+              handleSlideoutClick={this.handleSlideoutClick}
+              username={this.props.username}/>
+          : null}
+        <nav className='NavBar'>
+          <ul className='NavBar__ul'>
+            <li className='NavBar__li NavBar__li--logo'>Monster Maker</li>
             {navItems}
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      </Fragment>
     )
   }
 }

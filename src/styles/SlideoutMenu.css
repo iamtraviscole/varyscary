@@ -1,0 +1,57 @@
+.SlideoutMenu {
+  display: table;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: var(--main-color);
+  overflow: scroll;
+  transition: all 650ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.SlideoutMenu.hide {
+  transform: translateX(100vw);
+}
+
+.SlideoutMenu.show {
+  transform: translateX(0vw);
+}
+
+.SlideoutMenu__hamburger {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.SlideoutMenu__button {
+  color: var(--button-text-color);
+  background-color: transparent;
+}
+
+.SlideoutMenu__button:hover {
+  color: var(--main-text-color);
+}
+
+.SlideoutMenu__button .material-icons {
+  font-size: 28px;
+  margin-top: -3px;
+}
+
+.SlideoutMenu__ul {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  list-style-type: none;
+}
+
+.SlideoutMenu__li {
+  color: var(--button-text-color);
+  padding: 10px;
+}
+
+.SlideoutMenu__li a:hover {
+  text-decoration: none;
+  color: var(--main-text-color);
+}
