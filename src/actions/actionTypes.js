@@ -1,3 +1,3 @@
 export default {
-  TYPE: 'TYPE'
+  SET_USERNAME: 'SET_USERNAME'
 }

@@ -12,8 +12,8 @@ import Monsters from './Monsters'
 
 class App extends Component {
   state = {
-    isLoggedIn: true,
-    userOnMobile: true,
+    isLoggedIn: false,
+    userOnMobile: false,
     username: 'Peter'
   }
 

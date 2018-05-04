@@ -7,7 +7,7 @@ import SlideoutMenu from './SlideoutMenu'
 
 class NavBar extends Component {
   state = {
-    userOnMobile: true,
+    userOnMobile: false,
     showSlideout: false
    }
 
