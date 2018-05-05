@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import '../styles/App.css'
+import * as actions from '../actions/actions'
 
 import AuthRoute from './AuthRoute'
 import NavBar from './NavBar'
@@ -12,19 +14,24 @@ import NewMonster from './NewMonster'
 import Monsters from './Monsters'
 
 class App extends Component {
-  state = {
-    isLoggedIn: false,
-    userOnMobile: false,
-    username: 'Peter'
+
+  componentWillMount = () => {
+    if (window.innerWidth > 580) {
+      this.props.setDesktop()
+    } else {
+      this.props.setMobile()
+    }
   }
 
   render() {
     let homeComponent = Splash
     let navBar = null
+    let isLoggedIn = false
 
-    if (this.state.isLoggedIn) {
+    if (this.props.username) {
       homeComponent = Home
-      navBar = <NavBar username={this.state.username} />
+      navBar = <NavBar username={this.props.username} userOnMobile={this.props.userOnMobile} />
+      isLoggedIn = true
     }
 
     return (
@@ -32,14 +39,30 @@ class App extends Component {
           {navBar}
           <Switch>
             <Route exact path='/' component={homeComponent} />
-            <Route exact path='/login' username={this.state.username} component={Login} />
-            <AuthRoute exact path={'/' + this.state.username} component={Home} isLoggedIn={this.state.isLoggedIn} />
+            <Route exact path='/login' component={Login} username={this.props.username} />
+            <AuthRoute exact path={'/' + this.props.username} component={Home} isLoggedIn={isLoggedIn} />
             <Route exact path='/monsters' component={Monsters} />
-            <AuthRoute exact path='/monsters/new' component={NewMonster} isLoggedIn={this.state.isLoggedIn} />
+            <AuthRoute exact path='/monsters/new' component={NewMonster} isLoggedIn={isLoggedIn} />
           </Switch>
       </div>
     )
   }
 }
 
-export default App
+const mapStateToProps = (state) => {
+  return {
+    username: state.username,
+    userOnMobile: state.userOnMobile
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (username) => dispatch(actions.login(username)),
+    logout: () => dispatch(actions.logout()),
+    setMobile: () => dispatch(actions.setMobile()),
+    setDesktop: () => dispatch(actions.setDesktop())
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

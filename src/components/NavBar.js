@@ -7,9 +7,8 @@ import SlideoutMenu from './SlideoutMenu'
 
 class NavBar extends Component {
   state = {
-    userOnMobile: false,
     showSlideout: false
-   }
+  }
 
    handleSlideoutClick = () => {
      this.setState({showSlideout: !this.state.showSlideout})
@@ -29,7 +28,7 @@ class NavBar extends Component {
       </div>
     )
 
-    if (this.state.userOnMobile) {
+    if (this.props.userOnMobile) {
       navItems = (
         <div className='NavBar__right'>
           <li className='NavBar__li'>
@@ -46,7 +45,7 @@ class NavBar extends Component {
 
     return (
       <Fragment>
-        {this.state.userOnMobile
+        {this.props.userOnMobile
           ? <SlideoutMenu
               toggleSlideout={toggleSlideout}
               handleSlideoutClick={this.handleSlideoutClick}
