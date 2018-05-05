@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -13,17 +13,19 @@ class Splash extends Component {
 
   render () {
     return (
-      <Fragment>
+      <div className='Splash'>
         <div className='Splash__ctr'>
-          <h1 className='Splash__h1'>Make some monsters</h1>
-          <Link to='/signup' className='Splash__btn'>Sign Up</Link>
-          <br />
-          <Link to='/login'
-            className='Splash__btn Splash__btn--login'
-            onClick={this.handleLoginClick}
-            >Log In</Link>
+          <div className='Splash__inner-ctr'>
+            <h1 className='Splash__h1'>Make some monsters</h1>
+            <Link to='/signup' className='Splash__btn'>Sign Up</Link>
+            <br />
+            <Link to='/login'
+              className='Splash__btn Splash__btn--login'
+              onClick={this.handleLoginClick}
+              >Log In</Link>
+          </div>
         </div>
-    </Fragment>
+    </div>
     )
   }
 }
