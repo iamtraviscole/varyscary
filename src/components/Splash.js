@@ -25,7 +25,7 @@ class Splash extends Component {
               >Log In</Link>
           </div>
         </div>
-    </div>
+      </div>
     )
   }
 }
