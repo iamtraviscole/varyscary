@@ -60,11 +60,11 @@ class NavBar extends Component {
           ? <SlideoutMenu
               toggleSlideout={toggleSlideout}
               handleSlideoutClick={this.handleSlideoutClick}
-              username={this.props.username}/>
+              username={this.props.username} />
           : <UserPanel
               toggleUserPanel={toggleUserPanel}
               handleUserPanelClick={this.handleUserPanelClick}
-              username={this.props.username}/>}
+              username={this.props.username} />}
         <nav className='NavBar'>
           <ul className='NavBar__ul'>
             <li className='NavBar__li NavBar__li--logo'>Monster Maker</li>

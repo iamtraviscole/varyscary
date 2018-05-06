@@ -15,7 +15,7 @@ const SlideoutMenu = (props) => {
         <li className='SlideoutMenu__li'><NavLink to={'/' + props.username}>Home</NavLink></li>
         <li className='SlideoutMenu__li'><NavLink to='/monsters/new'>Make</NavLink></li>
         <li className='SlideoutMenu__li'><NavLink to='/monsters'>Explore</NavLink></li>
-        <li className='SlideoutMenu__li'><NavLink to='/'>Log Out</NavLink></li>
+        <li className='SlideoutMenu__li'><NavLink to='/logout'>Log Out</NavLink></li>
       </ul>
     </nav>
   )

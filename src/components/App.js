@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import '../styles/App.css'
@@ -30,7 +30,9 @@ class App extends Component {
 
     if (this.props.username) {
       homeComponent = Home
-      navBar = <NavBar username={this.props.username} userOnMobile={this.props.userOnMobile} />
+      navBar = <NavBar username={this.props.username}
+        userOnMobile={this.props.userOnMobile}
+        logout={this.props.logout} />
       isLoggedIn = true
     }
 
@@ -43,6 +45,10 @@ class App extends Component {
             <AuthRoute exact path={'/' + this.props.username} component={Home} isLoggedIn={isLoggedIn} />
             <Route exact path='/monsters' component={Monsters} />
             <AuthRoute exact path='/monsters/new' component={NewMonster} isLoggedIn={isLoggedIn} />
+            <Route exact path='/logout' render={() => {
+              this.props.logout()
+              return <Redirect to='/'/>
+            }} />
           </Switch>
       </div>
     )
