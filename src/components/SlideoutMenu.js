@@ -8,7 +8,7 @@ const SlideoutMenu = (props) => {
     <nav onClick={props.handleSlideoutClick} className={'SlideoutMenu ' + props.toggleSlideout}>
       <div className='SlideoutMenu__hamburger'>
         <button className='SlideoutMenu__button'>
-          <i className='material-icons'>menu</i>
+          <i className='material-icons'>close</i>
         </button>
       </div>
       <ul className='SlideoutMenu__ul'>

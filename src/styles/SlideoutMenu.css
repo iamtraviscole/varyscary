@@ -30,10 +30,6 @@
   background-color: transparent;
 }
 
-.SlideoutMenu__button:hover {
-  color: var(--main-text-color);
-}
-
 .SlideoutMenu__button .material-icons {
   font-size: 28px;
   margin-top: -3px;
