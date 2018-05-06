@@ -47,3 +47,7 @@ input:focus {
 ::selection {
   background: var(--highlight-color);
 }
+
+hr {
+  border: .5px dotted var(--input-border-color)
+}

@@ -21,7 +21,6 @@ class NavBar extends Component {
    }
 
   render () {
-    console.log(this.state);
     let navItems = (
       <div className='NavBar__right'>
         <li className='NavBar__li'><NavLink to={'/' + this.props.username}>Home</NavLink></li>

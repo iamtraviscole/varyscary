@@ -9,20 +9,61 @@
   transition: all 250ms;
 }
 
+.UserPanel__content--delay {
+  transition-delay: 250ms;
+}
+
 .UserPanel.hide {
   height: 0px;
   width: 0px;
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
+  animation-duration: 250ms;
+  animation-timing-function: linear;
+  animation-name: UserPanelHide;
+}
+
+@keyframes UserPanelHide {
+  0% {
+    width: 200px;
+    height: 100px;
+  }
+  100% {
+    width: 0;
+    height: 0;
+  }
 }
 
 .UserPanel.show {
   height: 100px;
-  width: 200px;
+  min-width: 200px;
   opacity: 1;
 }
 
-.UserPanel__content--delay {
-  transition-delay: 250ms;
+.UserPanel__username {
+
+}
+
+.UserPanel__email {
+  color: var(--light-text-color);
+  font-size: 80%;
+  font-weight: 300;
+  padding-top: 5px;
+  padding-bottom: 12px;
+}
+
+.UserPanel__logout-btn {
+  position: absolute;
+  bottom: 20px;
+  color: var(--button-text-color);
+  font-size: 90%;
+  background-color: var(--main-color);
+  padding: 8px;
+  border-radius: 3px;
+}
+
+.UserPanel__logout-btn:hover {
+  background-color: var(--main-light-color);
+  text-decoration: none;
 }
