@@ -14,4 +14,8 @@
   --input-placeholder-color: #a2b6ba;
 
   --highlight-color: #e0ccfc;
+
+  --modal-color: rgba(0, 0, 0, .45);
+
+  --shadow-color: rgba(0, 0, 0, .1);
 }

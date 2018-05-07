@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import '../styles/App.css'
@@ -10,6 +10,7 @@ import NavBar from './NavBar'
 import Splash from './Splash'
 import Home from './Home'
 import Login from './Login'
+import Logout from './Logout'
 import NewMonster from './NewMonster'
 import Monsters from './Monsters'
 
@@ -41,14 +42,11 @@ class App extends Component {
           {navBar}
           <Switch>
             <Route exact path='/' component={homeComponent} />
-            <Route exact path='/login' component={Login} username={this.props.username} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/logout' component={Logout} />
             <AuthRoute exact path={'/' + this.props.username} component={Home} isLoggedIn={isLoggedIn} />
             <Route exact path='/monsters' component={Monsters} />
             <AuthRoute exact path='/monsters/new' component={NewMonster} isLoggedIn={isLoggedIn} />
-            <Route exact path='/logout' render={() => {
-              this.props.logout()
-              return <Redirect to='/'/>
-            }} />
           </Switch>
       </div>
     )
