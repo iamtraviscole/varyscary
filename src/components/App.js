@@ -44,9 +44,13 @@ class App extends Component {
             <Route exact path='/' component={homeComponent} />
             <Route exact path='/login' component={Login} />
             <Route exact path='/logout' component={Logout} />
-            <AuthRoute exact path={'/' + this.props.username} component={Home} isLoggedIn={isLoggedIn} />
+            <AuthRoute exact path={'/' + this.props.username}
+              component={Home}
+              isLoggedIn={isLoggedIn} />
             <Route exact path='/monsters' component={Monsters} />
-            <AuthRoute exact path='/monsters/new' component={NewMonster} isLoggedIn={isLoggedIn} />
+            <AuthRoute exact path='/monsters/new'
+              component={NewMonster}
+              isLoggedIn={isLoggedIn} />
           </Switch>
       </div>
     )
