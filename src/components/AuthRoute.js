@@ -4,7 +4,12 @@ import { Route, Redirect } from 'react-router-dom'
 const AuthRoute = ({component: Component, ...rest}) => {
   return (
     <Route {...rest} render = { props => {
-      return rest.isLoggedIn ? <Component {...rest} /> : <Redirect to='/'/>
+      return rest.isLoggedIn
+        ? <Component {...rest} />
+        : <Redirect to={{
+            pathname: '/',
+            state: { message: 'You must be logged in to view that page' }
+          }}/>
     }} />
   )
 }

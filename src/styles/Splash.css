@@ -5,6 +5,24 @@
   z-index: 1000;
 }
 
+.Splash__redirect-ctr {
+  margin-bottom: 5px;
+}
+
+.Splash__redirect-msg {
+  font-size: 80%;
+  color: var(--light-text-color);
+  cursor: pointer;
+}
+
+p.Splash__redirect-msg .material-icons {
+  font-size: 140%;
+  position: relative;
+  top: 5px;
+  color: var(--main-color);
+  cursor: pointer;
+}
+
 .Splash__ctr {
   display: table-cell;
   vertical-align: middle;

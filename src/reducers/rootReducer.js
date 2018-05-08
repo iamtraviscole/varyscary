@@ -1,7 +1,7 @@
 import actionTypes from '../actions/actionTypes'
 
 const initialState = {
-  username: 'Peter',
+  username: null,
   userOnMobile: false,
 }
 
