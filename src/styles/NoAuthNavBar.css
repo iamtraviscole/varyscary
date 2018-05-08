@@ -1,0 +1,52 @@
+.NoAuthNavBar {
+  grid-area: header;
+  padding-top: 15px;
+}
+
+.NoAuthNavBar__ul {
+  list-style-type: none;
+}
+
+.NoAuthNavBar__li {
+  float: left;
+  padding: 10px;
+}
+
+.NoAuthNavBar__btn {
+  text-align: center;
+  display: inline-block;
+  padding: 6px 0;
+  width: 70px;
+  font-size: 90%;
+  font-weight: 300;
+  color: var(--button-text-color);
+  border: 1px solid var(--main-color);
+  background-color: var(--main-color);
+  border-radius: 3px;
+  margin-left: -5px;
+}
+
+.NoAuthNavBar__btn:hover {
+  background-color: var(--main-light-color);
+  color: var(--button-text-color);
+  text-decoration: none;
+}
+
+.NoAuthNavBar__btn--login {
+  background-color: transparent;
+  color: var(--main-color);
+}
+
+.NoAuthNavBar__li--logo {
+  background-color: var(--main-color);
+  margin-left: 15px;
+  border-radius: 3px;
+}
+
+.NoAuthNavBar__right {
+  float: right;
+}
+
+.NoAuthNavBar__ul:last-child {
+  margin-right: 15px;
+}

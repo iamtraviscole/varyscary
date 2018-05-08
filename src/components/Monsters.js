@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 import '../styles/Monsters.css'
 import monsters from '../stub/monsters'
 
 import Monster from './Monster'
+import NoAuthNavBar from './NoAuthNavBar'
 
 const Monsters = (props) => {
 
@@ -20,12 +21,17 @@ const Monsters = (props) => {
   })
 
   return (
-    <div className='Monsters'>
-      <h1>Monsters</h1>
-      <div className='Monsters__ctr'>
-        {monstersArr}
+    <Fragment>
+      <div className='Monsters__NavBar'>
+        <NoAuthNavBar />
       </div>
-    </div>
+      <div className='Monsters'>
+        <h1>Monsters</h1>
+        <div className='Monsters__ctr'>
+          {monstersArr}
+        </div>
+      </div>
+    </Fragment>
   )
 }
 

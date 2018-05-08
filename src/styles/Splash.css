@@ -34,7 +34,6 @@ p.Splash__redirect-msg .material-icons {
   width: 300px;
   padding: 50px 100px;
   background-color: var(--main-container-color);
-  border-radius: 3px;
 }
 
 .Splash__h1 {
@@ -50,7 +49,6 @@ p.Splash__redirect-msg .material-icons {
   color: var(--button-text-color);
   border: 1px solid var(--main-color);
   background-color: var(--main-color);
-  border-style: none;
   border-radius: 3px;
 }
 
@@ -63,8 +61,6 @@ p.Splash__redirect-msg .material-icons {
 .Splash__btn--login {
   background-color: var(--main-container-color);
   color: var(--main-color);
-  border: 1px solid var(--main-color);
-  border-radius: 3px;
 }
 
 @media (max-width: 580px) {
