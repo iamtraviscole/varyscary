@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import { connect } from 'react-redux'
 
 import '../styles/Monsters.css'
 import monsters from '../stub/monsters'
@@ -20,11 +21,18 @@ const Monsters = (props) => {
     )
   })
 
-  return (
-    <Fragment>
+  let noAuthNav = null
+  if (!props.username) {
+    noAuthNav = (
       <div className='Monsters__NavBar'>
         <NoAuthNavBar />
       </div>
+    )
+  }
+
+  return (
+    <Fragment>
+      {noAuthNav}
       <div className='Monsters'>
         <h1>Monsters</h1>
         <div className='Monsters__ctr'>
@@ -35,4 +43,8 @@ const Monsters = (props) => {
   )
 }
 
-export default Monsters
+const mapStateToProps = (state) => {
+  return {username: state.username}
+}
+
+export default connect(mapStateToProps)(Monsters)
