@@ -1,0 +1,22 @@
+.NoMatch {
+  grid-area: content;
+  margin: auto;
+  text-align: center;
+}
+
+.NoMatch__h3 {
+  margin-bottom: 15px;
+}
+
+.NoMatch__btn {
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+  padding: 5px;
+  color: var(--main-color);
+  background-color: transparent;
+}
+
+.NoMatch__btn:hover {
+  color: var(--main-light-color);
+  border-color: var(--main-light-color);
+}

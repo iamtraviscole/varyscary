@@ -13,6 +13,7 @@ import Login from './Login'
 import Logout from './Logout'
 import NewMonster from './NewMonster'
 import Monsters from './Monsters'
+import NoMatch from './NoMatch'
 
 class App extends Component {
 
@@ -51,6 +52,7 @@ class App extends Component {
             <AuthRoute exact path='/monsters/new'
               component={NewMonster}
               isLoggedIn={isLoggedIn} />
+            <Route component={NoMatch} />
           </Switch>
       </div>
     )
