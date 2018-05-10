@@ -8,7 +8,10 @@ const AuthRoute = ({component: Component, ...rest}) => {
         ? <Component {...rest} />
         : <Redirect to={{
             pathname: '/',
-            state: { message: 'You must be logged in to view that page' }
+            state: {
+              materialIcon: 'error',
+              message: 'You must be logged in to view that page'
+            }
           }}/>
     }} />
   )

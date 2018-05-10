@@ -6,21 +6,27 @@
 }
 
 .Splash__redirect-ctr {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .Splash__redirect-msg {
+  display: inline-block;
   font-size: 80%;
   color: var(--light-text-color);
   cursor: pointer;
 }
 
-p.Splash__redirect-msg .material-icons {
-  font-size: 140%;
+.Splash__redirect-msg:hover {
+  color: var(--main-light-color);
+}
+
+.Splash__redirect-msg .material-icons {
+  font-size: 115%;
   position: relative;
-  top: 5px;
+  top: 3px;
   color: var(--main-color);
   cursor: pointer;
+  padding-right: 4px;
 }
 
 .Splash__ctr {
