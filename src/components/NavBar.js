@@ -9,16 +9,32 @@ import UserPanel from './UserPanel'
 class NavBar extends Component {
   state = {
     showSlideout: false,
-    showUserPanel: false
+    showUserPanel: false,
+    userOnMobile: false
   }
 
-   handleSlideoutClick = () => {
-     this.setState({showSlideout: !this.state.showSlideout})
-   }
+  handleUserOnMobile = () => {
+    window.innerWidth > 580
+      ? this.setState({userOnMobile: false})
+      : this.setState({userOnMobile: true})
+  }
 
-   handleUserPanelClick = () => {
-     this.setState({showUserPanel: !this.state.showUserPanel})
-   }
+  componentDidMount = () => {
+    this.handleUserOnMobile();
+    window.addEventListener('resize', this.handleUserOnMobile)
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.handleUserOnMobile)
+  }
+
+  handleSlideoutClick = () => {
+    this.setState({showSlideout: !this.state.showSlideout})
+  }
+
+  handleUserPanelClick = () => {
+    this.setState({showUserPanel: !this.state.showUserPanel})
+  }
 
   render () {
     let navItems = (
@@ -36,7 +52,7 @@ class NavBar extends Component {
       </div>
     )
 
-    if (this.props.userOnMobile) {
+    if (this.state.userOnMobile) {
       navItems = (
         <div className='NavBar__right'>
           <li className='NavBar__li'>
@@ -56,7 +72,7 @@ class NavBar extends Component {
 
     return (
       <Fragment>
-        {this.props.userOnMobile
+        {this.state.userOnMobile
           ? <SlideoutMenu
               toggleSlideout={toggleSlideout}
               handleSlideoutClick={this.handleSlideoutClick}
