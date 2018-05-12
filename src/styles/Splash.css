@@ -40,6 +40,7 @@
   width: 300px;
   padding: 50px 100px;
   background-color: var(--main-container-color);
+  border-radius: 3px;
 }
 
 .Splash__h1 {

@@ -36,6 +36,7 @@
   color: var(--main-light-color);
 }
 
-.NavBar__button {
+.NavBar__user-panel-btn {
   background-color: transparent;
+  width: 28px;
 }

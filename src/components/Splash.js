@@ -26,7 +26,7 @@ class Splash extends Component {
       materialIcon: null,
       message: null
     })
-    this.props.history.replace(this.props.match.path, null)
+    this.props.history.replace(this.props.match.path, undefined)
   }
 
   render () {

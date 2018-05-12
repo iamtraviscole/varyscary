@@ -43,7 +43,7 @@ class NavBar extends Component {
         <li className='NavBar__li'><NavLink to='/monsters/new'>Make</NavLink></li>
         <li className='NavBar__li'><NavLink to='/monsters'>Explore</NavLink></li>
         <li className='NavBar__li'>
-          <button onClick={this.handleUserPanelClick} className='NavBar__button'>
+          <button onClick={this.handleUserPanelClick} className='NavBar__user-panel-btn'>
             {!this.state.showUserPanel
               ? <i className='material-icons'>account_circle</i>
               : <i className='material-icons'>close</i> }
@@ -56,7 +56,7 @@ class NavBar extends Component {
       navItems = (
         <div className='NavBar__right'>
           <li className='NavBar__li'>
-            <button onClick={this.handleSlideoutClick} className='NavBar__button'>
+            <button onClick={this.handleSlideoutClick} className='NavBar__user-panel-btn'>
               <i className='material-icons'>menu</i>
             </button>
           </li>

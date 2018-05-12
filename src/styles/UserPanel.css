@@ -5,6 +5,8 @@
   background: var(--main-container-color);
   padding: 20px;
   border-radius: 3px;
+  border: 1px solid var(--input-border-color);
+  box-shadow: 2px 2px 2px var(--shadow-color);
   z-index: 500;
   transition: all 250ms;
 }
