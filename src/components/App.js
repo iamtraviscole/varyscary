@@ -17,6 +17,21 @@ import NoMatch from './NoMatch'
 
 class App extends Component {
 
+  handleUserOnMobile = () => {
+    window.innerWidth > 580
+      ? this.props.setDesktop()
+      : this.props.setMobile()
+  }
+
+  componentDidMount = () => {
+    this.handleUserOnMobile();
+    window.addEventListener('resize', this.handleUserOnMobile)
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.handleUserOnMobile)
+  }
+
   componentWillMount = () => {
     if (window.innerWidth > 580) {
       this.props.setDesktop()
