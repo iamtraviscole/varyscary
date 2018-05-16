@@ -12,3 +12,15 @@ export const logout = (username) => {
     type: actionTypes.LOGOUT
   }
 }
+
+export const setMobile = () => {
+  return {
+    type: actionTypes.SET_MOBILE
+  }
+}
+
+export const setDesktop = () => {
+  return {
+    type: actionTypes.SET_DESKTOP
+  }
+}

@@ -1,4 +1,6 @@
 export default {
   LOGIN: 'LOGIN',
-  LOGOUT: 'LOGOUT'
+  LOGOUT: 'LOGOUT',
+  SET_MOBILE: 'SET_MOBILE',
+  SET_DESKTOP: 'SET_DESKTOP'
 }

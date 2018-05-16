@@ -17,6 +17,14 @@ import NoMatch from './NoMatch'
 
 class App extends Component {
 
+  componentWillMount = () => {
+    if (window.innerWidth > 580) {
+      this.props.setDesktop()
+    } else {
+      this.props.setMobile()
+    }
+  }
+
   render() {
     let homeComponent = Splash
     let navBar = null
@@ -53,14 +61,17 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.username
+    username: state.username,
+    userOnMobile: state.userOnMobile
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     login: (username) => dispatch(actions.login(username)),
-    logout: () => dispatch(actions.logout())
+    logout: () => dispatch(actions.logout()),
+    setMobile: () => dispatch(actions.setMobile()),
+    setDesktop: () => dispatch(actions.setDesktop())
   }
 }
 
