@@ -18,6 +18,7 @@ button {
   font-size: 100%;
   border: none;
   outline: none;
+  background-color: transparent;
 }
 
 a {
@@ -30,8 +31,10 @@ a:hover {
 }
 
 input {
+  font-family: 'Lato', sans-serif;
   border: 1px solid var(--input-border-color);
   border-radius: 3px;
+  background: transparent;
 }
 
 input::placeholder {

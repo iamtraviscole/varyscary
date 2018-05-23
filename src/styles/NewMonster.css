@@ -1,0 +1,141 @@
+.NewMonster {
+  grid-area: content;
+}
+
+.NewMonster__ctr {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 382px;
+  grid-column-gap: 25px;
+  margin: 0 25px;
+  grid-template-areas:
+    'left monster';
+}
+
+.NewMonster__left-grid-ctr {
+  grid-area: left;
+}
+
+.NewMonster__right-grid-ctr {
+  grid-area: monster;
+}
+
+.NewMonster__nav-ctr {
+  position: relative;
+  height: 40px;
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.NewMonster__nav-ctr--center {
+  text-align: center;
+}
+
+.NewMonster__left-arrow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  width: 30px;
+  height: 28px;
+  padding-left: 8px;
+  padding-top: 10px;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+}
+
+.NewMonster__left-arrow:hover {
+  color: var(--button-text-color);
+  border: 1px solid var(--main-light-color);
+  background-color: var(--main-light-color);
+  -webkit-user-select: none;
+}
+
+.NewMonster__left-arrow .material-icons {
+  font-size: 18px;
+}
+
+.NewMonster__right-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: center;
+  width: 36px;
+  height: 28px;
+  padding-left: 2px;
+  padding-top: 10px;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+}
+
+.NewMonster__right-arrow:hover {
+  color: var(--button-text-color);
+  border: 1px solid var(--main-light-color);
+  background-color: var(--main-light-color);
+}
+
+.NewMonster__right-arrow .material-icons {
+  font-size: 18px;
+}
+
+.NewMonster__nav {
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.NewMonster__nav--margin {
+  margin: 0 50px;
+}
+
+.NewMonster__nav::-webkit-scrollbar {
+ display: none;
+}
+
+.NewMonster__features-btn {
+  text-align: center;
+  height: 40px;
+  padding: 10px;
+  margin: 0 25px 25px 0;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+}
+
+.NewMonster__features-btn:hover {
+  color: var(--button-text-color);
+  border: 1px solid var(--main-light-color);
+  background-color: var(--main-light-color);
+}
+
+.NewMonster__h2 {
+}
+
+.NewMonster__left-ctr {
+}
+
+.NewMonster__h3 {
+  margin-bottom: 25px;
+}
+
+.NewMonster__monster-inner-ctr {
+  height: 380px;
+  width: 380px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 3px;
+}
+
+.NewMonster__monster-inner-ctr--top{
+  position: fixed;
+  top: 25px;
+  height: 380px;
+  width: 380px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 3px;
+}
