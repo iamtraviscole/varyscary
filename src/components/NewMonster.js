@@ -2,13 +2,20 @@ import React, { Component } from 'react'
 
 import '../styles/NewMonster.css'
 
+import NewMonsterButton from './NewMonsterButton'
+import NewMonsterBodies from './NewMonsterPanels/NewMonsterBodies'
+import NewMonsterFaces from './NewMonsterPanels/NewMonsterFaces'
+import NewMonsterHeadwear from './NewMonsterPanels/NewMonsterHeadwear'
+import NewMonsterEyes from './NewMonsterPanels/NewMonsterEyes'
+import NewMonsterMouths from './NewMonsterPanels/NewMonsterMouths'
+import NewMonsterArms from './NewMonsterPanels/NewMonsterArms'
+import NewMonsterLegs from './NewMonsterPanels/NewMonsterLegs'
+
 class NewMonster extends Component {
   state = {
     showArrows: false,
-    windowYScroll: null,
-    windowInnerHeight: null,
-    toggleBodies: 'hide',
-    toggleFaces: 'hide'
+    fixedMonster: false,
+    activePanel: 'bodies'
   }
 
   setShowArrows = () => {
@@ -19,20 +26,21 @@ class NewMonster extends Component {
     : this.setState({showArrows: false})
   }
 
-  setScrollPosition = () => {
-    this.setState({windowYScroll: window.scrollY})
-    this.setState({windowInnerHeight: window.innerHeight})
+  setFixMonster = () => {
+    window.scrollY > 75
+      ? this.setState({fixedMonster: true})
+      : this.setState({fixedMonster: false})
   }
 
   componentDidMount = () => {
     this.setShowArrows()
     window.addEventListener('resize', this.setShowArrows)
-    window.addEventListener('scroll', this.setScrollPosition)
+    window.addEventListener('scroll', this.setFixMonster)
   }
 
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.setShowArrows)
-    window.removeEventListener('scroll', this.setScrollPosition)
+    window.removeEventListener('scroll', this.setFixMonster)
   }
 
   handleLeftArrowClick = () => {
@@ -43,26 +51,43 @@ class NewMonster extends Component {
     document.getElementsByClassName('NewMonster__nav')[0].scrollLeft += 35
   }
 
-  handleAttributesToggle = (type) => {
-    if (this.state[type] === 'hide') {
-      this.setState({[type]: 'show'})
-    }
-    if (this.state[type] === 'show') {
-      this.setState({[type]: 'hide'})
+  handleActivePanel = (buttonClicked) => {
+    this.setState({activePanel: buttonClicked})
+  }
+
+  activePanel = () => {
+    switch (this.state.activePanel) {
+      case 'bodies':
+        return <NewMonsterBodies />
+      case 'faces':
+        return <NewMonsterFaces />
+      case 'headwear':
+        return <NewMonsterHeadwear />
+      case 'eyes':
+        return <NewMonsterEyes />
+      case 'mouth':
+        return <NewMonsterMouths />
+      case 'arms':
+        return <NewMonsterArms />
+      case 'legs':
+        return <NewMonsterLegs />
+      default:
+        return null
     }
   }
 
   render() {
     let monsterStyle = 'NewMonster__monster-inner-ctr'
-    if (this.state.windowYScroll > 75 && window.windowInnerHeight > 506) {
-     monsterStyle = 'NewMonster__monster-inner-ctr--top'
+    if (this.state.fixedMonster) {
+     monsterStyle += ' NewMonster__monster-inner-ctr--fixed'
     }
 
     let navCtrClass = 'NewMonster__nav-ctr'
-    if (this.state.showArrows) navCtrClass += ' NewMonster__nav-ctr--center'
-
     let navClass = 'NewMonster__nav'
-    if (this.state.showArrows) navClass += ' NewMonster__nav--margin'
+    if (this.state.showArrows) {
+      navCtrClass += ' NewMonster__nav-ctr--center'
+      navClass += ' NewMonster__nav--margin'
+    }
 
     return (
       <div className='NewMonster'>
@@ -78,13 +103,27 @@ class NewMonster extends Component {
                 : null
               }
               <div className={navClass}>
-                <button className='NewMonster__features-btn'>Bodies</button>
-                <button className='NewMonster__features-btn'>Faces</button>
-                <button className='NewMonster__features-btn'>Headwear</button>
-                <button className='NewMonster__features-btn'>Eyes</button>
-                <button className='NewMonster__features-btn'>Mouth</button>
-                <button className='NewMonster__features-btn'>Arms</button>
-                <button className='NewMonster__features-btn'>Legs</button>
+                <NewMonsterButton activePanel={this.state.activePanel}
+                  handleActivePanel={this.handleActivePanel}
+                  activePanelName='bodies'>Bodies</NewMonsterButton>
+                <NewMonsterButton activePanel={this.state.activePanel}
+                  handleActivePanel={this.handleActivePanel}
+                  activePanelName='faces'>Faces</NewMonsterButton>
+                <NewMonsterButton activePanel={this.state.activePanel}
+                  handleActivePanel={this.handleActivePanel}
+                  activePanelName='headwear'>Headwear</NewMonsterButton>
+                <NewMonsterButton activePanel={this.state.activePanel}
+                  handleActivePanel={this.handleActivePanel}
+                  activePanelName='eyes'>Eyes</NewMonsterButton>
+                <NewMonsterButton activePanel={this.state.activePanel}
+                  handleActivePanel={this.handleActivePanel}
+                  activePanelName='mouth'>Mouths</NewMonsterButton>
+                <NewMonsterButton activePanel={this.state.activePanel}
+                  handleActivePanel={this.handleActivePanel}
+                  activePanelName='arms'>Arms</NewMonsterButton>
+                <NewMonsterButton activePanel={this.state.activePanel}
+                  handleActivePanel={this.handleActivePanel}
+                  activePanelName='legs'>Legs</NewMonsterButton>
               </div>
               {this.state.showArrows
                 ? <div className='NewMonster__right-arrow'
@@ -94,6 +133,9 @@ class NewMonster extends Component {
                 : null
               }
             </div>
+            <form className='NewMonster__form-ctr'>
+              {this.activePanel()}
+            </form>
           </div>
           <div className='NewMonster__right-grid-ctr'>
             <div className={monsterStyle}>
