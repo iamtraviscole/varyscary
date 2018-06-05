@@ -2,6 +2,8 @@ import React from 'react'
 
 import '../../styles/NewMonsterPanels.css'
 
+import * as MonsterBodies from '../MonsterFeatures/MonsterBodies'
+
 const NewMonsterBodies = (props) => {
   return (
     <div className='NewMonsterPanels__features-ctr'>
@@ -11,34 +13,28 @@ const NewMonsterBodies = (props) => {
           color picker here
         </div>
         <div className='NewMonsterPanels__features'>
-          svg here
+          <MonsterBodies.Body1 />
         </div>
         <div className='NewMonsterPanels__features'>
-          svg here
+          <MonsterBodies.Body2 />
         </div>
         <div className='NewMonsterPanels__features'>
-          svg here
+          <MonsterBodies.Body3 />
         </div>
         <div className='NewMonsterPanels__features'>
-          svg here
+          <MonsterBodies.Body4 />
         </div>
         <div className='NewMonsterPanels__features'>
-          svg here
+          <MonsterBodies.Body5 />
         </div>
         <div className='NewMonsterPanels__features'>
-          svg here
+          <MonsterBodies.Body6 />
         </div>
         <div className='NewMonsterPanels__features'>
-          svg here
+          <MonsterBodies.Body7 />
         </div>
         <div className='NewMonsterPanels__features'>
-          svg here
-        </div>
-        <div className='NewMonsterPanels__features'>
-          svg here
-        </div>
-        <div className='NewMonsterPanels__features'>
-          svg here
+          <MonsterBodies.Body8 />
         </div>
       </div>
     </div>
