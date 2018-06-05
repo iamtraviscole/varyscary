@@ -1,4 +1,4 @@
-.NewMonsterPanels__attributes-ctr {
+.NewMonsterPanels__features-ctr {
   clear: both;
   border: 1px solid var(--input-border-color);
   overflow: auto;
@@ -10,7 +10,7 @@
   margin-bottom: 25px;
 }
 
-.NewMonsterPanels__attributes {
+.NewMonsterPanels__features {
   float: left;
   background-color: var(--main-container-color);
   margin: 0 25px 25px 0;
@@ -22,15 +22,15 @@
   z-index: 500;
 }
 
-.NewMonsterPanels__attributes-inner-ctr.hide {
+.NewMonsterPanels__features-inner-ctr.hide {
   display: none;
 }
 
-.NewMonsterPanels__attributes-inner-ctr.show {
+.NewMonsterPanels__features-inner-ctr.show {
   display: inline-block;
 }
 
-.NewMonsterPanels__attributes--color {
+.NewMonsterPanels__features--color {
   width: 407px;
   background-color: yellow;
 }
