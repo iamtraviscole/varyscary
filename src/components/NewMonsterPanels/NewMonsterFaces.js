@@ -2,6 +2,8 @@ import React from 'react'
 
 import '../../styles/NewMonsterPanels.css'
 
+import * as MonsterFaces from '../MonsterFeatures/MonsterFaces'
+
 const NewMonsterFaces = (props) => {
   return (
     <div className='NewMonsterPanels__features-ctr'>
@@ -11,58 +13,22 @@ const NewMonsterFaces = (props) => {
           color picker here
         </div>
         <div className='NewMonsterPanels__features'>
-          svg here
+          <MonsterFaces.Face1 />
         </div>
         <div className='NewMonsterPanels__features'>
-          svg here
+          <MonsterFaces.Face2 />
         </div>
         <div className='NewMonsterPanels__features'>
-          svg here
+          <MonsterFaces.Face3 />
         </div>
         <div className='NewMonsterPanels__features'>
-          svg here
+          <MonsterFaces.Face4 />
         </div>
         <div className='NewMonsterPanels__features'>
-          svg here
+          <MonsterFaces.Face5 />
         </div>
         <div className='NewMonsterPanels__features'>
-          svg here
-        </div>
-        <div className='NewMonsterPanels__features'>
-          svg here
-        </div>
-        <div className='NewMonsterPanels__features'>
-          svg here
-        </div>
-        <div className='NewMonsterPanels__features'>
-          svg here
-        </div>
-        <div className='NewMonsterPanels__features'>
-          svg here
-        </div>
-        <div className='NewMonsterPanels__features'>
-          svg here
-        </div>
-        <div className='NewMonsterPanels__features'>
-          svg here
-        </div>
-        <div className='NewMonsterPanels__features'>
-          svg here
-        </div>
-        <div className='NewMonsterPanels__features'>
-          svg here
-        </div>
-        <div className='NewMonsterPanels__features'>
-          svg here
-        </div>
-        <div className='NewMonsterPanels__features'>
-          svg here
-        </div>
-        <div className='NewMonsterPanels__features'>
-          svg here
-        </div>
-        <div className='NewMonsterPanels__features'>
-          svg here
+          <MonsterFaces.Face6 />
         </div>
       </div>
     </div>
