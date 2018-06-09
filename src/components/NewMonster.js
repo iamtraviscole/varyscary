@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import '../styles/NewMonster.css'
+import { monsterComponents } from '../utils/NewMonsterUtil.js'
 
 import NewMonsterButton from './NewMonsterButton'
 import NewMonsterBodies from './NewMonsterPanels/NewMonsterBodies'
@@ -55,6 +57,12 @@ class NewMonster extends Component {
     this.setState({activePanel: buttonClicked})
   }
 
+  // turn this into object?
+  // const activePanel = {
+  //   bodies: <NewMonsterBodies />,
+  //   faces: <NewMonsterFaces />
+  //   etc...
+  // }
   activePanel = () => {
     switch (this.state.activePanel) {
       case 'bodies':
@@ -141,6 +149,7 @@ class NewMonster extends Component {
             <div className={monsterStyle}>
               <h2 className='NewMonster__h2'>Make a monster!</h2>
               <p>Choose your features</p>
+              {monsterComponents.bodies[this.props.monster.body.type]}
             </div>
           </div>
         </div>
@@ -149,4 +158,10 @@ class NewMonster extends Component {
   }
 }
 
-export default NewMonster
+const mapStateToProps = (state) => {
+  return {
+    monster: state.monster
+  }
+}
+
+export default connect(mapStateToProps)(NewMonster)
