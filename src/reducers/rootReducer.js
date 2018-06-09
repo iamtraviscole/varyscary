@@ -10,7 +10,7 @@ const initialState = {
     },
     face: {
       type: null,
-      fillColor: null
+      fillColor: '#fff'
     },
     headwear: {
       type: null,

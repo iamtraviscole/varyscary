@@ -99,13 +99,32 @@
 }
 
 .NewMonster__monster-inner-ctr {
+  position: relative;
   height: 380px;
   width: 380px;
   border: 1px solid var(--input-border-color);
   border-radius: 3px;
 }
 
-.NewMonster__monster-inner-ctr--fixed{
+.NewMonster__monster-inner-ctr--fixed {
   position: fixed;
   top: 25px;
+}
+
+.NewMonster__body-ctr {
+  position: absolute;
+  height: 380px;
+  width: 380px;
+  top: 0;
+  left: 0;
+  z-index: 550;
+}
+
+.NewMonster__face-ctr {
+  position: absolute;
+  height: 380px;
+  width: 380px;
+  top: 0;
+  left: 0;
+  z-index: 560;
 }

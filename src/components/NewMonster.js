@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import '../styles/NewMonster.css'
-import { monsterComponents } from '../utils/NewMonsterUtil.js'
 
 import NewMonsterButton from './NewMonsterButton'
 import NewMonsterBodies from './NewMonsterPanels/NewMonsterBodies'
@@ -12,6 +11,9 @@ import NewMonsterEyes from './NewMonsterPanels/NewMonsterEyes'
 import NewMonsterMouths from './NewMonsterPanels/NewMonsterMouths'
 import NewMonsterArms from './NewMonsterPanels/NewMonsterArms'
 import NewMonsterLegs from './NewMonsterPanels/NewMonsterLegs'
+
+import * as MonsterBodies from './MonsterFeatures/MonsterBodies'
+import * as MonsterFaces from './MonsterFeatures/MonsterFaces'
 
 class NewMonster extends Component {
   state = {
@@ -97,6 +99,29 @@ class NewMonster extends Component {
       navClass += ' NewMonster__nav--margin'
     }
 
+    const faceFill = this.props.monster.face.fillColor
+
+    const featuresComponents = {
+      bodies: {
+        body1: <MonsterBodies.Body1 />,
+        body2: <MonsterBodies.Body2 />,
+        body3: <MonsterBodies.Body3 />,
+        body4: <MonsterBodies.Body4 />,
+        body5: <MonsterBodies.Body5 />,
+        body6: <MonsterBodies.Body6 />,
+        body7: <MonsterBodies.Body7 />,
+        body8: <MonsterBodies.Body8 />
+      },
+      faces: {
+        face1: <MonsterFaces.Face1 fillColor={faceFill} />,
+        face2: <MonsterFaces.Face2 fillColor={faceFill} />,
+        face3: <MonsterFaces.Face3 fillColor={faceFill} />,
+        face4: <MonsterFaces.Face4 fillColor={faceFill} />,
+        face5: <MonsterFaces.Face5 fillColor={faceFill} />,
+        face6: <MonsterFaces.Face6 fillColor={faceFill} />
+      }
+    }
+
     return (
       <div className='NewMonster'>
         <div className='NewMonster__ctr'>
@@ -147,10 +172,14 @@ class NewMonster extends Component {
           </div>
           <div className='NewMonster__right-grid-ctr'>
             <div className={monsterStyle}>
-              <h2 className='NewMonster__h2'>Make a monster!</h2>
-              <p>Choose your features</p>
-              {monsterComponents.bodies[this.props.monster.body.type]}
-              {monsterComponents.faces[this.props.monster.face.type]}
+              {/* <h2 className='NewMonster__h2'>Make a monster!</h2>
+              <p>Choose your features</p> */}
+              <div className='NewMonster__body-ctr'>
+                {featuresComponents.bodies[this.props.monster.body.type]}
+              </div>
+              <div className='NewMonster__face-ctr'>
+                {featuresComponents.faces[this.props.monster.face.type]}
+              </div>
             </div>
           </div>
         </div>
