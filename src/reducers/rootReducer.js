@@ -3,6 +3,36 @@ import actionTypes from '../actions/actionTypes'
 const initialState = {
   username: 'Peter',
   userOnMobile: false,
+  monster: {
+    body: {
+      type: null,
+      fillColor: null
+    },
+    face: {
+      type: null,
+      fillColor: null
+    },
+    headwear: {
+      type: null,
+      fillColor: null
+    },
+    eyes: {
+      type: null,
+      fillColor: null
+    },
+    mouth: {
+      type: null,
+      fillColor: null
+    },
+    arms: {
+      type: null,
+      fillColor: null
+    },
+    legs: {
+      type: null,
+      fillColor: null
+    }
+  }
 }
 
 const reducer = (state = initialState, action) => {
@@ -15,6 +45,17 @@ const reducer = (state = initialState, action) => {
       return {...state, userOnMobile: true}
     case actionTypes.SET_DESKTOP:
       return {...state, userOnMobile: false}
+    case actionTypes.SET_BODY_TYPE:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  body: {
+                    ...state.monster.body,
+                    type: action.bodyType
+                    }
+                  }
+                }
+
     default:
       return state
   }

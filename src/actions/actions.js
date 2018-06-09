@@ -7,7 +7,7 @@ export const login = (username) => {
   }
 }
 
-export const logout = (username) => {
+export const logout = () => {
   return {
     type: actionTypes.LOGOUT
   }
@@ -22,5 +22,12 @@ export const setMobile = () => {
 export const setDesktop = () => {
   return {
     type: actionTypes.SET_DESKTOP
+  }
+}
+
+export const setBodyType = (bodyType) => {
+  return {
+    type: actionTypes.SET_BODY_TYPE,
+    bodyType: bodyType
   }
 }
