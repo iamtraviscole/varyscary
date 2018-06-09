@@ -59,33 +59,6 @@ class NewMonster extends Component {
     this.setState({activePanel: buttonClicked})
   }
 
-  // turn this into object?
-  // const activePanel = {
-  //   bodies: <NewMonsterBodies />,
-  //   faces: <NewMonsterFaces />
-  //   etc...
-  // }
-  activePanel = () => {
-    switch (this.state.activePanel) {
-      case 'bodies':
-        return <NewMonsterBodies />
-      case 'faces':
-        return <NewMonsterFaces />
-      case 'headwear':
-        return <NewMonsterHeadwear />
-      case 'eyes':
-        return <NewMonsterEyes />
-      case 'mouth':
-        return <NewMonsterMouths />
-      case 'arms':
-        return <NewMonsterArms />
-      case 'legs':
-        return <NewMonsterLegs />
-      default:
-        return null
-    }
-  }
-
   render() {
     let monsterStyle = 'NewMonster__monster-inner-ctr'
     if (this.state.fixedMonster) {
@@ -99,8 +72,17 @@ class NewMonster extends Component {
       navClass += ' NewMonster__nav--margin'
     }
 
-    const faceFill = this.props.monster.face.fillColor
+    const activePanel = {
+      bodies: <NewMonsterBodies />,
+      faces: <NewMonsterFaces />,
+      headwear: <NewMonsterHeadwear />,
+      eyes: <NewMonsterEyes />,
+      mouth: <NewMonsterMouths />,
+      arms: <NewMonsterArms />,
+      legs: <NewMonsterLegs />,
+    }
 
+    const faceFill = this.props.monster.face.fillColor
     const featuresComponents = {
       bodies: {
         body1: <MonsterBodies.Body1 />,
@@ -167,7 +149,7 @@ class NewMonster extends Component {
               }
             </div>
             <form className='NewMonster__form-ctr'>
-              {this.activePanel()}
+              {activePanel[this.state.activePanel]}
             </form>
           </div>
           <div className='NewMonster__right-grid-ctr'>
