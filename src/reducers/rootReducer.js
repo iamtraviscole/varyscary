@@ -55,7 +55,16 @@ const reducer = (state = initialState, action) => {
                     }
                   }
                 }
-
+    case actionTypes.SET_FACE_TYPE:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  face: {
+                    ...state.monster.face,
+                    type: action.faceType
+                    }
+                  }
+                }
     default:
       return state
   }

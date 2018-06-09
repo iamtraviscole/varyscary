@@ -150,6 +150,7 @@ class NewMonster extends Component {
               <h2 className='NewMonster__h2'>Make a monster!</h2>
               <p>Choose your features</p>
               {monsterComponents.bodies[this.props.monster.body.type]}
+              {monsterComponents.faces[this.props.monster.face.type]}
             </div>
           </div>
         </div>

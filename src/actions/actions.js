@@ -31,3 +31,10 @@ export const setBodyType = (bodyType) => {
     bodyType: bodyType
   }
 }
+
+export const setFaceType = (faceType) => {
+  return {
+    type: actionTypes.SET_FACE_TYPE,
+    faceType: faceType
+  }
+}
