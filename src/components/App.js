@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -15,7 +15,7 @@ import NewMonster from './NewMonster'
 import Monsters from './Monsters'
 import NoMatch from './NoMatch'
 
-class App extends Component {
+class App extends PureComponent {
 
   handleUserOnMobile = () => {
     window.innerWidth > 580

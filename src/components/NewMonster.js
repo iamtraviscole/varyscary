@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
 import '../styles/NewMonster.css'
@@ -15,7 +15,7 @@ import NewMonsterLegs from './NewMonsterPanels/NewMonsterLegs'
 import * as MonsterBodies from './MonsterFeatures/MonsterBodies'
 import * as MonsterFaces from './MonsterFeatures/MonsterFaces'
 
-class NewMonster extends Component {
+class NewMonster extends PureComponent {
   state = {
     showArrows: false,
     fixedMonster: false,
