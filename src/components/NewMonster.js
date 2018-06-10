@@ -14,6 +14,7 @@ import NewMonsterLegs from './NewMonsterPanels/NewMonsterLegs'
 
 import * as MonsterBodies from './MonsterFeatures/MonsterBodies'
 import * as MonsterFaces from './MonsterFeatures/MonsterFaces'
+import * as MonsterHeadwear from './MonsterFeatures/MonsterHeadwear'
 
 class NewMonster extends PureComponent {
   state = {
@@ -106,6 +107,13 @@ class NewMonster extends PureComponent {
       faces[`face${i}`] = <FaceComponent fillColor={faceFill}/>
     }
 
+    let headwear = {}
+    const headwearLength = Object.keys(MonsterHeadwear).length
+    for (let i = 1; i <= headwearLength; i++) {
+      let HeadwearComponent = MonsterHeadwear[`Headwear${i}`]
+      headwear[`headwear${i}`] = <HeadwearComponent />
+    }
+
     return (
       <div className='NewMonster'>
         <div className='NewMonster__ctr'>
@@ -166,6 +174,9 @@ class NewMonster extends PureComponent {
               </div>
               <div className='NewMonster__face-ctr'>
                 {faces[this.props.monster.face.type]}
+              </div>
+              <div className='NewMonster__headwear-ctr'>
+                {headwear[this.props.monster.headwear.type]}
               </div>
             </div>
           </div>

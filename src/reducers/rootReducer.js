@@ -65,6 +65,16 @@ const reducer = (state = initialState, action) => {
                     }
                   }
                 }
+    case actionTypes.SET_HEADWEAR_TYPE:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  headwear: {
+                    ...state.monster.headwear,
+                    type: action.headwearType
+                    }
+                  }
+                }
     default:
       return state
   }

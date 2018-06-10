@@ -133,3 +133,12 @@
   left: 0;
   z-index: 560;
 }
+
+.NewMonster__headwear-ctr {
+  position: absolute;
+  height: 380px;
+  width: 380px;
+  top: 0;
+  left: 0;
+  z-index: 540;
+}

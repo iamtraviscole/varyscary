@@ -38,3 +38,10 @@ export const setFaceType = (faceType) => {
     faceType: faceType
   }
 }
+
+export const setHeadwearType = (headwearType) => {
+  return {
+    type: actionTypes.SET_HEADWEAR_TYPE,
+    headwearType: headwearType
+  }
+}
