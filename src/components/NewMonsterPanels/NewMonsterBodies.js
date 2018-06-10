@@ -14,6 +14,19 @@ class NewMonsterBodies extends Component {
   }
 
   render() {
+
+    let bodiesDivs = []
+    const bodiesLength = Object.keys(MonsterBodies).length
+    for (let i = 1; i <= bodiesLength; i++) {
+      let BodyComponent = MonsterBodies[`Body${i}`]
+      bodiesDivs.push(<div className='NewMonsterPanels__features'
+        data-body-type={`body${i}`}
+        onClick={this.handleBodyClick}
+        key={i}>
+        <BodyComponent />
+      </div>)
+    }
+
     return (
       <div className='NewMonsterPanels__features-ctr'>
         <h3 className='NewMonsterPanels__h3'>Bodies</h3>
@@ -21,46 +34,7 @@ class NewMonsterBodies extends Component {
           <div className='NewMonsterPanels__features NewMonsterPanels__features--color'>
             color picker here
           </div>
-          <div className='NewMonsterPanels__features'
-            data-body-type='body1'
-            onClick={this.handleBodyClick}>
-            <MonsterBodies.Body1 />
-          </div>
-          <div className='NewMonsterPanels__features'
-            data-body-type='body2'
-            onClick={this.handleBodyClick}>
-            <MonsterBodies.Body2 />
-          </div>
-          <div className='NewMonsterPanels__features'
-            data-body-type='body3'
-            onClick={this.handleBodyClick}>
-            <MonsterBodies.Body3 />
-          </div>
-          <div className='NewMonsterPanels__features'
-            data-body-type='body4'
-            onClick={this.handleBodyClick}>
-            <MonsterBodies.Body4 />
-          </div>
-          <div className='NewMonsterPanels__features'
-            data-body-type='body5'
-            onClick={this.handleBodyClick}>
-            <MonsterBodies.Body5 />
-          </div>
-          <div className='NewMonsterPanels__features'
-            data-body-type='body6'
-            onClick={this.handleBodyClick}>
-            <MonsterBodies.Body6 />
-          </div>
-          <div className='NewMonsterPanels__features'
-            data-body-type='body7'
-            onClick={this.handleBodyClick}>
-            <MonsterBodies.Body7 />
-          </div>
-          <div className='NewMonsterPanels__features'
-            data-body-type='body8'
-            onClick={this.handleBodyClick}>
-            <MonsterBodies.Body8 />
-          </div>
+          {bodiesDivs}
         </div>
       </div>
     )

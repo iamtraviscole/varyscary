@@ -82,26 +82,19 @@ class NewMonster extends Component {
       legs: <NewMonsterLegs />,
     }
 
+    let bodies = {}
+    const bodiesLength = Object.keys(MonsterBodies).length
+    for (let i = 1; i <= bodiesLength; i++) {
+      let BodyComponent = MonsterBodies[`Body${i}`]
+      bodies[`body${i}`] = <BodyComponent />
+    }
+
+    let faces = {}
+    const facesLength = Object.keys(MonsterFaces).length
     const faceFill = this.props.monster.face.fillColor
-    const featuresComponents = {
-      bodies: {
-        body1: <MonsterBodies.Body1 />,
-        body2: <MonsterBodies.Body2 />,
-        body3: <MonsterBodies.Body3 />,
-        body4: <MonsterBodies.Body4 />,
-        body5: <MonsterBodies.Body5 />,
-        body6: <MonsterBodies.Body6 />,
-        body7: <MonsterBodies.Body7 />,
-        body8: <MonsterBodies.Body8 />
-      },
-      faces: {
-        face1: <MonsterFaces.Face1 fillColor={faceFill} />,
-        face2: <MonsterFaces.Face2 fillColor={faceFill} />,
-        face3: <MonsterFaces.Face3 fillColor={faceFill} />,
-        face4: <MonsterFaces.Face4 fillColor={faceFill} />,
-        face5: <MonsterFaces.Face5 fillColor={faceFill} />,
-        face6: <MonsterFaces.Face6 fillColor={faceFill} />
-      }
+    for (let i = 1; i <= facesLength; i++) {
+      let FaceComponent = MonsterFaces[`Face${i}`]
+      faces[`face${i}`] = <FaceComponent fillColor={faceFill}/>
     }
 
     return (
@@ -157,10 +150,10 @@ class NewMonster extends Component {
               {/* <h2 className='NewMonster__h2'>Make a monster!</h2>
               <p>Choose your features</p> */}
               <div className='NewMonster__body-ctr'>
-                {featuresComponents.bodies[this.props.monster.body.type]}
+                {bodies[this.props.monster.body.type]}
               </div>
               <div className='NewMonster__face-ctr'>
-                {featuresComponents.faces[this.props.monster.face.type]}
+                {faces[this.props.monster.face.type]}
               </div>
             </div>
           </div>

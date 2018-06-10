@@ -14,6 +14,19 @@ class NewMonsterFaces extends Component {
   }
 
   render() {
+
+    let facesDivs = []
+    const facesLength = Object.keys(MonsterFaces).length
+    for (let i = 1; i <= facesLength; i++) {
+      let FaceComponent = MonsterFaces[`Face${i}`]
+      facesDivs.push(<div className='NewMonsterPanels__features'
+        data-face-type={`face${i}`}
+        onClick={this.handleFaceClick}
+        key={i}>
+        <FaceComponent />
+      </div>)
+    }
+
     return (
       <div className='NewMonsterPanels__features-ctr'>
         <h3 className='NewMonsterPanels__h3'>Faces</h3>
@@ -21,36 +34,7 @@ class NewMonsterFaces extends Component {
           <div className='NewMonsterPanels__features NewMonsterPanels__features--color'>
             color picker here
           </div>
-          <div className='NewMonsterPanels__features'
-            data-face-type='face1'
-            onClick={this.handleFaceClick}>
-            <MonsterFaces.Face1 />
-          </div>
-          <div className='NewMonsterPanels__features'
-            data-face-type='face2'
-            onClick={this.handleFaceClick}>
-            <MonsterFaces.Face2 />
-          </div>
-          <div className='NewMonsterPanels__features'
-            data-face-type='face3'
-            onClick={this.handleFaceClick}>
-            <MonsterFaces.Face3 />
-          </div>
-          <div className='NewMonsterPanels__features'
-            data-face-type='face4'
-            onClick={this.handleFaceClick}>
-            <MonsterFaces.Face4 />
-          </div>
-          <div className='NewMonsterPanels__features'
-            data-face-type='face5'
-            onClick={this.handleFaceClick}>
-            <MonsterFaces.Face5 />
-          </div>
-          <div className='NewMonsterPanels__features'
-            data-face-type='face6'
-            onClick={this.handleFaceClick}>
-            <MonsterFaces.Face6 />
-          </div>
+          {facesDivs}
         </div>
       </div>
     )
