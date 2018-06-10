@@ -60,6 +60,15 @@ class NewMonster extends Component {
   }
 
   render() {
+
+    let noFeatureSelected = true
+    for (const feature in {...this.props.monster}) {
+      if (this.props.monster[feature].type !== null) {
+        noFeatureSelected = false
+        break
+      }
+    }
+
     let monsterStyle = 'NewMonster__monster-inner-ctr'
     if (this.state.fixedMonster) {
      monsterStyle += ' NewMonster__monster-inner-ctr--fixed'
@@ -101,7 +110,6 @@ class NewMonster extends Component {
       <div className='NewMonster'>
         <div className='NewMonster__ctr'>
           <div className='NewMonster__left-grid-ctr'>
-            {/* <h3>Choose Features:</h3> */}
             <div className={navCtrClass}>
               {this.state.showArrows
                 ? <div className='NewMonster__left-arrow'
@@ -147,8 +155,12 @@ class NewMonster extends Component {
           </div>
           <div className='NewMonster__right-grid-ctr'>
             <div className={monsterStyle}>
-              {/* <h2 className='NewMonster__h2'>Make a monster!</h2>
-              <p>Choose your features</p> */}
+              {noFeatureSelected ? (
+                <div className='NewMonster__directions-ctr'>
+                  <h2 className='NewMonster__h2'>Make a monster!</h2>
+                  <p>Choose your features</p>
+                </div>
+                ) : null}
               <div className='NewMonster__body-ctr'>
                 {bodies[this.props.monster.body.type]}
               </div>

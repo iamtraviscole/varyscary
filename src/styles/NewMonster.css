@@ -111,6 +111,11 @@
   top: 25px;
 }
 
+.NewMonster__directions-ctr {
+  text-align: center;
+  padding-top: 155px;
+}
+
 .NewMonster__body-ctr {
   position: absolute;
   height: 380px;
