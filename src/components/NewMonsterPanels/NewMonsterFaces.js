@@ -12,11 +12,12 @@ class NewMonsterFaces extends Component {
   handleFaceClick = (event) => {
     const faceType = event.currentTarget.dataset.faceType
     this.props.setFaceType(faceType)
+    this.setState({activeFeature: event.currentTarget.dataset.faceType})
   }
 
   render() {
-
-    const {strokeFill, strokeColor, strokeDasharray} = this.props.svgStrokeStyle
+    const { monster } = this.props
+    const { strokeFill, strokeColor, strokeDasharray } = this.props.svgStrokeStyle
 
     let MonsterBodyComponent = MonsterBodies.Body1
     if (this.props.monster.body.type) {
@@ -27,7 +28,7 @@ class NewMonsterFaces extends Component {
     const facesLength = Object.keys(MonsterFaces).length
     for (let i = 1; i <= facesLength; i++) {
       let FaceComponent = MonsterFaces[`Face${i}`]
-      facesDivs.push(<div className='NewMonsterPanels__features'
+      facesDivs.push(<div className={'NewMonsterPanels__features'}
         data-face-type={`Face${i}`}
         onClick={this.handleFaceClick}
         key={i}>
@@ -43,11 +44,21 @@ class NewMonsterFaces extends Component {
       </div>)
     }
 
+    let featuresDivs = document.getElementsByClassName("NewMonsterPanels__features")
+    let featuresDivsArray = [...featuresDivs]
+    featuresDivsArray.forEach(div => {
+      if (monster.face.type && div.dataset.faceType === monster.face.type) {
+          div.className = 'NewMonsterPanels__features NewMonsterPanels__features--active'
+        } else {
+          div.className = 'NewMonsterPanels__features'
+        }
+    })
+
     return (
       <div className='NewMonsterPanels__features-ctr'>
         <h3 className='NewMonsterPanels__h3'>Faces</h3>
         <div className='NewMonsterPanels__features-inner-ctr'>
-          <div className='NewMonsterPanels__features NewMonsterPanels__features--color'>
+          <div className='NewMonsterPanels__features-color'>
             color picker here
           </div>
           {facesDivs}
