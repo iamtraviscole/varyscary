@@ -12,7 +12,6 @@ class NewMonsterFaces extends Component {
   handleFaceClick = (event) => {
     const faceType = event.currentTarget.dataset.faceType
     this.props.setFaceType(faceType)
-    this.setState({activeFeature: event.currentTarget.dataset.faceType})
   }
 
   render() {
