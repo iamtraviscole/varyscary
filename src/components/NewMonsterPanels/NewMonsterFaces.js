@@ -25,17 +25,16 @@ class NewMonsterFaces extends Component {
     }
 
     let facesDivs = []
-    const facesLength = Object.keys(MonsterFaces).length
-    for (let i = 1; i <= facesLength; i++) {
-      let FaceComponent = MonsterFaces[`Face${i}`]
-      facesDivs.push(<div className={'NewMonsterPanels__features'}
-        data-face-type={`Face${i}`}
+    for (const monsterFace in MonsterFaces) {
+      let FaceComponent = MonsterFaces[monsterFace]
+      facesDivs.push(<div className='NewMonsterPanels__features'
+        data-face-type={monsterFace}
         onClick={this.handleFaceClick}
-        key={i}>
-        <div className='NewMonsterPanels__feature'>
-          <FaceComponent />
+        key={monsterFace}>
+        <div className='NewMonsterPanels__feature NewMonsterPanels__feature--face'>
+          <FaceComponent/>
         </div>
-        <div className='NewMonsterPanels__body-preview'>
+        <div className='NewMonsterPanels__feature NewMonsterPanels__feature--body'>
           <MonsterBodyComponent
             fillColor={strokeFill}
             strokeColor={strokeColor}
@@ -58,7 +57,7 @@ class NewMonsterFaces extends Component {
       <div className='NewMonsterPanels__features-ctr'>
         <h3 className='NewMonsterPanels__h3'>Faces</h3>
         <div className='NewMonsterPanels__features-inner-ctr'>
-          <div className='NewMonsterPanels__features-color'>
+          <div className='NewMonsterPanels__color-picker'>
             color picker here
           </div>
           {facesDivs}

@@ -17,14 +17,15 @@ class NewMonsterBodies extends Component {
     const { monster } = this.props
 
     let bodiesDivs = []
-    const bodiesLength = Object.keys(MonsterBodies).length
-    for (let i = 1; i <= bodiesLength; i++) {
-      let BodyComponent = MonsterBodies[`Body${i}`]
+    for (const monsterBody in MonsterBodies) {
+      let BodyComponent = MonsterBodies[monsterBody]
       bodiesDivs.push(<div className='NewMonsterPanels__features'
-        data-body-type={`Body${i}`}
+        data-body-type={monsterBody}
         onClick={this.handleBodyClick}
-        key={i}>
-        <BodyComponent />
+        key={monsterBody}>
+        <div className='NewMonsterPanels__feature NewMonsterPanels__feature--body'>
+          <BodyComponent />
+        </div>
       </div>)
     }
 
@@ -42,7 +43,7 @@ class NewMonsterBodies extends Component {
       <div className='NewMonsterPanels__features-ctr'>
         <h3 className='NewMonsterPanels__h3'>Bodies</h3>
         <div className='NewMonsterPanels__features-inner-ctr'>
-          <div className='NewMonsterPanels__features-color'>
+          <div className='NewMonsterPanels__color-picker'>
             color picker here
           </div>
           {bodiesDivs}

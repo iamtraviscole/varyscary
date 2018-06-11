@@ -24,15 +24,16 @@ class NewMonsterHeadwear extends Component {
     }
 
     let headwearDivs = []
-    const headwearLength = Object.keys(MonsterHeadwear).length
-    for (let i = 1; i <= headwearLength; i++) {
-      let HeadwearComponent = MonsterHeadwear[`Headwear${i}`]
+    for (const monsterHeadwear in MonsterHeadwear) {
+      let HeadwearComponent = MonsterHeadwear[monsterHeadwear]
       headwearDivs.push(<div className='NewMonsterPanels__features'
-        data-headwear-type={`Headwear${i}`}
+        data-headwear-type={monsterHeadwear}
         onClick={this.handleHeadwearClick}
-        key={i}>
-        <HeadwearComponent />
-        <div className='NewMonsterPanels__body-preview'>
+        key={monsterHeadwear}>
+        <div className='NewMonsterPanels__feature NewMonsterPanels__feature--headwear'>
+          <HeadwearComponent />
+        </div>
+        <div className='NewMonsterPanels__feature NewMonsterPanels__feature--body'>
           <MonsterBodyComponent
             fillColor={strokeFill}
             strokeColor={strokeColor}
@@ -55,7 +56,7 @@ class NewMonsterHeadwear extends Component {
       <div className='NewMonsterPanels__features-ctr'>
         <h3 className='NewMonsterPanels__h3'>Headwear</h3>
         <div className='NewMonsterPanels__features-inner-ctr'>
-          <div className='NewMonsterPanels__features-color'>
+          <div className='NewMonsterPanels__color-picker'>
             color picker here
           </div>
           {headwearDivs}

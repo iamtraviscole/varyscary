@@ -11,7 +11,7 @@
   margin-bottom: 25px;
 }
 
-.NewMonsterPanels__features-color {
+.NewMonsterPanels__color-picker {
   position: relative;
   float: left;
   background-color: yellow;
@@ -54,14 +54,16 @@
   left: 0;
   width: 190px;
   height: 190px;
-  z-index: 300;
 }
 
-.NewMonsterPanels__body-preview {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 190px;
-  height: 190px;
-  z-index: 200;
+.NewMonsterPanels__feature--body {
+  z-index: 550;
+}
+
+.NewMonsterPanels__feature--face {
+  z-index: 560;
+}
+
+.NewMonsterPanels__feature--headwear {
+  z-index: 540;
 }
