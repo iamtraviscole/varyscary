@@ -5,6 +5,7 @@ import '../../styles/NewMonsterPanels.css'
 import * as actions from '../../actions/actions'
 
 import * as MonsterHeadwear from '../MonsterFeatures/MonsterHeadwear'
+import * as MonsterBodies from '../MonsterFeatures/MonsterBodies'
 
 class NewMonsterHeadwear extends Component {
 
@@ -24,6 +25,9 @@ class NewMonsterHeadwear extends Component {
         onClick={this.handleHeadwearClick}
         key={i}>
         <HeadwearComponent />
+        <div className='NewMonsterPanels__placeholder'>
+          <MonsterBodies.Body1 />
+        </div>
       </div>)
     }
 

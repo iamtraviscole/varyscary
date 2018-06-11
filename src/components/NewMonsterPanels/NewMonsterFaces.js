@@ -5,6 +5,7 @@ import '../../styles/NewMonsterPanels.css'
 import * as actions from '../../actions/actions'
 
 import * as MonsterFaces from '../MonsterFeatures/MonsterFaces'
+import * as MonsterBodies from '../MonsterFeatures/MonsterBodies'
 
 class NewMonsterFaces extends Component {
 
@@ -23,7 +24,12 @@ class NewMonsterFaces extends Component {
         data-face-type={`face${i}`}
         onClick={this.handleFaceClick}
         key={i}>
-        <FaceComponent />
+        <div className='NewMonsterPanels__feature'>
+          <FaceComponent />
+        </div>
+        <div className='NewMonsterPanels__placeholder'>
+          <MonsterBodies.Body1 />
+        </div>
       </div>)
     }
 
