@@ -16,17 +16,27 @@ class NewMonsterHeadwear extends Component {
 
   render() {
 
+    const {strokeFill, strokeColor, strokeDasharray} = this.props.svgStrokeStyle
+
+    let MonsterBodyComponent = MonsterBodies.Body1
+    if (this.props.monster.body.type) {
+      MonsterBodyComponent = MonsterBodies[this.props.monster.body.type]
+    }
+
     let headwearDivs = []
     const headwearLength = Object.keys(MonsterHeadwear).length
     for (let i = 1; i <= headwearLength; i++) {
       let HeadwearComponent = MonsterHeadwear[`Headwear${i}`]
       headwearDivs.push(<div className='NewMonsterPanels__features'
-        data-headwear-type={`headwear${i}`}
+        data-headwear-type={`Headwear${i}`}
         onClick={this.handleHeadwearClick}
         key={i}>
         <HeadwearComponent />
-        <div className='NewMonsterPanels__placeholder'>
-          <MonsterBodies.Body1 />
+        <div className='NewMonsterPanels__body-preview'>
+          <MonsterBodyComponent
+            fillColor={strokeFill}
+            strokeColor={strokeColor}
+            strokeDasharray={strokeDasharray}/>
         </div>
       </div>)
     }
@@ -45,10 +55,17 @@ class NewMonsterHeadwear extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    monster: state.monster,
+    svgStrokeStyle: state.svgStrokeStyle
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     setHeadwearType: (headwearType) => dispatch(actions.setHeadwearType(headwearType)),
   }
 }
 
-export default connect(null, mapDispatchToProps)(NewMonsterHeadwear)
+export default connect(mapStateToProps, mapDispatchToProps)(NewMonsterHeadwear)

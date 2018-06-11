@@ -20,7 +20,7 @@ class NewMonsterBodies extends Component {
     for (let i = 1; i <= bodiesLength; i++) {
       let BodyComponent = MonsterBodies[`Body${i}`]
       bodiesDivs.push(<div className='NewMonsterPanels__features'
-        data-body-type={`body${i}`}
+        data-body-type={`Body${i}`}
         onClick={this.handleBodyClick}
         key={i}>
         <BodyComponent />

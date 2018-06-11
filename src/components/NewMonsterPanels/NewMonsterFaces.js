@@ -16,19 +16,29 @@ class NewMonsterFaces extends Component {
 
   render() {
 
+    const {strokeFill, strokeColor, strokeDasharray} = this.props.svgStrokeStyle
+
+    let MonsterBodyComponent = MonsterBodies.Body1
+    if (this.props.monster.body.type) {
+      MonsterBodyComponent = MonsterBodies[this.props.monster.body.type]
+    }
+
     let facesDivs = []
     const facesLength = Object.keys(MonsterFaces).length
     for (let i = 1; i <= facesLength; i++) {
       let FaceComponent = MonsterFaces[`Face${i}`]
       facesDivs.push(<div className='NewMonsterPanels__features'
-        data-face-type={`face${i}`}
+        data-face-type={`Face${i}`}
         onClick={this.handleFaceClick}
         key={i}>
         <div className='NewMonsterPanels__feature'>
           <FaceComponent />
         </div>
-        <div className='NewMonsterPanels__placeholder'>
-          <MonsterBodies.Body1 />
+        <div className='NewMonsterPanels__body-preview'>
+          <MonsterBodyComponent
+            fillColor={strokeFill}
+            strokeColor={strokeColor}
+            strokeDasharray={strokeDasharray}/>
         </div>
       </div>)
     }
@@ -47,10 +57,17 @@ class NewMonsterFaces extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    monster: state.monster,
+    svgStrokeStyle: state.svgStrokeStyle
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     setFaceType: (faceType) => dispatch(actions.setFaceType(faceType)),
   }
 }
 
-export default connect(null, mapDispatchToProps)(NewMonsterFaces)
+export default connect(mapStateToProps, mapDispatchToProps)(NewMonsterFaces)

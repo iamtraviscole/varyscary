@@ -96,7 +96,7 @@ class NewMonster extends PureComponent {
     const bodiesLength = Object.keys(MonsterBodies).length
     for (let i = 1; i <= bodiesLength; i++) {
       let BodyComponent = MonsterBodies[`Body${i}`]
-      bodies[`body${i}`] = <BodyComponent />
+      bodies[`Body${i}`] = <BodyComponent />
     }
 
     let faces = {}
@@ -104,14 +104,14 @@ class NewMonster extends PureComponent {
     const faceFill = this.props.monster.face.fillColor
     for (let i = 1; i <= facesLength; i++) {
       let FaceComponent = MonsterFaces[`Face${i}`]
-      faces[`face${i}`] = <FaceComponent fillColor={faceFill}/>
+      faces[`Face${i}`] = <FaceComponent fillColor={faceFill}/>
     }
 
     let headwear = {}
     const headwearLength = Object.keys(MonsterHeadwear).length
     for (let i = 1; i <= headwearLength; i++) {
       let HeadwearComponent = MonsterHeadwear[`Headwear${i}`]
-      headwear[`headwear${i}`] = <HeadwearComponent />
+      headwear[`Headwear${i}`] = <HeadwearComponent />
     }
 
     return (
