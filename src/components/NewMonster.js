@@ -61,7 +61,19 @@ class NewMonster extends PureComponent {
     this.setState({activePanel: buttonClicked})
   }
 
+  createFeaturesObject = (featuresImport, fillProp = null) => {
+    let features = {}
+    const featureFill = fillProp
+    for (const feature in featuresImport) {
+      let FeatureComponent = featuresImport[feature]
+      features[feature] = <FeatureComponent fillColor={featureFill}/>
+    }
+    return features
+  }
+
   render() {
+
+    const { monster } = this.props
 
     let noFeatureSelected = true
     for (const feature in {...this.props.monster}) {
@@ -93,34 +105,10 @@ class NewMonster extends PureComponent {
       legs: <NewMonsterLegs />,
     }
 
-    let bodies = {}
-    const bodiesLength = Object.keys(MonsterBodies).length
-    for (let i = 1; i <= bodiesLength; i++) {
-      let BodyComponent = MonsterBodies[`Body${i}`]
-      bodies[`Body${i}`] = <BodyComponent />
-    }
-
-    let faces = {}
-    const facesLength = Object.keys(MonsterFaces).length
-    const faceFill = this.props.monster.face.fillColor
-    for (let i = 1; i <= facesLength; i++) {
-      let FaceComponent = MonsterFaces[`Face${i}`]
-      faces[`Face${i}`] = <FaceComponent fillColor={faceFill}/>
-    }
-
-    let headwear = {}
-    const headwearLength = Object.keys(MonsterHeadwear).length
-    for (let i = 1; i <= headwearLength; i++) {
-      let HeadwearComponent = MonsterHeadwear[`Headwear${i}`]
-      headwear[`Headwear${i}`] = <HeadwearComponent />
-    }
-
-    let eyes = {}
-    const eyesLength = Object.keys(MonsterEyes).length
-    for (let i = 1; i <= eyesLength; i++) {
-      let EyesComponent = MonsterEyes[`Eyes${i}`]
-      eyes[`Eyes${i}`] = <EyesComponent />
-    }
+    let bodies = this.createFeaturesObject(MonsterBodies)
+    let faces = this.createFeaturesObject(MonsterFaces, monster.face.fillColor)
+    let headwear = this.createFeaturesObject(MonsterHeadwear)
+    let eyes = this.createFeaturesObject(MonsterEyes)
 
     return (
       <div className='NewMonster'>
@@ -178,16 +166,16 @@ class NewMonster extends PureComponent {
                 </div>
                 ) : null}
               <div className='NewMonster__body-ctr'>
-                {bodies[this.props.monster.body.type]}
+                {bodies[monster.body.type]}
               </div>
               <div className='NewMonster__face-ctr'>
-                {faces[this.props.monster.face.type]}
+                {faces[monster.face.type]}
               </div>
               <div className='NewMonster__headwear-ctr'>
-                {headwear[this.props.monster.headwear.type]}
+                {headwear[monster.headwear.type]}
               </div>
               <div className='NewMonster__eyes-ctr'>
-                {eyes[this.props.monster.eyes.type]}
+                {eyes[monster.eyes.type]}
               </div>
             </div>
           </div>
