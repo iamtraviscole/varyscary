@@ -80,6 +80,16 @@ const reducer = (state = initialState, action) => {
                     }
                   }
                 }
+    case actionTypes.SET_EYES_TYPE:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  eyes: {
+                    ...state.monster.eyes,
+                    type: action.eyesType
+                    }
+                  }
+                }
     default:
       return state
   }

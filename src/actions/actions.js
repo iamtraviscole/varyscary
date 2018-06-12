@@ -45,3 +45,10 @@ export const setHeadwearType = (headwearType) => {
     headwearType: headwearType
   }
 }
+
+export const setEyesType = (eyesType) => {
+  return {
+    type: actionTypes.SET_EYES_TYPE,
+    eyesType: eyesType
+  }
+}

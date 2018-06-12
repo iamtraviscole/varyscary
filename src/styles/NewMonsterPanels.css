@@ -67,3 +67,7 @@
 .NewMonsterPanels__feature--headwear {
   z-index: 540;
 }
+
+.NewMonsterPanels__feature--eyes {
+  z-index: 570;
+}

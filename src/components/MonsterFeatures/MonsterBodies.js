@@ -1,8 +1,10 @@
 import React from 'react'
 
+const XMLNS = 'http://www.w3.org/2000/svg'
+
 export const Body1 = (props) => {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='-115.5 -115.5 375 375'>
+    <svg xmlns={XMLNS} viewBox='-115.5 -115.5 375 375'>
       <circle fill={props.fillColor}
         stroke={props.strokeColor}
         strokeDasharray={props.strokeDasharray}
@@ -13,7 +15,7 @@ export const Body1 = (props) => {
 
 export const Body2 = (props) => {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='-115.5 -115.5 375 375'>
+    <svg xmlns={XMLNS} viewBox='-115.5 -115.5 375 375'>
       <path fill={props.fillColor}
         stroke={props.strokeColor}
         strokeDasharray={props.strokeDasharray}
@@ -24,7 +26,7 @@ export const Body2 = (props) => {
 
 export const Body3 = (props) => {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='-116.421 -115.5 375 375'>
+    <svg xmlns={XMLNS} viewBox='-116.421 -115.5 375 375'>
     <path fill={props.fillColor}
       stroke={props.strokeColor}
       strokeDasharray={props.strokeDasharray}
@@ -35,7 +37,7 @@ export const Body3 = (props) => {
 
 export const Body4 = (props) => {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='-115.999 -116 375 375'>
+    <svg xmlns={XMLNS} viewBox='-115.999 -116 375 375'>
     <path fill={props.fillColor}
       stroke={props.strokeColor}
       strokeDasharray={props.strokeDasharray}
@@ -46,7 +48,7 @@ export const Body4 = (props) => {
 
 export const Body5 = (props) => {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='-115.499 -115.5 375 375'>
+    <svg xmlns={XMLNS} viewBox='-115.499 -115.5 375 375'>
       <path fill={props.fillColor}
         stroke={props.strokeColor}
         strokeDasharray={props.strokeDasharray}
@@ -57,7 +59,7 @@ export const Body5 = (props) => {
 
 export const Body6 = (props) => {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='-116.033 -112.319 375 375'>
+    <svg xmlns={XMLNS} viewBox='-116.033 -112.319 375 375'>
       <path fill={props.fillColor}
         stroke={props.strokeColor}
         strokeDasharray={props.strokeDasharray}
@@ -68,7 +70,7 @@ export const Body6 = (props) => {
 
 export const Body7 = (props) => {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='-117.146 -115.5 375 375'>
+    <svg xmlns={XMLNS} viewBox='-117.146 -115.5 375 375'>
       <path fill={props.fillColor}
         stroke={props.strokeColor}
         strokeDasharray={props.strokeDasharray}
@@ -79,7 +81,7 @@ export const Body7 = (props) => {
 
 export const Body8 = (props) => {
   return (
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='-109.603 -115.5 375 375'>
+    <svg xmlns={XMLNS} viewBox='-109.603 -115.5 375 375'>
       <path fill={props.fillColor}
         stroke={props.strokeColor}
         strokeDasharray={props.strokeDasharray}
