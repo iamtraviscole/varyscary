@@ -100,6 +100,16 @@ const reducer = (state = initialState, action) => {
                     }
                   }
                 }
+    case actionTypes.SET_LEGS_TYPE:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  legs: {
+                    ...state.monster.legs,
+                    type: action.legsType
+                    }
+                  }
+                }
     default:
       return state
   }

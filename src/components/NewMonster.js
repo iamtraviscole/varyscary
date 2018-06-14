@@ -18,6 +18,8 @@ import * as MonsterHeadwear from './MonsterFeatures/MonsterHeadwear'
 import * as MonsterEyes from './MonsterFeatures/MonsterEyes'
 import * as MonsterMouths from './MonsterFeatures/MonsterMouths'
 
+import * as MonsterLegs from './MonsterFeatures/MonsterLegs'
+
 class NewMonster extends PureComponent {
   state = {
     showArrows: false,
@@ -112,6 +114,8 @@ class NewMonster extends PureComponent {
     let eyes = this.createFeaturesObject(MonsterEyes)
     let mouths = this.createFeaturesObject(MonsterMouths)
 
+    let legs = this.createFeaturesObject(MonsterLegs)
+
     return (
       <div className='NewMonster'>
         <div className='NewMonster__ctr'>
@@ -181,6 +185,10 @@ class NewMonster extends PureComponent {
               </div>
               <div className='NewMonster__feature NewMonster__mouth'>
                 {mouths[monster.mouth.type]}
+              </div>
+
+              <div className='NewMonster__feature NewMonster__legs'>
+                {legs[monster.legs.type]}
               </div>
             </div>
           </div>

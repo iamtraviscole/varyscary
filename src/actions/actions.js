@@ -59,3 +59,10 @@ export const setMouthType = (mouthType) => {
     mouthType: mouthType
   }
 }
+
+export const setLegsType = (legsType) => {
+  return {
+    type: actionTypes.SET_LEGS_TYPE,
+    legsType: legsType
+  }
+}
