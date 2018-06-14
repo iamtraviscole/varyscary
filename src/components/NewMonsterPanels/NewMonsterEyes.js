@@ -5,7 +5,6 @@ import '../../styles/NewMonsterPanels.css'
 import * as actions from '../../actions/actions'
 
 import * as MonsterEyes from '../MonsterFeatures/MonsterEyes'
-import * as MonsterFaces from '../MonsterFeatures/MonsterFaces'
 import * as MonsterBodies from '../MonsterFeatures/MonsterBodies'
 
 class NewMonsterEyes extends Component {
@@ -20,8 +19,8 @@ class NewMonsterEyes extends Component {
     const { strokeFill, strokeColor, strokeDasharray } = this.props.svgStrokeStyle
 
     let MonsterBodyComponent = MonsterBodies.Body1
-    if (this.props.monster.body.type) {
-      MonsterBodyComponent = MonsterBodies[this.props.monster.body.type]
+    if (monster.body.type) {
+      MonsterBodyComponent = MonsterBodies[monster.body.type]
     }
 
     let eyesDivs = []
@@ -32,7 +31,7 @@ class NewMonsterEyes extends Component {
         onClick={this.handleEyesClick}
         key={monsterEyes}>
         <div className='NewMonsterPanels__feature NewMonsterPanels__feature--eyes'>
-          <EyesComponent/>
+          <EyesComponent />
         </div>
         <div className='NewMonsterPanels__feature NewMonsterPanels__feature--body'>
           <MonsterBodyComponent
