@@ -30,10 +30,10 @@ class NewMonsterFaces extends Component {
         data-face-type={monsterFace}
         onClick={this.handleFaceClick}
         key={monsterFace}>
-        <div className='NewMonsterPanels__feature NewMonsterPanels__feature--face'>
+        <div className='NewMonsterPanels__feature NewMonsterPanels__face'>
           <FaceComponent/>
         </div>
-        <div className='NewMonsterPanels__feature NewMonsterPanels__feature--body'>
+        <div className='NewMonsterPanels__feature NewMonsterPanels__body'>
           <MonsterBodyComponent
             fillColor={strokeFill}
             strokeColor={strokeColor}

@@ -23,7 +23,7 @@ class NewMonsterBodies extends Component {
         data-body-type={monsterBody}
         onClick={this.handleBodyClick}
         key={monsterBody}>
-        <div className='NewMonsterPanels__feature NewMonsterPanels__feature--body'>
+        <div className='NewMonsterPanels__feature NewMonsterPanels__body'>
           <BodyComponent />
         </div>
       </div>)

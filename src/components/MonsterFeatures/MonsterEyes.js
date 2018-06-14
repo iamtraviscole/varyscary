@@ -75,7 +75,7 @@ export const Eyes7 = (props) => {
 
 export const Eyes8 = (props) => {
   return (
-    <svg id='Layer_1' xmlns={XMLNS} viewBox='2 0 375 375'>
+    <svg xmlns={XMLNS} viewBox='2 0 375 375'>
       <path fill={props.fillColor}
         d='M172.576,155.561c2.206,0,4,1.794,4,4s-1.794,4-4,4s-4-1.794-4-4S170.371,155.561,172.576,155.561 M172.576,150.561 c-4.971,0-9,4.029-9,9s4.029,9,9,9s9-4.029,9-9S177.547,150.561,172.576,150.561L172.576,150.561z' />
       <path fill={props.fillColor}
@@ -86,7 +86,7 @@ export const Eyes8 = (props) => {
 
 export const Eyes9 = (props) => {
   return (
-    <svg id='Layer_1' xmlns={XMLNS} viewBox='0 0 375 375'>
+    <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
         d='M172.261,155.275c2.206,0,4,1.794,4,4s-1.794,4-4,4s-4-1.794-4-4S170.055,155.275,172.261,155.275 M172.261,150.275 c-4.971,0-9,4.029-9,9s4.029,9,9,9s9-4.029,9-9S177.231,150.275,172.261,150.275L172.261,150.275z' />
       <path fill={props.fillColor}
@@ -97,7 +97,7 @@ export const Eyes9 = (props) => {
 
 export const Eyes10 = (props) => {
   return (
-    <svg id='Layer_1' xmlns={XMLNS} viewBox='0 0 375 375'>
+    <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
         d='M210.552,162.913l-3.625-3.625l3.201-3.201c0.977-0.977,0.977-2.56,0-3.536c-0.977-0.977-2.559-0.976-3.535,0l-3.202,3.201 l-3.201-3.201c-0.977-0.976-2.559-0.976-3.535,0c-0.977,0.976-0.977,2.559,0,3.536l3.201,3.201l-3.625,3.625 c-0.977,0.977-0.977,2.56,0,3.536c0.488,0.488,1.128,0.732,1.768,0.732s1.279-0.244,1.768-0.732l3.625-3.625l3.626,3.625 c0.488,0.488,1.128,0.732,1.768,0.732s1.279-0.244,1.768-0.732C211.528,165.472,211.528,163.889,210.552,162.913z' />
       <path fill={props.fillColor}
@@ -108,7 +108,7 @@ export const Eyes10 = (props) => {
 
 export const Eyes11 = (props) => {
   return (
-    <svg id='Layer_1' xmlns={XMLNS} viewBox='0 0 375 375'>
+    <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
         d='M177.388,161h-14.653c-1.381,0-2.5-1.119-2.5-2.5s1.119-2.5,2.5-2.5h14.653c1.381,0,2.5,1.119,2.5,2.5 S178.769,161,177.388,161z' />
       <path fill={props.fillColor}

@@ -30,10 +30,10 @@ class NewMonsterHeadwear extends Component {
         data-headwear-type={monsterHeadwear}
         onClick={this.handleHeadwearClick}
         key={monsterHeadwear}>
-        <div className='NewMonsterPanels__feature NewMonsterPanels__feature--headwear'>
+        <div className='NewMonsterPanels__feature NewMonsterPanels__headwear'>
           <HeadwearComponent />
         </div>
-        <div className='NewMonsterPanels__feature NewMonsterPanels__feature--body'>
+        <div className='NewMonsterPanels__feature NewMonsterPanels__body'>
           <MonsterBodyComponent
             fillColor={strokeFill}
             strokeColor={strokeColor}

@@ -56,18 +56,22 @@
   height: 190px;
 }
 
-.NewMonsterPanels__feature--body {
+.NewMonsterPanels__body {
   z-index: 550;
 }
 
-.NewMonsterPanels__feature--face {
+.NewMonsterPanels__face {
   z-index: 560;
 }
 
-.NewMonsterPanels__feature--headwear {
+.NewMonsterPanels__headwear {
   z-index: 540;
 }
 
-.NewMonsterPanels__feature--eyes {
+.NewMonsterPanels__eyes {
   z-index: 570;
+}
+
+.NewMonsterPanels__mouth {
+  z-index: 580;
 }

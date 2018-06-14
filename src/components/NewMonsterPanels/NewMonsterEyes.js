@@ -30,10 +30,10 @@ class NewMonsterEyes extends Component {
         data-eyes-type={monsterEyes}
         onClick={this.handleEyesClick}
         key={monsterEyes}>
-        <div className='NewMonsterPanels__feature NewMonsterPanels__feature--eyes'>
+        <div className='NewMonsterPanels__feature NewMonsterPanels__eyes'>
           <EyesComponent />
         </div>
-        <div className='NewMonsterPanels__feature NewMonsterPanels__feature--body'>
+        <div className='NewMonsterPanels__feature NewMonsterPanels__body'>
           <MonsterBodyComponent
             fillColor={strokeFill}
             strokeColor={strokeColor}
@@ -45,7 +45,7 @@ class NewMonsterEyes extends Component {
     let featuresDivs = document.getElementsByClassName("NewMonsterPanels__features")
     let featuresDivsArray = [...featuresDivs]
     featuresDivsArray.forEach(div => {
-      if (monster.face.type && div.dataset.eyesType === monster.face.type) {
+      if (monster.eyes.type && div.dataset.eyesType === monster.eyes.type) {
           div.className = 'NewMonsterPanels__features NewMonsterPanels__features--active'
         } else {
           div.className = 'NewMonsterPanels__features'

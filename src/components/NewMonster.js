@@ -16,6 +16,7 @@ import * as MonsterBodies from './MonsterFeatures/MonsterBodies'
 import * as MonsterFaces from './MonsterFeatures/MonsterFaces'
 import * as MonsterHeadwear from './MonsterFeatures/MonsterHeadwear'
 import * as MonsterEyes from './MonsterFeatures/MonsterEyes'
+import * as MonsterMouths from './MonsterFeatures/MonsterMouths'
 
 class NewMonster extends PureComponent {
   state = {
@@ -100,7 +101,7 @@ class NewMonster extends PureComponent {
       faces: <NewMonsterFaces />,
       headwear: <NewMonsterHeadwear />,
       eyes: <NewMonsterEyes />,
-      mouth: <NewMonsterMouths />,
+      mouths: <NewMonsterMouths />,
       arms: <NewMonsterArms />,
       legs: <NewMonsterLegs />,
     }
@@ -109,6 +110,7 @@ class NewMonster extends PureComponent {
     let faces = this.createFeaturesObject(MonsterFaces, monster.face.fillColor)
     let headwear = this.createFeaturesObject(MonsterHeadwear)
     let eyes = this.createFeaturesObject(MonsterEyes)
+    let mouths = this.createFeaturesObject(MonsterMouths)
 
     return (
       <div className='NewMonster'>
@@ -137,7 +139,7 @@ class NewMonster extends PureComponent {
                   activePanelName='eyes'>Eyes</NewMonsterButton>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
-                  activePanelName='mouth'>Mouths</NewMonsterButton>
+                  activePanelName='mouths'>Mouths</NewMonsterButton>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
                   activePanelName='arms'>Arms</NewMonsterButton>
@@ -165,17 +167,20 @@ class NewMonster extends PureComponent {
                   <p>Choose your features</p>
                 </div>
                 ) : null}
-              <div className='NewMonster__body-ctr'>
+              <div className='NewMonster__feature NewMonster__body'>
                 {bodies[monster.body.type]}
               </div>
-              <div className='NewMonster__face-ctr'>
+              <div className='NewMonster__feature NewMonster__face'>
                 {faces[monster.face.type]}
               </div>
-              <div className='NewMonster__headwear-ctr'>
+              <div className='NewMonster__feature NewMonster__headwear'>
                 {headwear[monster.headwear.type]}
               </div>
-              <div className='NewMonster__eyes-ctr'>
+              <div className='NewMonster__feature NewMonster__eyes'>
                 {eyes[monster.eyes.type]}
+              </div>
+              <div className='NewMonster__feature NewMonster__mouth'>
+                {mouths[monster.mouth.type]}
               </div>
             </div>
           </div>

@@ -90,6 +90,16 @@ const reducer = (state = initialState, action) => {
                     }
                   }
                 }
+    case actionTypes.SET_MOUTH_TYPE:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  mouth: {
+                    ...state.monster.mouth,
+                    type: action.mouthType
+                    }
+                  }
+                }
     default:
       return state
   }
