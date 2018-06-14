@@ -60,6 +60,20 @@ export const setMouthType = (mouthType) => {
   }
 }
 
+export const setLeftArmType = (leftArmType) => {
+  return {
+    type: actionTypes.SET_LEFT_ARM_TYPE,
+    leftArmType: leftArmType
+  }
+}
+
+export const setRightArmType = (rightArmType) => {
+  return {
+    type: actionTypes.SET_RIGHT_ARM_TYPE,
+    rightArmType: rightArmType
+  }
+}
+
 export const setLegsType = (legsType) => {
   return {
     type: actionTypes.SET_LEGS_TYPE,

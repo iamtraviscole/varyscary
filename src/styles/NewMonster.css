@@ -144,6 +144,13 @@
   z-index: 580;
 }
 
+.NewMonster__left-arm {
+  z-index: 520;
+}
+
+.NewMonster__right-arm {
+  z-index: 520;
+}
 
 .NewMonster__legs {
   z-index: 530;

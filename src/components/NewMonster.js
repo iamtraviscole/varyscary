@@ -9,7 +9,8 @@ import NewMonsterFaces from './NewMonsterPanels/NewMonsterFaces'
 import NewMonsterHeadwear from './NewMonsterPanels/NewMonsterHeadwear'
 import NewMonsterEyes from './NewMonsterPanels/NewMonsterEyes'
 import NewMonsterMouths from './NewMonsterPanels/NewMonsterMouths'
-import NewMonsterArms from './NewMonsterPanels/NewMonsterArms'
+import NewMonsterLeftArms from './NewMonsterPanels/NewMonsterLeftArms'
+import NewMonsterRightArms from './NewMonsterPanels/NewMonsterRightArms'
 import NewMonsterLegs from './NewMonsterPanels/NewMonsterLegs'
 
 import * as MonsterBodies from './MonsterFeatures/MonsterBodies'
@@ -17,7 +18,8 @@ import * as MonsterFaces from './MonsterFeatures/MonsterFaces'
 import * as MonsterHeadwear from './MonsterFeatures/MonsterHeadwear'
 import * as MonsterEyes from './MonsterFeatures/MonsterEyes'
 import * as MonsterMouths from './MonsterFeatures/MonsterMouths'
-
+import * as MonsterLeftArms from './MonsterFeatures/MonsterLeftArms'
+import * as MonsterRightArms from './MonsterFeatures/MonsterRightArms'
 import * as MonsterLegs from './MonsterFeatures/MonsterLegs'
 
 class NewMonster extends PureComponent {
@@ -104,7 +106,8 @@ class NewMonster extends PureComponent {
       headwear: <NewMonsterHeadwear />,
       eyes: <NewMonsterEyes />,
       mouths: <NewMonsterMouths />,
-      arms: <NewMonsterArms />,
+      leftArms: <NewMonsterLeftArms />,
+      rightArms: <NewMonsterRightArms />,
       legs: <NewMonsterLegs />,
     }
 
@@ -113,7 +116,8 @@ class NewMonster extends PureComponent {
     let headwear = this.createFeaturesObject(MonsterHeadwear)
     let eyes = this.createFeaturesObject(MonsterEyes)
     let mouths = this.createFeaturesObject(MonsterMouths)
-
+    let leftArms = this.createFeaturesObject(MonsterLeftArms)
+    let rightArms = this.createFeaturesObject(MonsterRightArms)
     let legs = this.createFeaturesObject(MonsterLegs)
 
     return (
@@ -146,7 +150,10 @@ class NewMonster extends PureComponent {
                   activePanelName='mouths'>Mouths</NewMonsterButton>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
-                  activePanelName='arms'>Arms</NewMonsterButton>
+                  activePanelName='leftArms'>Left Arms</NewMonsterButton>
+                <NewMonsterButton activePanel={this.state.activePanel}
+                  handleActivePanel={this.handleActivePanel}
+                  activePanelName='rightArms'>Right Arms</NewMonsterButton>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
                   activePanelName='legs'>Legs</NewMonsterButton>
@@ -186,7 +193,12 @@ class NewMonster extends PureComponent {
               <div className='NewMonster__feature NewMonster__mouth'>
                 {mouths[monster.mouth.type]}
               </div>
-
+              <div className='NewMonster__feature NewMonster__left-arm'>
+                {leftArms[monster.leftArm.type]}
+              </div>
+              <div className='NewMonster__feature NewMonster__right-arm'>
+                {rightArms[monster.rightArm.type]}
+              </div>
               <div className='NewMonster__feature NewMonster__legs'>
                 {legs[monster.legs.type]}
               </div>

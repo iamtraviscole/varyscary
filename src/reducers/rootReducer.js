@@ -29,7 +29,11 @@ const initialState = {
       type: null,
       fillColor: null
     },
-    arms: {
+    leftArm: {
+      type: null,
+      fillColor: null
+    },
+    rightArm: {
       type: null,
       fillColor: null
     },
@@ -97,6 +101,26 @@ const reducer = (state = initialState, action) => {
                   mouth: {
                     ...state.monster.mouth,
                     type: action.mouthType
+                    }
+                  }
+                }
+    case actionTypes.SET_LEFT_ARM_TYPE:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  leftArm: {
+                    ...state.monster.leftArm,
+                    type: action.leftArmType
+                    }
+                  }
+                }
+    case actionTypes.SET_RIGHT_ARM_TYPE:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  rightArm: {
+                    ...state.monster.rightArm,
+                    type: action.rightArmType
                     }
                   }
                 }
