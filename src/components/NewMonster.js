@@ -150,10 +150,10 @@ class NewMonster extends PureComponent {
                   activePanelName='mouths'>Mouths</NewMonsterButton>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
-                  activePanelName='leftArms'>Left Arms</NewMonsterButton>
+                  activePanelName='rightArms'>Right Arms</NewMonsterButton>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
-                  activePanelName='rightArms'>Right Arms</NewMonsterButton>
+                  activePanelName='leftArms'>Left Arms</NewMonsterButton>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
                   activePanelName='legs'>Legs</NewMonsterButton>
