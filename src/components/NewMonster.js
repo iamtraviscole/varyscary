@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 
 import '../styles/NewMonster.css'
+import * as actions from '../actions/actions'
 
 import NewMonsterButton from './NewMonsterButton'
 import NewMonsterBodies from './NewMonsterPanels/NewMonsterBodies'
@@ -25,8 +26,9 @@ import * as MonsterLegs from './MonsterFeatures/MonsterLegs'
 class NewMonster extends PureComponent {
   state = {
     showArrows: false,
-    fixedMonster: false,
-    activePanel: 'bodies'
+    fixedMonsterCtr: false,
+    activePanel: 'bodies',
+    resetClicked: false
   }
 
   setShowArrows = () => {
@@ -39,8 +41,8 @@ class NewMonster extends PureComponent {
 
   setFixMonster = () => {
     window.scrollY > 75
-      ? this.setState({fixedMonster: true})
-      : this.setState({fixedMonster: false})
+      ? this.setState({fixedMonsterCtr: true})
+      : this.setState({fixedMonsterCtr: false})
   }
 
   componentDidMount = () => {
@@ -66,6 +68,19 @@ class NewMonster extends PureComponent {
     this.setState({activePanel: buttonClicked})
   }
 
+  handleResetClick = () => {
+    this.setState({resetClicked: true})
+  }
+
+  handleResetYesClick = () => {
+    this.props.resetMonster()
+    this.setState({resetClicked: false})
+  }
+
+  handleResetNoClick = () => {
+    this.setState({resetClicked: false})
+  }
+
   createFeaturesObject = (featuresImport, fillProp = null) => {
     let features = {}
     const featureFill = fillProp
@@ -88,9 +103,9 @@ class NewMonster extends PureComponent {
       }
     }
 
-    let monsterStyle = 'NewMonster__monster-inner-ctr'
-    if (this.state.fixedMonster) {
-     monsterStyle += ' NewMonster__monster-inner-ctr--fixed'
+    let monsterContainerStyle = 'NewMonster__monster-outer-ctr'
+    if (this.state.fixedMonsterCtr) {
+     monsterContainerStyle += ' NewMonster__monster-outer-ctr--fixed'
     }
 
     let navCtrClass = 'NewMonster__nav-ctr'
@@ -98,6 +113,27 @@ class NewMonster extends PureComponent {
     if (this.state.showArrows) {
       navCtrClass += ' NewMonster__nav-ctr--center'
       navClass += ' NewMonster__nav--margin'
+    }
+
+    let resetButton = <button className='NewMonster__button-reset'
+        onClick={this.handleResetClick}
+        type='button'>Reset</button>
+    if (this.state.resetClicked) {
+      resetButton = <div className='NewMonster__confirm-ctr'>
+        <div className='NewMonster__confirm'>
+          Confirm reset:
+        </div>
+        <button className='NewMonster__confirm-button'
+          type='button'
+          onClick={this.handleResetNoClick}>
+          Cancel
+        </button>
+        <button className='NewMonster__confirm-button'
+          type='button'
+          onClick={this.handleResetYesClick}>
+          Reset
+        </button>
+      </div>
     }
 
     const activePanel = {
@@ -171,38 +207,47 @@ class NewMonster extends PureComponent {
             </form>
           </div>
           <div className='NewMonster__right-grid-ctr'>
-            <div className={monsterStyle}>
-              {noFeatureSelected ? (
-                <div className='NewMonster__directions-ctr'>
-                  <h2 className='NewMonster__h2'>Make a monster!</h2>
-                  <p>Choose your features</p>
+            <div className={monsterContainerStyle}>
+              <div className='NewMonster__monster-ctr'>
+                {noFeatureSelected ? (
+                  <div className='NewMonster__directions-ctr'>
+                    <h2 className='NewMonster__h2'>Make a monster!</h2>
+                    <p>Choose your features</p>
+                  </div>
+                  ) : null}
+                <div className='NewMonster__feature NewMonster__body'>
+                  {bodies[monster.body.type]}
                 </div>
-                ) : null}
-              <div className='NewMonster__feature NewMonster__body'>
-                {bodies[monster.body.type]}
+                <div className='NewMonster__feature NewMonster__face'>
+                  {faces[monster.face.type]}
+                </div>
+                <div className='NewMonster__feature NewMonster__headwear'>
+                  {headwear[monster.headwear.type]}
+                </div>
+                <div className='NewMonster__feature NewMonster__eyes'>
+                  {eyes[monster.eyes.type]}
+                </div>
+                <div className='NewMonster__feature NewMonster__mouth'>
+                  {mouths[monster.mouth.type]}
+                </div>
+                <div className='NewMonster__feature NewMonster__left-arm'>
+                  {leftArms[monster.leftArm.type]}
+                </div>
+                <div className='NewMonster__feature NewMonster__right-arm'>
+                  {rightArms[monster.rightArm.type]}
+                </div>
+                <div className='NewMonster__feature NewMonster__legs'>
+                  {legs[monster.legs.type]}
+                </div>
               </div>
-              <div className='NewMonster__feature NewMonster__face'>
-                {faces[monster.face.type]}
+              <div className='NewMonster__buttons-ctr'>
+                <button className='NewMonster__button'
+                  type='button'>Save Monster</button>
+                {resetButton}
               </div>
-              <div className='NewMonster__feature NewMonster__headwear'>
-                {headwear[monster.headwear.type]}
-              </div>
-              <div className='NewMonster__feature NewMonster__eyes'>
-                {eyes[monster.eyes.type]}
-              </div>
-              <div className='NewMonster__feature NewMonster__mouth'>
-                {mouths[monster.mouth.type]}
-              </div>
-              <div className='NewMonster__feature NewMonster__left-arm'>
-                {leftArms[monster.leftArm.type]}
-              </div>
-              <div className='NewMonster__feature NewMonster__right-arm'>
-                {rightArms[monster.rightArm.type]}
-              </div>
-              <div className='NewMonster__feature NewMonster__legs'>
-                {legs[monster.legs.type]}
-              </div>
+
             </div>
+
           </div>
         </div>
       </div>
@@ -216,4 +261,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(NewMonster)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    resetMonster: () => dispatch(actions.resetMonster())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewMonster)

@@ -25,6 +25,12 @@ export const setDesktop = () => {
   }
 }
 
+export const resetMonster = () => {
+  return {
+    type: actionTypes.RESET_MONSTER
+  }
+}
+
 export const setBodyType = (bodyType) => {
   return {
     type: actionTypes.SET_BODY_TYPE,

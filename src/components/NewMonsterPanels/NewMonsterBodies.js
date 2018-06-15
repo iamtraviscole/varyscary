@@ -61,7 +61,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setBodyType: (bodyType) => dispatch(actions.setBodyType(bodyType)),
+    setBodyType: (bodyType) => dispatch(actions.setBodyType(bodyType))
   }
 }
 

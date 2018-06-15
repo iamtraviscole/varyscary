@@ -98,17 +98,21 @@
  display: none;
 }
 
-.NewMonster__monster-inner-ctr {
+.NewMonster__monster-outer-ctr {
   position: relative;
+}
+
+.NewMonster__monster-outer-ctr--fixed {
+  position: fixed;
+  top: 25px;
+}
+
+.NewMonster__monster-ctr {
+  text-align: center;
   height: 380px;
   width: 380px;
   border: 1px solid var(--input-border-color);
   border-radius: 3px;
-}
-
-.NewMonster__monster-inner-ctr--fixed {
-  position: fixed;
-  top: 25px;
 }
 
 .NewMonster__directions-ctr {
@@ -154,4 +158,88 @@
 
 .NewMonster__legs {
   z-index: 530;
+}
+
+.NewMonster__buttons-ctr {
+  margin-top: 25px;
+  width: 380px;
+}
+
+.NewMonster__button {
+  text-align: center;
+  width: 380px;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 25px;
+  color: var(--button-text-color);
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+}
+
+.NewMonster__button:hover {
+  background-color: var(--main-light-color);
+  border: 1px solid var(--main-light-color);
+}
+
+.NewMonster__button-reset {
+  text-align: center;
+  width: 380px;
+  height: 40px;
+  padding: 10px;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+}
+
+.NewMonster__button-reset:hover {
+  color: var(--main-light-color);
+  border: 1px solid var(--main-light-color);
+}
+
+.NewMonster__confirm-ctr {
+  position: relative;
+  animation: slidein .35s, fadein 1s;
+  width: 368px;
+  height: 38px;
+  padding: 0 5px 0 5px;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+}
+
+.NewMonster__confirm {
+  float: left;
+  padding-left: 8px;
+  line-height: 40px;
+  color: var(--main-color);
+  border-radius: 3px;
+}
+
+.NewMonster__confirm-button {
+  float: right;
+  text-align: center;
+  font-weight: 300;
+  width: 100px;
+  height: 30px;
+  margin: 4px 0 4px 5px;
+  padding: 0 10px 0 10px;
+  color: var(--button-text-color);
+  background-color: var(--main-color);
+  border-radius: 3px;
+}
+
+.NewMonster__confirm-button:hover {
+  background-color: var(--main-light-color);
+  border: 1px solid var(--main-light-color);
+}
+
+@keyframes slidein {
+  from {left: 400px;}
+    to {left: 0;}
+}
+
+@keyframes fadein {
+  from {opacity: 0;}
+    to {opacity: 1;}
 }

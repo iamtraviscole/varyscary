@@ -54,6 +54,12 @@ const reducer = (state = initialState, action) => {
       return {...state, userOnMobile: true}
     case actionTypes.SET_DESKTOP:
       return {...state, userOnMobile: false}
+    case actionTypes.RESET_MONSTER:
+      return {...initialState,
+        monster: {
+          ...initialState.monster
+        }
+      }
     case actionTypes.SET_BODY_TYPE:
       return {...state,
                 monster: {
