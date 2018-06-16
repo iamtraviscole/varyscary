@@ -7,7 +7,7 @@
   border-radius: 3px;
   border: 1px solid var(--input-border-color);
   box-shadow: 2px 2px 2px var(--shadow-color);
-  z-index: 500;
+  z-index: 5000;
   transition: all 250ms;
 }
 
