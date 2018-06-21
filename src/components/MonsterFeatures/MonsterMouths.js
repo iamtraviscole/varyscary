@@ -2,7 +2,7 @@ import React from 'react'
 
 const XMLNS = 'http://www.w3.org/2000/svg'
 
-export const Mouth1 = (props) => {
+export const MouthSmileClosed = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -11,7 +11,7 @@ export const Mouth1 = (props) => {
   )
 }
 
-export const Mouth2 = (props) => {
+export const MouthFrownClosed = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -20,7 +20,7 @@ export const Mouth2 = (props) => {
   )
 }
 
-export const Mouth3 = (props) => {
+export const MouthSmileClosedCheeks = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-168.688 -174.345 375 375'>
       <path fill={props.fillColor}
@@ -29,7 +29,7 @@ export const Mouth3 = (props) => {
   )
 }
 
-export const Mouth4 = (props) => {
+export const MouthSmileOpenStroke = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -38,7 +38,7 @@ export const Mouth4 = (props) => {
   )
 }
 
-export const Mouth5 = (props) => {
+export const MouthFrownOpenStroke = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
     <path fill={props.fillColor}
@@ -47,7 +47,7 @@ export const Mouth5 = (props) => {
   )
 }
 
-export const Mouth6 = (props) => {
+export const MouthDashSmall = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -56,7 +56,7 @@ export const Mouth6 = (props) => {
   )
 }
 
-export const Mouth7 = (props) => {
+export const MouthDashTongueRight = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-172.5 -180.198 375 375'>
       <path fill={props.fillColor}
@@ -65,7 +65,7 @@ export const Mouth7 = (props) => {
   )
 }
 
-export const Mouth8 = (props) => {
+export const MouthDashFangs = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-172.5 -180.66 375 375'>
       <path fill={props.fillColor}
@@ -74,7 +74,7 @@ export const Mouth8 = (props) => {
   )
 }
 
-export const Mouth9 = (props) => {
+export const MouthDash = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -83,7 +83,7 @@ export const Mouth9 = (props) => {
   )
 }
 
-export const Mouth10 = (props) => {
+export const MouthDashWavy = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -92,7 +92,7 @@ export const Mouth10 = (props) => {
   )
 }
 
-export const Mouth11 = (props) => {
+export const MouthOvalStroke = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -101,7 +101,7 @@ export const Mouth11 = (props) => {
   )
 }
 
-export const Mouth12 = (props) => {
+export const MouthSmileOpenBuck = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-177.083 -175.065 375 375'>
       <path fill={props.fillColor}

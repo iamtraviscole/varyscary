@@ -18,8 +18,8 @@ class NewMonsterMouths extends Component {
     const { monster } = this.props
     const { strokeFill, strokeColor, strokeDasharray } = this.props.svgStrokeStyle
 
-    let MonsterBodyComponent = MonsterBodies.Body1
-    if (monster.body.type) {
+    let MonsterBodyComponent = MonsterBodies[monster.body.default]
+    if (this.props.monster.body.type) {
       MonsterBodyComponent = MonsterBodies[monster.body.type]
     }
 

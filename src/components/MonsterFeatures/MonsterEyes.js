@@ -2,7 +2,7 @@ import React from 'react'
 
 const XMLNS = 'http://www.w3.org/2000/svg'
 
-export const Eyes1 = (props) => {
+export const EyesCircleCircle = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-162 -150.091 375 375'>
       <circle fill={props.fillColor} cx='9' cy='9' r='9' />
@@ -11,7 +11,7 @@ export const Eyes1 = (props) => {
   )
 }
 
-export const Eyes2 = (props) => {
+export const EyesCircleCircleHighlight = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-162 -150.592 375 375'>
       <circle fill={props.fillColor} cx='9' cy='9' r='9' />
@@ -22,7 +22,7 @@ export const Eyes2 = (props) => {
   )
 }
 
-export const Eyes3 = (props) => {
+export const EyesCircleCircleHalf = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-162 -158.817 375 375'>
       <path fill={props.fillColor}
@@ -33,7 +33,7 @@ export const Eyes3 = (props) => {
   )
 }
 
-export const Eyes4 = (props) => {
+export const EyesCircleHighlight = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-178.5 -150 375 375'>
       <circle fill={props.fillColor} cx='9' cy='9' r='9' />
@@ -42,7 +42,7 @@ export const Eyes4 = (props) => {
   )
 }
 
-export const Eyes5 = (props) => {
+export const EyesCircleCircleSmall = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-171.606 -153.661 375 375'>
       <circle fill={props.fillColor} cx='5.256' cy='5.257' r='5.256' />
@@ -51,7 +51,7 @@ export const Eyes5 = (props) => {
   )
 }
 
-export const Eyes6 = (props) => {
+export const EyesCircleCircleStroke = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-162 -150.275 375 375'>
       <path fill={props.fillColor}
@@ -62,7 +62,7 @@ export const Eyes6 = (props) => {
   )
 }
 
-export const Eyes7 = (props) => {
+export const EyesCircleCircleStrokeHalf = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-162 -158.891 375 375'>
       <path fill={props.fillColor}
@@ -73,18 +73,18 @@ export const Eyes7 = (props) => {
   )
 }
 
-export const Eyes8 = (props) => {
+export const EyesCircleStrokeX = (props) => {
   return (
-    <svg xmlns={XMLNS} viewBox='2 0 375 375'>
+    <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
-        d='M172.576,155.561c2.206,0,4,1.794,4,4s-1.794,4-4,4s-4-1.794-4-4S170.371,155.561,172.576,155.561 M172.576,150.561 c-4.971,0-9,4.029-9,9s4.029,9,9,9s9-4.029,9-9S177.547,150.561,172.576,150.561L172.576,150.561z' />
+        d='M170.998,150.561c-4.971,0-9,4.029-9,9s4.029,9,9,9s9-4.029,9-9S175.969,150.561,170.998,150.561z M170.998,163.561 c-2.206,0-4-1.794-4-4s1.794-4,4-4s4,1.794,4,4S173.204,163.561,170.998,163.561z' />
       <path fill={props.fillColor}
-        d='M213.191,162.732l-3.625-3.625l3.201-3.201c0.977-0.977,0.977-2.559,0-3.536s-2.559-0.976-3.535,0l-3.202,3.202 l-3.202-3.202c-0.977-0.976-2.559-0.976-3.535,0s-0.977,2.559,0,3.536l3.201,3.201l-3.625,3.625c-0.977,0.977-0.977,2.559,0,3.536 c0.488,0.488,1.128,0.732,1.768,0.732s1.279-0.244,1.768-0.732l3.626-3.625l3.626,3.625c0.488,0.488,1.128,0.732,1.768,0.732 s1.279-0.244,1.768-0.732C214.168,165.291,214.168,163.708,213.191,162.732z' />
+        d='M211.613,162.732l-3.625-3.625l3.201-3.201c0.977-0.977,0.977-2.559,0-3.536s-2.559-0.976-3.535,0l-3.202,3.202 l-3.202-3.202c-0.977-0.976-2.559-0.976-3.535,0s-0.977,2.559,0,3.536l3.201,3.201l-3.625,3.625c-0.977,0.977-0.977,2.559,0,3.536 c0.488,0.488,1.128,0.732,1.768,0.732s1.279-0.244,1.768-0.732l3.626-3.625l3.626,3.625c0.488,0.488,1.128,0.732,1.768,0.732 s1.279-0.244,1.768-0.732C212.59,165.291,212.59,163.708,211.613,162.732z' />
     </svg>
   )
 }
 
-export const Eyes9 = (props) => {
+export const EyesCircleStrokeDash = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -95,7 +95,7 @@ export const Eyes9 = (props) => {
   )
 }
 
-export const Eyes10 = (props) => {
+export const EyesXX = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -106,7 +106,7 @@ export const Eyes10 = (props) => {
   )
 }
 
-export const Eyes11 = (props) => {
+export const EyesDashDash = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}

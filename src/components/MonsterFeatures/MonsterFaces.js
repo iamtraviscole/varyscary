@@ -2,7 +2,7 @@ import React from 'react'
 
 const XMLNS = 'http://www.w3.org/2000/svg'
 
-export const Face1 = (props) => {
+export const FaceCircle = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-144.288 -133.593 375 375'>
       <circle fill={props.fillColor} cx='43.213' cy='43.212' r='43.213' />
@@ -10,7 +10,7 @@ export const Face1 = (props) => {
   )
 }
 
-export const Face2 = (props) => {
+export const FaceTrapezoid = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-145.329 -143.444 375 375'>
       <path fill={props.fillColor}
@@ -20,7 +20,7 @@ export const Face2 = (props) => {
   )
 }
 
-export const Face3 = (props) => {
+export const FaceOval = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-144 -141.976 375 375'>
       <path fill={props.fillColor}
@@ -30,7 +30,7 @@ export const Face3 = (props) => {
   )
 }
 
-export const Face4 = (props) => {
+export const FaceArcUp = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-144 -140.893 375 375'>
       <path fill={props.fillColor}
@@ -40,7 +40,7 @@ export const Face4 = (props) => {
   )
 }
 
-export const Face5 = (props) => {
+export const FaceArcDown = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-144 -143.207 375 375'>
       <path fill={props.fillColor}
@@ -50,7 +50,7 @@ export const Face5 = (props) => {
   )
 }
 
-export const Face6 = (props) => {
+export const FaceRectangle = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-144 -143.778 375 375'>
       <path fill={props.fillColor}

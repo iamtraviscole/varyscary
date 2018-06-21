@@ -2,7 +2,7 @@ import React from 'react'
 
 const XMLNS = 'http://www.w3.org/2000/svg'
 
-export const Headwear1 = (props) => {
+export const HeadwearCatEars = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-146.228 -96.917 375 375'>
       <path fill={props.fillColor}
@@ -13,7 +13,7 @@ export const Headwear1 = (props) => {
   )
 }
 
-export const Headwear2 = (props) => {
+export const HeadwearBunnyEars = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-147.188 -61.056 375 375'>
       <path fill={props.fillColor}
@@ -24,7 +24,7 @@ export const Headwear2 = (props) => {
   )
 }
 
-export const Headwear3 = (props) => {
+export const HeadwearHornWavy = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-176.9 -59.993 375 375'>
       <path fill={props.fillColor}
@@ -34,7 +34,7 @@ export const Headwear3 = (props) => {
   )
 }
 
-export const Headwear4 = (props) => {
+export const HeadwearHorn = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-176.048 -63.901 375 375'>
       <polygon fill={props.fillColor}
@@ -43,7 +43,7 @@ export const Headwear4 = (props) => {
   )
 }
 
-export const Headwear5 = (props) => {
+export const Headwear3Spikes = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-151.747 -80.876 375 375'>
       <polygon fill={props.fillColor}
@@ -53,7 +53,7 @@ export const Headwear5 = (props) => {
   )
 }
 
-export const Headwear6 = (props) => {
+export const Headwear2PointAntlers = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -66,7 +66,7 @@ export const Headwear6 = (props) => {
   )
 }
 
-export const Headwear7 = (props) => {
+export const HeadwearHornsOutward = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -79,7 +79,7 @@ export const Headwear7 = (props) => {
   )
 }
 
-export const Headwear8 = (props) => {
+export const HeadwearHornsDevil = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -92,7 +92,7 @@ export const Headwear8 = (props) => {
   )
 }
 
-export const Headwear9 = (props) => {
+export const HeadwearHornsWavy = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='-143.017 -69.44 375 375'>
       <path fill={props.fillColor}
@@ -105,7 +105,7 @@ export const Headwear9 = (props) => {
   )
 }
 
-export const Headwear10 = (props) => {
+export const HeadwearHornsCurvedDown = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -118,7 +118,7 @@ export const Headwear10 = (props) => {
   )
 }
 
-export const Headwear11 = (props) => {
+export const HeadwearHornsBull = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -131,7 +131,7 @@ export const Headwear11 = (props) => {
   )
 }
 
-export const Headwear12 = (props) => {
+export const HeadwearFeelers = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -144,17 +144,16 @@ export const Headwear12 = (props) => {
   )
 }
 
-export const Headwear13 = (props) => {
+export const Headwear4PointCrown = (props) => {
   return (
-    <svg xmlns={XMLNS} viewBox='-165.145 -87.356 375 375'>
+    <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <polygon fill={props.fillColor}
-        points='39.662,23.618 44.711,0.008 37.188,6 29.766,0 22.351,6 14.933,0 7.518,6 0,0.008 5.049,23.622'
-      />
+        points='204.807,117.974 209.855,94.364 202.332,100.356 194.91,94.356 187.495,100.356 180.077,94.356 172.662,100.356 165.145,94.364 170.193,117.978' />
     </svg>
   )
 }
 
-export const Headwear14 = (props) => {
+export const HeadwearDerbyHat = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -167,7 +166,7 @@ export const Headwear14 = (props) => {
   )
 }
 
-export const Headwear15 = (props) => {
+export const HeadwearHalo = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
