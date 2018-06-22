@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import '../styles/Signup.css'
 
@@ -10,7 +11,7 @@ class Signup extends Component {
   }
 
   render() {
-    return (
+    let signupContent = (
       <div className='Signup'>
         <div className='Signup__ctr'>
           <div className='Signup__inner-ctr'>
@@ -25,7 +26,21 @@ class Signup extends Component {
         </div>
       </div>
     )
+
+    if (this.props.username) {
+      signupContent = <div>You are already logged in.</div>
+    }
+
+    return (
+      signupContent
+    )
   }
 }
 
-export default Signup
+const mapStateToProps = (state) => {
+  return {
+    username: state.username
+  }
+}
+
+export default connect(mapStateToProps)(Signup)

@@ -12,7 +12,7 @@ class Login extends Component {
   }
 
   render() {
-    return (
+    let loginContent = (
       <div className='Login'>
         <div className='Login__ctr'>
           <div className='Login__inner-ctr'>
@@ -26,6 +26,19 @@ class Login extends Component {
         </div>
       </div>
     )
+    if (this.props.username) {
+      loginContent = <div>You are already logged in.</div>
+    }
+
+    return (
+      loginContent
+    )
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    username: state.username
   }
 }
 
@@ -35,4 +48,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
