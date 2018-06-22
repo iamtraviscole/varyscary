@@ -10,6 +10,7 @@ import NavBar from './NavBar'
 import Splash from './Splash'
 import Home from './Home'
 import Login from './Login'
+import Signup from './Signup'
 import Logout from './Logout'
 import NewMonster from './NewMonster'
 import Monsters from './Monsters'
@@ -59,6 +60,7 @@ class App extends PureComponent {
           <Switch>
             <Route exact path='/' component={homeComponent} />
             <Route exact path='/login' component={Login} />
+            <Route exact path='/signup' component={Signup} />
             <Route exact path='/logout' component={Logout} />
             <AuthRoute exact path={'/' + this.props.username}
               component={Home}
