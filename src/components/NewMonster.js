@@ -245,9 +245,7 @@ class NewMonster extends PureComponent {
                   type='button'>Save Monster</button>
                 {resetButton}
               </div>
-
             </div>
-
           </div>
         </div>
       </div>

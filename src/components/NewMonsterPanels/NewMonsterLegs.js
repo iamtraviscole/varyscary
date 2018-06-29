@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import '../../styles/NewMonsterPanels.css'
 import * as actions from '../../actions/actions'
 
+import ColorPicker from '../ColorPicker'
 import * as MonsterLegs from '../MonsterFeatures/MonsterLegs'
 import * as MonsterBodies from '../MonsterFeatures/MonsterBodies'
 
@@ -57,7 +58,7 @@ class NewMonsterLegs extends Component {
         <h3 className='NewMonsterPanels__h3'>Legs</h3>
         <div className='NewMonsterPanels__features-inner-ctr'>
           <div className='NewMonsterPanels__color-picker'>
-            color picker here
+            <ColorPicker />
           </div>
           {legsDivs}
         </div>
