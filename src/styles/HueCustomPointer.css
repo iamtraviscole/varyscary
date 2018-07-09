@@ -1,0 +1,9 @@
+.HueCustomPointer {
+  width: 5px;
+  height: 13px;
+  margin-top: 2px;
+  border: 1px solid white;
+  border-radius: 2px;
+  /* box-shadow: 0 0 5px 0 black; */
+  transform: translateX(-3px)
+}

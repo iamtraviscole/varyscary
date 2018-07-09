@@ -1,78 +1,122 @@
 .ColorPicker__ctr {
+  width: 170px;
+  height: 170px;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-auto-rows: auto;
-  grid-gap: 10px;
-}
-
-.ColorPicker__color {
-  height: 33px;
-  line-height: 33px;
-  border: 1px solid var(--input-border-color);
-  border-radius: 3px;
-  margin: 10px 10px 0 10px;
-  text-align: center;
-  color: white;
-  background-color: blue;
-}
-
-.ColorPicker__custom-ctr {
-  display: grid;
-  grid-template-columns: .5fr 1fr;
-  grid-gap: 10px;
-  margin: 0 10px 0 10px;
-}
-
-.ColorPicker__picker {
-  height: 33px;
-  border: 1px solid var(--input-border-color);
-  border-radius: 3px;
-  text-align: center;
-  cursor: pointer;
-  background-color: var(--main-container-color);
-}
-
-.ColorPicker__picker i {
-  color: var(--main-text-color);
-  line-height: 33px;
-}
-
-.ColorPicker__hex-ctr {
-  display: grid;
-  grid-template-columns: .35fr 1fr;
-  height: 33px;
-  border: 1px solid var(--input-border-color);
-  border-radius: 3px;
-  background-color: var(--main-container-color);
-}
-
-.ColorPicker__hex-pound {
-  height: 33px;
-  line-height: 32px;
-  background: var(--input-border-color);
-  text-align: center;
-  color: var(--button-text-color);
-}
-
-.ColorPicker__hex input {
-  border: none;
-  text-align: center;
-  height: 31px;
-  width: 100%;
-  font-size: 16px;
-  display: inline-block;
-}
-
-.ColorPicker__swatches-ctr {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
-  margin: 0 10px 0 10px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-gap: 5px;
+  padding: 10px;
 }
 
 .ColorPicker__swatch {
-  height: 33px;
-  border: 1px solid var(--input-border-color);
-  border-radius: 3px;
+  border-radius: 2px;
+  border: 1px solid black;
   cursor: pointer;
+}
+
+.ColorPicker__swatch:hover {
+  box-shadow: 0px 0px 0px 1px #000
+}
+
+.ColorPicker__picker-ctr {
+  grid-column: span 6;
+  grid-row: span 3;
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+}
+
+.ColorPicker__sat-ctr {
+  position: relative;
+  border: 1px solid black;
+  border-radius: 2px 2px 0 0;
+}
+
+.ColorPicker__hue-ctr {
+  position: relative;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-radius: 0 0 0 2px;
+}
+
+.ColorPicker__hue-ctr .hue-horizontal {
+  border-radius: 0 0 1px 1px;
+}
+
+.ColorPicker__hex-ctr {
+  grid-column: span 6;
+  border: 1px solid black;
+  border-radius: 2px;
+  font-size: 12px;
+  text-align: center;
+  padding-top: 3px;
+}
+
+.ColorPicker__switch-ctr  {
+  grid-column: span 6;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+
+.ColorPicker__swatches-btn {
+  border: 1px solid black;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.ColorPicker__swatches-btn:hover {
+  box-shadow: 0px 0px 0px 1px #000
+}
+
+.ColorPicker__swatches-btn i {
+  position: relative;
+  font-size: 19px;
+  color: black;
+  top: 2px;
+}
+
+.ColorPicker__picker-btn {
+  border: 1px solid black;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.ColorPicker__picker-btn:hover {
+  box-shadow: 0px 0px 0px 1px #000
+}
+
+.ColorPicker__picker-btn i {
+  position: relative;
+  font-size: 16px;
+  color: black;
+  top: 3px;
+}
+
+.ColorPicker__current-header {
+  grid-column: auto / span 6;
+  font-size: 14px;
+  align-self: end;
+  text-align: center;
+  color: black;
+}
+
+.ColorPicker__current-swatches-ctr {
+  grid-column: span 6;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  grid-gap: 5px;
+}
+
+.ColorPicker__current-swatch {
+  border-radius: 2px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.ColorPicker__current-swatch:hover {
+  box-shadow: 0px 0px 0px 1px #000
 }
