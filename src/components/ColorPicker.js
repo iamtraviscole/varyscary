@@ -75,7 +75,9 @@ class ColorPicker extends Component {
       </div>
     if (this.state.showPicker) {
       headerOrHex = <div className='ColorPicker__hex-ctr'>
-          #888888
+        <EditableInput
+          value={ this.props.hex }
+          onChange={ this.handleChange } />
         </div>
     }
 
@@ -97,7 +99,6 @@ class ColorPicker extends Component {
         </div>
           {this.state.showSwatches ? swatchDivs : pickerDivs}
           {headerOrHex}
-          {/* colors or picked color? */}
           <div className='ColorPicker__current-swatches-ctr'>
             {currentColorDivs}
           </div>

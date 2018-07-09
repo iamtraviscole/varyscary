@@ -3,6 +3,5 @@
   height: 8px;
   border: 1px solid white;
   border-radius: 50%;
-  /* box-shadow: 0 0 5px 0 black; */
   transform: translate(-4px, -4px)
 }
