@@ -45,7 +45,7 @@ class NewMonsterBodies extends Component {
         <h3 className='NewMonsterPanels__h3'>Bodies</h3>
         <div className='NewMonsterPanels__features-inner-ctr'>
           <div className='NewMonsterPanels__color-picker'>
-            <ColorPicker />
+            <ColorPicker color='red'/>
           </div>
           {bodiesDivs}
         </div>

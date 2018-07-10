@@ -1,15 +1,12 @@
 import React, { Component, Fragment } from 'react'
-import { CustomPicker } from 'react-color'
 
 import '../styles/ColorPicker.css'
 
-import HueCustomPointer from './HueCustomPointer.js'
-import SatCustomPointer from './SatCustomPointer.js'
+import ColorPickerCustom from './ColorPickerCustom.js'
 
 const { Saturation, Hue, EditableInput } = require('react-color/lib/components/common')
 
 class ColorPicker extends Component {
-
   state = {
     showSwatches: true,
     showPicker: false
@@ -42,23 +39,9 @@ class ColorPicker extends Component {
         style={{backgroundColor: color}}></div>)
     })
 
-    let pickerDivs = (
-      <div className='ColorPicker__picker-ctr'>
-        <div className='ColorPicker__sat-ctr'>
-          <Saturation
-            {...this.props}
-            pointer={SatCustomPointer}
-            onChange={this.handleChange}  />
-        </div>
-        <div className='ColorPicker__hue-ctr'>
-          <Hue
-            {...this.props}
-            pointer={HueCustomPointer}
-            onChange={this.handleChange}
-            direction={'horizontal'} />
-        </div>
+    let currentHeader = <div className='ColorPicker__current-header'>
+        current monster colors
       </div>
-    )
 
     let currentColors = [
       'black', 'white', 'turquoise'
@@ -70,19 +53,7 @@ class ColorPicker extends Component {
         style={{backgroundColor: color}}></div>)
     })
 
-    let headerOrHex = <div className='ColorPicker__current-header'>
-        current monster colors
-      </div>
-    if (this.state.showPicker) {
-      headerOrHex = <div className='ColorPicker__hex-ctr'>
-        <EditableInput
-          value={ this.props.hex }
-          onChange={ this.handleChange } />
-        </div>
-    }
-
     let activeShadow = {boxShadow: '1.5px 1.5px 0px 0px #000'}
-
     return (
       <div className='ColorPicker__ctr'>
         <div className='ColorPicker__switch-ctr'>
@@ -97,8 +68,8 @@ class ColorPicker extends Component {
             <i className="material-icons">colorize</i>
           </div>
         </div>
-          {this.state.showSwatches ? swatchDivs : pickerDivs}
-          {headerOrHex}
+          {this.state.showSwatches ? swatchDivs : <ColorPickerCustom color={this.props.color}/>}
+          {this.state.showSwatches ? currentHeader : null }
           <div className='ColorPicker__current-swatches-ctr'>
             {currentColorDivs}
           </div>
@@ -107,4 +78,4 @@ class ColorPicker extends Component {
   }
 }
 
-export default CustomPicker(ColorPicker)
+export default ColorPicker
