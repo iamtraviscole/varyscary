@@ -4,19 +4,19 @@ const initialState = {
   username: 'Peter',
   userOnMobile: false,
   svgStrokeStyle: {
-    strokeFill: '#fff',
-    strokeColor: '#999',
+    strokeFill: '#ffffff',
+    strokeColor: '#999999',
     strokeDasharray: '5,5'
   },
   monster: {
     body: {
       default: 'BodyCircle',
       type: null,
-      fillColor: null
+      fillColor: '#000000'
     },
     face: {
       type: null,
-      fillColor: '#fff'
+      fillColor: '#ffffff'
     },
     headwear: {
       type: null,
@@ -68,6 +68,16 @@ const reducer = (state = initialState, action) => {
                   body: {
                     ...state.monster.body,
                     type: action.bodyType
+                    }
+                  }
+                }
+    case actionTypes.SET_BODY_FILL:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  body: {
+                    ...state.monster.body,
+                    fillColor: action.bodyFill
                     }
                   }
                 }

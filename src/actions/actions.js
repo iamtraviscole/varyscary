@@ -38,6 +38,13 @@ export const setBodyType = (bodyType) => {
   }
 }
 
+export const setBodyFill = (bodyFill) => {
+  return {
+    type: actionTypes.SET_BODY_FILL,
+    bodyFill: bodyFill
+  }
+}
+
 export const setFaceType = (faceType) => {
   return {
     type: actionTypes.SET_FACE_TYPE,

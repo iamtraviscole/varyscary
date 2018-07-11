@@ -1,10 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
 import '../styles/ColorPicker.css'
 
 import ColorPickerCustom from './ColorPickerCustom.js'
-
-const { Saturation, Hue, EditableInput } = require('react-color/lib/components/common')
 
 class ColorPicker extends Component {
   state = {
@@ -26,7 +24,20 @@ class ColorPicker extends Component {
     })
   }
 
+  handleSwatchClick = (color) => {
+    this.props.dispatchColor(color)
+  }
+
+  handleSatChange = (colorObj) => {
+    this.props.dispatchColor(colorObj.hex)
+  }
+
+  handleCurrentSwatchClick = (color) => {
+    this.props.dispatchColor(color)
+  }
+
   render() {
+
     let colors = [
       '#80f0ff', '#2e7bed', '#034887', '#01ff70', '#32cd32', '#136b48',
       '#fffc00', '#ff9900', '#af5a03', '#f29090', '#fa3232', '#a20303',
@@ -35,8 +46,20 @@ class ColorPicker extends Component {
 
     let swatchDivs = []
     colors.forEach(color => {
-      swatchDivs.push(<div key={color} className='ColorPicker__swatch'
-        style={{backgroundColor: color}}></div>)
+      if (this.props.color === color) {
+        swatchDivs.push(
+          <div key={color}
+            className='ColorPicker__swatch'
+            style={{backgroundColor: color, boxShadow: '1.5px 1.5px 0px 0px black'}}
+            onClick={() => this.handleSwatchClick(color)}></div>)
+      } else {
+        swatchDivs.push(
+          <div key={color}
+            className='ColorPicker__swatch'
+            style={{backgroundColor: color}}
+            onClick={() => this.handleSwatchClick(color)}>
+          </div>)
+      }
     })
 
     let currentHeader = <div className='ColorPicker__current-header'>
@@ -44,16 +67,30 @@ class ColorPicker extends Component {
       </div>
 
     let currentColors = [
-      'black', 'white', 'turquoise'
+      '#000000', '#ffffff', '#ff0000'
     ]
 
     let currentColorDivs = []
     currentColors.forEach(color => {
-      currentColorDivs.push(<div key={color} className='ColorPicker__current-swatch'
-        style={{backgroundColor: color}}></div>)
+      if (this.props.color === color) {
+        currentColorDivs.push(
+          <div key={color}
+            className='ColorPicker__current-swatch'
+            style={{backgroundColor: color, boxShadow: '1.5px 1.5px 0px 0px black'}}
+            onClick={() => this.handleCurrentSwatchClick(color)}>
+        </div>)
+        } else {
+          currentColorDivs.push(
+            <div key={color}
+              className='ColorPicker__current-swatch'
+              style={{backgroundColor: color}}
+              onClick={() => this.handleCurrentSwatchClick(color)}>
+            </div>)
+        }
     })
 
-    let activeShadow = {boxShadow: '1.5px 1.5px 0px 0px #000'}
+    let activeShadow = {boxShadow: '1.5px 1.5px 0px 0px black'}
+
     return (
       <div className='ColorPicker__ctr'>
         <div className='ColorPicker__switch-ctr'>
@@ -68,7 +105,11 @@ class ColorPicker extends Component {
             <i className="material-icons">colorize</i>
           </div>
         </div>
-          {this.state.showSwatches ? swatchDivs : <ColorPickerCustom color={this.props.color}/>}
+          {this.state.showSwatches
+            ? swatchDivs
+            : <ColorPickerCustom
+              color={this.props.color}
+              onChange={this.handleSatChange}/>}
           {this.state.showSwatches ? currentHeader : null }
           <div className='ColorPicker__current-swatches-ctr'>
             {currentColorDivs}

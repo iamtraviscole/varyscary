@@ -45,7 +45,9 @@ class NewMonsterBodies extends Component {
         <h3 className='NewMonsterPanels__h3'>Bodies</h3>
         <div className='NewMonsterPanels__features-inner-ctr'>
           <div className='NewMonsterPanels__color-picker'>
-            <ColorPicker color='red'/>
+            <ColorPicker
+              color={monster.body.fillColor} 
+              dispatchColor={this.props.setBodyFill} />
           </div>
           {bodiesDivs}
         </div>
@@ -62,7 +64,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setBodyType: (bodyType) => dispatch(actions.setBodyType(bodyType))
+    setBodyType: (bodyType) => dispatch(actions.setBodyType(bodyType)),
+    setBodyFill: (bodyFill) => dispatch(actions.setBodyFill(bodyFill))
   }
 }
 

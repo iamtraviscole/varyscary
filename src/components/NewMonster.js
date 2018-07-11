@@ -147,7 +147,7 @@ class NewMonster extends PureComponent {
       legs: <NewMonsterLegs />,
     }
 
-    let bodies = this.createFeaturesObject(MonsterBodies)
+    let bodies = this.createFeaturesObject(MonsterBodies, monster.body.fillColor)
     let faces = this.createFeaturesObject(MonsterFaces, monster.face.fillColor)
     let headwear = this.createFeaturesObject(MonsterHeadwear)
     let eyes = this.createFeaturesObject(MonsterEyes)
