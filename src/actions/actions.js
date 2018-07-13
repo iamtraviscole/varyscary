@@ -38,13 +38,6 @@ export const setBodyType = (bodyType) => {
   }
 }
 
-export const setBodyFill = (bodyFill) => {
-  return {
-    type: actionTypes.SET_BODY_FILL,
-    bodyFill: bodyFill
-  }
-}
-
 export const setFaceType = (faceType) => {
   return {
     type: actionTypes.SET_FACE_TYPE,
@@ -91,5 +84,61 @@ export const setLegsType = (legsType) => {
   return {
     type: actionTypes.SET_LEGS_TYPE,
     legsType: legsType
+  }
+}
+
+export const setBodyFill = (bodyFill) => {
+  return {
+    type: actionTypes.SET_BODY_FILL,
+    bodyFill: bodyFill
+  }
+}
+
+export const setFaceFill = (faceFill) => {
+  return {
+    type: actionTypes.SET_FACE_FILL,
+    faceFill: faceFill
+  }
+}
+
+export const setHeadwearFill = (headwearFill) => {
+  return {
+    type: actionTypes.SET_HEADWEAR_FILL,
+    headwearFill: headwearFill
+  }
+}
+
+export const setEyesFill = (eyesFill) => {
+  return {
+    type: actionTypes.SET_EYES_FILL,
+    eyesFill: eyesFill
+  }
+}
+
+export const setMouthFill = (mouthFill) => {
+  return {
+    type: actionTypes.SET_MOUTH_FILL,
+    mouthFill: mouthFill
+  }
+}
+
+export const setLeftArmFill = (leftArmFill) => {
+  return {
+    type: actionTypes.SET_LEFT_ARM_FILL,
+    leftArmFill: leftArmFill
+  }
+}
+
+export const setRightArmFill = (rightArmFill) => {
+  return {
+    type: actionTypes.SET_RIGHT_ARM_FILL,
+    rightArmFill: rightArmFill
+  }
+}
+
+export const setLegsFill = (legsFill) => {
+  return {
+    type: actionTypes.SET_LEGS_FILL,
+    legsFill: legsFill
   }
 }

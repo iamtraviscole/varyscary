@@ -20,27 +20,27 @@ const initialState = {
     },
     headwear: {
       type: null,
-      fillColor: null
+      fillColor: '#000000'
     },
     eyes: {
       type: null,
-      fillColor: null
+      fillColor: '#000000'
     },
     mouth: {
       type: null,
-      fillColor: null
+      fillColor: '#000000'
     },
     leftArm: {
       type: null,
-      fillColor: null
+      fillColor: '#000000'
     },
     rightArm: {
       type: null,
-      fillColor: null
+      fillColor: '#000000'
     },
     legs: {
       type: null,
-      fillColor: null
+      fillColor: '#000000'
     }
   }
 }
@@ -68,16 +68,6 @@ const reducer = (state = initialState, action) => {
                   body: {
                     ...state.monster.body,
                     type: action.bodyType
-                    }
-                  }
-                }
-    case actionTypes.SET_BODY_FILL:
-      return {...state,
-                monster: {
-                  ...state.monster,
-                  body: {
-                    ...state.monster.body,
-                    fillColor: action.bodyFill
                     }
                   }
                 }
@@ -148,6 +138,86 @@ const reducer = (state = initialState, action) => {
                   legs: {
                     ...state.monster.legs,
                     type: action.legsType
+                    }
+                  }
+                }
+    case actionTypes.SET_BODY_FILL:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  body: {
+                    ...state.monster.body,
+                    fillColor: action.bodyFill
+                    }
+                  }
+                }
+    case actionTypes.SET_FACE_FILL:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  face: {
+                    ...state.monster.face,
+                    fillColor: action.faceFill
+                    }
+                  }
+                }
+    case actionTypes.SET_HEADWEAR_FILL:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  headwear: {
+                    ...state.monster.headwear,
+                    fillColor: action.headwearFill
+                    }
+                  }
+                }
+    case actionTypes.SET_EYES_FILL:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  eyes: {
+                    ...state.monster.eyes,
+                    fillColor: action.eyesFill
+                    }
+                  }
+                }
+    case actionTypes.SET_MOUTH_FILL:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  mouth: {
+                    ...state.monster.mouth,
+                    fillColor: action.mouthFill
+                    }
+                  }
+                }
+    case actionTypes.SET_LEFT_ARM_FILL:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  leftArm: {
+                    ...state.monster.leftArm,
+                    fillColor: action.leftArmFill
+                    }
+                  }
+                }
+    case actionTypes.SET_RIGHT_ARM_FILL:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  rightArm: {
+                    ...state.monster.rightArm,
+                    fillColor: action.rightArmFill
+                    }
+                  }
+                }
+    case actionTypes.SET_LEGS_FILL:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  legs: {
+                    ...state.monster.legs,
+                    fillColor: action.legsFill
                     }
                   }
                 }

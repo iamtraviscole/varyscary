@@ -83,16 +83,15 @@ class NewMonster extends PureComponent {
 
   createFeaturesObject = (featuresImport, fillProp = null) => {
     let features = {}
-    const featureFill = fillProp
+    // const featureFill = fillProp
     for (const feature in featuresImport) {
       let FeatureComponent = featuresImport[feature]
-      features[feature] = <FeatureComponent fillColor={featureFill}/>
+      features[feature] = <FeatureComponent fillColor={fillProp}/>
     }
     return features
   }
 
   render() {
-
     const { monster } = this.props
 
     let noFeatureSelected = true
@@ -149,12 +148,12 @@ class NewMonster extends PureComponent {
 
     let bodies = this.createFeaturesObject(MonsterBodies, monster.body.fillColor)
     let faces = this.createFeaturesObject(MonsterFaces, monster.face.fillColor)
-    let headwear = this.createFeaturesObject(MonsterHeadwear)
-    let eyes = this.createFeaturesObject(MonsterEyes)
-    let mouths = this.createFeaturesObject(MonsterMouths)
-    let leftArms = this.createFeaturesObject(MonsterLeftArms)
-    let rightArms = this.createFeaturesObject(MonsterRightArms)
-    let legs = this.createFeaturesObject(MonsterLegs)
+    let headwear = this.createFeaturesObject(MonsterHeadwear, monster.headwear.fillColor)
+    let eyes = this.createFeaturesObject(MonsterEyes, monster.eyes.fillColor)
+    let mouths = this.createFeaturesObject(MonsterMouths, monster.mouth.fillColor)
+    let leftArms = this.createFeaturesObject(MonsterLeftArms, monster.leftArm.fillColor)
+    let rightArms = this.createFeaturesObject(MonsterRightArms, monster.rightArm.fillColor)
+    let legs = this.createFeaturesObject(MonsterLegs, monster.legs.fillColor)
 
     return (
       <div className='NewMonster'>

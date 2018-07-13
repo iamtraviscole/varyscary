@@ -58,7 +58,9 @@ class NewMonsterMouths extends Component {
         <h3 className='NewMonsterPanels__h3'>Mouths</h3>
         <div className='NewMonsterPanels__features-inner-ctr'>
           <div className='NewMonsterPanels__color-picker'>
-            <ColorPicker />
+            <ColorPicker
+              color={monster.mouth.fillColor}
+              dispatchColor={this.props.setMouthFill} />
           </div>
           {mouthsDivs}
         </div>
@@ -77,6 +79,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setMouthType: (mouthType) => dispatch(actions.setMouthType(mouthType)),
+    setMouthFill: (mouthFill) => dispatch(actions.setMouthFill(mouthFill)),
   }
 }
 

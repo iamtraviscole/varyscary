@@ -58,7 +58,9 @@ class NewMonsterLeftArms extends Component {
         <h3 className='NewMonsterPanels__h3'>Left Arms</h3>
         <div className='NewMonsterPanels__features-inner-ctr'>
           <div className='NewMonsterPanels__color-picker'>
-            <ColorPicker />
+            <ColorPicker
+              color={monster.leftArm.fillColor}
+              dispatchColor={this.props.setLeftArmFill} />
           </div>
           {leftArmsDivs}
         </div>
@@ -77,6 +79,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setLeftArmType: (leftArmType) => dispatch(actions.setLeftArmType(leftArmType)),
+    setLeftArmFill: (leftArmFill) => dispatch(actions.setLeftArmFill(leftArmFill)),
   }
 }
 
