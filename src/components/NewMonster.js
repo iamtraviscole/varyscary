@@ -83,7 +83,6 @@ class NewMonster extends PureComponent {
 
   createFeaturesObject = (featuresImport, fillProp = null) => {
     let features = {}
-    // const featureFill = fillProp
     for (const feature in featuresImport) {
       let FeatureComponent = featuresImport[feature]
       features[feature] = <FeatureComponent fillColor={fillProp}/>

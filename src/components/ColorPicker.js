@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import '../styles/ColorPicker.css'
 
@@ -37,6 +38,7 @@ class ColorPicker extends Component {
   }
 
   render() {
+    const { monster } = this.props
 
     let colors = [
       '#80f0ff', '#2e7bed', '#034887', '#01ff70', '#32cd32', '#136b48',
@@ -44,14 +46,27 @@ class ColorPicker extends Component {
       '#f892fa', '#d808eb', '#7d0496', '#ffffff', '#aaaaaa', '#000000',
     ]
 
+    let checkColor = (color) => {
+      if(color.length < 5) {
+        color += color.slice(1);
+      }
+      return (color.replace('#','0x')) > (0xffffff/2) ? '#000' : '#fff';
+    }
+
     let swatchDivs = []
     colors.forEach(color => {
       if (this.props.color === color) {
         swatchDivs.push(
           <div key={color}
             className='ColorPicker__swatch'
-            style={{backgroundColor: color, boxShadow: '1.5px 1.5px 0px 0px black'}}
-            onClick={() => this.handleSwatchClick(color)}></div>)
+            style={{backgroundColor: color}}
+            onClick={() => this.handleSwatchClick(color)}>
+              <div className='ColorPicker__check'>
+                <i className="material-icons" style={{color: checkColor(color)}}>
+                  check
+                </i>
+              </div>
+            </div>)
       } else {
         swatchDivs.push(
           <div key={color}
@@ -66,9 +81,12 @@ class ColorPicker extends Component {
         current monster colors
       </div>
 
-    let currentColors = [
-      '#000000', '#ffffff', '#ff0000'
-    ]
+    let currentColors = []
+    for (const feature in monster) {
+      if (!currentColors.includes(monster[feature].fillColor)) {
+        currentColors.push(monster[feature].fillColor)
+      }
+    }
 
     let currentColorDivs = []
     currentColors.forEach(color => {
@@ -76,9 +94,14 @@ class ColorPicker extends Component {
         currentColorDivs.push(
           <div key={color}
             className='ColorPicker__current-swatch'
-            style={{backgroundColor: color, boxShadow: '1.5px 1.5px 0px 0px black'}}
+            style={{backgroundColor: color}}
             onClick={() => this.handleCurrentSwatchClick(color)}>
-        </div>)
+              <div className='ColorPicker__check'>
+                <i className="material-icons" style={{color: checkColor(color)}}>
+                  check
+                </i>
+              </div>
+          </div>)
         } else {
           currentColorDivs.push(
             <div key={color}
@@ -119,4 +142,10 @@ class ColorPicker extends Component {
   }
 }
 
-export default ColorPicker
+const mapStateToProps = (state) => {
+  return {
+    monster: state.monster
+  }
+}
+
+export default connect(mapStateToProps)(ColorPicker)

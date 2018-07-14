@@ -18,6 +18,15 @@
   box-shadow: 0px 0px 0px 1px #000
 }
 
+.ColorPicker__check {
+  text-align: center;
+  margin-top: 2px;
+}
+
+.ColorPicker__check i {
+  font-size: 14px;
+}
+
 .ColorPicker__hue-ctr .hue-horizontal {
   border-radius: 0 0 1px 1px;
 }
