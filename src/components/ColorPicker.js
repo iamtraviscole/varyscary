@@ -29,7 +29,7 @@ class ColorPicker extends Component {
     this.props.dispatchColor(color)
   }
 
-  handleSatChange = (colorObj) => {
+  handlePickerChange = (colorObj) => {
     this.props.dispatchColor(colorObj.hex)
   }
 
@@ -132,7 +132,7 @@ class ColorPicker extends Component {
             ? swatchDivs
             : <ColorPickerCustom
               color={this.props.color}
-              onChange={this.handleSatChange}/>}
+              onChange={this.handlePickerChange}/>}
           {this.state.showSwatches ? currentHeader : null }
           <div className='ColorPicker__current-swatches-ctr'>
             {currentColorDivs}

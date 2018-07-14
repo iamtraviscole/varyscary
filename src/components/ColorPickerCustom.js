@@ -25,8 +25,7 @@ class ColorPickerCustom extends Component {
         </div>
         <div className='ColorPickerCustom__hex-ctr'>
           <EditableInput
-            value={this.props.hex}
-            onChange={this.props.onChange}/>
+            value={this.props.hex} />
         </div>
       </Fragment>
     )
