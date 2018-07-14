@@ -32,13 +32,13 @@ class NewMonsterLeftArms extends Component {
         onClick={this.handleLeftArmClick}
         key={monsterLeftArm}>
         <div className='NewMonsterPanels__feature NewMonsterPanels__leftArm'>
-          <LeftArmComponent/>
+          <LeftArmComponent fillColor={monster.leftArm.fillColor} />
         </div>
         <div className='NewMonsterPanels__feature NewMonsterPanels__body'>
           <MonsterBodyComponent
             fillColor={strokeFill}
             strokeColor={strokeColor}
-            strokeDasharray={strokeDasharray}/>
+            strokeDasharray={strokeDasharray} />
         </div>
       </div>)
     }

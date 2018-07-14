@@ -25,7 +25,7 @@ class NewMonsterBodies extends Component {
         onClick={this.handleBodyClick}
         key={monsterBody}>
         <div className='NewMonsterPanels__feature NewMonsterPanels__body'>
-          <BodyComponent />
+          <BodyComponent fillColor={monster.body.fillColor} />
         </div>
       </div>)
     }
@@ -46,7 +46,7 @@ class NewMonsterBodies extends Component {
         <div className='NewMonsterPanels__features-inner-ctr'>
           <div className='NewMonsterPanels__color-picker'>
             <ColorPicker
-              color={monster.body.fillColor} 
+              color={monster.body.fillColor}
               dispatchColor={this.props.setBodyFill} />
           </div>
           {bodiesDivs}
