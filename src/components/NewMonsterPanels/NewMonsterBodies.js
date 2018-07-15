@@ -1,64 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import '../../styles/NewMonsterPanels.css'
 import * as actions from '../../actions/actions'
 
-import ColorPicker from '../ColorPicker'
 import * as MonsterBodies from '../MonsterFeatures/MonsterBodies'
+import NewMonsterTemplate from './NewMonsterTemplate'
 
 class NewMonsterBodies extends Component {
-
-  handleBodyClick = (event) => {
-    const bodyType = event.currentTarget.dataset.bodyType
-    this.props.setBodyType(bodyType)
-  }
-
   render() {
-    const { monster } = this.props
-
-    let bodiesDivs = []
-    for (const monsterBody in MonsterBodies) {
-      let BodyComponent = MonsterBodies[monsterBody]
-      bodiesDivs.push(<div className='NewMonsterPanels__features'
-        data-body-type={monsterBody}
-        onClick={this.handleBodyClick}
-        key={monsterBody}>
-        <div className='NewMonsterPanels__feature NewMonsterPanels__body'>
-          <BodyComponent fillColor={monster.body.fillColor} />
-        </div>
-      </div>)
+    let bodyProps = {
+      featureTypeDispatch: this.props.setBodyType,
+      featureFillDispatch: this.props.setBodyFill,
+      features: MonsterBodies,
+      monsterFeature: 'body',
+      panelHeaderText: 'Bodies',
+      bodyOutline: false,
     }
 
-    let featuresDivs = document.getElementsByClassName("NewMonsterPanels__features")
-    let featuresDivsArray = [...featuresDivs]
-    featuresDivsArray.forEach(div => {
-      if (monster.body.type && div.dataset.bodyType === monster.body.type) {
-          div.className = 'NewMonsterPanels__features NewMonsterPanels__features--active'
-        } else {
-          div.className = 'NewMonsterPanels__features'
-        }
-    })
-
     return (
-      <div className='NewMonsterPanels__features-ctr'>
-        <h3 className='NewMonsterPanels__h3'>Bodies</h3>
-        <div className='NewMonsterPanels__features-inner-ctr'>
-          <div className='NewMonsterPanels__color-picker'>
-            <ColorPicker
-              color={monster.body.fillColor}
-              dispatchColor={this.props.setBodyFill} />
-          </div>
-          {bodiesDivs}
-        </div>
-      </div>
+      <NewMonsterTemplate {...bodyProps} />
     )
-  }
-}
-
-const mapStateToProps = (state) => {
-  return {
-    monster: state.monster
   }
 }
 
@@ -69,4 +30,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewMonsterBodies)
+export default connect(null, mapDispatchToProps)(NewMonsterBodies)

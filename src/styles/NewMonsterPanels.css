@@ -35,6 +35,14 @@
   z-index: 500;
 }
 
+.NewMonsterPanels__features i {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 14px;
+  color: black;
+}
+
 .NewMonsterPanels__features-inner-ctr.hide {
   display: none;
 }
@@ -44,7 +52,7 @@
 }
 
 .NewMonsterPanels__features--active {
-  border: 1px solid var(--main-color);
+  border: 1px solid black;
 }
 
 .NewMonsterPanels__feature {
