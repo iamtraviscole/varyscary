@@ -15,7 +15,18 @@ class NewMonsterTemplate extends Component {
 
   render () {
     const monster = this.props.monster
-    const { strokeFill, strokeColor, strokeDasharray } = this.props.svgStrokeStyle
+
+    const bodySvgStroke = {
+      fillColor: '#ffffff',
+      strokeColor: '#999999',
+      strokeDasharray: '5',
+      strokeWidth: '1'
+    }
+
+    const featureSvgStroke = {
+      strokeColor: '#000000',
+      strokeWidth: '1'
+    }
 
     let MonsterBodyComponent = MonsterBodies[monster.body.default]
     if (monster.body.type) {
@@ -23,10 +34,7 @@ class NewMonsterTemplate extends Component {
     }
     const bodyOutlineDiv = (
       <div className='NewMonsterPanels__feature NewMonsterPanels__body'>
-        <MonsterBodyComponent
-          fillColor={strokeFill}
-          strokeColor={strokeColor}
-          strokeDasharray={strokeDasharray} />
+        <MonsterBodyComponent {...bodySvgStroke} />
       </div>
     )
 
@@ -43,7 +51,8 @@ class NewMonsterTemplate extends Component {
               <i className="material-icons">
                 check
               </i>
-              <Component fillColor={monster[this.props.monsterFeature].fillColor} />
+              <Component fillColor={monster[this.props.monsterFeature].fillColor}
+                {...featureSvgStroke} />
             </div>
             {this.props.bodyOutline ? bodyOutlineDiv : null}
           </div>
@@ -54,7 +63,8 @@ class NewMonsterTemplate extends Component {
           onClick={this.handleClick}
           key={feature}>
           <div className={`NewMonsterPanels__feature NewMonsterPanels__${this.props.monsterFeature}`}>
-            <Component fillColor={monster[this.props.monsterFeature].fillColor} />
+            <Component fillColor={monster[this.props.monsterFeature].fillColor}
+              {...featureSvgStroke} />
           </div>
           {this.props.bodyOutline ? bodyOutlineDiv : null}
         </div>)

@@ -3,11 +3,6 @@ import actionTypes from '../actions/actionTypes'
 const initialState = {
   username: 'Peter',
   userOnMobile: false,
-  svgStrokeStyle: {
-    strokeFill: '#ffffff',
-    strokeColor: '#999999',
-    strokeDasharray: '5,5'
-  },
   monster: {
     body: {
       default: 'BodyCircle',
