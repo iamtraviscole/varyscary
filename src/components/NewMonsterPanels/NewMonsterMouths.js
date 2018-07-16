@@ -15,6 +15,7 @@ class NewMonsterMouths extends Component {
       monsterFeature: 'mouth',
       panelHeaderText: 'Mouths',
       bodyOutline: true,
+      allowNoSelection: true
     }
 
     return (

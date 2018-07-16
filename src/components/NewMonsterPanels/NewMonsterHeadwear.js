@@ -15,6 +15,7 @@ class NewMonsterHeadwear extends Component {
       monsterFeature: 'headwear',
       panelHeaderText: 'Headwear',
       bodyOutline: true,
+      allowNoSelection: true
     }
 
     return (

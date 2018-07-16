@@ -15,6 +15,7 @@ class NewMonsterLeftArms extends Component {
       monsterFeature: 'leftArm',
       panelHeaderText: 'Left Arms',
       bodyOutline: true,
+      allowNoSelection: true
     }
 
     return (

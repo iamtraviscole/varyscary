@@ -15,6 +15,7 @@ class NewMonsterEyes extends Component {
       monsterFeature: 'eyes',
       panelHeaderText: 'Eyes',
       bodyOutline: true,
+      allowNoSelection: true
     }
 
     return (

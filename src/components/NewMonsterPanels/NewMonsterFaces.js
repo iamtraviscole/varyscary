@@ -15,6 +15,7 @@ class NewMonsterFaces extends Component {
       monsterFeature: 'face',
       panelHeaderText: 'Faces',
       bodyOutline: true,
+      allowNoSelection: true
     }
 
     return (

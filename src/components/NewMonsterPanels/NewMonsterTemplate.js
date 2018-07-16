@@ -13,6 +13,10 @@ class NewMonsterTemplate extends Component {
     this.props.featureTypeDispatch(featureSelection)
   }
 
+  handleNullClick = () => {
+    this.props.featureTypeDispatch(null)
+  }
+
   render () {
     const monster = this.props.monster
 
@@ -28,6 +32,41 @@ class NewMonsterTemplate extends Component {
       strokeWidth: '1'
     }
 
+    let featuresDivs = []
+
+    if (this.props.allowNoSelection) {
+      if (monster[this.props.monsterFeature].type === null) {
+        featuresDivs.push(
+          <div className='NewMonsterPanels__features NewMonsterPanels__features--active'
+            onClick={this.handleNullClick}
+            key='noSelection'>
+              <div className='NewMonsterPanels__features-check'>
+                <i className="material-icons">
+                  check
+                </i>
+              </div>
+              <div className='NewMonsterPanels__features-null'>
+                <i className="material-icons">
+                  clear
+                </i>
+              </div>
+          </div>
+        )
+      } else {
+        featuresDivs.push(
+          <div className='NewMonsterPanels__features'
+            onClick={this.handleNullClick}
+            key='noSelection'>
+              <div className='NewMonsterPanels__features-null'>
+                <i className="material-icons">
+                  clear
+                </i>
+              </div>
+          </div>
+        )
+      }
+    }
+
     let MonsterBodyComponent = MonsterBodies[monster.body.default]
     if (monster.body.type) {
       MonsterBodyComponent = MonsterBodies[monster.body.type]
@@ -38,7 +77,6 @@ class NewMonsterTemplate extends Component {
       </div>
     )
 
-    let featuresDivs = []
     for (const feature in this.props.features) {
       let Component = this.props.features[feature]
       if (monster[this.props.monsterFeature].type === feature) {
@@ -48,9 +86,11 @@ class NewMonsterTemplate extends Component {
             onClick={this.handleClick}
             key={feature}>
             <div className={`NewMonsterPanels__feature NewMonsterPanels__${this.props.monsterFeature}`}>
-              <i className="material-icons">
-                check
-              </i>
+              <div className='NewMonsterPanels__features-check'>
+                <i className="material-icons">
+                  check
+                </i>
+              </div>
               <Component fillColor={monster[this.props.monsterFeature].fillColor}
                 {...featureSvgStroke} />
             </div>
@@ -72,7 +112,6 @@ class NewMonsterTemplate extends Component {
     }
     return (
       <div className='NewMonsterPanels__features-ctr'>
-        <h3 className='NewMonsterPanels__h3'>{this.props.panelHeaderText}</h3>
         <div className='NewMonsterPanels__features-inner-ctr'>
           <div className='NewMonsterPanels__color-picker'>
             <ColorPicker

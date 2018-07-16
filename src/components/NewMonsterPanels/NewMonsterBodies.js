@@ -15,6 +15,7 @@ class NewMonsterBodies extends Component {
       monsterFeature: 'body',
       panelHeaderText: 'Bodies',
       bodyOutline: false,
+      allowNoSelection: false
     }
 
     return (

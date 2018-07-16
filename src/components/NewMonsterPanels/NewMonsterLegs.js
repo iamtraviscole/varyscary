@@ -15,6 +15,7 @@ class NewMonsterLegs extends Component {
       monsterFeature: 'legs',
       panelHeaderText: 'Legs',
       bodyOutline: true,
+      allowNoSelection: true
     }
 
     return (
