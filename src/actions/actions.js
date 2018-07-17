@@ -1,5 +1,37 @@
 import actionTypes from './actionTypes'
 
+import * as MonsterBodies from '../components/MonsterFeatures/MonsterBodies'
+import * as MonsterFaces from '../components/MonsterFeatures/MonsterFaces'
+import * as MonsterHeadwear from '../components/MonsterFeatures/MonsterHeadwear'
+import * as MonsterEyes from '../components/MonsterFeatures/MonsterEyes'
+import * as MonsterMouths from '../components/MonsterFeatures/MonsterMouths'
+import * as MonsterLeftArms from '../components/MonsterFeatures/MonsterLeftArms'
+import * as MonsterRightArms from '../components/MonsterFeatures/MonsterRightArms'
+import * as MonsterLegs from '../components/MonsterFeatures/MonsterLegs'
+
+let randomBodies = []
+let randomFaces = []
+let randomHeadwear = []
+let randomEyes = []
+let randomMouths = []
+let randomLeftArms = []
+let randomRightArms = []
+let randomLegs = []
+for (const body in MonsterBodies) {randomBodies.push(body)}
+for (const face in MonsterFaces) {randomFaces.push(face)}
+for (const headwear in MonsterHeadwear) {randomHeadwear.push(headwear)}
+for (const eyes in MonsterEyes) {randomEyes.push(eyes)}
+for (const mouth in MonsterMouths) {randomMouths.push(mouth)}
+for (const leftArm in MonsterLeftArms) {randomLeftArms.push(leftArm)}
+for (const rightArm in MonsterRightArms) {randomRightArms.push(rightArm)}
+for (const leg in MonsterLegs) {randomLegs.push(leg)}
+
+let getRandomInt = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 export const login = (username) => {
   return {
     type: actionTypes.LOGIN,
@@ -140,5 +172,20 @@ export const setLegsFill = (legsFill) => {
   return {
     type: actionTypes.SET_LEGS_FILL,
     legsFill: legsFill
+  }
+}
+
+export const randomizeMonster = () => {
+  console.log(randomBodies.length);
+  return {
+    type: actionTypes.RANDOMIZE_MONSTER,
+    bodyType: randomBodies[getRandomInt(0, randomBodies.length)],
+    faceType: randomFaces[getRandomInt(0, randomFaces.length)],
+    headwearType: randomHeadwear[getRandomInt(0, randomHeadwear.length)],
+    eyesType: randomEyes[getRandomInt(0, randomEyes.length)],
+    mouthType: randomMouths[getRandomInt(0, randomMouths.length)],
+    rightArmType: randomRightArms[getRandomInt(0, randomRightArms.length)],
+    leftArmType: randomLeftArms[getRandomInt(0, randomLeftArms.length)],
+    legsType: randomLegs[getRandomInt(0, randomLegs.length)],
   }
 }

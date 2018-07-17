@@ -216,6 +216,44 @@ const reducer = (state = initialState, action) => {
                     }
                   }
                 }
+    case actionTypes.RANDOMIZE_MONSTER:
+      return {...state,
+                monster: {
+                  ...state.monster,
+                  body: {
+                    ...state.monster.body,
+                    type: action.bodyType
+                  },
+                  face: {
+                    ...state.monster.face,
+                    type: action.faceType
+                  },
+                  headwear: {
+                    ...state.monster.headwear,
+                    type: action.headwearType
+                  },
+                  eyes: {
+                    ...state.monster.eyes,
+                    type: action.eyesType
+                  },
+                  mouth: {
+                    ...state.monster.mouth,
+                    type: action.mouthType
+                  },
+                  rightArm: {
+                    ...state.monster.rightArm,
+                    type: action.rightArmType
+                  },
+                  leftArm: {
+                    ...state.monster.leftArm,
+                    type: action.leftArmType
+                  },
+                  legs: {
+                    ...state.monster.legs,
+                    type: action.legsType
+                  }
+                }
+              }
     default:
       return state
   }

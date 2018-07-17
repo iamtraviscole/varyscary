@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent, Fragment } from 'react'
 import { connect } from 'react-redux'
 
 import '../styles/NewMonster.css'
@@ -28,7 +28,8 @@ class NewMonster extends PureComponent {
     showArrows: false,
     fixedMonsterCtr: false,
     activePanel: 'bodies',
-    resetClicked: false
+    resetClicked: false,
+    // randomizeClicked: false
   }
 
   setShowArrows = () => {
@@ -68,6 +69,10 @@ class NewMonster extends PureComponent {
     this.setState({activePanel: buttonClicked})
   }
 
+  handleRandomizeClick = () => {
+    this.props.randomizeMonster()
+  }
+
   handleResetClick = () => {
     this.setState({resetClicked: true})
   }
@@ -80,6 +85,19 @@ class NewMonster extends PureComponent {
   handleResetNoClick = () => {
     this.setState({resetClicked: false})
   }
+
+  // handleRandomizeClick = () => {
+  //   this.setState({randomizeClicked: true})
+  // }
+  //
+  // handleRandomizeYesClick = () => {
+  //   this.props.randomizeMonster()
+  //   this.setState({randomizeClicked: false})
+  // }
+  //
+  // handleRandomizeNoClick = () => {
+  //   this.setState({randomizeClicked: false})
+  // }
 
   createFeaturesObject = (featuresImport, fillProp = null) => {
     let features = {}
@@ -101,37 +119,11 @@ class NewMonster extends PureComponent {
       }
     }
 
-    let monsterContainerStyle = 'NewMonster__monster-outer-ctr'
-    if (this.state.fixedMonsterCtr) {
-     monsterContainerStyle += ' NewMonster__monster-outer-ctr--fixed'
-    }
-
     let navCtrClass = 'NewMonster__nav-ctr'
     let navClass = 'NewMonster__nav'
     if (this.state.showArrows) {
       navCtrClass += ' NewMonster__nav-ctr--center'
       navClass += ' NewMonster__nav--margin'
-    }
-
-    let resetButton = <button className='NewMonster__button-reset'
-        onClick={this.handleResetClick}
-        type='button'>Reset</button>
-    if (this.state.resetClicked) {
-      resetButton = <div className='NewMonster__confirm-ctr'>
-        <div className='NewMonster__confirm'>
-          Confirm reset:
-        </div>
-        <button className='NewMonster__confirm-button'
-          type='button'
-          onClick={this.handleResetNoClick}>
-          Cancel
-        </button>
-        <button className='NewMonster__confirm-button'
-          type='button'
-          onClick={this.handleResetYesClick}>
-          Reset
-        </button>
-      </div>
     }
 
     const activePanel = {
@@ -153,6 +145,78 @@ class NewMonster extends PureComponent {
     let leftArms = this.createFeaturesObject(MonsterLeftArms, monster.leftArm.fillColor)
     let rightArms = this.createFeaturesObject(MonsterRightArms, monster.rightArm.fillColor)
     let legs = this.createFeaturesObject(MonsterLegs, monster.legs.fillColor)
+
+    let monsterContainerStyle = 'NewMonster__monster-outer-ctr'
+    if (this.state.fixedMonsterCtr) {
+     monsterContainerStyle = 'NewMonster__monster-outer-ctr--fixed'
+    }
+
+    let monsterDirections = (
+      <div className='NewMonster__directions-ctr'>
+        <h1 className='NewMonster__directions-header'>Make a monster!</h1>
+        <p>Start by choosing a body</p>
+        <p>or</p>
+        <button className='NewMonster__directions-randomize-btn'
+          type='button'
+          onClick={this.handleRandomizeClick}>
+          randomize
+        </button>
+      </div>
+    )
+
+    let monsterFeatures = <Fragment>
+      <div className='NewMonster__feature NewMonster__body'>
+        {bodies[monster.body.type]}
+      </div>
+      <div className='NewMonster__feature NewMonster__face'>
+        {faces[monster.face.type]}
+      </div>
+      <div className='NewMonster__feature NewMonster__headwear'>
+        {headwear[monster.headwear.type]}
+      </div>
+      <div className='NewMonster__feature NewMonster__eyes'>
+        {eyes[monster.eyes.type]}
+      </div>
+      <div className='NewMonster__feature NewMonster__mouth'>
+        {mouths[monster.mouth.type]}
+      </div>
+      <div className='NewMonster__feature NewMonster__left-arm'>
+        {leftArms[monster.leftArm.type]}
+      </div>
+      <div className='NewMonster__feature NewMonster__right-arm'>
+        {rightArms[monster.rightArm.type]}
+      </div>
+      <div className='NewMonster__feature NewMonster__legs'>
+        {legs[monster.legs.type]}
+      </div>
+    </Fragment>
+
+    let resetButton = <button className='NewMonster__button-reset'
+      onClick={this.handleResetClick}
+      type='button'>
+      <i className="material-icons">
+        refresh
+      </i>
+      Reset
+    </button>
+
+    if (this.state.resetClicked) {
+      resetButton = <div className='NewMonster__confirm-ctr'>
+        <div className='NewMonster__confirm'>
+          Confirm reset:
+        </div>
+        <button className='NewMonster__confirm-button'
+          type='button'
+          onClick={this.handleResetNoClick}>
+          Cancel
+        </button>
+        <button className='NewMonster__confirm-button'
+          type='button'
+          onClick={this.handleResetYesClick}>
+          Reset
+        </button>
+      </div>
+    }
 
     return (
       <div className='NewMonster'>
@@ -207,41 +271,25 @@ class NewMonster extends PureComponent {
           <div className='NewMonster__right-grid-ctr'>
             <div className={monsterContainerStyle}>
               <div className='NewMonster__monster-ctr'>
-                {noFeatureSelected ? (
-                  <div className='NewMonster__directions-ctr'>
-                    <h2 className='NewMonster__h2'>Make a monster!</h2>
-                    <p>Choose your features</p>
-                  </div>
-                  ) : null}
-                <div className='NewMonster__feature NewMonster__body'>
-                  {bodies[monster.body.type]}
-                </div>
-                <div className='NewMonster__feature NewMonster__face'>
-                  {faces[monster.face.type]}
-                </div>
-                <div className='NewMonster__feature NewMonster__headwear'>
-                  {headwear[monster.headwear.type]}
-                </div>
-                <div className='NewMonster__feature NewMonster__eyes'>
-                  {eyes[monster.eyes.type]}
-                </div>
-                <div className='NewMonster__feature NewMonster__mouth'>
-                  {mouths[monster.mouth.type]}
-                </div>
-                <div className='NewMonster__feature NewMonster__left-arm'>
-                  {leftArms[monster.leftArm.type]}
-                </div>
-                <div className='NewMonster__feature NewMonster__right-arm'>
-                  {rightArms[monster.rightArm.type]}
-                </div>
-                <div className='NewMonster__feature NewMonster__legs'>
-                  {legs[monster.legs.type]}
-                </div>
+                {noFeatureSelected ? monsterDirections : monsterFeatures }
               </div>
               <div className='NewMonster__buttons-ctr'>
                 <button className='NewMonster__button'
-                  type='button'>Save Monster</button>
+                  type='button'>
+                  <i class="material-icons">
+                    add
+                  </i>
+                  Save Monster
+                </button>
                 {resetButton}
+                <button className='NewMonster__button-randomize'
+                  onClick={this.handleRandomizeClick}
+                  type='button'>
+                  <i class="material-icons">
+                    help_outline
+                  </i>
+                  Randomize
+                </button>
               </div>
             </div>
           </div>
@@ -259,7 +307,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    resetMonster: () => dispatch(actions.resetMonster())
+    resetMonster: () => dispatch(actions.resetMonster()),
+    randomizeMonster: () => dispatch(actions.randomizeMonster())
   }
 }
 
