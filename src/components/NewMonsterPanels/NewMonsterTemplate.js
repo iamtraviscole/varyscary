@@ -47,8 +47,9 @@ class NewMonsterTemplate extends Component {
               </div>
               <div className='NewMonsterPanels__features-null'>
                 <i className="material-icons">
-                  clear
+                  highlight_off
                 </i>
+                none
               </div>
           </div>
         )
@@ -59,8 +60,9 @@ class NewMonsterTemplate extends Component {
             key='noSelection'>
               <div className='NewMonsterPanels__features-null'>
                 <i className="material-icons">
-                  clear
+                  highlight_off
                 </i>
+                none
               </div>
           </div>
         )
@@ -91,8 +93,11 @@ class NewMonsterTemplate extends Component {
                   check
                 </i>
               </div>
-              <Component fillColor={monster[this.props.monsterFeature].fillColor}
-                {...featureSvgStroke} />
+              {monster[this.props.monsterFeature].fillColor === '#ffffff'
+                ? <Component fillColor={monster[this.props.monsterFeature].fillColor}
+                    {...featureSvgStroke} />
+                : <Component fillColor={monster[this.props.monsterFeature].fillColor} />
+              }
             </div>
             {this.props.bodyOutline ? bodyOutlineDiv : null}
           </div>
@@ -103,8 +108,11 @@ class NewMonsterTemplate extends Component {
           onClick={this.handleClick}
           key={feature}>
           <div className={`NewMonsterPanels__feature NewMonsterPanels__${this.props.monsterFeature}`}>
-            <Component fillColor={monster[this.props.monsterFeature].fillColor}
-              {...featureSvgStroke} />
+            {monster[this.props.monsterFeature].fillColor === '#ffffff'
+              ? <Component fillColor={monster[this.props.monsterFeature].fillColor}
+                  {...featureSvgStroke} />
+              : <Component fillColor={monster[this.props.monsterFeature].fillColor} />
+            }
           </div>
           {this.props.bodyOutline ? bodyOutlineDiv : null}
         </div>)

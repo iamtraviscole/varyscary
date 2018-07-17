@@ -44,12 +44,15 @@
 
 .NewMonsterPanels__features-null {
   text-align: center;
-  margin-top: 75px;
+  margin-top: 70px;
+  color: var(--warning-light);
 }
 
 .NewMonsterPanels__features-null i {
-  font-size: 32px;
-  color: var(--input-placeholder-color);
+  font-size: 28px;
+  color: var(--warning-light);
+  display: block;
+  margin-bottom: -5px;
 }
 
 .NewMonsterPanels__features-inner-ctr.hide {
