@@ -78,7 +78,10 @@ class NewMonster extends PureComponent {
 
   handleResetYesClick = () => {
     this.props.resetMonster()
-    this.setState({resetClicked: false})
+    this.setState({
+      resetClicked: false,
+      activePanel: 'bodies'
+    })
   }
 
   handleResetNoClick = () => {
