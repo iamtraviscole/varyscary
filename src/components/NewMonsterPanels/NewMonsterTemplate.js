@@ -120,6 +120,9 @@ class NewMonsterTemplate extends Component {
     }
     return (
       <div className='NewMonsterPanels__features-ctr'>
+        {this.props.monsterFeature === 'body'
+        ? <div className='NewMonsterPanels__required-txt'>*body required</div>
+        : null}
         <div className='NewMonsterPanels__features-inner-ctr'>
           <div className='NewMonsterPanels__color-picker'>
             <ColorPicker

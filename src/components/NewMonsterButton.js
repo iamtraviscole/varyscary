@@ -3,17 +3,22 @@ import React from 'react'
 import '../styles/NewMonsterButton.css'
 
 const NewMonsterButton = (props) => {
-  const active = (
-    props.activePanel === props.activePanelName
-      ? ' NewMonsterButton__features-btn--active'
-      : ''
-  )
+  let active = ''
+  if (props.activePanel === props.activePanelName) {
+    active = ' NewMonsterButton__features-btn--active'
+  }
+
+  let button = props.noBodySelected
+    ? <button className={'NewMonsterButton__features-btn-disabled'}>
+      {props.children}
+      </button>
+    : <button className={'NewMonsterButton__features-btn' + active}
+        onClick={() => props.handleActivePanel(props.activePanelName)}>
+        {props.children}
+      </button>
 
   return (
-    <button className={'NewMonsterButton__features-btn' + active}
-      onClick={() => props.handleActivePanel(props.activePanelName)}>
-      {props.children}
-    </button>
+    button
   )
 }
 

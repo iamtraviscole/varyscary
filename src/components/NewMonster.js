@@ -28,8 +28,7 @@ class NewMonster extends PureComponent {
     showArrows: false,
     fixedMonsterCtr: false,
     activePanel: 'bodies',
-    resetClicked: false,
-    // randomizeClicked: false
+    resetClicked: false
   }
 
   setShowArrows = () => {
@@ -86,19 +85,6 @@ class NewMonster extends PureComponent {
     this.setState({resetClicked: false})
   }
 
-  // handleRandomizeClick = () => {
-  //   this.setState({randomizeClicked: true})
-  // }
-  //
-  // handleRandomizeYesClick = () => {
-  //   this.props.randomizeMonster()
-  //   this.setState({randomizeClicked: false})
-  // }
-  //
-  // handleRandomizeNoClick = () => {
-  //   this.setState({randomizeClicked: false})
-  // }
-
   createFeaturesObject = (featuresImport, fillProp = null) => {
     let features = {}
     for (const feature in featuresImport) {
@@ -125,6 +111,9 @@ class NewMonster extends PureComponent {
       navCtrClass += ' NewMonster__nav-ctr--center'
       navClass += ' NewMonster__nav--margin'
     }
+
+    let noBodySelected = true
+    if (monster.body.type) noBodySelected = false
 
     const activePanel = {
       bodies: <NewMonsterBodies />,
@@ -233,28 +222,36 @@ class NewMonster extends PureComponent {
               <div className={navClass}>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
-                  activePanelName='bodies'>Bodies</NewMonsterButton>
+                  activePanelName='bodies'
+                  noBodySelected={false}>Bodies</NewMonsterButton>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
-                  activePanelName='faces'>Faces</NewMonsterButton>
+                  activePanelName='faces'
+                  noBodySelected={noBodySelected}>Faces</NewMonsterButton>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
-                  activePanelName='headwear'>Headwear</NewMonsterButton>
+                  activePanelName='headwear'
+                  noBodySelected={noBodySelected}>Headwear</NewMonsterButton>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
-                  activePanelName='eyes'>Eyes</NewMonsterButton>
+                  activePanelName='eyes'
+                  noBodySelected={noBodySelected}>Eyes</NewMonsterButton>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
-                  activePanelName='mouths'>Mouths</NewMonsterButton>
+                  activePanelName='mouths'
+                  noBodySelected={noBodySelected}>Mouths</NewMonsterButton>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
-                  activePanelName='rightArms'>Right Arms</NewMonsterButton>
+                  activePanelName='rightArms'
+                  noBodySelected={noBodySelected}>Right Arms</NewMonsterButton>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
-                  activePanelName='leftArms'>Left Arms</NewMonsterButton>
+                  activePanelName='leftArms'
+                  noBodySelected={noBodySelected}>Left Arms</NewMonsterButton>
                 <NewMonsterButton activePanel={this.state.activePanel}
                   handleActivePanel={this.handleActivePanel}
-                  activePanelName='legs'>Legs</NewMonsterButton>
+                  activePanelName='legs'
+                  noBodySelected={noBodySelected}>Legs</NewMonsterButton>
               </div>
               {this.state.showArrows
                 ? <div className='NewMonster__right-arrow'
@@ -276,7 +273,7 @@ class NewMonster extends PureComponent {
               <div className='NewMonster__buttons-ctr'>
                 <button className='NewMonster__button'
                   type='button'>
-                  <i class="material-icons">
+                  <i className="material-icons">
                     add
                   </i>
                   Save Monster
@@ -285,7 +282,7 @@ class NewMonster extends PureComponent {
                 <button className='NewMonster__button-randomize'
                   onClick={this.handleRandomizeClick}
                   type='button'>
-                  <i class="material-icons">
+                  <i className="material-icons">
                     help_outline
                   </i>
                   Randomize

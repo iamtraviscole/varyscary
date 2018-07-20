@@ -8,6 +8,17 @@
   border-radius: 3px;
 }
 
+.NewMonsterButton__features-btn-disabled {
+  height: 40px;
+  padding: 10px;
+  margin: 0 25px 25px 0;
+  color: var(--main-color-disabled);
+  border: 1px dashed var(--main-color-disabled);
+  border-radius: 3px;
+  cursor: not-allowed;
+  font-weight: 100;
+}
+
 .NewMonsterButton__features-btn--active {
   color: var(--button-text-color);
   background-color: var(--main-color)
