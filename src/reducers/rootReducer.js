@@ -1,8 +1,9 @@
 import actionTypes from '../actions/actionTypes'
 
 const initialState = {
-  username: 'Peter',
+  username: null,
   userOnMobile: false,
+  isFetching: false,
   monster: {
     body: {
       default: 'BodyCircle',
@@ -46,6 +47,10 @@ const reducer = (state = initialState, action) => {
       return {...state, username: action.username }
     case actionTypes.LOGOUT:
       return {...state, username: null}
+    case actionTypes.FETCH_STARTED:
+      return {...state, isFetching: true}
+    case actionTypes.FETCH_ENDED:
+      return {...state, isFetching: false}
     case actionTypes.SET_MOBILE:
       return {...state, userOnMobile: true}
     case actionTypes.SET_DESKTOP:

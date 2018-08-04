@@ -8,7 +8,7 @@ import * as actions from '../actions/actions'
 class Login extends Component {
 
   handleLoginClick = () => {
-    this.props.login('Peter')
+    this.props.authenticateUser('user2@email.com', 'user2pw')
   }
 
   render() {
@@ -44,7 +44,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    login: (username) => dispatch(actions.login(username)),
+    authenticateUser: (email, pw) => dispatch(actions.authenticateUser(email, pw)),
   }
 }
 

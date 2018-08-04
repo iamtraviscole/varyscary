@@ -1,4 +1,5 @@
 import actionTypes from './actionTypes'
+import axios from 'axios'
 
 import * as MonsterBodies from '../components/MonsterFeatures/MonsterBodies'
 import * as MonsterFaces from '../components/MonsterFeatures/MonsterFaces'
@@ -32,10 +33,48 @@ let getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-export const login = (username) => {
+const base_url = 'http://localhost:4000/'
+
+const login = (username) => {
   return {
     type: actionTypes.LOGIN,
     username: username
+  }
+}
+
+const fetchStarted = () => {
+  return {
+    type: actionTypes.FETCH_STARTED
+  }
+}
+
+const fetchEnded = () => {
+  return {
+    type: actionTypes.FETCH_ENDED
+  }
+}
+
+export const authenticateUser = (email, pw) => {
+  return dispatch => {
+    dispatch(fetchStarted())
+    axios.post(`${base_url}api/user_token`,
+      {"auth":
+        {
+          "email": email,
+          "password": pw
+        }
+      }
+    )
+    .then(res => {
+      if (res.data.jwt) {
+        dispatch(login('Temp'))
+      }
+      dispatch(fetchEnded())
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })
   }
 }
 
@@ -176,7 +215,6 @@ export const setLegsFill = (legsFill) => {
 }
 
 export const randomizeMonster = () => {
-  console.log(randomBodies.length);
   return {
     type: actionTypes.RANDOMIZE_MONSTER,
     bodyType: randomBodies[getRandomInt(0, randomBodies.length)],
