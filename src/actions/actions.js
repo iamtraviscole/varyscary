@@ -33,14 +33,7 @@ let getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-const base_url = 'http://localhost:4000/'
-
-const login = (username) => {
-  return {
-    type: actionTypes.LOGIN,
-    username: username
-  }
-}
+const base_url = 'http://localhost:4000/api'
 
 const fetchStarted = () => {
   return {
@@ -54,25 +47,47 @@ const fetchEnded = () => {
   }
 }
 
+const login = (username) => {
+  return {
+    type: actionTypes.LOGIN,
+    username: username
+  }
+}
+
+const getUser = () => {
+  const userToken = localStorage.getItem('user_token')
+  return dispatch => {
+    dispatch(fetchStarted())
+    axios.get(`${base_url}/current_user_info`,
+      {'headers': {'Authorization': userToken} }
+    )
+    .then(res => {
+      console.log(res);
+      dispatch(login(res.data.username))
+      dispatch(fetchEnded())
+    })
+    .catch(err => {
+      dispatch(fetchEnded())
+      console.log(err);
+    })
+  }
+}
+
 export const authenticateUser = (email, pw) => {
   return dispatch => {
     dispatch(fetchStarted())
-    axios.post(`${base_url}api/user_token`,
-      {"auth":
-        {
-          "email": email,
-          "password": pw
-        }
-      }
+    axios.post(`${base_url}/user_token`,
+      {'auth': {'email': email, 'password': pw} }
     )
     .then(res => {
       if (res.data.jwt) {
-        dispatch(login('Temp'))
+        localStorage.setItem('user_token', res.data.jwt)
+        dispatch(getUser())
       }
-      dispatch(fetchEnded())
-      console.log(res);
+      console.log(res.payload);
     })
     .catch(err => {
+      dispatch(fetchEnded())
       console.log(err);
     })
   }
