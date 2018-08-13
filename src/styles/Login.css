@@ -12,6 +12,7 @@
 }
 
 .Login__inner-ctr {
+  position: relative;
   margin: auto;
   width: 300px;
   padding: 30px 100px;
@@ -50,6 +51,17 @@
   background-color: var(--main-light-color);
   color: var(--button-text-color);
   text-decoration: none;
+}
+
+.Login__already {
+  text-align: center;
+}
+
+.Login__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-32px, -32px)
 }
 
 @media (max-width: 580px) {

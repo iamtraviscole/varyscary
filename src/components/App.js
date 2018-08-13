@@ -10,7 +10,6 @@ import NavBar from './NavBar'
 import Splash from './Splash'
 import Home from './Home'
 import Login from './Login'
-import LoginSpinner from './LoginSpinner'
 import Signup from './Signup'
 import Logout from './Logout'
 import NewMonster from './NewMonster'
@@ -47,10 +46,6 @@ class App extends PureComponent {
     let navBar = null
     let isLoggedIn = false
 
-    if (this.props.isFetching) {
-      homeComponent = LoginSpinner
-    }
-
     if (this.props.username) {
       homeComponent = Home
       navBar = <NavBar username={this.props.username}
@@ -85,8 +80,7 @@ class App extends PureComponent {
 const mapStateToProps = (state) => {
   return {
     username: state.username,
-    userOnMobile: state.userOnMobile,
-    isFetching: state.isFetching
+    userOnMobile: state.userOnMobile
   }
 }
 

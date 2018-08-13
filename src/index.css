@@ -37,6 +37,14 @@ input {
   background: transparent;
 }
 
+input[type=submit] {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 100%;
+  border: none;
+  outline: none;
+}
+
 input::placeholder {
   color: var(--input-placeholder-color);
   font-weight: 300;
