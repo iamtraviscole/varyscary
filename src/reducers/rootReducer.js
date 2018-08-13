@@ -1,7 +1,10 @@
+// Need to split up this file
 import actionTypes from '../actions/actionTypes'
 
+const username = localStorage.getItem('username')
+
 const initialState = {
-  username: null,
+  username: username,
   userOnMobile: false,
   isFetching: false,
   monster: {

@@ -51,31 +51,32 @@ class App extends PureComponent {
       homeComponent = LoginSpinner
     }
 
-    if (this.props.username && !this.props.isFetching) {
+    if (this.props.username) {
       homeComponent = Home
       navBar = <NavBar username={this.props.username}
-        userOnMobile={this.props.userOnMobile}
-        logout={this.props.logout} />
+        userOnMobile={this.props.userOnMobile} />
       isLoggedIn = true
     }
 
     return (
       <div className='App__grid-container'>
-          {navBar}
-          <Switch>
-            <Route exact path='/' component={homeComponent} />
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/signup' component={Signup} />
-            <Route exact path='/logout' component={Logout} />
-            <AuthRoute exact path={'/' + this.props.username}
-              component={Home}
-              isLoggedIn={isLoggedIn} />
-            <Route exact path='/monsters' component={Monsters} />
-            <AuthRoute exact path='/monsters/new'
-              component={NewMonster}
-              isLoggedIn={isLoggedIn} />
-            <Route component={NoMatch} />
-          </Switch>
+        {navBar}
+        <Switch>
+          <Route exact path='/' component={homeComponent} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/signup' component={Signup} />
+          <Route exact path='/logout' component={Logout} />
+          <AuthRoute exact path={'/' + this.props.username}
+            component={Home}
+            isLoggedIn={isLoggedIn}
+          />
+          <Route exact path='/monsters' component={Monsters} />
+          <AuthRoute exact path='/monsters/new'
+            component={NewMonster}
+            isLoggedIn={isLoggedIn}
+          />
+          <Route component={NoMatch} />
+        </Switch>
       </div>
     )
   }
@@ -91,8 +92,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // login: (username) => dispatch(actions.login(username)),
-    logout: () => dispatch(actions.logout()),
     setMobile: () => dispatch(actions.setMobile()),
     setDesktop: () => dispatch(actions.setDesktop())
   }

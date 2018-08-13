@@ -1,6 +1,8 @@
 import actionTypes from './actionTypes'
 import axios from 'axios'
 
+// move this randomize feature to module / clean up
+// probably going to end up grabbing feature component names from server
 import * as MonsterBodies from '../components/MonsterFeatures/MonsterBodies'
 import * as MonsterFaces from '../components/MonsterFeatures/MonsterFaces'
 import * as MonsterHeadwear from '../components/MonsterFeatures/MonsterHeadwear'
@@ -35,19 +37,20 @@ let getRandomInt = (min, max) => {
 
 const base_url = 'http://localhost:4000/api'
 
-const fetchStarted = () => {
+export const fetchStarted = () => {
   return {
     type: actionTypes.FETCH_STARTED
   }
 }
 
-const fetchEnded = () => {
+export const fetchEnded = () => {
   return {
     type: actionTypes.FETCH_ENDED
   }
 }
 
-const login = (username) => {
+export const login = (username) => {
+  localStorage.setItem('username', username)
   return {
     type: actionTypes.LOGIN,
     username: username
@@ -62,13 +65,16 @@ const getUser = () => {
       {'headers': {'Authorization': userToken} }
     )
     .then(res => {
-      console.log(res);
       dispatch(login(res.data.username))
       dispatch(fetchEnded())
+      console.log(res);
     })
     .catch(err => {
       dispatch(fetchEnded())
-      console.log(err);
+      if (err.response.status === 401) {
+        dispatch(logout())
+      }
+      console.log(err.response);
     })
   }
 }
@@ -83,8 +89,8 @@ export const authenticateUser = (email, pw) => {
       if (res.data.jwt) {
         localStorage.setItem('user_token', res.data.jwt)
         dispatch(getUser())
+        console.log(res);
       }
-      console.log(res.payload);
     })
     .catch(err => {
       dispatch(fetchEnded())
@@ -94,6 +100,7 @@ export const authenticateUser = (email, pw) => {
 }
 
 export const logout = () => {
+  localStorage.clear()
   return {
     type: actionTypes.LOGOUT
   }
