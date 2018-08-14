@@ -1,58 +1,36 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import axios from 'axios'
 
 import '../styles/Login.css'
 import * as actions from '../actions/actions'
+import { authorizeAndLogin } from '../utils/user'
 
 import Spinner from './Spinner'
 
 class Login extends Component {
 
   state = {
-    email: '',
-    password: ''
+    user: {
+      email: '',
+      password: ''
+    }
   }
+
+  // handleInputChange = (event) => {
+  //   this.setState({[event.target.name]: event.target.value})
+  // }
 
   handleInputChange = (event) => {
-    this.setState({[event.target.name]: event.target.value})
+    this.setState({
+      user: {...this.state.user,
+        [event.target.name]: event.target.value
+      }
+    })
   }
 
-  handleLoginClick = (event) => {
+  handleLoginSubmit = (event) => {
     event.preventDefault()
-    this.props.fetchStarted()
-    axios.post('http://localhost:4000/api/user_token',
-      {'auth':
-        {'email': this.state.email,
-        'password': this.state.password}
-      }
-    )
-    .then(res => {
-      if (res.data.jwt) {
-        localStorage.setItem('user_token', res.data.jwt)
-          axios.get('http://localhost:4000/api/current_user_info',
-            {'headers': {'Authorization': res.data.jwt} }
-          )
-          .then(res => {
-            this.props.login(res.data.username)
-            this.props.fetchEnded()
-            this.props.history.push('/')
-            console.log(res);
-          })
-          .catch(err => {
-            this.props.fetchEnded()
-            if (err.response.status === 401) {
-              this.props.logout()
-            }
-            console.log(err.response);
-          })
-        console.log(res);
-      }
-    })
-    .catch(err => {
-      this.props.fetchEnded()
-      console.log(err);
-    })
+    authorizeAndLogin(this.state.user, this.props.history)
   }
 
   render() {
@@ -65,7 +43,7 @@ class Login extends Component {
 
     let loginContent = (
     <div>
-      <form className='Login' onSubmit={this.handleLoginClick}>
+      <form className='Login' onSubmit={this.handleLoginSubmit}>
         <div className='Login__ctr'>
           <div className='Login__inner-ctr'>
             <h1 className='Login__h1'>Log In</h1>
