@@ -63,10 +63,8 @@ const getTokenAndLogin = (userObj, history) => {
 
 export const authorizeAndLogin = (userObj, history) => {
   getTokenAndLogin(userObj, history)
-  console.log(userObj);
 }
 
 export const signupAuthorizeAndLogin = (userObj, history) => {
   signupAndLogin(userObj, history)
-  console.log(userObj);
 }

@@ -11,13 +11,11 @@ class Splash extends Component {
   }
 
   componentWillMount = () => {
-    if (this.props.location.state) {
-      if (this.props.location.state.message) {
-        this.setState({
-          message: this.props.location.state.message,
-          materialIcon: this.props.location.state.materialIcon
-        })
-      }
+    if (this.props.location.state && this.props.location.state.message) {
+      this.setState({
+        message: this.props.location.state.message,
+        materialIcon: this.props.location.state.materialIcon
+      })
     }
   }
 
@@ -26,7 +24,6 @@ class Splash extends Component {
       materialIcon: null,
       message: null
     })
-    this.props.history.replace(this.props.match.path, undefined)
   }
 
   render () {

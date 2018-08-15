@@ -16,10 +16,6 @@ class Login extends Component {
     }
   }
 
-  // handleInputChange = (event) => {
-  //   this.setState({[event.target.name]: event.target.value})
-  // }
-
   handleInputChange = (event) => {
     this.setState({
       user: {...this.state.user,
