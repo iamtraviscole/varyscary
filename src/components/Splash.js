@@ -1,29 +1,42 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import '../styles/Splash.css'
+import * as actions from '../actions/actions'
 
 class Splash extends Component {
 
   state = {
-    materialIcon: null,
-    message: null
+    message: {
+      icon: null,
+      text: null
+    }
   }
 
   componentWillMount = () => {
-    if (this.props.location.state && this.props.location.state.message) {
+    if (this.props.message) {
       this.setState({
-        message: this.props.location.state.message,
-        materialIcon: this.props.location.state.materialIcon
+        message: {...this.state.message,
+          icon: this.props.message.icon,
+          text: this.props.message.text
+        }
       })
     }
   }
 
+  componentWillUnmount = () => {
+    this.props.clearMessage()
+  }
+
   handleMessageClose = () => {
     this.setState({
-      materialIcon: null,
-      message: null
+      message: {...this.state.message,
+        icon: null,
+        text: null
+      }
     })
+    this.props.clearMessage()
   }
 
   render () {
@@ -31,7 +44,7 @@ class Splash extends Component {
     if (this.state.message) {
       redirectMessage = (
         <p onClick={this.handleMessageClose} className='Splash__redirect-msg'>
-          <i className='material-icons'>{this.state.materialIcon}</i>{this.state.message}
+          <i className='material-icons'>{this.state.message.icon}</i>{this.state.message.text}
         </p>
       )
     }
@@ -54,4 +67,16 @@ class Splash extends Component {
   }
 }
 
-export default Splash
+const mapStateToProps = (state) => {
+  return {
+    message: state.message
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    clearMessage: () => dispatch(actions.clearMessage())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Splash)

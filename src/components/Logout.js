@@ -8,13 +8,8 @@ class Logout extends Component {
 
   componentDidMount = () => {
     this.props.logout()
-    this.props.history.replace({
-      pathname: '/',
-      state: {
-        materialIcon: 'check_circle',
-        message: 'You have logged out'
-      }
-    })
+    this.props.setMessage('check_circle', 'You have logged out')
+    this.props.history.replace('/')
   }
 
   render() {
@@ -31,7 +26,8 @@ class Logout extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logout: () => dispatch(actions.logout())
+    logout: () => dispatch(actions.logout()),
+    setMessage: (icon, message) => dispatch(actions.setMessage(icon, message))
   }
 }
 

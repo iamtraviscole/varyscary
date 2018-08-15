@@ -64,11 +64,13 @@ class App extends PureComponent {
           <AuthRoute exact path={'/' + this.props.username}
             component={Home}
             isLoggedIn={isLoggedIn}
+            setMessage={this.props.setMessage}
           />
           <Route exact path='/monsters' component={Monsters} />
           <AuthRoute exact path='/monsters/new'
             component={NewMonster}
             isLoggedIn={isLoggedIn}
+            setMessage={this.props.setMessage}
           />
           <Route component={NoMatch} />
         </Switch>
@@ -87,7 +89,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setMobile: () => dispatch(actions.setMobile()),
-    setDesktop: () => dispatch(actions.setDesktop())
+    setDesktop: () => dispatch(actions.setDesktop()),
+    setMessage: (icon, text) => dispatch(actions.setMessage(icon, text))
   }
 }
 

@@ -2,6 +2,10 @@ const username = localStorage.getItem('username')
 
 const initialState = {
   username: username,
+  message: {
+    icon: null,
+    text: null
+  },
   userOnMobile: false,
   isFetching: false,
   monster: {

@@ -8,6 +8,22 @@ const reducer = (state = initialState, action) => {
       return {...state, username: action.username }
     case actionTypes.LOGOUT:
       return {...state, username: null}
+    case actionTypes.SET_MESSAGE:
+      return {...state,
+        message: {
+          ...state.message,
+          icon: action.icon,
+          text: action.text
+        }
+      }
+    case actionTypes.CLEAR_MESSAGE:
+      return {...state,
+        message: {
+          ...state.message,
+          icon: null,
+          text: null
+        }
+      }
     case actionTypes.FETCH_STARTED:
       return {...state, isFetching: true}
     case actionTypes.FETCH_ENDED:

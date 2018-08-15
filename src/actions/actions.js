@@ -106,6 +106,20 @@ export const logout = () => {
   }
 }
 
+export const setMessage = (icon, text) => {
+  return {
+    type: actionTypes.SET_MESSAGE,
+    icon: icon,
+    text: text
+  }
+}
+
+export const clearMessage = () => {
+  return {
+    type: actionTypes.CLEAR_MESSAGE
+  }
+}
+
 export const setMobile = () => {
   return {
     type: actionTypes.SET_MOBILE
