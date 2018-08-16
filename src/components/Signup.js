@@ -12,7 +12,8 @@ class Signup extends Component {
     user: {
       email: '',
       username: '',
-      password: ''
+      password: '',
+      passwordConfirmation: ''
     }
   }
 
@@ -27,6 +28,7 @@ class Signup extends Component {
         [event.target.name]: event.target.value
       }
     })
+    console.log(this.state.user);
   }
 
   render() {
@@ -61,10 +63,15 @@ class Signup extends Component {
               placeholder='Password'
               value={this.state.password}
               onChange={this.handleInputChange} />
-              <input className='Signup__btn'
-                type='submit'
-                value='Sign Up'/>
-              {/* add password confirmation */}
+            <input className='Signup__input'
+              name='passwordConfirmation'
+              type='password'
+              placeholder='Confirm Password'
+              value={this.state.passwordConfirmation}
+              onChange={this.handleInputChange} />
+            <input className='Signup__btn'
+              type='submit'
+              value='Sign Up'/>
           </div>
         </div>
       </form>

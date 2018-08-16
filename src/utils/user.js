@@ -9,16 +9,16 @@ const signupAndLogin = (userObj, history) => {
     {'user':
       {'username': userObj.username,
         'email': userObj.email,
-        'password': userObj.password}
+        'password': userObj.password,
+        'password_confirmation': userObj.passwordConfirmation}
     }
   )
   .then(res => {
     getTokenAndLogin(userObj, history)
-    console.log(res);
   })
   .catch(err => {
     store.dispatch(actions.fetchEnded())
-    console.log(err);
+    console.log(err.response);
   })
 }
 
@@ -30,14 +30,12 @@ const login = (token, history) => {
     store.dispatch(actions.login(res.data.username))
     store.dispatch(actions.fetchEnded())
     history.push('/')
-    console.log(res);
   })
   .catch(err => {
     store.dispatch(actions.fetchEnded())
     if (err.response.status === 401) {
       store.dispatch(actions.logout())
     }
-    console.log(err.response);
   })
 }
 
@@ -53,13 +51,11 @@ const getTokenAndLogin = (userObj, history) => {
     if (res.data.jwt) {
       localStorage.setItem('user_token', res.data.jwt)
       login(res.data.jwt, history)
-      console.log(res);
     }
   })
   .catch(err => {
     store.dispatch(actions.fetchEnded())
     store.dispatch(actions.setMessage('Incorrect email or password'))
-    console.log(err);
   })
 }
 
