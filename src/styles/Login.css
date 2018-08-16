@@ -5,6 +5,30 @@
   z-index: 1000;
 }
 
+.Login__msg-ctr {
+  margin-bottom: 6px;
+}
+
+.Login__msg {
+  display: inline-block;
+  font-size: 80%;
+  color: var(--light-text-color);
+  cursor: pointer;
+}
+
+.Login__msg:hover {
+  color: var(--main-light-color);
+}
+
+.Login__msg .material-icons {
+  font-size: 115%;
+  position: relative;
+  top: 3px;
+  color: var(--main-color);
+  cursor: pointer;
+  padding-right: 4px;
+}
+
 .Login__ctr {
   display: table-cell;
   vertical-align: middle;

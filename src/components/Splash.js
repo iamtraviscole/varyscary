@@ -7,44 +7,20 @@ import * as actions from '../actions/actions'
 
 class Splash extends Component {
 
-  state = {
-    message: {
-      icon: null,
-      text: null
-    }
-  }
-
-  componentWillMount = () => {
-    if (this.props.message) {
-      this.setState({
-        message: {...this.state.message,
-          icon: this.props.message.icon,
-          text: this.props.message.text
-        }
-      })
-    }
-  }
-
   componentWillUnmount = () => {
     this.props.clearMessage()
   }
 
   handleMessageClose = () => {
-    this.setState({
-      message: {...this.state.message,
-        icon: null,
-        text: null
-      }
-    })
     this.props.clearMessage()
   }
 
   render () {
-    let redirectMessage = null
-    if (this.state.message) {
-      redirectMessage = (
-        <p onClick={this.handleMessageClose} className='Splash__redirect-msg'>
-          <i className='material-icons'>{this.state.message.icon}</i>{this.state.message.text}
+    let message = null
+    if (this.props.message) {
+      message = (
+        <p onClick={this.handleMessageClose} className='Splash__msg'>
+          <i className='material-icons'>{this.props.message.icon}</i>{this.props.message.text}
         </p>
       )
     }
@@ -52,8 +28,8 @@ class Splash extends Component {
     return (
       <div className='Splash'>
         <div className='Splash__ctr'>
-          <div className='Splash__redirect-ctr'>
-            {redirectMessage}
+          <div className='Splash__msg-ctr'>
+            {message}
           </div>
           <div className='Splash__inner-ctr'>
             <h1 className='Splash__h1'>Make some monsters</h1>

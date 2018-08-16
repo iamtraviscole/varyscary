@@ -14,6 +14,7 @@ const signupAndLogin = (userObj, history) => {
   )
   .then(res => {
     getTokenAndLogin(userObj, history)
+    console.log(res);
   })
   .catch(err => {
     store.dispatch(actions.fetchEnded())
@@ -57,6 +58,7 @@ const getTokenAndLogin = (userObj, history) => {
   })
   .catch(err => {
     store.dispatch(actions.fetchEnded())
+    store.dispatch(actions.setMessage('error', 'Incorrect email or password'))
     console.log(err);
   })
 }

@@ -16,6 +16,14 @@ class Login extends Component {
     }
   }
 
+  componentWillUnmount = () => {
+    this.props.clearMessage()
+  }
+
+  handleMessageClose = () => {
+    this.props.clearMessage()
+  }
+
   handleInputChange = (event) => {
     this.setState({
       user: {...this.state.user,
@@ -37,10 +45,22 @@ class Login extends Component {
       </div>
     )
 
+    let message = null
+    if (this.props.message) {
+      message = (
+        <p onClick={this.handleMessageClose} className='Login__msg'>
+          <i className='material-icons'>{this.props.message.icon}</i>{this.props.message.text}
+        </p>
+      )
+    }
+
     let loginContent = (
     <div>
       <form className='Login' onSubmit={this.handleLoginSubmit}>
         <div className='Login__ctr'>
+          <div className='Login__msg-ctr'>
+            {message}
+          </div>
           <div className='Login__inner-ctr'>
             <h1 className='Login__h1'>Log In</h1>
             {spinner}
@@ -80,7 +100,8 @@ class Login extends Component {
 const mapStateToProps = (state) => {
   return {
     username: state.username,
-    isFetching: state.isFetching
+    isFetching: state.isFetching,
+    message: state.message
   }
 }
 
@@ -90,6 +111,7 @@ const mapDispatchToProps = (dispatch) => {
     logout: () => dispatch(actions.logout()),
     fetchStarted: () => dispatch(actions.fetchStarted()),
     fetchEnded: () => dispatch(actions.fetchEnded()),
+    clearMessage: () => dispatch(actions.clearMessage()),
   }
 }
 
