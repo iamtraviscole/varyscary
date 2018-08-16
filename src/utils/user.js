@@ -58,7 +58,7 @@ const getTokenAndLogin = (userObj, history) => {
   })
   .catch(err => {
     store.dispatch(actions.fetchEnded())
-    store.dispatch(actions.setMessage('error', 'Incorrect email or password'))
+    store.dispatch(actions.setMessage('Incorrect email or password'))
     console.log(err);
   })
 }

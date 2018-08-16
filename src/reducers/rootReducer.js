@@ -12,16 +12,16 @@ const reducer = (state = initialState, action) => {
       return {...state,
         message: {
           ...state.message,
-          icon: action.icon,
-          text: action.text
+          text: action.text,
+          icon: action.icon
         }
       }
     case actionTypes.CLEAR_MESSAGE:
       return {...state,
         message: {
           ...state.message,
-          icon: null,
-          text: null
+          text: null,
+          icon: null
         }
       }
     case actionTypes.FETCH_STARTED:

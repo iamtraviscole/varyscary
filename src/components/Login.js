@@ -46,11 +46,13 @@ class Login extends Component {
     )
 
     let message = null
-    if (this.props.message) {
+    if (this.props.message.text) {
       message = (
-        <p onClick={this.handleMessageClose} className='Login__msg'>
-          <i className='material-icons'>{this.props.message.icon}</i>{this.props.message.text}
-        </p>
+        <div className='Login__msg-ctr'>
+          <p onClick={this.handleMessageClose} className='Login__msg'>
+            <i className='material-icons'>{this.props.message.icon}</i>{this.props.message.text}
+          </p>
+        </div>
       )
     }
 
@@ -58,9 +60,7 @@ class Login extends Component {
     <div>
       <form className='Login' onSubmit={this.handleLoginSubmit}>
         <div className='Login__ctr'>
-          <div className='Login__msg-ctr'>
-            {message}
-          </div>
+          {message}
           <div className='Login__inner-ctr'>
             <h1 className='Login__h1'>Log In</h1>
             {spinner}

@@ -8,7 +8,7 @@ class Logout extends Component {
 
   componentDidMount = () => {
     this.props.logout()
-    this.props.setMessage('check_circle', 'You have logged out')
+    this.props.setMessage('You have logged out', 'check_circle')
     this.props.history.replace('/')
   }
 

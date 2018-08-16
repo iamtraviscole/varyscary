@@ -106,11 +106,11 @@ export const logout = () => {
   }
 }
 
-export const setMessage = (icon, text) => {
+export const setMessage = (text, icon = 'error') => {
   return {
     type: actionTypes.SET_MESSAGE,
-    icon: icon,
-    text: text
+    text: text,
+    icon: icon
   }
 }
 

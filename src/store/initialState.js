@@ -3,8 +3,8 @@ const username = localStorage.getItem('username')
 const initialState = {
   username: username,
   message: {
-    icon: null,
-    text: null
+    text: null,
+    icon: null
   },
   userOnMobile: false,
   isFetching: false,

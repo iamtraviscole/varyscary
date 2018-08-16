@@ -17,20 +17,20 @@ class Splash extends Component {
 
   render () {
     let message = null
-    if (this.props.message) {
+    if (this.props.message.text) {
       message = (
-        <p onClick={this.handleMessageClose} className='Splash__msg'>
-          <i className='material-icons'>{this.props.message.icon}</i>{this.props.message.text}
-        </p>
+        <div className='Splash__msg-ctr'>
+          <p onClick={this.handleMessageClose} className='Splash__msg'>
+            <i className='material-icons'>{this.props.message.icon}</i>{this.props.message.text}
+          </p>
+        </div>
       )
     }
 
     return (
       <div className='Splash'>
         <div className='Splash__ctr'>
-          <div className='Splash__msg-ctr'>
-            {message}
-          </div>
+          {message}
           <div className='Splash__inner-ctr'>
             <h1 className='Splash__h1'>Make some monsters</h1>
             <Link to='/signup' className='Splash__btn'>Sign Up</Link>
