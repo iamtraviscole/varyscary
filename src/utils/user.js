@@ -3,7 +3,7 @@ import axios from 'axios'
 import store from '../store/store'
 import * as actions from '../actions/actions'
 
-const signupAndLogin = (userObj, history) => {
+export const signupAuthorizeAndLogin = (userObj, history) => {
   store.dispatch(actions.fetchStarted())
   axios.post('http://localhost:4000/api/users',
     {'user':
@@ -14,7 +14,7 @@ const signupAndLogin = (userObj, history) => {
     }
   )
   .then(res => {
-    getTokenAndLogin(userObj, history)
+    authorizeAndLogin(userObj, history)
   })
   .catch(err => {
     store.dispatch(actions.fetchEnded())
@@ -39,7 +39,7 @@ const login = (token, history) => {
   })
 }
 
-const getTokenAndLogin = (userObj, history) => {
+export const authorizeAndLogin = (userObj, history) => {
   store.dispatch(actions.fetchStarted())
   axios.post('http://localhost:4000/api/user_token',
     {'auth':
@@ -59,10 +59,24 @@ const getTokenAndLogin = (userObj, history) => {
   })
 }
 
-export const authorizeAndLogin = (userObj, history) => {
-  getTokenAndLogin(userObj, history)
+export const checkUsernameAvail = (username) => {
+  let usernameAvail = axios.get(`http://localhost:4000/api/check_username_avail?username=${username}`)
+  .then(res => {
+    return res.data ? true : false
+  })
+  .catch(err => {
+    console.log(err.response);
+  })
+  return usernameAvail
 }
 
-export const signupAuthorizeAndLogin = (userObj, history) => {
-  signupAndLogin(userObj, history)
+export const checkEmailAvail = (email) => {
+  let emailAvail = axios.get(`http://localhost:4000/api/check_email_avail?email=${email}`)
+  .then(res => {
+    return res.data ? true : false
+  })
+  .catch(err => {
+    console.log(err.response);
+  })
+  return emailAvail
 }

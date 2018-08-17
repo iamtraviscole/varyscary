@@ -23,10 +23,16 @@
   margin-bottom: 20px;
 }
 
+.Signup__input-error {
+  font-size: .75em;
+  color: var(--warning-light);
+  margin-bottom: 1px;
+}
+
 .Signup__input {
   text-align: center;
   width: 200px;
-  height: 30px;
+  height: 25px;
   margin-bottom: 10px;
   font-size: 100%;
   padding: 5px;
@@ -44,6 +50,11 @@
   background-color: var(--main-color);
   border-style: none;
   border-radius: 3px;
+  cursor: pointer;
+}
+
+.Signup__btn--disabled {
+  cursor: not-allowed;
 }
 
 .Signup__btn:hover {
