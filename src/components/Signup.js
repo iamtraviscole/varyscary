@@ -23,7 +23,7 @@ class Signup extends Component {
     }
   }
 
-  noStateErrors = () => {
+  noFieldErrors = () => {
     for (var key in this.state.errors) {
       if (this.state.errors[key] !== null)
         return false
@@ -33,7 +33,7 @@ class Signup extends Component {
 
   handleSignupSubmit = (event) => {
     event.preventDefault()
-    if (this.noStateErrors() && this.state.user.username) {
+    if (this.noFieldErrors() && this.state.user.username) {
       signupAuthorizeAndLogin(this.state.user, this.props.history)
     }
   }
@@ -46,11 +46,17 @@ class Signup extends Component {
     })
   }
 
-  handleUsernameLeave = (event) => {
+  handleUsernameLeave = () => {
     if (this.state.user.username.length === 0) {
       this.setState({
         errors: {...this.state.errors,
           username: 'Username can\'t be blank'
+        }
+      })
+    } else if (this.state.user.username.includes(' ')) {
+      this.setState({
+        errors: {...this.state.errors,
+          username: 'Username can\'t contain spaces'
         }
       })
     } else {
@@ -83,6 +89,12 @@ class Signup extends Component {
       this.setState({
         errors: {...this.state.errors,
           email: 'Invalid email'
+        }
+      })
+    } else if (this.state.user.email.includes(' ')) {
+      this.setState({
+        errors: {...this.state.errors,
+          email: 'Email can\'t contain spaces'
         }
       })
     } else {
@@ -140,7 +152,6 @@ class Signup extends Component {
         }
       })
     }
-
   }
 
   render() {
@@ -150,12 +161,6 @@ class Signup extends Component {
         <Spinner />
       </div>
     )
-
-    console.log(this.noStateErrors());
-    let submitClass = 'Signup__btn Signup__btn--disabled'
-    if (this.noStateErrors() && this.state.user.username) {
-      submitClass = 'Signup__btn'
-    }
 
     let signupContent = (
       <form className='Signup' onSubmit={this.handleSignupSubmit}>
@@ -211,7 +216,7 @@ class Signup extends Component {
               value={this.state.passwordConfirmation}
               onChange={this.handleInputChange}
               onBlur={this.handlePasswordConfirmationLeave} />
-            <input className={submitClass}
+            <input className='Signup__btn'
               type='submit'
               value='Sign Up' />
           </div>
