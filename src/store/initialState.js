@@ -8,6 +8,7 @@ const initialState = {
   },
   userOnMobile: false,
   isFetching: false,
+  monsterName: null,
   monster: {
     body: {
       default: 'BodyCircle',

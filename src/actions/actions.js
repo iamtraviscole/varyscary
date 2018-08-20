@@ -1,5 +1,4 @@
 import actionTypes from './actionTypes'
-// import axios from 'axios'
 
 // move this randomize feature to module / clean up
 // probably going to end up grabbing feature component names from server
@@ -35,8 +34,6 @@ let getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-// const base_url = 'http://localhost:4000/api'
-
 export const fetchStarted = () => {
   return {
     type: actionTypes.FETCH_STARTED
@@ -56,48 +53,6 @@ export const login = (username) => {
     username: username
   }
 }
-
-// const getUser = () => {
-//   const userToken = localStorage.getItem('user_token')
-//   return dispatch => {
-//     dispatch(fetchStarted())
-//     axios.get(`${base_url}/current_user_info`,
-//       {'headers': {'Authorization': userToken} }
-//     )
-//     .then(res => {
-//       dispatch(login(res.data.username))
-//       dispatch(fetchEnded())
-//       console.log(res);
-//     })
-//     .catch(err => {
-//       dispatch(fetchEnded())
-//       if (err.response.status === 401) {
-//         dispatch(logout())
-//       }
-//       console.log(err.response);
-//     })
-//   }
-// }
-//
-// export const authenticateUser = (email, pw) => {
-//   return dispatch => {
-//     dispatch(fetchStarted())
-//     axios.post(`${base_url}/user_token`,
-//       {'auth': {'email': email, 'password': pw} }
-//     )
-//     .then(res => {
-//       if (res.data.jwt) {
-//         localStorage.setItem('user_token', res.data.jwt)
-//         dispatch(getUser())
-//         console.log(res);
-//       }
-//     })
-//     .catch(err => {
-//       dispatch(fetchEnded())
-//       console.log(err);
-//     })
-//   }
-// }
 
 export const logout = () => {
   localStorage.clear()
@@ -132,9 +87,10 @@ export const setDesktop = () => {
   }
 }
 
-export const resetMonster = () => {
+export const setMonsterName = (monsterName) => {
   return {
-    type: actionTypes.RESET_MONSTER
+    type: actionTypes.SET_MONSTER_NAME,
+    monsterName: monsterName
   }
 }
 
@@ -247,6 +203,12 @@ export const setLegsFill = (legsFill) => {
   return {
     type: actionTypes.SET_LEGS_FILL,
     legsFill: legsFill
+  }
+}
+
+export const resetMonster = () => {
+  return {
+    type: actionTypes.RESET_MONSTER
   }
 }
 

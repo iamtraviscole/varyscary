@@ -5,7 +5,7 @@ import initialState from '../store/initialState'
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.LOGIN:
-      return {...state, username: action.username }
+      return {...state, username: action.username}
     case actionTypes.LOGOUT:
       return {...state, username: null}
     case actionTypes.SET_MESSAGE:
@@ -32,12 +32,8 @@ const reducer = (state = initialState, action) => {
       return {...state, userOnMobile: true}
     case actionTypes.SET_DESKTOP:
       return {...state, userOnMobile: false}
-    case actionTypes.RESET_MONSTER:
-      return {...state,
-        monster: {
-          ...initialState.monster
-        }
-      }
+    case actionTypes.SET_MONSTER_NAME:
+      return {...state, monsterName: action.monsterName}
     case actionTypes.SET_BODY_TYPE:
       return {...state,
                 monster: {
@@ -198,6 +194,12 @@ const reducer = (state = initialState, action) => {
                     }
                   }
                 }
+    case actionTypes.RESET_MONSTER:
+      return {...state,
+        monster: {
+          ...initialState.monster
+        }
+      }
     case actionTypes.RANDOMIZE_MONSTER:
       return {...state,
                 monster: {

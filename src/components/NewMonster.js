@@ -68,6 +68,14 @@ class NewMonster extends PureComponent {
     this.setState({activePanel: buttonClicked})
   }
 
+  handleNameInputChange = (event) => {
+    this.props.setMonsterName(event.target.value)
+  }
+
+  handleSaveClick = () => {
+    console.log('save clicked');
+  }
+
   handleRandomizeClick = () => {
     this.props.randomizeMonster()
   }
@@ -195,7 +203,7 @@ class NewMonster extends PureComponent {
     if (this.state.resetClicked) {
       resetButton = <div className='NewMonster__confirm-ctr'>
         <div className='NewMonster__confirm'>
-          Confirm reset:
+          Confirm:
         </div>
         <button className='NewMonster__confirm-button'
           type='button'
@@ -264,17 +272,33 @@ class NewMonster extends PureComponent {
                 : null
               }
             </div>
-            <form className='NewMonster__form-ctr'>
+            <div className='NewMonster__form-ctr'>
               {activePanel[this.state.activePanel]}
-            </form>
+            </div>
           </div>
           <div className='NewMonster__right-grid-ctr'>
             <div className={monsterContainerStyle}>
               <div className='NewMonster__monster-ctr'>
                 {noFeatureSelected ? monsterDirections : monsterFeatures }
               </div>
+              {/* <div className='NewMonster__name-ctr'>
+                <div className='NewMonster__name-label'>Name:</div>
+                <input className='NewMonster__name-input'
+                  name='name'
+                  type='text'
+                  placeholder="Optional"
+                  value={this.state.password}
+                  onChange={this.handleNameInputChange} />
+              </div> */}
+              <input className='NewMonster__name-input'
+                name='name'
+                type='text'
+                placeholder='Name (optional)'
+                value={this.state.password}
+                onChange={this.handleNameInputChange} />
               <div className='NewMonster__buttons-ctr'>
                 <button className='NewMonster__button'
+                  onClick={this.handleSaveClick}
                   type='button'>
                   <i className="material-icons">
                     add
@@ -308,7 +332,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     resetMonster: () => dispatch(actions.resetMonster()),
-    randomizeMonster: () => dispatch(actions.randomizeMonster())
+    randomizeMonster: () => dispatch(actions.randomizeMonster()),
+    setMonsterName: (name) => dispatch(actions.setMonsterName(name))
   }
 }
 
