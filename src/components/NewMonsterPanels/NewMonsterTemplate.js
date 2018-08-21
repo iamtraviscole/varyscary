@@ -69,15 +69,16 @@ class NewMonsterTemplate extends Component {
       }
     }
 
-    let MonsterBodyComponent = MonsterBodies[monster.body.default]
+    let MonsterBodyComponent = MonsterBodies[monster.body.type]
+
+    let bodyOutlineDiv = null
     if (monster.body.type) {
-      MonsterBodyComponent = MonsterBodies[monster.body.type]
+      bodyOutlineDiv = (
+        <div className='NewMonsterPanels__feature NewMonsterPanels__body'>
+          <MonsterBodyComponent {...bodySvgStroke} />
+        </div>
+      )
     }
-    const bodyOutlineDiv = (
-      <div className='NewMonsterPanels__feature NewMonsterPanels__body'>
-        <MonsterBodyComponent {...bodySvgStroke} />
-      </div>
-    )
 
     for (const feature in this.props.features) {
       let Component = this.props.features[feature]

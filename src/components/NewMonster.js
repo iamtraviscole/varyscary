@@ -97,15 +97,6 @@ class NewMonster extends PureComponent {
     this.setState({resetClicked: false})
   }
 
-  createFeaturesObject = (featuresImport, fillProp = null) => {
-    let features = {}
-    for (const feature in featuresImport) {
-      let FeatureComponent = featuresImport[feature]
-      features[feature] = <FeatureComponent fillColor={fillProp}/>
-    }
-    return features
-  }
-
   render() {
     const { monster } = this.props
 
@@ -138,14 +129,14 @@ class NewMonster extends PureComponent {
       legs: <NewMonsterLegs />,
     }
 
-    let bodies = this.createFeaturesObject(MonsterBodies, monster.body.fillColor)
-    let faces = this.createFeaturesObject(MonsterFaces, monster.face.fillColor)
-    let headwear = this.createFeaturesObject(MonsterHeadwear, monster.headwear.fillColor)
-    let eyes = this.createFeaturesObject(MonsterEyes, monster.eyes.fillColor)
-    let mouths = this.createFeaturesObject(MonsterMouths, monster.mouth.fillColor)
-    let leftArms = this.createFeaturesObject(MonsterLeftArms, monster.leftArm.fillColor)
-    let rightArms = this.createFeaturesObject(MonsterRightArms, monster.rightArm.fillColor)
-    let legs = this.createFeaturesObject(MonsterLegs, monster.legs.fillColor)
+    const newMonsterButton = (panelName, buttonText) => {
+      return (
+        <NewMonsterButton activePanel={this.state.activePanel}
+          handleActivePanel={this.handleActivePanel}
+          activePanelName={panelName}
+          noBodySelected={noBodySelected}>{buttonText}</NewMonsterButton>
+      )
+    }
 
     let monsterContainerStyle = 'NewMonster__monster-outer-ctr'
     if (this.state.fixedMonsterCtr) {
@@ -165,30 +156,45 @@ class NewMonster extends PureComponent {
       </div>
     )
 
+    let BodyComponent = MonsterBodies[monster.body.type]
+    let FaceComponent = MonsterFaces[monster.face.type]
+    let HeadwearComponent = MonsterHeadwear[monster.headwear.type]
+    let EyesComponent = MonsterEyes[monster.eyes.type]
+    let MouthComponent = MonsterMouths[monster.mouth.type]
+    let LeftArmComponent = MonsterLeftArms[monster.leftArm.type]
+    let RightArmComponent = MonsterRightArms[monster.rightArm.type]
+    let LegsComponent = MonsterLegs[monster.legs.type]
+
+    const featureComponent = (FeatureComponent, featureName) => {
+      return monster[featureName].type
+        ? <FeatureComponent fillColor={monster[featureName].fillColor} />
+        : null
+    }
+
     let monsterFeatures = <Fragment>
       <div className='NewMonster__feature NewMonster__body'>
-        {bodies[monster.body.type]}
+        {featureComponent(BodyComponent, 'body')}
       </div>
       <div className='NewMonster__feature NewMonster__face'>
-        {faces[monster.face.type]}
+        {featureComponent(FaceComponent, 'face')}
       </div>
       <div className='NewMonster__feature NewMonster__headwear'>
-        {headwear[monster.headwear.type]}
+        {featureComponent(HeadwearComponent, 'headwear')}
       </div>
       <div className='NewMonster__feature NewMonster__eyes'>
-        {eyes[monster.eyes.type]}
+        {featureComponent(EyesComponent, 'eyes')}
       </div>
       <div className='NewMonster__feature NewMonster__mouth'>
-        {mouths[monster.mouth.type]}
+        {featureComponent(MouthComponent, 'mouth')}
       </div>
       <div className='NewMonster__feature NewMonster__left-arm'>
-        {leftArms[monster.leftArm.type]}
+        {featureComponent(LeftArmComponent, 'leftArm')}
       </div>
       <div className='NewMonster__feature NewMonster__right-arm'>
-        {rightArms[monster.rightArm.type]}
+        {featureComponent(RightArmComponent, 'rightArm')}
       </div>
       <div className='NewMonster__feature NewMonster__legs'>
-        {legs[monster.legs.type]}
+        {featureComponent(LegsComponent, 'legs')}
       </div>
     </Fragment>
 
@@ -236,34 +242,13 @@ class NewMonster extends PureComponent {
                   handleActivePanel={this.handleActivePanel}
                   activePanelName='bodies'
                   noBodySelected={false}>Bodies</NewMonsterButton>
-                <NewMonsterButton activePanel={this.state.activePanel}
-                  handleActivePanel={this.handleActivePanel}
-                  activePanelName='faces'
-                  noBodySelected={noBodySelected}>Faces</NewMonsterButton>
-                <NewMonsterButton activePanel={this.state.activePanel}
-                  handleActivePanel={this.handleActivePanel}
-                  activePanelName='headwear'
-                  noBodySelected={noBodySelected}>Headwear</NewMonsterButton>
-                <NewMonsterButton activePanel={this.state.activePanel}
-                  handleActivePanel={this.handleActivePanel}
-                  activePanelName='eyes'
-                  noBodySelected={noBodySelected}>Eyes</NewMonsterButton>
-                <NewMonsterButton activePanel={this.state.activePanel}
-                  handleActivePanel={this.handleActivePanel}
-                  activePanelName='mouths'
-                  noBodySelected={noBodySelected}>Mouths</NewMonsterButton>
-                <NewMonsterButton activePanel={this.state.activePanel}
-                  handleActivePanel={this.handleActivePanel}
-                  activePanelName='rightArms'
-                  noBodySelected={noBodySelected}>Right Arms</NewMonsterButton>
-                <NewMonsterButton activePanel={this.state.activePanel}
-                  handleActivePanel={this.handleActivePanel}
-                  activePanelName='leftArms'
-                  noBodySelected={noBodySelected}>Left Arms</NewMonsterButton>
-                <NewMonsterButton activePanel={this.state.activePanel}
-                  handleActivePanel={this.handleActivePanel}
-                  activePanelName='legs'
-                  noBodySelected={noBodySelected}>Legs</NewMonsterButton>
+                {newMonsterButton('faces', 'Faces')}
+                {newMonsterButton('headwear', 'Headwear')}
+                {newMonsterButton('eyes', 'Eyes')}
+                {newMonsterButton('mouths', 'Mouths')}
+                {newMonsterButton('rightArms', 'Right Arms')}
+                {newMonsterButton('leftArms', 'Left Arms')}
+                {newMonsterButton('legs', 'Legs')}
               </div>
               {this.state.showArrows
                 ? <div className='NewMonster__right-arrow'

@@ -11,7 +11,6 @@ const initialState = {
   monsterName: null,
   monster: {
     body: {
-      default: 'BodyCircle',
       type: null,
       fillColor: '#000000'
     },
