@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import '../styles/NewMonster.css'
 import * as actions from '../actions/actions'
+import * as monsterUtil from '../utils/monster'
 
 import NewMonsterButton from './NewMonsterButton'
 import NewMonsterBodies from './NewMonsterPanels/NewMonsterBodies'
@@ -73,7 +74,7 @@ class NewMonster extends PureComponent {
   }
 
   handleSaveClick = () => {
-    console.log('save clicked');
+    monsterUtil.createMonster(this.props.monsterName, this.props.monster)
   }
 
   handleRandomizeClick = () => {
@@ -281,15 +282,6 @@ class NewMonster extends PureComponent {
               <div className='NewMonster__monster-ctr'>
                 {noFeatureSelected ? monsterDirections : monsterFeatures }
               </div>
-              {/* <div className='NewMonster__name-ctr'>
-                <div className='NewMonster__name-label'>Name:</div>
-                <input className='NewMonster__name-input'
-                  name='name'
-                  type='text'
-                  placeholder="Optional"
-                  value={this.state.password}
-                  onChange={this.handleNameInputChange} />
-              </div> */}
               <input className='NewMonster__name-input'
                 name='name'
                 type='text'
@@ -325,6 +317,7 @@ class NewMonster extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
+    monsterName: state.monsterName,
     monster: state.monster
   }
 }
