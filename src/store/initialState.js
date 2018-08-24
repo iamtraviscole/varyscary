@@ -8,7 +8,7 @@ const initialState = {
   },
   userOnMobile: false,
   isFetching: false,
-  monsterName: null,
+  monsterName: '',
   monster: {
     body: {
       type: null,

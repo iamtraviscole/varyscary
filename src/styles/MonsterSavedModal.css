@@ -1,0 +1,89 @@
+.MonsterSavedModal {
+  display: table;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: var(--modal-color);
+  overflow: scroll;
+}
+
+.MonsterSavedModal__outer-ctr {
+  display: table-cell;
+  vertical-align: middle;
+  list-style-type: none;
+}
+
+.MonsterSavedModal__inner-ctr {
+  margin: 0 auto;
+  width: 250px;
+  padding: 10px 20px 20px 20px;
+  background: var(--main-container-color);
+  border-radius: 3px;
+}
+
+.MonsterSavedModal__monster-ctr {
+  margin: 0 auto;
+  text-align: center;
+  width: 248px;
+  height: 248px;
+  background: var(--main-container-color);
+  border: 1px solid var(--input-border-color);
+  border-radius: 3px;
+}
+
+.MonsterSavedModal__saved {
+  width: 248px;
+  text-align: center;
+  font-size: 1.2em;
+  color: var(--main-color);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.MonsterSavedModal__saved i {
+  position: relative;
+  top: 5px;
+  margin-left: 5px;
+}
+
+.MonsterSavedModal__buttons-ctr {
+  text-align: center;
+  width: 250px;
+  background: var(--main-container-color);
+}
+
+.MonsterSavedModal__link {
+  display: inline-block;
+  font-size: .9em;
+  width: 182px;
+  padding: 8px;
+  color: var(--button-text-color);
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+  margin: 20px 0 5px 0;
+}
+
+.MonsterSavedModal__link:hover {
+  text-decoration: none;
+  background-color: var(--main-light-color);
+  border: 1px solid var(--main-light-color);
+}
+
+.MonsterSavedModal__button {
+  width: 200px;
+  font-size: .9em;
+  padding: 8px;
+  color: var(--button-text-color);
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+}
+
+.MonsterSavedModal__button:hover {
+  background-color: var(--main-light-color);
+  border: 1px solid var(--main-light-color);
+}

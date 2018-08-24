@@ -1,10 +1,12 @@
 import React, { PureComponent, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 import '../styles/NewMonster.css'
 import * as actions from '../actions/actions'
 import * as monsterUtil from '../utils/monster'
 
+import MonsterSavedModal from './MonsterSavedModal'
 import NewMonsterButton from './NewMonsterButton'
 import NewMonsterBodies from './NewMonsterPanels/NewMonsterBodies'
 import NewMonsterFaces from './NewMonsterPanels/NewMonsterFaces'
@@ -29,7 +31,9 @@ class NewMonster extends PureComponent {
     showArrows: false,
     fixedMonsterCtr: false,
     activePanel: 'bodies',
-    resetClicked: false
+    resetClicked: false,
+    message: null,
+    monsterSaved: false
   }
 
   setShowArrows = () => {
@@ -57,6 +61,12 @@ class NewMonster extends PureComponent {
     window.removeEventListener('scroll', this.setFixMonster)
   }
 
+  componentDidUpdate = () => {
+    if (this.props.monster.body.type) {
+      this.setState({message: null})
+    }
+  }
+
   handleLeftArrowClick = () => {
     document.getElementsByClassName('NewMonster__nav')[0].scrollLeft -= 35
   }
@@ -74,7 +84,17 @@ class NewMonster extends PureComponent {
   }
 
   handleSaveClick = () => {
-    monsterUtil.createMonster(this.props.monsterName, this.props.monster)
+    // this.setState({monsterSaved: true})
+    if (this.props.monster.body.type) {
+      monsterUtil.createMonster(this.props.monsterName, this.props.monster)
+      .then((saved) => {
+        if (saved) {
+          this.setState({monsterSaved: true})
+        }
+      })
+    } else {
+      this.setState({message: 'Body required'})
+    }
   }
 
   handleRandomizeClick = () => {
@@ -99,6 +119,12 @@ class NewMonster extends PureComponent {
 
   render() {
     const { monster } = this.props
+
+    let message = this.state.message
+      ? <div className='NewMonster__message'>
+          <span className="material-icons">error_outline</span>{this.state.message}
+        </div>
+      : null
 
     let noFeatureSelected = true
     for (const feature in {...this.props.monster}) {
@@ -226,76 +252,80 @@ class NewMonster extends PureComponent {
     }
 
     return (
-      <div className='NewMonster'>
-        <div className='NewMonster__ctr'>
-          <div className='NewMonster__left-grid-ctr'>
-            <div className={navCtrClass}>
-              {this.state.showArrows
-                ? <div className='NewMonster__left-arrow'
-                    onClick={this.handleLeftArrowClick}>
-                      <i className='material-icons'>arrow_back_ios</i>
-                  </div>
-                : null
-              }
-              <div className={navClass}>
-                <NewMonsterButton activePanel={this.state.activePanel}
-                  handleActivePanel={this.handleActivePanel}
-                  activePanelName='bodies'
-                  noBodySelected={false}>Bodies</NewMonsterButton>
-                {newMonsterButton('faces', 'Faces')}
-                {newMonsterButton('headwear', 'Headwear')}
-                {newMonsterButton('eyes', 'Eyes')}
-                {newMonsterButton('mouths', 'Mouths')}
-                {newMonsterButton('rightArms', 'Right Arms')}
-                {newMonsterButton('leftArms', 'Left Arms')}
-                {newMonsterButton('legs', 'Legs')}
+      <Fragment>
+        {this.state.monsterSaved ? <MonsterSavedModal /> : null}
+        <div className='NewMonster'>
+          <div className='NewMonster__ctr'>
+            <div className='NewMonster__left-grid-ctr'>
+              <div className={navCtrClass}>
+                {this.state.showArrows
+                  ? <div className='NewMonster__left-arrow'
+                      onClick={this.handleLeftArrowClick}>
+                        <i className='material-icons'>arrow_back_ios</i>
+                    </div>
+                  : null
+                }
+                <div className={navClass}>
+                  <NewMonsterButton activePanel={this.state.activePanel}
+                    handleActivePanel={this.handleActivePanel}
+                    activePanelName='bodies'
+                    noBodySelected={false}>Bodies</NewMonsterButton>
+                  {newMonsterButton('faces', 'Faces')}
+                  {newMonsterButton('headwear', 'Headwear')}
+                  {newMonsterButton('eyes', 'Eyes')}
+                  {newMonsterButton('mouths', 'Mouths')}
+                  {newMonsterButton('rightArms', 'Right Arms')}
+                  {newMonsterButton('leftArms', 'Left Arms')}
+                  {newMonsterButton('legs', 'Legs')}
+                </div>
+                {this.state.showArrows
+                  ? <div className='NewMonster__right-arrow'
+                      onClick={this.handleRightArrowClick}>
+                        <i className='material-icons'>arrow_forward_ios</i>
+                    </div>
+                  : null
+                }
               </div>
-              {this.state.showArrows
-                ? <div className='NewMonster__right-arrow'
-                    onClick={this.handleRightArrowClick}>
-                      <i className='material-icons'>arrow_forward_ios</i>
-                  </div>
-                : null
-              }
-            </div>
-            <div className='NewMonster__form-ctr'>
-              {activePanel[this.state.activePanel]}
-            </div>
-          </div>
-          <div className='NewMonster__right-grid-ctr'>
-            <div className={monsterContainerStyle}>
-              <div className='NewMonster__monster-ctr'>
-                {noFeatureSelected ? monsterDirections : monsterFeatures }
+              <div className='NewMonster__form-ctr'>
+                {activePanel[this.state.activePanel]}
               </div>
-              <input className='NewMonster__name-input'
-                name='name'
-                type='text'
-                placeholder='Name (optional)'
-                value={this.state.password}
-                onChange={this.handleNameInputChange} />
-              <div className='NewMonster__buttons-ctr'>
-                <button className='NewMonster__button'
-                  onClick={this.handleSaveClick}
-                  type='button'>
-                  <i className="material-icons">
-                    add
-                  </i>
-                  Save Monster
-                </button>
-                {resetButton}
-                <button className='NewMonster__button-randomize'
-                  onClick={this.handleRandomizeClick}
-                  type='button'>
-                  <i className="material-icons">
-                    help_outline
-                  </i>
-                  Randomize
-                </button>
+            </div>
+            <div className='NewMonster__right-grid-ctr'>
+              <div className={monsterContainerStyle}>
+                <div className='NewMonster__monster-ctr'>
+                  {noFeatureSelected ? monsterDirections : monsterFeatures }
+                </div>
+                <input className='NewMonster__name-input'
+                  name='name'
+                  type='text'
+                  placeholder='Name (optional)'
+                  value={this.props.monsterName}
+                  onChange={this.handleNameInputChange} />
+                <div className='NewMonster__buttons-ctr'>
+                  {message}
+                  <button className='NewMonster__button'
+                    onClick={this.handleSaveClick}
+                    type='button'>
+                    <i className="material-icons">
+                      add
+                    </i>
+                    Save Monster
+                  </button>
+                  {resetButton}
+                  <button className='NewMonster__button-randomize'
+                    onClick={this.handleRandomizeClick}
+                    type='button'>
+                    <i className="material-icons">
+                      help_outline
+                    </i>
+                    Randomize
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     )
   }
 }
@@ -315,4 +345,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewMonster)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewMonster))

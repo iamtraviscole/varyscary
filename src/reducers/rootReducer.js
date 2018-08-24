@@ -196,6 +196,7 @@ const reducer = (state = initialState, action) => {
                 }
     case actionTypes.RESET_MONSTER:
       return {...state,
+        monsterName: '',
         monster: {
           ...initialState.monster
         }
