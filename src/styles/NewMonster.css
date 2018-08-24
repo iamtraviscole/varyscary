@@ -150,46 +150,6 @@
   color: var(--main-color);
 }
 
-.NewMonster__feature {
-  position: absolute;
-  height: 380px;
-  width: 380px;
-  top: 0;
-  left: 0;
-}
-
-.NewMonster__body {
-  z-index: 550;
-}
-
-.NewMonster__face {
-  z-index: 560;
-}
-
-.NewMonster__headwear {
-  z-index: 540;
-}
-
-.NewMonster__eyes {
-  z-index: 570;
-}
-
-.NewMonster__mouth {
-  z-index: 580;
-}
-
-.NewMonster__left-arm {
-  z-index: 520;
-}
-
-.NewMonster__right-arm {
-  z-index: 520;
-}
-
-.NewMonster__legs {
-  z-index: 530;
-}
-
 .NewMonster__name-input {
   font-size: 1em;
   text-align: center;

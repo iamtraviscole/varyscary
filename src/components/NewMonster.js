@@ -6,6 +6,7 @@ import '../styles/NewMonster.css'
 import * as actions from '../actions/actions'
 import * as monsterUtil from '../utils/monster'
 
+import MonsterFromStore from './MonsterFromStore'
 import MonsterSavedModal from './MonsterSavedModal'
 import NewMonsterButton from './NewMonsterButton'
 import NewMonsterBodies from './NewMonsterPanels/NewMonsterBodies'
@@ -16,15 +17,6 @@ import NewMonsterMouths from './NewMonsterPanels/NewMonsterMouths'
 import NewMonsterLeftArms from './NewMonsterPanels/NewMonsterLeftArms'
 import NewMonsterRightArms from './NewMonsterPanels/NewMonsterRightArms'
 import NewMonsterLegs from './NewMonsterPanels/NewMonsterLegs'
-
-import * as MonsterBodies from './MonsterFeatures/MonsterBodies'
-import * as MonsterFaces from './MonsterFeatures/MonsterFaces'
-import * as MonsterHeadwear from './MonsterFeatures/MonsterHeadwear'
-import * as MonsterEyes from './MonsterFeatures/MonsterEyes'
-import * as MonsterMouths from './MonsterFeatures/MonsterMouths'
-import * as MonsterLeftArms from './MonsterFeatures/MonsterLeftArms'
-import * as MonsterRightArms from './MonsterFeatures/MonsterRightArms'
-import * as MonsterLegs from './MonsterFeatures/MonsterLegs'
 
 class NewMonster extends PureComponent {
   state = {
@@ -182,48 +174,6 @@ class NewMonster extends PureComponent {
       </div>
     )
 
-    let BodyComponent = MonsterBodies[monster.body.type]
-    let FaceComponent = MonsterFaces[monster.face.type]
-    let HeadwearComponent = MonsterHeadwear[monster.headwear.type]
-    let EyesComponent = MonsterEyes[monster.eyes.type]
-    let MouthComponent = MonsterMouths[monster.mouth.type]
-    let LeftArmComponent = MonsterLeftArms[monster.leftArm.type]
-    let RightArmComponent = MonsterRightArms[monster.rightArm.type]
-    let LegsComponent = MonsterLegs[monster.legs.type]
-
-    const featureComponent = (FeatureComponent, featureName) => {
-      return monster[featureName].type
-        ? <FeatureComponent fillColor={monster[featureName].fillColor} />
-        : null
-    }
-
-    let monsterFeatures = <Fragment>
-      <div className='NewMonster__feature NewMonster__body'>
-        {featureComponent(BodyComponent, 'body')}
-      </div>
-      <div className='NewMonster__feature NewMonster__face'>
-        {featureComponent(FaceComponent, 'face')}
-      </div>
-      <div className='NewMonster__feature NewMonster__headwear'>
-        {featureComponent(HeadwearComponent, 'headwear')}
-      </div>
-      <div className='NewMonster__feature NewMonster__eyes'>
-        {featureComponent(EyesComponent, 'eyes')}
-      </div>
-      <div className='NewMonster__feature NewMonster__mouth'>
-        {featureComponent(MouthComponent, 'mouth')}
-      </div>
-      <div className='NewMonster__feature NewMonster__left-arm'>
-        {featureComponent(LeftArmComponent, 'leftArm')}
-      </div>
-      <div className='NewMonster__feature NewMonster__right-arm'>
-        {featureComponent(RightArmComponent, 'rightArm')}
-      </div>
-      <div className='NewMonster__feature NewMonster__legs'>
-        {featureComponent(LegsComponent, 'legs')}
-      </div>
-    </Fragment>
-
     let resetButton = <button className='NewMonster__button-reset'
       onClick={this.handleResetClick}
       type='button'>
@@ -293,7 +243,7 @@ class NewMonster extends PureComponent {
             <div className='NewMonster__right-grid-ctr'>
               <div className={monsterContainerStyle}>
                 <div className='NewMonster__monster-ctr'>
-                  {noFeatureSelected ? monsterDirections : monsterFeatures }
+                  {noFeatureSelected ? monsterDirections : <MonsterFromStore /> }
                 </div>
                 <input className='NewMonster__name-input'
                   name='name'

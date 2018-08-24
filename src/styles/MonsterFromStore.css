@@ -1,0 +1,39 @@
+.MonsterFromStore__feature {
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  top: 0;
+  left: 0;
+}
+
+.MonsterFromStore__body {
+  z-index: 550;
+}
+
+.MonsterFromStore__face {
+  z-index: 560;
+}
+
+.MonsterFromStore__headwear {
+  z-index: 540;
+}
+
+.MonsterFromStore__eyes {
+  z-index: 570;
+}
+
+.MonsterFromStore__mouth {
+  z-index: 580;
+}
+
+.MonsterFromStore__left-arm {
+  z-index: 520;
+}
+
+.MonsterFromStore__right-arm {
+  z-index: 520;
+}
+
+.MonsterFromStore__legs {
+  z-index: 530;
+}
