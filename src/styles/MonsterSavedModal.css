@@ -19,12 +19,13 @@
 .MonsterSavedModal__inner-ctr {
   margin: 0 auto;
   width: 250px;
-  padding: 10px 20px 20px 20px;
+  padding: 20px;
   background: var(--main-container-color);
   border-radius: 3px;
 }
 
 .MonsterSavedModal__monster-ctr {
+  position: relative;
   margin: 0 auto;
   text-align: center;
   width: 248px;
@@ -40,7 +41,7 @@
   font-size: 1.2em;
   color: var(--main-color);
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .MonsterSavedModal__saved i {

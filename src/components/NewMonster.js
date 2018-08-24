@@ -25,7 +25,7 @@ class NewMonster extends PureComponent {
     activePanel: 'bodies',
     resetClicked: false,
     message: null,
-    monsterSaved: false
+    showModal: false
   }
 
   setShowArrows = () => {
@@ -76,17 +76,24 @@ class NewMonster extends PureComponent {
   }
 
   handleSaveClick = () => {
-    // this.setState({monsterSaved: true})
     if (this.props.monster.body.type) {
       monsterUtil.createMonster(this.props.monsterName, this.props.monster)
       .then((saved) => {
         if (saved) {
-          this.setState({monsterSaved: true})
+          this.setState({showModal: true})
         }
       })
     } else {
       this.setState({message: 'Body required'})
     }
+  }
+
+  setShowModal = (bool) => {
+    this.setState({showModal: bool})
+  }
+
+  setActivePanelBodies = () => {
+    this.setState({activePanel: 'bodies'})
   }
 
   handleRandomizeClick = () => {
@@ -203,7 +210,11 @@ class NewMonster extends PureComponent {
 
     return (
       <Fragment>
-        {this.state.monsterSaved ? <MonsterSavedModal /> : null}
+        {this.state.showModal
+          ? <MonsterSavedModal setShowModal={this.setShowModal}
+              resetMonster={this.props.resetMonster}
+              setActivePanelBodies={this.setActivePanelBodies} />
+          : null}
         <div className='NewMonster'>
           <div className='NewMonster__ctr'>
             <div className='NewMonster__left-grid-ctr'>
