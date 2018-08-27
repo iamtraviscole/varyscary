@@ -35,8 +35,12 @@ export const createMonster = (monsterName, monsterObj) => {
     return true
   })
   .catch(err => {
-    console.log(err);
+    console.log(err.response);
     store.dispatch(actions.fetchEnded())
+    if (err.response.status === 401) {
+      store.dispatch(actions.logout())
+      store.dispatch(actions.setMessage('Session expired. Please log in.'))
+    }
     return false
   })
   return saved

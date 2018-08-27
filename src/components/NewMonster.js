@@ -24,7 +24,7 @@ class NewMonster extends PureComponent {
     fixedMonsterCtr: false,
     activePanel: 'bodies',
     resetClicked: false,
-    message: null,
+    errorMessage: null,
     showModal: false
   }
 
@@ -44,6 +44,11 @@ class NewMonster extends PureComponent {
 
   componentDidMount = () => {
     this.setShowArrows()
+    if (!this.props.monster.body.type) {
+      this.setState({errorMessage: 'Body required'})
+    } else {
+      this.setState({errorMessage: null})
+    }
     window.addEventListener('resize', this.setShowArrows)
     window.addEventListener('scroll', this.setFixMonster)
   }
@@ -54,8 +59,12 @@ class NewMonster extends PureComponent {
   }
 
   componentDidUpdate = () => {
-    if (this.props.monster.body.type) {
-      this.setState({message: null})
+    if (!this.props.monster.body.type) {
+      this.setState({errorMessage: 'Body required'})
+    } else if (this.props.monsterName.length > 25) {
+      this.setState({errorMessage: 'Name too long (25 characters max)'})
+    } else {
+      this.setState({errorMessage: null})
     }
   }
 
@@ -76,15 +85,13 @@ class NewMonster extends PureComponent {
   }
 
   handleSaveClick = () => {
-    if (this.props.monster.body.type) {
+    if (!this.state.errorMessage) {
       monsterUtil.createMonster(this.props.monsterName, this.props.monster)
       .then((saved) => {
         if (saved) {
           this.setState({showModal: true})
         }
       })
-    } else {
-      this.setState({message: 'Body required'})
     }
   }
 
@@ -119,9 +126,9 @@ class NewMonster extends PureComponent {
   render() {
     const { monster } = this.props
 
-    let message = this.state.message
-      ? <div className='NewMonster__message'>
-          <span className="material-icons">error_outline</span>{this.state.message}
+    let errorMessage = this.state.errorMessage
+      ? <div className='NewMonster__error-message'>
+          <span className="material-icons">error_outline</span>{this.state.errorMessage}
         </div>
       : null
 
@@ -180,6 +187,11 @@ class NewMonster extends PureComponent {
         </button>
       </div>
     )
+
+    let saveButtonClass = 'NewMonster__button'
+    if (this.state.errorMessage) {
+      saveButtonClass = 'NewMonster__button--disabled'
+    }
 
     let resetButton = <button className='NewMonster__button-reset'
       onClick={this.handleResetClick}
@@ -263,13 +275,17 @@ class NewMonster extends PureComponent {
                   value={this.props.monsterName}
                   onChange={this.handleNameInputChange} />
                 <div className='NewMonster__buttons-ctr'>
-                  {message}
-                  <button className='NewMonster__button'
+                  {errorMessage}
+                  <button className={saveButtonClass}
                     onClick={this.handleSaveClick}
                     type='button'>
-                    <i className="material-icons">
-                      add
-                    </i>
+                    {this.state.errorMessage
+                      ? <i className="material-icons">
+                        not_interested
+                      </i>
+                      : <i className="material-icons">
+                          add
+                        </i>}
                     Save Monster
                   </button>
                   {resetButton}
