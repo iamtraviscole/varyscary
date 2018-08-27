@@ -47,17 +47,23 @@ class Signup extends Component {
   }
 
   handleUsernameLeave = () => {
-    if (this.state.user.username.length === 0) {
+    if (this.state.user.username.length < 3) {
       this.setState({
         errors: {...this.state.errors,
-          username: 'Username can\'t be blank'
+          username: 'Username too short (3 characters min)'
+        }
+      })
+    } else if (this.state.user.username.length > 25) {
+      this.setState({
+        errors: {...this.state.errors,
+          username: 'Username too long (25 characters max)'
         }
       })
     } else if (this.state.user.username.includes(' ')) {
-      this.setState({
-        errors: {...this.state.errors,
-          username: 'Username can\'t contain spaces'
-        }
+        this.setState({
+          errors: {...this.state.errors,
+            username: 'Username can\'t contain spaces'
+          }
       })
     } else {
       checkUsernameAvail(this.state.user.username).then((avail) => {
