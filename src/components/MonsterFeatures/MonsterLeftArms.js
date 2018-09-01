@@ -14,7 +14,7 @@ export const LeftArmThin = (props) => {
   )
 }
 
-export const LeftArmThinDown = (props) => {
+export const LeftArmThinUp = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}
@@ -26,7 +26,7 @@ export const LeftArmThinDown = (props) => {
   )
 }
 
-export const LeftArmThinUp = (props) => {
+export const LeftArmThinDown = (props) => {
   return (
     <svg xmlns={XMLNS} viewBox='0 0 375 375'>
       <path fill={props.fillColor}

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import '../styles/Signup.css'
-import { signupAuthorizeAndLogin, checkUsernameAvail, checkEmailAvail } from '../utils/user'
+import * as userUtil from '../utils/user'
 
 import Spinner from './Spinner'
 
@@ -34,7 +34,7 @@ class Signup extends Component {
   handleSignupSubmit = (event) => {
     event.preventDefault()
     if (this.noFieldErrors() && this.state.user.username) {
-      signupAuthorizeAndLogin(this.state.user, this.props.history)
+      userUtil.signupAuthorizeAndLogin(this.state.user, this.props.history)
     }
   }
 
@@ -66,7 +66,7 @@ class Signup extends Component {
           }
       })
     } else {
-      checkUsernameAvail(this.state.user.username).then((avail) => {
+      userUtil.checkUsernameAvail(this.state.user.username).then((avail) => {
         if (!avail) {
           this.setState({
             errors: {...this.state.errors,
@@ -104,7 +104,7 @@ class Signup extends Component {
         }
       })
     } else {
-      checkEmailAvail(this.state.user.email).then((avail) => {
+      userUtil.checkEmailAvail(this.state.user.email).then((avail) => {
         if (!avail) {
           this.setState({
             errors: {...this.state.errors,
