@@ -8,3 +8,19 @@
   margin-top: 25px;
   display: inline-block;
 }
+
+.Monsters__monster-outer-ctr {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  text-align: center;
+  height: 225px;
+  width: 225px;
+  border-radius: 3px;
+  background: white;
+  margin: 20px;
+}
+
+.Monsters__spinner-ctr {
+  margin-top: 150px;
+}

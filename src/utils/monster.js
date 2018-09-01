@@ -45,3 +45,18 @@ export const createMonster = (monsterName, monsterObj) => {
   })
   return saved
 }
+
+export const getMonsters = (sortBy, offset) => {
+  store.dispatch(actions.fetchStarted())
+  let monsters = axios.get(`http://localhost:4000/api/monsters?sort_by=${sortBy}&limit=100&offset=${offset}`)
+  .then(res => {
+    console.log(res.data);
+    store.dispatch(actions.fetchEnded())
+    return res.data
+  })
+  .catch(err => {
+    console.log(err);
+    store.dispatch(actions.fetchEnded())
+  })
+  return monsters
+}

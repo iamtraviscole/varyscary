@@ -1,8 +1,93 @@
-.Monster {
-  display: inline-block;
-  padding: 25px;
-  margin: 25px;
-  border: 1px solid var(--input-border-color);
+.Monster__monster-ctr {
+  height: inherit;
+  width: inherit;
+}
+
+.Monster__details-ctr {
+  box-sizing: border-box;
+  position: relative;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  padding: 10px;
+  background-color: var(--main-color);
+  opacity: .9;
   border-radius: 3px;
-  background-color: var(--main-container-color);
+  z-index: 1000;
+}
+
+.Monster__monster-name {
+  position: absolute;
+  width: inherit;
+  text-align: center;
+  font-size: 1.2em;
+  color: var(--button-text-color);
+  overflow: hidden !important;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.Monster__tags {
+  position: absolute;
+  top: 25%;
+  width: inherit;
+  height: 50%;
+  text-align: center;
+  font-size: .75em;
+  color: var(--button-text-color);
+  overflow-y: scroll;
+}
+
+.Monster__creator-name {
+  position: absolute;
+  bottom: 6px;
+  text-align: right;
+  width: inherit;
+  font-size: .85em;
+  color: var(--button-text-color);
+  border-radius: 3px;
+  overflow: hidden !important;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.Monster__feature {
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  top: 0;
+  left: 0;
+}
+
+.Monster__body {
+  z-index: 550;
+}
+
+.Monster__face {
+  z-index: 560;
+}
+
+.Monster__headwear {
+  z-index: 540;
+}
+
+.Monster__eyes {
+  z-index: 570;
+}
+
+.Monster__mouth {
+  z-index: 580;
+}
+
+.Monster__left-arm {
+  z-index: 520;
+}
+
+.Monster__right-arm {
+  z-index: 520;
+}
+
+.Monster__legs {
+  z-index: 530;
 }
