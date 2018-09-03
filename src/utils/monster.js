@@ -48,7 +48,7 @@ export const createMonster = (monsterName, monsterObj) => {
 
 export const getMonsters = (sortBy, offset) => {
   store.dispatch(actions.fetchStarted())
-  let monsters = axios.get(`http://localhost:4000/api/monsters?sort_by=${sortBy}&limit=100&offset=${offset}`)
+  let monsters = axios.get(`http://localhost:4000/api/monsters?sort_by=${sortBy}&limit=50&offset=${offset}`)
   .then(res => {
     console.log(res.data);
     store.dispatch(actions.fetchEnded())
