@@ -234,7 +234,7 @@ class NewMonster extends PureComponent {
                 {this.state.showArrows
                   ? <div className='NewMonster__left-arrow'
                       onClick={this.handleLeftArrowClick}>
-                        <i className='material-icons'>arrow_back_ios</i>
+                        <i className='material-icons'>keyboard_arrow_left</i>
                     </div>
                   : null
                 }
@@ -254,7 +254,7 @@ class NewMonster extends PureComponent {
                 {this.state.showArrows
                   ? <div className='NewMonster__right-arrow'
                       onClick={this.handleRightArrowClick}>
-                        <i className='material-icons'>arrow_forward_ios</i>
+                        <i className='material-icons'>keyboard_arrow_right</i>
                     </div>
                   : null
                 }
