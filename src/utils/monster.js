@@ -60,3 +60,18 @@ export const getMonsters = (sortBy, offset) => {
   })
   return monsters
 }
+
+export const getMonster = (monsterId) => {
+  store.dispatch(actions.fetchStarted())
+  let monster = axios.get(`http://localhost:4000/api/monsters/${monsterId}`)
+  .then(res => {
+    console.log(res.data);
+    store.dispatch(actions.fetchEnded())
+    return res.data
+  })
+  .catch(err => {
+    console.log(err);
+    store.dispatch(actions.fetchEnded())
+  })
+  return monster
+}

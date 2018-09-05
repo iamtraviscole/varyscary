@@ -14,6 +14,7 @@ import Signup from './Signup'
 import Logout from './Logout'
 import NewMonster from './NewMonster'
 import Monsters from './Monsters'
+import Monster from './Monster'
 import NoMatch from './NoMatch'
 
 class App extends PureComponent {
@@ -72,6 +73,7 @@ class App extends PureComponent {
             isLoggedIn={isLoggedIn}
             setMessage={this.props.setMessage}
           />
+          <Route exact path='/monsters/:id' component={Monster} />
           <Route component={NoMatch} />
         </Switch>
       </div>

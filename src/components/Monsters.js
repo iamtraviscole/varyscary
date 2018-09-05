@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import '../styles/Monsters.css'
 import * as monsterUtil from '../utils/monster'
 
-import Monster from './Monster'
+import MonsterFromProps from './MonsterFromProps'
 import NoAuthNavBar from './NoAuthNavBar'
 import Spinner from './Spinner'
 
@@ -71,8 +71,8 @@ class Monsters extends Component  {
     let monstersArr = this.state.monsters.map(monster => {
       return (
         <div key={monster.id} className='Monsters__monster-ctr'>
-          <Monster
-            name={monster.name}
+          <MonsterFromProps
+            name={monster.name} id={monster.id}
             bodyType={monster.body_type} bodyFill={monster.body_fill}
             faceType={monster.face_type} faceFill={monster.face_fill}
             headwearType={monster.headwear_type} headwearFill={monster.headwear_fill}
@@ -81,7 +81,7 @@ class Monsters extends Component  {
             rightArmType={monster.right_arm_type} rightArmFill={monster.right_arm_fill}
             leftArmType={monster.left_arm_type} leftArmFill={monster.left_arm_fill}
             legsType={monster.legs_type} legsFill={monster.legs_fill}
-            creator={monster.user.username}
+            username={monster.user.username}
             withDetails={true}
           />
         </div>

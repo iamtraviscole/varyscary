@@ -1,0 +1,101 @@
+import React, { Component, Fragment } from 'react'
+import { withRouter, Link } from 'react-router-dom'
+
+import '../styles/MonsterFromProps.css'
+
+import * as MonsterBodies from './MonsterFeatures/MonsterBodies'
+import * as MonsterFaces from './MonsterFeatures/MonsterFaces'
+import * as MonsterHeadwear from './MonsterFeatures/MonsterHeadwear'
+import * as MonsterEyes from './MonsterFeatures/MonsterEyes'
+import * as MonsterMouths from './MonsterFeatures/MonsterMouths'
+import * as MonsterLeftArms from './MonsterFeatures/MonsterLeftArms'
+import * as MonsterRightArms from './MonsterFeatures/MonsterRightArms'
+import * as MonsterLegs from './MonsterFeatures/MonsterLegs'
+
+class Monster extends Component {
+  state = {
+    showDetails: false
+  }
+
+  handleMonsterEnter = (event) => {
+    this.setState({showDetails: true})
+  }
+
+  handleMonsterLeave = () => {
+    this.setState({showDetails: false})
+  }
+
+  render() {
+    const monster = this.props
+
+    let BodyComponent = MonsterBodies[monster.bodyType]
+    let FaceComponent = MonsterFaces[monster.faceType]
+    let HeadwearComponent = MonsterHeadwear[monster.headwearType]
+    let EyesComponent = MonsterEyes[monster.eyesType]
+    let MouthComponent = MonsterMouths[monster.mouthType]
+    let LeftArmComponent = MonsterLeftArms[monster.leftArmType]
+    let RightArmComponent = MonsterRightArms[monster.rightArmType]
+    let LegsComponent = MonsterLegs[monster.legsType]
+
+    const featureComponent = (FeatureComponent, fill) => {
+      return FeatureComponent ?
+        <FeatureComponent fillColor={monster[fill]} />
+        : null
+    }
+
+    let monsterLink = `/monsters/${monster.id}`
+    let userLink = `/users/${monster.username}`
+
+    return (
+      <div className='MonsterFromProps__monster-ctr'
+        onMouseEnter={this.handleMonsterEnter}
+        onMouseLeave={this.handleMonsterLeave}>
+        {this.props.withDetails ?
+          this.state.showDetails ?
+            <Fragment>
+              <Link to={monsterLink} className='MonsterFromProps__details-ctr' onClick={this.handleDetailsClick}>
+                {monster.name ?
+                  <div className='MonsterFromProps__monster-name'>
+                    {monster.name}
+                  </div>
+                  : null}
+                  <div className='MonsterFromProps__tags'>
+                    #should, #i, #add, #tags?
+                  </div>
+              </Link>
+              <div className='MonsterFromProps__username'>
+                <Link to={userLink}>{monster.username}</Link>
+              </div>
+            </Fragment>
+            :null
+          :null}
+        <div className='MonsterFromProps__feature MonsterFromProps__body'>
+          {featureComponent(BodyComponent, 'bodyFill')}
+        </div>
+        <div className='MonsterFromProps__feature MonsterFromProps__face'>
+          {featureComponent(FaceComponent, 'faceFill')}
+        </div>
+        <div className='MonsterFromProps__feature MonsterFromProps__headwear'>
+          {featureComponent(HeadwearComponent, 'headwearFill')}
+        </div>
+        <div className='MonsterFromProps__feature MonsterFromProps__eyes'>
+          {featureComponent(EyesComponent, 'eyesFill')}
+        </div>
+        <div className='MonsterFromProps__feature MonsterFromProps__mouth'>
+          {featureComponent(MouthComponent, 'mouthFill')}
+        </div>
+        <div className='MonsterFromProps__feature MonsterFromProps__rightArm'>
+          {featureComponent(RightArmComponent, 'rightArmFill')}
+        </div>
+        <div className='MonsterFromProps__feature MonsterFromProps__leftArm'>
+          {featureComponent(LeftArmComponent, 'leftArmFill')}
+        </div>
+        <div className='MonsterFromProps__feature MonsterFromProps__legs'>
+          {featureComponent(LegsComponent, 'legsFill')}
+        </div>
+      </div>
+    )
+  }
+}
+
+export default withRouter(Monster)

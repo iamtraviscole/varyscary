@@ -1,93 +1,84 @@
+.Monster {
+  text-align: center;
+  grid-area: content;
+  margin-top: 25px;
+}
+
+.Monster__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -32px 0 0 -32px;
+}
+
+
+.Monster__name {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
 .Monster__monster-ctr {
-  height: inherit;
-  width: inherit;
-}
-
-.Monster__details-ctr {
-  box-sizing: border-box;
   position: relative;
-  top: 5%;
-  left: 5%;
-  width: 90%;
-  height: 90%;
-  padding: 10px;
-  background-color: var(--main-color);
-  opacity: .9;
+  display: inline-block;
+  height: 350px;
+  width: 350px;
+  border: 1px solid var(--input-border-color);
   border-radius: 3px;
-  z-index: 1000;
+  background: white;
 }
 
-.Monster__monster-name {
-  position: absolute;
-  width: inherit;
+.Monster__created-by-ctr {
+  margin: 0 auto;
+  width: 340px;
+  padding: 0 5px;
   text-align: center;
-  font-size: 1.2em;
-  color: var(--button-text-color);
-  overflow: hidden !important;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  margin-bottom: 25px;
 }
 
-.Monster__tags {
-  position: absolute;
-  top: 25%;
-  width: inherit;
-  height: 50%;
+.Monster__created-by {
+  display: inline;
+  margin-right: 5px;
+  font-size: .95em;
+}
+
+.Monster__creator {
+  display: inline;
+  color: var(--main-color);
+  font-size: .95em;
+  font-weight: bold;
+}
+
+.Monster__created-on {
+  display: inline;
+  font-size: .8em;
+  margin-right: 5px;
+}
+
+.Monster__created-on-date {
+  display: inline;
+  font-size: .8em;
+}
+
+.Monster__tags-header {
+  position: relative;
+  margin: 0 auto;
+  font-size: .9em;
+  color: var(--light-text-color);
+}
+
+.Monster__tags-header i {
+  position: relative;
+  top: 3px;
+  font-size: 1.1em;
+  margin-right: 2px;
+}
+
+.Monster__tags-ctr {
+  margin: 0 auto;
+  width: 310px;
+  padding: 0 20px;
   text-align: center;
-  font-size: .75em;
-  color: var(--button-text-color);
-  overflow-y: scroll;
-}
-
-.Monster__creator-name {
-  position: absolute;
-  bottom: 6px;
-  text-align: right;
-  width: inherit;
-  font-size: .85em;
-  color: var(--button-text-color);
-  border-radius: 3px;
-  overflow: hidden !important;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.Monster__feature {
-  position: absolute;
-  height: inherit;
-  width: inherit;
-  top: 0;
-  left: 0;
-}
-
-.Monster__body {
-  z-index: 550;
-}
-
-.Monster__face {
-  z-index: 560;
-}
-
-.Monster__headwear {
-  z-index: 540;
-}
-
-.Monster__eyes {
-  z-index: 570;
-}
-
-.Monster__mouth {
-  z-index: 580;
-}
-
-.Monster__left-arm {
-  z-index: 520;
-}
-
-.Monster__right-arm {
-  z-index: 520;
-}
-
-.Monster__legs {
-  z-index: 530;
+  font-size: .8em;
+  color: var(--light-text-color);
 }
