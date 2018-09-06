@@ -42,7 +42,7 @@ class Monster extends Component {
             </div>
             <div className='Monster__created-by-ctr'>
               <div className='Monster__created-by'>by</div>
-              <Link to={'/users/' + monster.user.username} className='Monster__creator'>{monster.user.username}</Link>
+              <Link to={'/' + monster.user.username} className='Monster__creator'>{monster.user.username}</Link>
               <br></br>
               <div className='Monster__created-on'>on</div>
               <div className='Monster__created-on-date'>{monster.created_at_day_year}</div>

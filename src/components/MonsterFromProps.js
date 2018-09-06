@@ -43,9 +43,6 @@ class Monster extends Component {
         : null
     }
 
-    let monsterLink = `/monsters/${monster.id}`
-    let userLink = `/users/${monster.username}`
-
     return (
       <div className='MonsterFromProps__monster-ctr'
         onMouseEnter={this.handleMonsterEnter}
@@ -53,7 +50,9 @@ class Monster extends Component {
         {this.props.withDetails ?
           this.state.showDetails ?
             <Fragment>
-              <Link to={monsterLink} className='MonsterFromProps__details-ctr' onClick={this.handleDetailsClick}>
+              <Link to={'/monsters/' + monster.id}
+                className='MonsterFromProps__details-ctr'
+                onClick={this.handleDetailsClick}>
                 {monster.name ?
                   <div className='MonsterFromProps__monster-name'>
                     {monster.name}
@@ -64,7 +63,7 @@ class Monster extends Component {
                   </div>
               </Link>
               <div className='MonsterFromProps__username'>
-                <Link to={userLink}>{monster.username}</Link>
+                <Link to={'/' + monster.username}>{monster.username}</Link>
               </div>
             </Fragment>
             :null

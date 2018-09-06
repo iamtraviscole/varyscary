@@ -3,6 +3,8 @@ import axios from 'axios'
 import store from '../store/store'
 import * as actions from '../actions/actions'
 
+const MONSTER_URL = 'http://localhost:4000/api/monsters'
+
 export const createMonster = (monsterName, monsterObj) => {
   store.dispatch(actions.fetchStarted())
   const monster = {
@@ -25,7 +27,7 @@ export const createMonster = (monsterName, monsterObj) => {
     'legs_fill': monsterObj.legs.fillColor
   }
   const token = localStorage.getItem('user_token')
-  let saved = axios.post('http://localhost:4000/api/monsters',
+  let saved = axios.post(MONSTER_URL,
     {'monster': monster},
     {'headers': {'Authorization': token}}
   )
@@ -46,9 +48,12 @@ export const createMonster = (monsterName, monsterObj) => {
   return saved
 }
 
-export const getMonsters = (sortBy, offset) => {
+export const getMonsters = (sortBy, limit, offset) => {
   store.dispatch(actions.fetchStarted())
-  let monsters = axios.get(`http://localhost:4000/api/monsters?sort_by=${sortBy}&limit=50&offset=${offset}`)
+  let monsters = axios.get(MONSTER_URL +
+    `?sort_by=${sortBy}` +
+    `&limit=${limit}` +
+    `&offset=${offset}`)
   .then(res => {
     console.log(res.data);
     store.dispatch(actions.fetchEnded())
@@ -63,7 +68,7 @@ export const getMonsters = (sortBy, offset) => {
 
 export const getMonster = (monsterId) => {
   store.dispatch(actions.fetchStarted())
-  let monster = axios.get(`http://localhost:4000/api/monsters/${monsterId}`)
+  let monster = axios.get(MONSTER_URL + `/${monsterId}`)
   .then(res => {
     console.log(res.data);
     store.dispatch(actions.fetchEnded())

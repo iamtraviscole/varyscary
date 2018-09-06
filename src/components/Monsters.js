@@ -11,6 +11,7 @@ import Spinner from './Spinner'
 class Monsters extends Component  {
   state = {
     sortBy: 'newest',
+    limit: 50,
     offset: 0,
     monsters: [],
     initialFetch: true,
@@ -18,7 +19,8 @@ class Monsters extends Component  {
   }
 
   componentDidMount = () => {
-    monsterUtil.getMonsters(this.state.sortBy, this.state.offset)
+    monsterUtil.getMonsters(this.state.sortBy, this.state.limit,
+      this.state.offset)
     .then(monstersArr => {
       let monsters = []
       monstersArr.forEach(monster => {
@@ -31,7 +33,8 @@ class Monsters extends Component  {
 
   componentDidUpdate = (prevProps, prevState) => {
     if (this.state.sortBy !== prevState.sortBy) {
-      monsterUtil.getMonsters(this.state.sortBy, this.state.offset)
+      monsterUtil.getMonsters(this.state.sortBy, this.state.limit,
+        this.state.offset)
       .then(monstersArr => {
         let monsters = []
         monstersArr.forEach(monster => {
@@ -49,8 +52,8 @@ class Monsters extends Component  {
   }
 
   handleLoadClick = () => {
-    this.setState({offset: this.state.offset + 50})
-    monsterUtil.getMonsters(this.state.sortBy, this.state.offset + 50)
+    monsterUtil.getMonsters(this.state.sortBy, this.state.limit,
+      this.state.offset + this.state.limit)
     .then(monstersArr => {
       if (monstersArr.length < 50) {
         this.setState({showLoadMore: false})
@@ -60,6 +63,7 @@ class Monsters extends Component  {
         monsters.push(monster)
       })
       this.setState({monsters: monsters})
+      this.setState({offset: this.state.offset + this.state.limit})
     })
   }
 

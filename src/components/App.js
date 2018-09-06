@@ -16,6 +16,7 @@ import NewMonster from './NewMonster'
 import Monsters from './Monsters'
 import Monster from './Monster'
 import NoMatch from './NoMatch'
+import User from './User'
 
 class App extends PureComponent {
 
@@ -74,6 +75,7 @@ class App extends PureComponent {
             setMessage={this.props.setMessage}
           />
           <Route exact path='/monsters/:id' component={Monster} />
+          <Route exact path='/:username' component={User} />
           <Route component={NoMatch} />
         </Switch>
       </div>
