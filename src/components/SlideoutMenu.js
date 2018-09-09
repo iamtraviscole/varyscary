@@ -12,7 +12,7 @@ const SlideoutMenu = (props) => {
         </button>
       </div>
       <ul className='SlideoutMenu__ul'>
-        <li className='SlideoutMenu__li'><NavLink to={'/' + props.username}>Home</NavLink></li>
+        <li className='SlideoutMenu__li'><NavLink to={'/home'}>Home</NavLink></li>
         <li className='SlideoutMenu__li'><NavLink to='/monsters/new'>Make</NavLink></li>
         <li className='SlideoutMenu__li'><NavLink to='/monsters'>Explore</NavLink></li>
         <li className='SlideoutMenu__li'><NavLink to='/logout'>Log Out</NavLink></li>

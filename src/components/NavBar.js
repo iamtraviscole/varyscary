@@ -23,7 +23,7 @@ class NavBar extends Component {
   render () {
     let navItems = (
       <div className='NavBar__right'>
-        <li className='NavBar__li'><NavLink to={'/' + this.props.username}>Home</NavLink></li>
+        <li className='NavBar__li'><NavLink to='/home'>Home</NavLink></li>
         <li className='NavBar__li'><NavLink to='/monsters/new'>Make</NavLink></li>
         <li className='NavBar__li'><NavLink to='/monsters'>Explore</NavLink></li>
         <li className='NavBar__li'>

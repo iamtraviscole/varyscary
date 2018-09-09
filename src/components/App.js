@@ -63,7 +63,7 @@ class App extends PureComponent {
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/logout' component={Logout} />
-          <AuthRoute exact path={'/' + this.props.username}
+          <AuthRoute exact path='/home'
             component={Home}
             isLoggedIn={isLoggedIn}
             setMessage={this.props.setMessage}
