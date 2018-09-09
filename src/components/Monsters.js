@@ -21,9 +21,9 @@ class Monsters extends Component  {
   componentDidMount = () => {
     monsterUtil.getMonsters(this.state.sortBy, this.state.limit,
       this.state.offset)
-    .then(monstersArr => {
+    .then(monsts => {
       let monsters = []
-      monstersArr.forEach(monster => {
+      monsts.forEach(monster => {
         monsters.push(monster)
       })
       this.setState({monsters: monsters})
@@ -35,9 +35,9 @@ class Monsters extends Component  {
     if (this.state.sortBy !== prevState.sortBy) {
       monsterUtil.getMonsters(this.state.sortBy, this.state.limit,
         this.state.offset)
-      .then(monstersArr => {
+      .then(monsts => {
         let monsters = []
-        monstersArr.forEach(monster => {
+        monsts.forEach(monster => {
           monsters.push(monster)
         })
         this.setState({monsters: monsters})
@@ -54,12 +54,12 @@ class Monsters extends Component  {
   handleLoadClick = () => {
     monsterUtil.getMonsters(this.state.sortBy, this.state.limit,
       this.state.offset + this.state.limit)
-    .then(monstersArr => {
-      if (monstersArr.length < 50) {
+    .then(monsts => {
+      if (monsts.length < this.state.limit) {
         this.setState({showLoadMore: false})
       }
       let monsters = [...this.state.monsters]
-      monstersArr.forEach(monster => {
+      monsts.forEach(monster => {
         monsters.push(monster)
       })
       this.setState({monsters: monsters})
@@ -101,6 +101,26 @@ class Monsters extends Component  {
       )
     }
 
+    let loadButton
+
+    if (this.state.showLoadMore && this.state.monsters.length < this.state.limit) {
+      loadButton = null
+    } else if (this.state.showLoadMore && this.state.monsters.length >= this.state.limit) {
+        loadButton = (
+          <button className='Monsters__load-more-btn' onClick={this.handleLoadClick}>
+            Load More
+            <br></br>
+            <i className='material-icons'>keyboard_arrow_down</i>
+          </button>
+        )
+    } else {
+        loadButton = (
+          <div className='Monsters__all-loaded'>
+            That's all of them!
+          </div>
+      )
+    }
+
     return (
       <Fragment>
         {noAuthNav}
@@ -125,17 +145,7 @@ class Monsters extends Component  {
           </div>
           {!this.state.initialFetch ?
             <div className='Monsters__load-more-ctr'>
-              {this.state.showLoadMore ?
-                <button className='Monsters__load-more-btn' onClick={this.handleLoadClick}>
-                  Load More
-                  <br></br>
-                  <i className='material-icons'>keyboard_arrow_down</i>
-                </button>
-                : <div className='Monsters__all-loaded'>
-                    Thats all of them!
-                    <br></br>
-                    <i className='material-icons'>mood</i>
-                  </div>}
+              {loadButton}
               <button className='Monsters__to-top-btn' onClick={this.handleToTopClick}>
                 Top<i className='material-icons'>arrow_upward</i>
               </button>
