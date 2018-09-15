@@ -26,10 +26,9 @@ export const createMonster = (monsterName, monsterObj) => {
   	'legs_type': monsterObj.legs.type,
     'legs_fill': monsterObj.legs.fillColor
   }
-  const token = localStorage.getItem('user_token')
   let saved = axios.post(MONSTER_URL,
     {'monster': monster},
-    {'headers': {'Authorization': token}}
+    {'headers':{'Authorization': localStorage.getItem('user_token')}}
   )
   .then(res => {
     console.log(res.data);
@@ -77,6 +76,35 @@ export const getMonster = (monsterId) => {
   .catch(err => {
     console.log(err);
     store.dispatch(actions.fetchEnded())
+  })
+  return monster
+}
+
+export const likeMonster = (monsterId) => {
+  let monster = axios.post('http://localhost:4000/api/like?monster_id=' + monsterId,
+    null,
+    {'headers': {'Authorization': localStorage.getItem('user_token')}}
+  )
+  .then(res => {
+    console.log(res.data);
+    return res.data
+  })
+  .catch(err => {
+    console.log(err);
+  })
+  return monster
+}
+
+export const unlikeMonster = (monsterId) => {
+  let monster = axios.delete('http://localhost:4000/api/unlike?monster_id=' + monsterId,
+    {'headers': {'Authorization': localStorage.getItem('user_token')}}
+  )
+  .then(res => {
+    console.log(res.data);
+    return res.data
+  })
+  .catch(err => {
+    console.log(err);
   })
   return monster
 }

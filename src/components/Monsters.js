@@ -26,8 +26,10 @@ class Monsters extends Component  {
       monsts.forEach(monster => {
         monsters.push(monster)
       })
-      this.setState({monsters: monsters})
-      this.setState({initialFetch: false})
+      this.setState({
+        monsters: monsters,
+        initialFetch: false
+      })
     })
   }
 
@@ -46,9 +48,11 @@ class Monsters extends Component  {
   }
 
   handleSelectChange = (event) => {
-    this.setState({offset: 0})
-    this.setState({showLoadMore: true})
-    this.setState({sortBy: event.target.value})
+    this.setState({
+      offset: 0,
+      showLoadMore: true,
+      sortBy: event.target.value
+    })
   }
 
   handleLoadClick = () => {
@@ -62,9 +66,47 @@ class Monsters extends Component  {
       monsts.forEach(monster => {
         monsters.push(monster)
       })
-      this.setState({monsters: monsters})
-      this.setState({offset: this.state.offset + this.state.limit})
+      this.setState({
+        monsters: monsters,
+        offset: this.state.offset + this.state.limit
+      })
     })
+  }
+
+  handleLikeClick = (event) => {
+    let monsterId = event.currentTarget.dataset.monsterId
+    monsterUtil.likeMonster(monsterId)
+    .then(monst => {
+      let monster = this.state.monsters.find(monster => {
+        return monster.id === monst.id
+      })
+      let monsterIndex = this.state.monsters.indexOf(monster)
+      let updatedMonsters = [...this.state.monsters]
+      updatedMonsters.splice(monsterIndex, 1, monst)
+      this.setState({
+        monsters: updatedMonsters
+      })
+    })
+  }
+
+  handleUnlikeClick = (event) => {
+    let monsterId = event.currentTarget.dataset.monsterId
+    monsterUtil.unlikeMonster(monsterId)
+    .then(monst => {
+      let monster = this.state.monsters.find(monster => {
+        return monster.id === monst.id
+      })
+      let monsterIndex = this.state.monsters.indexOf(monster)
+      let updatedMonsters = [...this.state.monsters]
+      updatedMonsters.splice(monsterIndex, 1, monst)
+      this.setState({
+        monsters: updatedMonsters
+      })
+    })
+  }
+
+  handleLikeCountClick = () => {
+    // show modal with likes?
   }
 
   handleToTopClick = () => {
@@ -72,6 +114,13 @@ class Monsters extends Component  {
   }
 
   render() {
+    let monstersUserLiked = []
+    this.state.monsters.forEach(monster => {
+      if (monster.liked_by.includes(this.props.username)) {
+        monstersUserLiked.push(monster)
+      }
+    })
+
     let monstersArr = this.state.monsters.map(monster => {
       return (
         <div key={monster.id} className='Monsters__monster-ctr'>
@@ -85,9 +134,24 @@ class Monsters extends Component  {
             rightArmType={monster.right_arm_type} rightArmFill={monster.right_arm_fill}
             leftArmType={monster.left_arm_type} leftArmFill={monster.left_arm_fill}
             legsType={monster.legs_type} legsFill={monster.legs_fill}
-            username={monster.user.username}
+            username={monster.username}
             withDetails={true}
           />
+          <button className='Monsters__like-count-ctr'
+            onClick={this.handleLikeCountClick}>
+            {monster.like_count} likes
+          </button>
+          {monstersUserLiked.includes(monster) ?
+            <button className='Monsters__unlike-ctr'
+              data-monster-id={monster.id}
+              onClick={this.handleUnlikeClick}>
+              <i className='material-icons'>favorite</i>
+            </button>
+            : <button className='Monsters__like-ctr'
+                data-monster-id={monster.id}
+                onClick={this.handleLikeClick}>
+                <i className='material-icons'>favorite_border</i>
+              </button>}
         </div>
       )
     })

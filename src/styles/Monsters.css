@@ -39,13 +39,56 @@
   width: 225px;
   border: 1px solid var(--input-border-color);
   border-radius: 3px;
-  background: white;
+  background: var(--main-container-color);
+}
+
+.Monsters__like-count-ctr {
+  position: absolute;
+  bottom: -18px;
+  left: 2px;
+  font-size: 13px;
+  color: var(--lighter-text-color);
+}
+
+.Monsters__like-count-ctr:hover {
+  color: var(--main-color);
+}
+
+.Monsters__like-ctr {
+  position: absolute;
+  right: 0px;
+  bottom: -23px;
+  color: var(--lighter-text-color);
+  z-index: 1499;
+}
+
+.Monsters__like-ctr:hover {
+  color: var(--main-color);
+}
+
+.Monsters__like-ctr i {
+  font-size: 17px;
+}
+
+.Monsters__unlike-ctr {
+  position: absolute;
+  right: 0px;
+  bottom: -23px;
+  color: var(--main-color);
+}
+
+.Monsters__unlike-ctr:hover {
+  color: var(--lighter-text-color);
+}
+
+.Monsters__unlike-ctr i {
+  font-size: 17px;
 }
 
 .Monsters__load-more-ctr {
   position: relative;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .Monsters__load-more-btn {
@@ -69,7 +112,6 @@
   width: 225px;
   color: var(--main-color);
   border: 1px solid var(--main-color);
-  /* background-color: var(--main-color); */
   border-radius: 3px;
 }
 
@@ -91,7 +133,6 @@
   top: 6px;
   font-size: 1em;
 }
-
 
 .Monsters__spinner-ctr {
   margin-top: 150px;
