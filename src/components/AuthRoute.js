@@ -6,7 +6,7 @@ const AuthRoute = ({component: Component, ...rest}) => {
   if (rest.isLoggedIn) {
     componentOrRedirect = <Component {...rest} />
   } else {
-    rest.setMessage('error', 'You must be logged in to view that page')
+    rest.setMessage('You must be logged in to view that page')
     componentOrRedirect = <Redirect to='/' />
   }
   return (
