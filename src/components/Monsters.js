@@ -170,7 +170,7 @@ class Monsters extends Component  {
     let noAuthNav = null
     if (!this.props.username) {
       noAuthNav = (
-        <div className='Monsters__NavBar'>
+        <div className='Monsters__no-auth-nav'>
           <NoAuthNavBar />
         </div>
       )
