@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import '../styles/Monsters.css'
 import * as monsterUtil from '../utils/monster'
+import * as actions from '../actions/actions'
 
 import MonsterFromProps from './MonsterFromProps'
 import NoAuthNavBar from './NoAuthNavBar'
@@ -76,32 +77,42 @@ class Monsters extends Component  {
   handleLikeClick = (event) => {
     let monsterId = event.currentTarget.dataset.monsterId
     monsterUtil.likeMonster(monsterId)
-    .then(monst => {
-      let monster = this.state.monsters.find(monster => {
-        return monster.id === monst.id
-      })
-      let monsterIndex = this.state.monsters.indexOf(monster)
-      let updatedMonsters = [...this.state.monsters]
-      updatedMonsters.splice(monsterIndex, 1, monst)
-      this.setState({
-        monsters: updatedMonsters
-      })
+    .then(resp => {
+      if (resp === 401) {
+        this.props.history.push('/')
+        this.props.setMessage('Please log in to like monsters')
+      } else {
+        let monster = this.state.monsters.find(monster => {
+          return monster.id === resp.id
+        })
+        let monsterIndex = this.state.monsters.indexOf(monster)
+        let updatedMonsters = [...this.state.monsters]
+        updatedMonsters.splice(monsterIndex, 1, resp)
+        this.setState({
+          monsters: updatedMonsters
+        })
+      }
     })
   }
 
   handleUnlikeClick = (event) => {
     let monsterId = event.currentTarget.dataset.monsterId
     monsterUtil.unlikeMonster(monsterId)
-    .then(monst => {
-      let monster = this.state.monsters.find(monster => {
-        return monster.id === monst.id
-      })
-      let monsterIndex = this.state.monsters.indexOf(monster)
-      let updatedMonsters = [...this.state.monsters]
-      updatedMonsters.splice(monsterIndex, 1, monst)
-      this.setState({
-        monsters: updatedMonsters
-      })
+    .then(resp => {
+      if (resp === 401) {
+        this.props.history.push('/')
+        this.props.setMessage('Session expired. Please log in')
+      } else {
+        let monster = this.state.monsters.find(monster => {
+          return monster.id === resp.id
+        })
+        let monsterIndex = this.state.monsters.indexOf(monster)
+        let updatedMonsters = [...this.state.monsters]
+        updatedMonsters.splice(monsterIndex, 1, resp)
+        this.setState({
+          monsters: updatedMonsters
+        })
+      }
     })
   }
 
@@ -228,4 +239,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Monsters)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setMessage: (message, icon) => dispatch(actions.setMessage(message, icon))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Monsters)

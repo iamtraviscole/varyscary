@@ -41,7 +41,7 @@ class Monster extends Component {
     .then(resp => {
       if (resp === 401) {
         this.props.history.push('/')
-        this.props.setMessage('Please log in to unlike monsters')
+        this.props.setMessage('Session expired. Please log in')
       } else {
         this.setState({monster: resp})
       }
