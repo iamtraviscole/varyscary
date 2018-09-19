@@ -5,7 +5,7 @@
   right: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 1000;
+  z-index: 4000;
   background: var(--main-color);
   overflow: scroll;
   transition: all 650ms cubic-bezier(0.075, 0.82, 0.165, 1);

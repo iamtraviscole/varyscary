@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 
 import '../styles/UserPanel.css'
@@ -9,12 +9,19 @@ const UserPanel = (props) => {
 
   if (props.toggleUserPanel === 'show') {
     panelContent = (
-      <div className='UserPanel__content--delay'>
+      <Fragment>
         <p className='UserPanel__username'>{props.username}</p>
-        <p className='UserPanel__email'>peteremail@gmail.com</p>
+        <ul className='UserPanel__ul'>
+          <li className='UserPanel__li'>
+            <Link to={'/' + props.username}>Your profile</Link>
+          </li>
+          <li className='UserPanel__li'>
+            <Link to='/monsters'>Monsters you've liked</Link>
+          </li>
+        </ul>
         <hr />
         <Link to='/logout' className='UserPanel__logout-btn'>Logout</Link>
-      </div>
+      </Fragment>
     )
   }
 

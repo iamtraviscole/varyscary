@@ -1,12 +1,4 @@
 .UserPanel {
-  position: absolute;
-  top: 55px;
-  right: 30px;
-  background: var(--main-container-color);
-  padding: 20px;
-  border-radius: 3px;
-  border: 1px solid var(--input-border-color);
-  box-shadow: 2px 2px 2px var(--shadow-color);
   z-index: 5000;
   transition: all 250ms;
 }
@@ -16,53 +8,53 @@
 }
 
 .UserPanel.hide {
-  height: 0px;
-  width: 0px;
+  position: absolute;
+  top: 35px;
+  right: 30px;
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
-  animation-duration: 250ms;
-  animation-timing-function: linear;
-  animation-name: UserPanelHide;
-}
-
-@keyframes UserPanelHide {
-  0% {
-    width: 200px;
-    height: 100px;
-  }
-  100% {
-    width: 0;
-    height: 0;
-  }
 }
 
 .UserPanel.show {
-  height: 100px;
-  min-width: 200px;
+  position: absolute;
+  top: 55px;
+  right: 50px;
+  background: var(--main-container-color);
+  border-radius: 3px;
+  border: 1px solid var(--input-border-color);
+  box-shadow: 2px 2px 2px var(--shadow-color);
+  padding: 15px;
   opacity: 1;
 }
 
 .UserPanel__username {
-
+  font-weight: bold;
+  font-size: 1em;
+  margin-bottom: 5px;
 }
 
-.UserPanel__email {
+.UserPanel__ul {
+  list-style-type: none;
+  margin-bottom: 8px;
+}
+
+.UserPanel__li {
   color: var(--light-text-color);
-  font-size: 80%;
+  font-size: .85em;
   font-weight: 300;
-  padding-top: 5px;
-  padding-bottom: 12px;
+  margin-bottom: 2px;
 }
 
 .UserPanel__logout-btn {
-  position: absolute;
-  bottom: 20px;
+  float: right;
   color: var(--button-text-color);
-  font-size: 90%;
+  font-size: .9em;
   background-color: var(--main-color);
-  padding: 8px;
+  padding: 5px 7px;
+  margin-top: 10px;
   border-radius: 3px;
+  display: inline-block;
 }
 
 .UserPanel__logout-btn:hover {
