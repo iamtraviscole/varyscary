@@ -4,6 +4,11 @@ import store from '../store/store'
 import * as actions from '../actions/actions'
 
 const MONSTER_URL = 'http://localhost:4000/api/monsters'
+const LOGOUT_IF_401 = (status) => {
+  if (status === 401) {
+    store.dispatch(actions.logout())
+  }
+}
 
 export const createMonster = (monsterName, monsterObj) => {
   store.dispatch(actions.fetchStarted())
@@ -81,30 +86,40 @@ export const getMonster = (monsterId) => {
 }
 
 export const likeMonster = (monsterId) => {
-  let monster = axios.post('http://localhost:4000/api/like?monster_id=' + monsterId,
+  store.dispatch(actions.fetchStarted())
+  let resp = axios.post('http://localhost:4000/api/like?monster_id=' + monsterId,
     null,
     {'headers': {'Authorization': localStorage.getItem('user_token')}}
   )
   .then(res => {
     console.log(res.data);
+    store.dispatch(actions.fetchEnded())
     return res.data
   })
   .catch(err => {
     console.log(err);
+    store.dispatch(actions.fetchEnded())
+    LOGOUT_IF_401(err.response.status)
+    return err.response.status
   })
-  return monster
+  return resp
 }
 
 export const unlikeMonster = (monsterId) => {
-  let monster = axios.delete('http://localhost:4000/api/unlike?monster_id=' + monsterId,
+  store.dispatch(actions.fetchStarted())
+  let resp = axios.delete('http://localhost:4000/api/unlike?monster_id=' + monsterId,
     {'headers': {'Authorization': localStorage.getItem('user_token')}}
   )
   .then(res => {
     console.log(res.data);
+    store.dispatch(actions.fetchEnded())
     return res.data
   })
   .catch(err => {
     console.log(err);
+    store.dispatch(actions.fetchEnded())
+    LOGOUT_IF_401(err.response.status)
+    return err.response.status
   })
-  return monster
+  return resp
 }

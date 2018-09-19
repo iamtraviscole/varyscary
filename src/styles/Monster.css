@@ -1,84 +1,164 @@
 .Monster {
-  text-align: center;
   grid-area: content;
-  margin-top: 25px;
-}
-
-.Monster__spinner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -32px 0 0 -32px;
-}
-
-
-.Monster__name {
-  font-size: 2em;
-  font-weight: bold;
-  margin-bottom: 5px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 350px 350px;
+  grid-template-rows: 350px;
+  margin-top: 50px;
 }
 
 .Monster__monster-ctr {
   position: relative;
-  display: inline-block;
-  height: 350px;
-  width: 350px;
+  height: 348px;
+  width: 348px;
   border: 1px solid var(--input-border-color);
   border-radius: 3px;
-  background: white;
+  background: var(--main-container-color);
 }
 
-.Monster__created-by-ctr {
-  margin: 0 auto;
-  width: 340px;
-  padding: 0 5px;
-  text-align: center;
-  margin-bottom: 25px;
+.Monster__details-ctr {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas:
+    'creator'
+    'likes'
+    'tags';
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 3px;
+  border-left: none;
+}
+
+.Monster__creator-ctr {
+  grid-area: creator;
+  margin-bottom: 15px;
+}
+
+.Monster__name {
+  font-size: 1.75em;
+  font-weight: bold;
+  margin-bottom: 8px;
+  word-break: break-all;
 }
 
 .Monster__created-by {
   display: inline;
   margin-right: 5px;
-  font-size: .95em;
+  font-size: 1em;
 }
 
 .Monster__creator {
   display: inline;
   color: var(--main-color);
-  font-size: .95em;
+  font-size: 1em;
   font-weight: bold;
+  word-break: break-all;
 }
 
 .Monster__created-on {
   display: inline;
   font-size: .8em;
   margin-right: 5px;
+  font-style: italic;
 }
 
 .Monster__created-on-date {
   display: inline;
   font-size: .8em;
+  font-style: italic;
 }
 
-.Monster__tags-header {
-  position: relative;
-  margin: 0 auto;
+.Monster__likes-ctr {
+  grid-area: likes;
+  margin-bottom: 50px;
+  display: inline;
+  border-top: 1px dotted var(--input-border-color);
+  padding-top: 10px;
+}
+
+.Monster__likes {
+  float: left;
+  margin-top: 5px;
+  font-weight: bold;
   font-size: .9em;
-  color: var(--light-text-color);
+  display: inline;
+  cursor: pointer;
 }
 
-.Monster__tags-header i {
-  position: relative;
-  top: 3px;
-  font-size: 1.1em;
-  margin-right: 2px;
+.Monster__like-btn {
+  float: right;
+  color: var(--main-text-color);
+  margin-top: 3px;
+}
+
+.Monster__unlike-btn {
+  float: right;
+  color: var(--main-color);
+  margin-top: 3px;
+}
+
+.Monster__likes-ctr i {
+  font-size: 22px;
+}
+
+.Monster__like-btn:hover {
+  color: var(--main-color);
+}
+
+.Monster__unlike-btn:hover {
+  color: var(--main-text-color);
 }
 
 .Monster__tags-ctr {
+  grid-area: tags;
+  overflow: scroll;
+}
+
+.Monster__tags-header {
+  font-size: .85em;
+  color: var(--lighter-text-color);
+  margin-bottom: 2px;
+}
+
+.Monster__tags-header i {
+  font-size: 15px;
+  vertical-align: middle;
+  margin-top: -2px;
+  font-weight: bold;
+}
+
+.Monster__tags {
+  font-size: .78em;
+  color: var(--lighter-text-color);
+}
+
+.Monster__other {
   margin: 0 auto;
-  width: 310px;
-  padding: 0 20px;
+  margin-top: 100px;
   text-align: center;
-  font-size: .8em;
-  color: var(--light-text-color);
+}
+
+@media (max-width: 900px) {
+
+  .Monster {
+    grid-area: content;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 350px;
+    grid-template-rows: 350px auto;
+    /* border: 1px solid red; */
+  }
+
+  .Monster__details-ctr {
+    border: 1px solid var(--input-border-color);
+    border-top: none;
+  }
+
+  .Monster__tags-ctr {
+    grid-area: tags;
+    overflow: visible;
+  }
+
 }
