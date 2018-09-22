@@ -207,7 +207,7 @@ class Monsters extends Component  {
               <select value={this.state.sortBy} onChange={this.handleSelectChange}>
                 <option value='newest'>Newest</option>
                 <option value='oldest'>Oldest</option>
-                {/* <option value='top'>Popular</option> */}
+                <option value='popular'>Popular</option>
               </select>
             </div>
           </div>

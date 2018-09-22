@@ -3,10 +3,6 @@
   transition: all 250ms;
 }
 
-.UserPanel__content--delay {
-  transition-delay: 250ms;
-}
-
 .UserPanel.hide {
   position: absolute;
   top: 35px;
