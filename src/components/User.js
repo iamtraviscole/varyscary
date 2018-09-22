@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import '../styles/User.css'
 import * as userUtil from '../utils/user'
+import * as monsterUtil from '../utils/monster'
+import * as actions from '../actions/actions'
 
 import MonsterFromProps from './MonsterFromProps'
 import NoAuthNavBar from './NoAuthNavBar'
@@ -10,8 +12,9 @@ import Spinner from './Spinner'
 
 class User extends Component  {
   state = {
+    initialFetch: true,
     username: null,
-    monsters: null
+    monsters: []
   }
 
   componentDidMount = () => {
@@ -19,6 +22,7 @@ class User extends Component  {
     .then(user => {
       if (user) {
         this.setState({
+          initialFetch: false,
           username: user.username,
           monsters: user.monsters
         })
@@ -26,18 +30,81 @@ class User extends Component  {
     })
   }
 
+  componentDidUpdate = (prevProps, prevState) => {
+    if (this.props.match.params.username !== prevProps.match.params.username) {
+      userUtil.getUser(this.props.match.params.username)
+      .then(user => {
+        if (user) {
+          this.setState({
+            initialFetch: false,
+            username: user.username,
+            monsters: user.monsters
+          })
+        }
+      })
+    }
+  }
+
   handleSelectChange = (event) => {
-    if (event.target.value === 'newest')  {
+    if (event.target.value === 'newest') {
       let newest = [...this.state.monsters].sort((a,b) => {
-        return new Date(b.created_at) - new Date(a.created_at);
+        return new Date(b.created_at) - new Date(a.created_at)
       })
       this.setState({monsters: newest})
     } else if (event.target.value === 'oldest') {
       let oldest = [...this.state.monsters].sort((a,b) => {
-        return new Date(a.created_at) - new Date(b.created_at);
+        return new Date(a.created_at) - new Date(b.created_at)
       })
       this.setState({monsters: oldest})
+    } else if (event.target.value === 'popular') {
+      let popular = [...this.state.monsters].sort((a,b) => {
+        return b.like_count - a.like_count
+      })
+      this.setState({monsters: popular})
     }
+  }
+
+
+  handleLikeClick = (event) => {
+    let monsterId = event.currentTarget.dataset.monsterId
+    monsterUtil.likeMonster(monsterId)
+    .then(resp => {
+      if (resp === 401) {
+        this.props.history.push('/')
+        this.props.setMessage('Session expired. Please log in')
+      } else {
+        let monster = this.state.monsters.find(monster => {
+          return monster.id === resp.id
+        })
+        let monsterIndex = this.state.monsters.indexOf(monster)
+        let updatedMonsters = [...this.state.monsters]
+        updatedMonsters.splice(monsterIndex, 1, resp)
+        this.setState({
+          monsters: updatedMonsters
+        })
+      }
+    })
+  }
+
+  handleUnlikeClick = (event) => {
+    let monsterId = event.currentTarget.dataset.monsterId
+    monsterUtil.unlikeMonster(monsterId)
+    .then(resp => {
+      if (resp === 401) {
+        this.props.history.push('/')
+        this.props.setMessage('Session expired. Please log in')
+      } else {
+        let monster = this.state.monsters.find(monster => {
+          return monster.id === resp.id
+        })
+        let monsterIndex = this.state.monsters.indexOf(monster)
+        let updatedMonsters = [...this.state.monsters]
+        updatedMonsters.splice(monsterIndex, 1, resp)
+        this.setState({
+          monsters: updatedMonsters
+        })
+      }
+    })
   }
 
   handleToTopClick = () => {
@@ -45,9 +112,16 @@ class User extends Component  {
   }
 
   render() {
+    let monstersUserLiked = []
+    this.state.monsters.forEach(monster => {
+      if (monster.liked_by.includes(this.props.username)) {
+        monstersUserLiked.push(monster)
+      }
+    })
+
     let content = null
 
-    if (this.props.isFetching) {
+    if (this.state.initialFetch) {
       content = <div className='User__spinner-ctr'>
         <Spinner />
       </div>
@@ -68,6 +142,21 @@ class User extends Component  {
                 legsType={monster.legs_type} legsFill={monster.legs_fill}
                 withDetails={true}
               />
+              <button className='Monsters__like-count-ctr'
+                onClick={this.handleLikeCountClick}>
+                {monster.like_count} likes
+              </button>
+              {monstersUserLiked.includes(monster) ?
+                <button className='Monsters__unlike-ctr'
+                  data-monster-id={monster.id}
+                  onClick={this.handleUnlikeClick}>
+                  <i className='material-icons'>favorite</i>
+                </button>
+                : <button className='Monsters__like-ctr'
+                    data-monster-id={monster.id}
+                    onClick={this.handleLikeClick}>
+                    <i className='material-icons'>favorite_border</i>
+                  </button>}
             </div>
           )
         })
@@ -83,6 +172,7 @@ class User extends Component  {
                       <select value={this.state.sortBy} onChange={this.handleSelectChange}>
                         <option value='newest'>Newest</option>
                         <option value='oldest'>Oldest</option>
+                        <option value='popular'>Popular</option>
                       </select>
                     </div>
                   </div>
@@ -91,7 +181,7 @@ class User extends Component  {
                   </div>
                 </Fragment>
               : <div className='User__monsters-ctr'>
-                  This user has no monsters yet!
+                  This user has no monsters yet
                 </div>
               }
             </Fragment>
@@ -127,4 +217,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(User)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setMessage: (message, icon) => dispatch(actions.setMessage(message, icon))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(User)

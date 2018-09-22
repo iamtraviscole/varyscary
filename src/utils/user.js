@@ -7,7 +7,7 @@ const USER_URL = 'http://localhost:4000/api/users'
 
 export const getUser = (username, sortBy) => {
   store.dispatch(actions.fetchStarted())
-  let user = axios.get(USER_URL + `/${username}?sort_by${sortBy}`)
+  let user = axios.get(USER_URL + `/${username}`)
   .then(res => {
     console.log(res.data);
     store.dispatch(actions.fetchEnded())
