@@ -4,31 +4,56 @@
   margin: 0 25px;
 }
 
-.Monsters__sort-ctr {
-  width: 100%;
-  margin-top: 25px;
-}
-
-.Monsters__sort-by {
-  display: inline;
-  font-size: 1em;
-  margin-right: 5px;
-}
-
-.Monsters__drop-down select {
-  border: 1px solid var(--main-color);
-  background: none;
-  color: var(--main-color);
-  font-size: 1em;
-  font-weight: bold;
-}
-
-.Monsters__monsters-ctr {
+.Monsters__explore-ctr {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 225px);
   grid-gap: 40px;
-  margin: 40px 0 20px 0;
+  margin: 0 0 20px 0;
+}
+
+.Monsters__sort-ctr {
+  grid-column: 1 / -1;
+  margin-top: 25px;
+}
+
+.Monsters__sort-by-ctr {
+  float: left;
+  display: inline-block;
+  height: 24px;
+}
+
+.Monsters__drop-down select {
+  vertical-align: top;
+  height: 24px;
+  border: 1px solid var(--main-color);
+  background: none;
+  color: var(--main-color);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.Monsters__search-ctr {
+  float: right;
+  display: inline-block;
+  height: 24px;
+}
+
+.Monsters__search-ctr i {
+  color: var(--main-color);
+  vertical-align: middle;
+  font-size: 21px;
+  margin-right: 2px;
+}
+
+.Monsters__search-ctr input[type=search] {
+  vertical-align: top;
+  height: 24px;
+  width: 150px;
+  border: 1px solid var(--main-color);
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 14px;
 }
 
 .Monsters__monster-ctr {
@@ -135,5 +160,22 @@
 }
 
 .Monsters__spinner-ctr {
+  grid-column: 1 / -1;
   margin-top: 150px;
+}
+
+@media (max-width: 540px) {
+
+  .Monsters__sort-by-ctr {
+    float: none;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .Monsters__search-ctr {
+    float: none;
+    display: block;
+    margin-left: -21px;
+  }
+
 }

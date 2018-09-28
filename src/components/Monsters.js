@@ -16,7 +16,8 @@ class Monsters extends Component  {
     offset: 0,
     monsters: [],
     initialFetch: true,
-    showLoadMore: true
+    showLoadMore: true,
+    searchValue: ''
   }
 
   componentDidMount = () => {
@@ -120,6 +121,15 @@ class Monsters extends Component  {
     // show modal with likes?
   }
 
+  handleSearchChange = (event) => {
+    this.setState({searchValue: event.target.value})
+  }
+
+  handleSearchSubmit = (event) => {
+    event.preventDefault()
+    // get request here
+  }
+
   handleToTopClick = () => {
     window.scrollTo(0, 0)
   }
@@ -177,7 +187,6 @@ class Monsters extends Component  {
     }
 
     let loadButton
-
     if (this.state.showLoadMore && this.state.monsters.length < this.state.limit) {
       loadButton = null
     } else if (this.state.showLoadMore && this.state.monsters.length >= this.state.limit) {
@@ -201,17 +210,27 @@ class Monsters extends Component  {
         {noAuthNav}
         <div className='Monsters'>
           <h1>Monsters</h1>
-          <div className='Monsters__sort-ctr'>
-            <div className='Monsters__drop-down'>
-              <div className='Monsters__sort-by'>Sort by:</div>
-              <select value={this.state.sortBy} onChange={this.handleSelectChange}>
-                <option value='newest'>Newest</option>
-                <option value='oldest'>Oldest</option>
-                <option value='popular'>Popular</option>
-              </select>
+          <div className='Monsters__explore-ctr'>
+            <div className='Monsters__sort-ctr'>
+              <div className='Monsters__sort-by-ctr'>
+                <div className='Monsters__drop-down'>
+                  <select value={this.state.sortBy} onChange={this.handleSelectChange}>
+                    <option value='newest'>Newest</option>
+                    <option value='oldest'>Oldest</option>
+                    <option value='popular'>Popular</option>
+                  </select>
+                </div>
+              </div>
+              <div className='Monsters__search-ctr'>
+                <form onSubmit={this.handleSearchSubmit}>
+                  <i className='material-icons'>search</i>
+                  <input type='search'
+                    value={this.state.searchValue}
+                    onChange={this.handleSearchChange}>
+                  </input>
+                </form>
+              </div>
             </div>
-          </div>
-          <div className='Monsters__monsters-ctr'>
             {this.state.initialFetch ?
               <div className='Monsters__spinner-ctr'>
                 <Spinner />
