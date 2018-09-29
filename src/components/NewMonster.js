@@ -25,7 +25,8 @@ class NewMonster extends PureComponent {
     activePanel: 'bodies',
     resetClicked: false,
     errorMessage: null,
-    showModal: false
+    showModal: false,
+    tagValue: ''
   }
 
   setShowArrows = () => {
@@ -80,8 +81,22 @@ class NewMonster extends PureComponent {
     this.setState({activePanel: buttonClicked})
   }
 
-  handleNameInputChange = (event) => {
+  handleNameChange = (event) => {
     this.props.setMonsterName(event.target.value)
+  }
+
+  handleTagChange = (event) => {
+    this.setState({tagValue: event.target.value})
+  }
+
+  handleTagSubmit = (event) => {
+    event.preventDefault()
+    this.props.addMonsterTag(this.state.tagValue)
+    this.setState({tagValue: ''})
+  }
+
+  handleRemoveTag = (tagIndex) => {
+    this.props.removeMonsterTag(tagIndex)
   }
 
   handleSaveClick = () => {
@@ -188,6 +203,20 @@ class NewMonster extends PureComponent {
       </div>
     )
 
+    let monsterTags = (
+      this.props.monsterTags.map( (tag, i) => {
+        return (
+          <div key={i} className='NewMonster__tag'
+            onClick={() => this.handleRemoveTag(i)}>
+            {tag}
+            <div className='NewMonster__tag-remove'>
+              <i className='material-icons'>close</i>
+            </div>
+          </div>
+        )
+      })
+    )
+
     let saveButtonClass = 'NewMonster__button'
     if (this.state.errorMessage) {
       saveButtonClass = 'NewMonster__button--disabled'
@@ -271,9 +300,30 @@ class NewMonster extends PureComponent {
                 <input className='NewMonster__name-input'
                   name='name'
                   type='text'
-                  placeholder='Name (optional)'
+                  placeholder='name (optional)'
                   value={this.props.monsterName}
-                  onChange={this.handleNameInputChange} />
+                  onChange={this.handleNameChange} />
+                <div className='NewMonster__tags-outer-ctr'>
+                  <div className='NewMonster__add-tags-text'>
+                    Add Tags
+                  </div>
+                  <form onSubmit={this.handleTagSubmit}>
+                    <input className='NewMonster__tag-input'
+                      value={this.state.tagValue}
+                      placeholder={this.props.monsterTags.length > 0
+                        ? 'another tag (optional)'
+                        : 'tag (optional)'}
+                      type='text'
+                      onChange={this.handleTagChange}/>
+                    <input className='NewMonster__tag-add-btn'
+                      value='Add'
+                      type='submit' />
+                  </form>
+                    {/* <i className='material-icons'>add</i>Add */}
+                  <div className='NewMonster__tags-ctr'>
+                    {monsterTags}
+                  </div>
+                </div>
                 <div className='NewMonster__buttons-ctr'>
                   {errorMessage}
                   <button className={saveButtonClass}
@@ -310,6 +360,7 @@ class NewMonster extends PureComponent {
 const mapStateToProps = (state) => {
   return {
     monsterName: state.monsterName,
+    monsterTags: state.monsterTags,
     monster: state.monster
   }
 }
@@ -318,7 +369,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     resetMonster: () => dispatch(actions.resetMonster()),
     randomizeMonster: () => dispatch(actions.randomizeMonster()),
-    setMonsterName: (name) => dispatch(actions.setMonsterName(name))
+    setMonsterName: (name) => dispatch(actions.setMonsterName(name)),
+    addMonsterTag: (tag) => dispatch(actions.addMonsterTag(tag)),
+    removeMonsterTag: (tagIndex) => dispatch(actions.removeMonsterTag(tagIndex))
   }
 }
 

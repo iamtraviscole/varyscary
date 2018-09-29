@@ -94,6 +94,20 @@ export const setMonsterName = (monsterName) => {
   }
 }
 
+export const addMonsterTag = (monsterTag) => {
+  return {
+    type: actionTypes.ADD_MONSTER_TAG,
+    monsterTag: monsterTag
+  }
+}
+
+export const removeMonsterTag = (monsterTagIndex) => {
+  return {
+    type: actionTypes.REMOVE_MONSTER_TAG,
+    monsterTagIndex: monsterTagIndex
+  }
+}
+
 export const setBodyType = (bodyType) => {
   return {
     type: actionTypes.SET_BODY_TYPE,

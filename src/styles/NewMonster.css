@@ -116,6 +116,8 @@
   width: 380px;
   border: 1px solid var(--input-border-color);
   border-radius: 3px;
+  background: var(--main-container-color);
+  margin-bottom: 5px;
 }
 
 .NewMonster__directions-ctr {
@@ -151,13 +153,116 @@
 
 .NewMonster__name-input {
   font-size: 1em;
-  text-align: center;
-  margin-top: 5px;
   width: 370px;
-  height: 40px;
+  height: 35px;
+  margin-bottom: 5px;
   padding: 0 5px;
   background-color: var(--main-container-color);
-  border-color: var(--main-color);
+}
+
+.NewMonster__name-input::placeholder {
+  color: var(--main-light-color);
+  font-style: italic;
+}
+
+.NewMonster__tags-outer-ctr {
+  width: 370px;
+  background: var(--main-container-color);
+  border: 1px solid var(--input-border-color);
+  border-radius: 3px;
+  padding: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.NewMonster__add-tags-text {
+  color: var(--input-placeholder-color);
+  font-size: .8em;
+  font-weight: 200;
+  margin-bottom: 2px;
+  margin-left: 1px;
+}
+
+.NewMonster__tag-input {
+  float: left;
+  display: inline-block;
+  font-size: 13px;
+  width: 320px;
+  height: 25px;
+  padding: 0 5px;
+  background-color: var(--main-container-color);
+}
+
+input.NewMonster__tag-add-btn {
+  float: right;
+  display: inline-block;
+  width: 38px;
+  height: 27px;
+  text-align: center;
+  font-size: 13px;
+  padding-left: 3px;
+  font-weight: bold;
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+.NewMonster__tag-add-btn input::value {
+  font-size: 10px;
+}
+
+.NewMonster__tag-add-btn i {
+  font-size: 13px;
+  vertical-align: middle;
+  margin-top: -4px;
+  font-weight: bold;
+}
+
+.NewMonster__tag-input::placeholder {
+  color: var(--main-light-color);
+  font-style: italic;
+}
+
+.NewMonster__tags-ctr {
+  clear: both;
+  width: 368px;
+  vertical-align: top;
+}
+
+.NewMonster__tag {
+  float: left;
+  font-size: 11px;
+  color: var(--main-color);
+  padding: 2px 4px;
+  margin-right: 5px;
+  margin-top: 5px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.NewMonster__tag-remove {
+  margin-left: 2px;
+  display: inline-block;
+}
+
+.NewMonster__tag-remove i {
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--warning-light);
+  vertical-align: middle;
+  margin-left: 1px;
+  margin-right: -1px;
+}
+
+.NewMonster__name-ctr {
+  width: 382px;
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.NewMonster__name-ctr i {
+  color: var(--main-color);
+  vertical-align: middle;
 }
 
 .NewMonster__buttons-ctr {

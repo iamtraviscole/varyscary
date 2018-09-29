@@ -9,6 +9,7 @@ const initialState = {
   userOnMobile: false,
   isFetching: false,
   monsterName: '',
+  monsterTags: [],
   monster: {
     body: {
       type: null,
