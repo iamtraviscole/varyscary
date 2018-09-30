@@ -91,7 +91,14 @@ class NewMonster extends PureComponent {
 
   handleTagSubmit = (event) => {
     event.preventDefault()
-    this.props.addMonsterTag(this.state.tagValue)
+    let tagString = this.state.tagValue.replace(/[']/g, '')
+      .replace(/[\W_]+/g, ' ').toLowerCase()
+    let tagArr = tagString.split(' ')
+    tagArr.forEach( tag => {
+      if (tag !== '') {
+        this.props.addMonsterTag(tag)
+      }
+    })
     this.setState({tagValue: ''})
   }
 
@@ -101,7 +108,7 @@ class NewMonster extends PureComponent {
 
   handleSaveClick = () => {
     if (!this.state.errorMessage) {
-      monsterUtil.createMonster(this.props.monsterName, this.props.monster)
+      monsterUtil.createMonster(this.props.monsterName, this.props.monsterTags, this.props.monster)
       .then((saved) => {
         if (saved) {
           this.setState({showModal: true})
@@ -319,7 +326,6 @@ class NewMonster extends PureComponent {
                       value='Add'
                       type='submit' />
                   </form>
-                    {/* <i className='material-icons'>add</i>Add */}
                   <div className='NewMonster__tags-ctr'>
                     {monsterTags}
                   </div>

@@ -10,7 +10,7 @@ const LOGOUT_IF_401 = (status) => {
   }
 }
 
-export const createMonster = (monsterName, monsterObj) => {
+export const createMonster = (monsterName, monsterTags, monsterObj) => {
   store.dispatch(actions.fetchStarted())
   const monster = {
     'name': monsterName,
@@ -31,8 +31,11 @@ export const createMonster = (monsterName, monsterObj) => {
   	'legs_type': monsterObj.legs.type,
     'legs_fill': monsterObj.legs.fillColor
   }
+  const tags = {
+    names: monsterTags
+  }
   let saved = axios.post(MONSTER_URL,
-    {'monster': monster},
+    {'monster': monster, 'tags': tags},
     {'headers':{'Authorization': localStorage.getItem('user_token')}}
   )
   .then(res => {

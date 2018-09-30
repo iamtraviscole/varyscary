@@ -177,7 +177,7 @@
 
 .NewMonster__add-tags-text {
   color: var(--input-placeholder-color);
-  font-size: .8em;
+  font-size: 12px;
   font-weight: 200;
   margin-bottom: 2px;
   margin-left: 1px;
