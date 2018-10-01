@@ -42,6 +42,8 @@ const reducer = (state = initialState, action) => {
       let removeTags = [...state.monsterTags]
       removeTags.splice(action.monsterTagIndex, 1)
       return {...state, monsterTags: removeTags}
+    case actionTypes.CLEAR_MONSTER_TAGS:
+      return {...state, monsterTags: []}
     case actionTypes.SET_BODY_TYPE:
       return {...state,
                 monster: {...state.monster,

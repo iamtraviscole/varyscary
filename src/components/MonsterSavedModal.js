@@ -24,7 +24,7 @@ const MonsterSavedModal = (props) => {
             <MonsterFromStore />
           </div>
           <div className='MonsterSavedModal__saved'>
-            Monster saved!
+            Monster created!
             <i className="material-icons">mood</i>
           </div>
           <div className='MonsterSavedModal__buttons-ctr'>

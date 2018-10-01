@@ -4,7 +4,7 @@
 
 .NewMonster__ctr {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 382px;
+  grid-template-columns: minmax(0, 1fr) 352px;
   grid-column-gap: 25px;
   margin: 0 25px;
   grid-template-areas:
@@ -99,21 +99,21 @@
 
 .NewMonster__monster-outer-ctr {
   position: relative;
-  height: 380px;
-  width: 380px;
+  height: 350px;
+  width: 350px;
 }
 
 .NewMonster__monster-outer-ctr--fixed {
   position: fixed;
-  height: 380px;
-  width: 380px;
+  height: 350px;
+  width: 350px;
   top: 25px;
 }
 
 .NewMonster__monster-ctr {
   text-align: center;
-  height: 380px;
-  width: 380px;
+  height: 350px;
+  width: 350px;
   border: 1px solid var(--input-border-color);
   border-radius: 3px;
   background: var(--main-container-color);
@@ -153,7 +153,7 @@
 
 .NewMonster__name-input {
   font-size: 1em;
-  width: 370px;
+  width: 340px;
   height: 35px;
   margin-bottom: 5px;
   padding: 0 5px;
@@ -166,7 +166,7 @@
 }
 
 .NewMonster__tags-outer-ctr {
-  width: 370px;
+  width: 340px;
   background: var(--main-container-color);
   border: 1px solid var(--input-border-color);
   border-radius: 3px;
@@ -185,9 +185,8 @@
 
 .NewMonster__tag-input {
   float: left;
-  display: inline-block;
   font-size: 13px;
-  width: 320px;
+  width: 290px;
   height: 25px;
   padding: 0 5px;
   background-color: var(--main-container-color);
@@ -195,7 +194,6 @@
 
 input.NewMonster__tag-add-btn {
   float: right;
-  display: inline-block;
   width: 38px;
   height: 27px;
   text-align: center;
@@ -204,10 +202,6 @@ input.NewMonster__tag-add-btn {
   font-weight: bold;
   color: var(--main-color);
   cursor: pointer;
-}
-
-.NewMonster__tag-add-btn input::value {
-  font-size: 10px;
 }
 
 .NewMonster__tag-add-btn i {
@@ -222,14 +216,8 @@ input.NewMonster__tag-add-btn {
   font-style: italic;
 }
 
-.NewMonster__tags-ctr {
-  clear: both;
-  width: 368px;
-  vertical-align: top;
-}
-
 .NewMonster__tag {
-  float: left;
+  display: inline-block;
   font-size: 11px;
   color: var(--main-color);
   padding: 2px 4px;
@@ -254,84 +242,86 @@ input.NewMonster__tag-add-btn {
   margin-right: -1px;
 }
 
-.NewMonster__name-ctr {
-  width: 382px;
+.NewMonster__tags-clear-all {
+  padding: 2px 4px;
   margin-top: 5px;
   display: inline-block;
-}
-
-.NewMonster__name-ctr i {
+  font-size: 12px;
   color: var(--main-color);
-  vertical-align: middle;
+  text-decoration: underline;
 }
 
 .NewMonster__buttons-ctr {
-  margin-top: 25px;
-  width: 382px;
+  margin-top: 15px;
   text-align: center;
 }
 
 .NewMonster__buttons-ctr i {
-  margin-top: 2px;
-  float: left;
-  font-size: 16px;
+  margin-right: 2px;
+  margin-top: -2px;
+  vertical-align: middle;
+  font-size: 14px;
 }
 
 .NewMonster__error-message {
-  width: 382px;
-  text-align: center;
-  font-size: .9em;
+  display: block;
+  margin-bottom: 2px;
+  font-size: 12px;
   color: var(--warning-light);
-  margin-bottom: 5px;
 }
 
 .NewMonster__error-message span {
-  position: relative;
-  top: 3px;
-  margin-right: 5px;
-  font-size: 1.1em;
+  vertical-align: middle;
+  margin-right: 2px;
+  margin-top: -3px;
+  font-size: 13px;
 }
 
-.NewMonster__button {
-  text-align: right;
-  width: 200px;
-  height: 40px;
-  padding: 10px;
+.NewMonster__button-save {
+  display: block;
+  margin: 0 auto;
+  width: 203px;
+  height: 35px;
   margin-bottom: 5px;
+  font-size: 16px;
   color: var(--button-text-color);
   background-color: var(--main-color);
   border: 1px solid var(--main-color);
   border-radius: 3px;
 }
 
-.NewMonster__button--disabled {
-  text-align: right;
-  width: 200px;
-  height: 40px;
-  padding: 10px;
-  margin-bottom: 5px;
-  color: var(--main-color-disabled);
-  border: 1px solid var(--main-color-disabled);
-  border-radius: 3px;
-  cursor: not-allowed;
+.NewMonster__button-save i {
+  font-size: 16px;
+  margin-top: -3px;
 }
 
-.NewMonster__button:hover {
+.NewMonster__button-save:hover {
   background-color: var(--main-light-color);
   border: 1px solid var(--main-light-color);
 }
 
+.NewMonster__button-save--disabled {
+  color: var(--main-color-disabled);
+  background-color: transparent;
+  border: 1px solid var(--main-color-disabled);
+  cursor: not-allowed;
+}
+
+.NewMonster__button-save--disabled:hover {
+  background-color: transparent;
+  border: 1px solid var(--main-color-disabled);
+}
+
 .NewMonster__button-reset {
-  text-align: right;
-  display: block;
+  display: inline-block;
   margin: 0 auto;
-  width: 200px;
-  height: 40px;
-  padding: 10px;
+  width: 79px;
+  height: 30px;
+  font-size: 14px;
   color: var(--main-color);
   border: 1px solid var(--main-color);
   border-radius: 3px;
-  margin-bottom: 5px;
+  margin-right: 5px;
 }
 
 .NewMonster__button-reset:hover {
@@ -340,10 +330,11 @@ input.NewMonster__tag-add-btn {
 }
 
 .NewMonster__button-randomize {
-  text-align: right;
-  width: 200px;
-  height: 40px;
-  padding: 10px;
+  display: inline-block;
+  width: 119px;
+  height: 30px;
+  /* padding: 10px; */
+  font-size: 14px;
   color: var(--main-color);
   border: 1px solid var(--main-color);
   border-radius: 3px;
@@ -351,46 +342,6 @@ input.NewMonster__tag-add-btn {
 
 .NewMonster__button-randomize:hover {
   color: var(--main-light-color);
-  border: 1px solid var(--main-light-color);
-}
-
-.NewMonster__confirm-ctr {
-  position: relative;
-  margin: 0 auto;
-  animation: slidein .35s, fadein 1s;
-  width: 188px;
-  height: 38px;
-  padding: 0 5px 0 5px;
-  color: var(--main-color);
-  border: 1px solid var(--main-color);
-  border-radius: 3px;
-  margin-bottom: 5px;;
-}
-
-.NewMonster__confirm {
-  float: left;
-  font-size: .8em;
-  width: 60px;
-  line-height: 40px;
-  color: var(--main-color);
-  border-radius: 3px;
-}
-
-.NewMonster__confirm-button {
-  float: right;
-  text-align: center;
-  font-size: .8em;
-  font-weight: 300;
-  width: 59px;
-  height: 30px;
-  margin: 4px 0 4px 5px;
-  color: var(--button-text-color);
-  background-color: var(--main-color);
-  border-radius: 3px;
-}
-
-.NewMonster__confirm-button:hover {
-  background-color: var(--main-light-color);
   border: 1px solid var(--main-light-color);
 }
 

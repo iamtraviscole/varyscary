@@ -23,7 +23,6 @@ class NewMonster extends PureComponent {
     showArrows: false,
     fixedMonsterCtr: false,
     activePanel: 'bodies',
-    resetClicked: false,
     errorMessage: null,
     showModal: false,
     tagValue: ''
@@ -106,6 +105,10 @@ class NewMonster extends PureComponent {
     this.props.removeMonsterTag(tagIndex)
   }
 
+  handleClearClick = () => {
+    this.props.clearMonsterTags()
+  }
+
   handleSaveClick = () => {
     if (!this.state.errorMessage) {
       monsterUtil.createMonster(this.props.monsterName, this.props.monsterTags, this.props.monster)
@@ -130,29 +133,13 @@ class NewMonster extends PureComponent {
   }
 
   handleResetClick = () => {
-    this.setState({resetClicked: true})
-  }
-
-  handleResetYesClick = () => {
     this.props.resetMonster()
-    this.setState({
-      resetClicked: false,
-      activePanel: 'bodies'
-    })
-  }
-
-  handleResetNoClick = () => {
-    this.setState({resetClicked: false})
+    this.props.clearMonsterTags()
+    this.setState({activePanel: 'bodies'})
   }
 
   render() {
     const { monster } = this.props
-
-    let errorMessage = this.state.errorMessage
-      ? <div className='NewMonster__error-message'>
-          <span className="material-icons">error_outline</span>{this.state.errorMessage}
-        </div>
-      : null
 
     let noFeatureSelected = true
     for (const feature in {...this.props.monster}) {
@@ -224,36 +211,15 @@ class NewMonster extends PureComponent {
       })
     )
 
-    let saveButtonClass = 'NewMonster__button'
-    if (this.state.errorMessage) {
-      saveButtonClass = 'NewMonster__button--disabled'
-    }
-
-    let resetButton = <button className='NewMonster__button-reset'
-      onClick={this.handleResetClick}
-      type='button'>
-      <i className="material-icons">
-        refresh
-      </i>
-      Reset
-    </button>
-
-    if (this.state.resetClicked) {
-      resetButton = <div className='NewMonster__confirm-ctr'>
-        <div className='NewMonster__confirm'>
-          Confirm:
+    let errorMessage = this.state.errorMessage
+      ? <div className='NewMonster__error-message'>
+          <span className="material-icons">error_outline</span>{this.state.errorMessage}
         </div>
-        <button className='NewMonster__confirm-button'
-          type='button'
-          onClick={this.handleResetNoClick}>
-          Cancel
-        </button>
-        <button className='NewMonster__confirm-button'
-          type='button'
-          onClick={this.handleResetYesClick}>
-          Reset
-        </button>
-      </div>
+      : null
+
+    let saveButtonClass = 'NewMonster__button-save'
+    if (this.state.errorMessage) {
+      saveButtonClass = 'NewMonster__button-save NewMonster__button-save--disabled'
     }
 
     return (
@@ -328,6 +294,10 @@ class NewMonster extends PureComponent {
                   </form>
                   <div className='NewMonster__tags-ctr'>
                     {monsterTags}
+                    {this.props.monsterTags.length > 1
+                      ? <button className='NewMonster__tags-clear-all'
+                          onClick={this.handleClearClick}>clear</button>
+                      : null}
                   </div>
                 </div>
                 <div className='NewMonster__buttons-ctr'>
@@ -342,9 +312,16 @@ class NewMonster extends PureComponent {
                       : <i className="material-icons">
                           add
                         </i>}
-                    Save Monster
+                    Create Monster
                   </button>
-                  {resetButton}
+                  <button className='NewMonster__button-reset'
+                    onClick={this.handleResetClick}
+                    type='button'>
+                    <i className="material-icons">
+                      refresh
+                    </i>
+                    Reset
+                  </button>
                   <button className='NewMonster__button-randomize'
                     onClick={this.handleRandomizeClick}
                     type='button'>
@@ -377,7 +354,8 @@ const mapDispatchToProps = (dispatch) => {
     randomizeMonster: () => dispatch(actions.randomizeMonster()),
     setMonsterName: (name) => dispatch(actions.setMonsterName(name)),
     addMonsterTag: (tag) => dispatch(actions.addMonsterTag(tag)),
-    removeMonsterTag: (tagIndex) => dispatch(actions.removeMonsterTag(tagIndex))
+    removeMonsterTag: (tagIndex) => dispatch(actions.removeMonsterTag(tagIndex)),
+    clearMonsterTags: () => dispatch(actions.clearMonsterTags())
   }
 }
 

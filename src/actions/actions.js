@@ -108,6 +108,12 @@ export const removeMonsterTag = (monsterTagIndex) => {
   }
 }
 
+export const clearMonsterTags = () => {
+  return {
+    type: actionTypes.CLEAR_MONSTER_TAGS
+  }
+}
+
 export const setBodyType = (bodyType) => {
   return {
     type: actionTypes.SET_BODY_TYPE,
