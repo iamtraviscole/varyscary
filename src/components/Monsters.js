@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import axios from 'axios'
 
 import '../styles/Monsters.css'
 import * as monsterUtil from '../utils/monster'
@@ -11,66 +12,143 @@ import Spinner from './Spinner'
 
 class Monsters extends Component  {
   state = {
-    sortBy: 'newest',
+    sortBy: '',
     limit: 50,
-    offset: 0,
+    offset: 50,
     monsters: [],
+    error: null,
     initialFetch: true,
     showLoadMore: true,
-    searchValue: ''
+    searchValue: '',
+    searchedValue: ''
+  }
+
+  getSortByFromParams = () => {
+    const UrlParams = new URLSearchParams(this.props.location.search)
+    const sortBy = UrlParams.get('sort_by')
+    return sortBy
+  }
+
+  getSearchFromParams = () => {
+    const UrlParams = new URLSearchParams(this.props.location.search)
+    const searchValue = UrlParams.get('search')
+    return searchValue
+  }
+
+  makeParamString = (offset = 0) => {
+    let paramString = `?sort_by=newest&limit=${this.state.limit}&offset=${offset}`
+    if (this.props.location.search) {
+      paramString = this.props.location.search +
+        `&limit=${this.state.limit}` +
+        `&offset=${offset}`
+    }
+
+    return paramString
   }
 
   componentDidMount = () => {
-    monsterUtil.getMonsters(this.state.sortBy, this.state.limit,
-      this.state.offset)
-    .then(monsts => {
-      let monsters = []
-      monsts.forEach(monster => {
-        monsters.push(monster)
-      })
+    this.setState({
+      sortBy: this.getSortByFromParams() || 'newest',
+      searchedValue: this.getSearchFromParams()
+    })
+
+    this.props.fetchStarted()
+    axios.get('http://localhost:4000/api/monsters' + this.makeParamString())
+    .then(res => {
+      this.props.fetchEnded()
       this.setState({
-        monsters: monsters,
+        monsters: res.data,
+        initialFetch: false
+      })
+    })
+    .catch(err => {
+      this.props.fetchEnded()
+      console.log(err)
+      this.setState({
+        error: err.response.statusText,
         initialFetch: false
       })
     })
   }
 
   componentDidUpdate = (prevProps, prevState) => {
-    if (this.state.sortBy !== prevState.sortBy) {
-      monsterUtil.getMonsters(this.state.sortBy, this.state.limit,
-        this.state.offset)
-      .then(monsts => {
-        let monsters = []
-        monsts.forEach(monster => {
-          monsters.push(monster)
+    if (this.props.location.search !== prevProps.location.search) {
+      this.setState({
+        offset: 50,
+        sortBy: this.getSortByFromParams() || 'newest',
+        searchedValue: this.getSearchFromParams()
+      })
+
+      this.props.fetchStarted()
+      axios.get('http://localhost:4000/api/monsters' + this.makeParamString())
+      .then(res => {
+        this.props.fetchEnded()
+        this.setState({
+          monsters: res.data,
+          showLoadMore: res.data.length >= this.state.limit
         })
-        this.setState({monsters: monsters})
+      })
+      .catch(err => {
+        this.props.fetchEnded()
+        console.log(err)
+        this.setState({
+          error: err.response.statusText
+        })
       })
     }
   }
 
   handleSelectChange = (event) => {
-    this.setState({
-      offset: 0,
-      showLoadMore: true,
-      sortBy: event.target.value
-    })
+    this.setState({sortBy: event.target.value})
+    if (this.getSearchFromParams()) {
+      this.props.history.push(`/monsters?sort_by=${event.target.value}` +
+        `&search=${this.getSearchFromParams()}`)
+    } else {
+      this.props.history.push(`/monsters?sort_by=${event.target.value}`)
+    }
+  }
+
+  handleSearchChange = (event) => {
+    this.setState({searchValue: event.target.value})
+  }
+
+  handleSearchSubmit = (event) => {
+    event.preventDefault()
+    if (this.state.searchValue.trim()) {
+      this.props.history.push(`/monsters?sort_by=${this.state.sortBy}&search=${this.state.searchValue}`)
+      this.setState({
+        searchedValue: this.state.searchValue,
+        searchValue: '',
+      })
+    }
+  }
+
+  handleSearchClear = () => {
+    const params = new URLSearchParams(this.props.location.search)
+    params.delete('search')
+    this.props.history.push('/monsters?' + params.toString())
+    this.setState({searchedValue: ''})
   }
 
   handleLoadClick = () => {
-    monsterUtil.getMonsters(this.state.sortBy, this.state.limit,
-      this.state.offset + this.state.limit)
-    .then(monsts => {
-      if (monsts.length < this.state.limit) {
+    this.props.fetchStarted()
+    axios.get('http://localhost:4000/api/monsters' + this.makeParamString(this.state.offset))
+    .then(res => {
+      this.props.fetchEnded()
+      if (res.data.length < this.state.limit) {
         this.setState({showLoadMore: false})
       }
-      let monsters = [...this.state.monsters]
-      monsts.forEach(monster => {
-        monsters.push(monster)
-      })
+      let monsters = this.state.monsters.concat(res.data)
       this.setState({
         monsters: monsters,
         offset: this.state.offset + this.state.limit
+      })
+    })
+    .catch(err => {
+      this.props.fetchEnded()
+      console.log(err)
+      this.setState({
+        error: err.response.statusText
       })
     })
   }
@@ -119,15 +197,6 @@ class Monsters extends Component  {
 
   handleLikeCountClick = () => {
     // show modal with likes?
-  }
-
-  handleSearchChange = (event) => {
-    this.setState({searchValue: event.target.value})
-  }
-
-  handleSearchSubmit = (event) => {
-    event.preventDefault()
-    // get request here
   }
 
   handleToTopClick = () => {
@@ -187,7 +256,7 @@ class Monsters extends Component  {
     }
 
     let loadButton
-    if (this.state.showLoadMore && this.state.monsters.length < this.state.limit) {
+    if (this.state.monsters.length < this.state.limit) {
       loadButton = null
     } else if (this.state.showLoadMore && this.state.monsters.length >= this.state.limit) {
         loadButton = (
@@ -228,14 +297,25 @@ class Monsters extends Component  {
                     value={this.state.searchValue}
                     onChange={this.handleSearchChange}>
                   </input>
+                  {this.state.searchedValue
+                    ? <div className='Monsters__searched-ctr'
+                        onClick={this.handleSearchClear}>
+                      {this.state.searchedValue}
+                      <i className='material-icons'>close</i>
+                    </div>
+                    : null}
                 </form>
               </div>
             </div>
-            {this.state.initialFetch ?
-              <div className='Monsters__spinner-ctr'>
-                <Spinner />
-              </div>
-              : monstersArr}
+              {this.state.initialFetch ?
+                <div className='Monsters__spinner-ctr'>
+                  <Spinner />
+                </div>
+                : this.state.monsters.length > 0
+                  ? monstersArr
+                  : <div className='Monsters__no-results-ctr'>
+                      No Monsters Found
+                    </div>}
           </div>
           {!this.state.initialFetch ?
             <div className='Monsters__load-more-ctr'>
@@ -260,7 +340,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setMessage: (message, icon) => dispatch(actions.setMessage(message, icon))
+    setMessage: (message, icon) => dispatch(actions.setMessage(message, icon)),
+    fetchStarted: () => dispatch(actions.fetchStarted()),
+    fetchEnded: () => dispatch(actions.fetchEnded())
   }
 }
 

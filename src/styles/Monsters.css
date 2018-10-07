@@ -46,7 +46,7 @@
   margin-right: 2px;
 }
 
-.Monsters__search-ctr input[type=search] {
+.Monsters__search-ctr input {
   vertical-align: top;
   height: 24px;
   width: 150px;
@@ -54,6 +54,20 @@
   border-radius: 5px;
   padding: 5px;
   font-size: 14px;
+}
+
+.Monsters__searched-ctr {
+  display: inline;
+  margin-left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.Monsters__searched-ctr i {
+  color: var(--warning-light);
+  font-size: 17px;
+  font-weight: bold;
+  vertical-align: middle;
 }
 
 .Monsters__monster-ctr {
@@ -132,12 +146,10 @@
 
 .Monsters__all-loaded {
   display: inline-block;
-  height: 58px;
-  line-height: 58px;
+  height: 60px;
+  line-height: 60px;
   width: 225px;
   color: var(--main-color);
-  border: 1px solid var(--main-color);
-  border-radius: 3px;
 }
 
 .Monsters__to-top-btn {
@@ -162,6 +174,11 @@
 .Monsters__spinner-ctr {
   grid-column: 1 / -1;
   margin-top: 150px;
+}
+
+.Monsters__no-results-ctr {
+  grid-column: 1 / -1;
+  margin-top: 50px;
 }
 
 @media (max-width: 540px) {
