@@ -224,7 +224,7 @@ class Monsters extends Component  {
             rightArmType={monster.right_arm_type} rightArmFill={monster.right_arm_fill}
             leftArmType={monster.left_arm_type} leftArmFill={monster.left_arm_fill}
             legsType={monster.legs_type} legsFill={monster.legs_fill}
-            username={monster.username}
+            username={monster.username} tags={monster.tags}
             withDetails={true}
           />
           <button className='Monsters__like-count-ctr'

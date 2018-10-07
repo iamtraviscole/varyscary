@@ -61,6 +61,17 @@ class Monster extends Component {
       )
     }
 
+    let monsterTags = null
+    if (monster) {
+      monsterTags = monster.tags.map((tag, i) => {
+        return (
+          <li key={i} className='Monster__tag'>
+            #{tag}
+          </li>
+        )
+      })
+    }
+
     return (
       <Fragment>
         {noAuthNav}
@@ -111,14 +122,16 @@ class Monster extends Component {
                           <i className='material-icons'>favorite_border</i>
                       </button>}
                     </div>
-                  <div className='Monster__tags-ctr'>
-                    <h3 className='Monster__tags-header'>
-                      <i className='material-icons'>label_outline</i> Tags
-                    </h3>
-                    <div className='Monster__tags'>
-                      #somecooltag, #somecoolertag, #someevencoolertag, #tag, #wowawesome, #somecooltag, #somecoolertag, #someevencoolertag, #tag, #wowawesome, #somecooltag, #somecoolertag, #someevencoolertag, #tag, #wowawesome, #somecooltag, #somecoolertag, #someevencoolertag, #tag, #wowawesome, #somecooltag, #somecoolertag, #someevencoolertag, #tag, #wowawesome, #somecooltag, #somecoolertag, #someevencoolertag, #tag, #wowawesome, #somecooltag, #somecoolertag, #someevencoolertag, #tag, #wowawesome, #somecooltag, #somecoolertag, #someevencoolertag, #tag, #wowawesome, #somecooltag, #somecoolertag, #someevencoolertag, #tag, #wowawesome, #somecooltag, #somecoolertag, #someevencoolertag, #tag, #wowawesome, #somecooltag, #somecoolertag, #someevencoolertag, #tag, #wowawesome,
-                    </div>
-                  </div>
+                  {monster.tags.length > 0
+                    ? <div className='Monster__tags-ctr'>
+                        <h3 className='Monster__tags-header'>
+                          <i className='material-icons'>label_outline</i> Tags
+                        </h3>
+                        <ul className='Monster__tags'>
+                          {monsterTags}
+                        </ul>
+                      </div>
+                    : null}
                 </div>
               </div>
             : <div className='Monster__other'>

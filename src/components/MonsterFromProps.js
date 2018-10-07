@@ -43,6 +43,17 @@ class Monster extends Component {
         : null
     }
 
+    let monsterTags = null
+    if (this.props.withDetails) {
+      monsterTags = monster.tags.map((tag, i) => {
+        return (
+          <li key={i} className='MonsterFromProps__tag'>
+            #{tag}
+          </li>
+        )
+      })
+    }
+
     return (
       <div className='MonsterFromProps__monster-ctr'
         onMouseEnter={this.handleMonsterEnter}
@@ -58,9 +69,9 @@ class Monster extends Component {
                     {monster.name}
                   </div>
                   : null}
-                  <div className='MonsterFromProps__tags'>
-                    #should, #i, #add, #tags?
-                  </div>
+                  <ul className='MonsterFromProps__tags'>
+                    {monsterTags}
+                  </ul>
               </Link>
               <div className='MonsterFromProps__username'>
                 <Link to={'/' + monster.username}>{monster.username}</Link>

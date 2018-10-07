@@ -37,7 +37,20 @@
   text-align: center;
   font-size: .75em;
   color: var(--button-text-color);
+  list-style: none;
   overflow: auto;
+}
+
+.MonsterFromProps__tag {
+  display: inline;
+}
+
+.MonsterFromProps__tags li:after {
+  content: ', ';
+}
+
+.MonsterFromProps__tags li:last-child:after {
+  content: '';
 }
 
 .MonsterFromProps__username {
