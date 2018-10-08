@@ -238,7 +238,7 @@ class Monsters extends Component  {
           />
           <button className='Monsters__like-count-ctr'
             onClick={() => this.setShowLikesModal(monster.id)}>
-            {monster.like_count} likes
+            {monster.like_count} {monster.like_count === 1 ? 'like' : 'likes'}
           </button>
           {monstersUserLiked.includes(monster) ?
             <button className='Monsters__unlike-ctr'

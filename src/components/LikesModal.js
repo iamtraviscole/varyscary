@@ -20,14 +20,12 @@ const LikesModal = (props) => {
 
   return (
     <div className='LikesModal' onClick={handleModalClick}>
-      <div className='LikesModal__likes-outer-ctr'>
-        <ul className='LikesModal__likes-ctr'>
-          <h1>Liked by</h1>
-          {props.likes.length > 0
-            ? likes
-            : <div className='LikesModal__no-likes'>No likes yet!</div>}
-        </ul>
-      </div>
+      <ul className='LikesModal__likes-ctr'>
+        <h1>Liked by</h1>
+        {props.likes.length > 0
+          ? likes
+          : <div className='LikesModal__no-likes'>No likes yet!</div>}
+      </ul>
     </div>
   )
 }

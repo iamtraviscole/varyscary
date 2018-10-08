@@ -9,11 +9,13 @@ import * as actions from '../actions/actions'
 import MonsterFromProps from './MonsterFromProps'
 import Spinner from './Spinner'
 import NoAuthNavBar from './NoAuthNavBar'
+import LikesModal from './LikesModal'
 
 class Monster extends Component {
   state = {
     monster: null,
-    initialFetch: true
+    initialFetch: true,
+    showLikesModal: false
   }
 
   componentDidMount = () => {
@@ -49,6 +51,10 @@ class Monster extends Component {
     })
   }
 
+  setShowLikesModal = (monsterId) => {
+    this.setState({showLikesModal: !this.state.showLikesModal})
+  }
+
   render() {
     const monster = this.state.monster
 
@@ -75,6 +81,11 @@ class Monster extends Component {
     return (
       <Fragment>
         {noAuthNav}
+        {this.state.showLikesModal
+          ? <LikesModal setShowLikesModal={this.setShowLikesModal}
+              likes={this.state.monster.liked_by}
+            />
+          : null}
         {this.state.initialFetch
           ? <div className='Monster__other'>
               <Spinner />
@@ -107,9 +118,11 @@ class Monster extends Component {
                     <p className='Monster__created-on-date'>{monster.created_at_day_year}</p>
                   </div>
                   <div className='Monster__likes-ctr'>
-                    <a className='Monster__likes'>
+                    <button className='Monster__likes'
+                      onClick={this.setShowLikesModal}
+                      likes={this.state.monster.liked_by}>
                       {monster.like_count} {monster.like_count === 1 ? 'like' : 'likes'}
-                    </a>
+                    </button>
                     {monster.liked_by.includes(this.props.username) ?
                       <button className='Monster__unlike-btn'
                         data-monster-id={monster.id}

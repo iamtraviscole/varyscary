@@ -87,6 +87,10 @@
   cursor: pointer;
 }
 
+.Monster__likes:hover {
+  text-decoration: underline;
+}
+
 .Monster__like-btn {
   float: right;
   color: var(--main-text-color);

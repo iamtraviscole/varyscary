@@ -1,5 +1,4 @@
 .LikesModal {
-  display: table;
   position: fixed;
   top: 0;
   right: 0;
@@ -9,14 +8,11 @@
   background: var(--modal-color);
 }
 
-.LikesModal__likes-outer-ctr {
-  display: table-cell;
-  vertical-align: middle;
-}
-
 .LikesModal__likes-ctr {
+  position: relative;
+  top: 200px;
   margin: 0 auto;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 250px);
   width: 300px;
   padding: 10px;
   background: var(--main-container-color);
