@@ -7,6 +7,7 @@
   display: block;
   box-sizing: border-box;
   position: relative;
+  text-align: center;
   top: 5%;
   left: 5%;
   width: 90%;
@@ -32,13 +33,16 @@
 .MonsterFromProps__tags {
   position: absolute;
   top: 25%;
+  left: 50%;
+  transform:translateX(-50%);
   width: inherit;
-  height: 50%;
-  text-align: center;
+  max-height: 50%;
+  max-width: 70%;
   font-size: .75em;
   color: var(--button-text-color);
   list-style: none;
   overflow: auto;
+  z-index: 1200;
 }
 
 .MonsterFromProps__tag {

@@ -8,6 +8,7 @@ import * as actions from '../actions/actions'
 
 import MonsterFromProps from './MonsterFromProps'
 import NoAuthNavBar from './NoAuthNavBar'
+import LikesModal from './LikesModal'
 import Spinner from './Spinner'
 
 class Monsters extends Component  {
@@ -20,7 +21,9 @@ class Monsters extends Component  {
     initialFetch: true,
     showLoadMore: true,
     searchValue: '',
-    searchedValue: ''
+    searchedValue: '',
+    showLikesModal: false,
+    likesForModal: []
   }
 
   getSortByFromParams = () => {
@@ -195,8 +198,14 @@ class Monsters extends Component  {
     })
   }
 
-  handleLikeCountClick = () => {
-    // show modal with likes?
+  setShowLikesModal = (monsterId) => {
+    this.setState({showLikesModal: !this.state.showLikesModal})
+    let monster = this.state.monsters.find(monster => {
+      return monster.id === monsterId
+    })
+    if (monster) {
+      this.setState({likesForModal: monster.liked_by})
+    }
   }
 
   handleToTopClick = () => {
@@ -228,7 +237,7 @@ class Monsters extends Component  {
             withDetails={true}
           />
           <button className='Monsters__like-count-ctr'
-            onClick={this.handleLikeCountClick}>
+            onClick={() => this.setShowLikesModal(monster.id)}>
             {monster.like_count} likes
           </button>
           {monstersUserLiked.includes(monster) ?
@@ -277,8 +286,13 @@ class Monsters extends Component  {
     return (
       <Fragment>
         {noAuthNav}
+        {this.state.showLikesModal
+          ? <LikesModal setShowLikesModal={this.setShowLikesModal}
+              likes={this.state.likesForModal}
+            />
+          : null}
         <div className='Monsters'>
-          <h1>Monsters</h1>
+          <h1>Explore Monsters</h1>
           <div className='Monsters__explore-ctr'>
             <div className='Monsters__sort-ctr'>
               <div className='Monsters__sort-by-ctr'>

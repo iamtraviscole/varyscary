@@ -48,7 +48,7 @@ class Monster extends Component {
       monsterTags = monster.tags.map((tag, i) => {
         return (
           <li key={i} className='MonsterFromProps__tag'>
-            #{tag}
+            <Link to={`/monsters?sort_by=newest&search=${tag}`}>#{tag}</Link>
           </li>
         )
       })
@@ -69,10 +69,10 @@ class Monster extends Component {
                     {monster.name}
                   </div>
                   : null}
-                  <ul className='MonsterFromProps__tags'>
-                    {monsterTags}
-                  </ul>
               </Link>
+              <div className='MonsterFromProps__tags'>
+                {monsterTags}
+              </div>
               <div className='MonsterFromProps__username'>
                 <Link to={'/' + monster.username}>{monster.username}</Link>
               </div>

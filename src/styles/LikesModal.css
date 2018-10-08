@@ -1,0 +1,48 @@
+.LikesModal {
+  display: table;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5000;
+  background: var(--modal-color);
+}
+
+.LikesModal__likes-outer-ctr {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.LikesModal__likes-ctr {
+  margin: 0 auto;
+  max-height: calc(100vh - 100px);
+  width: 300px;
+  padding: 10px;
+  background: var(--main-container-color);
+  box-shadow: 5px 5px 5px 0px var(--shadow-color);
+  border-radius: 3px;
+  overflow-y: auto;
+}
+
+.LikesModal h1 {
+  color: var(--main-color);
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.LikesModal__like {
+  display: inline;
+}
+
+.LikesModal__like::after {
+  content: ', '
+}
+
+.LikesModal__like:last-child::after {
+  content: ''
+}
+
+.LikesModal__no-likes {
+
+}

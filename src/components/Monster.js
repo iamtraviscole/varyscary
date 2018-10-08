@@ -66,7 +66,7 @@ class Monster extends Component {
       monsterTags = monster.tags.map((tag, i) => {
         return (
           <li key={i} className='Monster__tag'>
-            #{tag}
+            <Link to={`/monsters?sort_by=newest&search=${tag}`}>#{tag}</Link>
           </li>
         )
       })

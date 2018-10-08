@@ -8,7 +8,7 @@ import MonsterFromStore from './MonsterFromStore'
 const MonsterSavedModal = (props) => {
 
   const handleModalClick = () => {
-    props.setShowModal(false)
+    props.setShowModal()
     props.setActivePanelBodies()
   }
 

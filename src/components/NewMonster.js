@@ -120,8 +120,8 @@ class NewMonster extends PureComponent {
     }
   }
 
-  setShowModal = (bool) => {
-    this.setState({showModal: bool})
+  setShowModal = () => {
+    this.setState({showModal: !this.state.showModal})
   }
 
   setActivePanelBodies = () => {
