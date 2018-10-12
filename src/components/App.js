@@ -46,13 +46,11 @@ class App extends PureComponent {
   render() {
     let homeComponent = Splash
     let navBar = null
-    let isLoggedIn = false
 
     if (this.props.username) {
       homeComponent = Home
       navBar = <NavBar username={this.props.username}
         userOnMobile={this.props.userOnMobile} />
-      isLoggedIn = true
     }
 
     return (
@@ -63,17 +61,9 @@ class App extends PureComponent {
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/logout' component={Logout} />
-          <AuthRoute exact path='/home'
-            component={Home}
-            isLoggedIn={isLoggedIn}
-            setMessage={this.props.setMessage}
-          />
+          <AuthRoute exact path='/home' component={Home} />
           <Route exact path='/monsters' component={Monsters} />
-          <AuthRoute exact path='/monsters/new'
-            component={NewMonster}
-            isLoggedIn={isLoggedIn}
-            setMessage={this.props.setMessage}
-          />
+          <AuthRoute exact path='/monsters/new' component={NewMonster} />
           <Route exact path='/monsters/:id' component={Monster} />
           <Route exact path='/:username' component={User} />
           <Route component={NoMatch} />
