@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import '../styles/User.css'
 import * as userUtil from '../utils/user'
@@ -130,6 +131,13 @@ class User extends Component  {
         let monstersArr = this.state.monsters.map(monster => {
           return (
             <div key={monster.id} className='User__monster-ctr'>
+              {monster.username === this.props.username
+                ? <div className='User__edit-ctr'>
+                    <Link to={`/monsters/${monster.id}/edit`} className='User__edit'>
+                      Edit
+                    </Link>
+                  </div>
+                : null}
               <MonsterFromProps
                 name={monster.name} id={monster.id}
                 bodyType={monster.body_type} bodyFill={monster.body_fill}
@@ -142,17 +150,17 @@ class User extends Component  {
                 legsType={monster.legs_type} legsFill={monster.legs_fill}
                 tags={monster.tags} withDetails={true}
               />
-              <button className='Monsters__like-count-ctr'
+              <button className='User__like-count-ctr'
                 onClick={this.handleLikeCountClick}>
-                {monster.like_count} likes
+                {monster.like_count} {monster.like_count === 1 ? 'like' : 'likes'}
               </button>
               {monstersUserLiked.includes(monster) ?
-                <button className='Monsters__unlike-ctr'
+                <button className='User__unlike-ctr'
                   data-monster-id={monster.id}
                   onClick={this.handleUnlikeClick}>
                   <i className='material-icons'>favorite</i>
                 </button>
-                : <button className='Monsters__like-ctr'
+                : <button className='User__like-ctr'
                     data-monster-id={monster.id}
                     onClick={this.handleLikeClick}>
                     <i className='material-icons'>favorite_border</i>

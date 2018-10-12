@@ -15,6 +15,7 @@ import Logout from './Logout'
 import NewMonster from './NewMonster'
 import Monsters from './Monsters'
 import Monster from './Monster'
+import EditMonster from './EditMonster'
 import NoMatch from './NoMatch'
 import User from './User'
 
@@ -65,6 +66,7 @@ class App extends PureComponent {
           <Route exact path='/monsters' component={Monsters} />
           <AuthRoute exact path='/monsters/new' component={NewMonster} />
           <Route exact path='/monsters/:id' component={Monster} />
+          <AuthRoute exact path='/monsters/:id/edit' component={EditMonster} />
           <Route exact path='/:username' component={User} />
           <Route component={NoMatch} />
         </Switch>

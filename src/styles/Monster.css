@@ -118,7 +118,7 @@
 .Monster__tags-ctr {
   grid-area: tags;
   align-self: end;
-  overflow: scroll;
+  overflow: auto;
   max-height: 100%;
 }
 
