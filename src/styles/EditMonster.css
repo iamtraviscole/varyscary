@@ -1,0 +1,284 @@
+.EditMonster {
+  margin: 0 auto;
+}
+
+.EditMonster__header {
+  font-size: 1.5em;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.EditMonster__outer-ctr {
+  margin: 0 auto;
+}
+
+.EditMonster__monster-ctr {
+  float: left;
+  position: relative;
+  height: 198px;
+  width: 198px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 3px;
+  background-color: var(--main-container-color);
+  margin-right: 10px;
+}
+
+.EditMonster__edit-ctr {
+  float: right;
+  width: 278px;
+  min-height: 178px;
+  padding: 10px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 3px;
+}
+
+.EditMonster__name-ctr {
+  margin-bottom: 15px;
+}
+
+.EditMonster__name {
+  width: 266px;
+  height: 20px;
+  line-height: 25px;
+  padding: 5px;
+  font-size: 16px;
+  background-color: var(--main-container-color);
+  border: 1px solid var(--main-color);
+}
+
+.EditMonster__tags-outer-ctr {
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.EditMonster__tag-input {
+  display: inline;
+  width: 228px;
+  height: 20px;
+  line-height: 25px;
+  padding: 5px;
+  font-size: 16px;
+  background-color: var(--main-container-color);
+  border: 1px solid var(--main-color);
+}
+
+input.EditMonster__tag-add-btn {
+  display: inline-block;
+  vertical-align: top;
+  width: 34px;
+  height: 32px;
+  margin-left: 4px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+input.EditMonster__tag-add-btn:hover {
+  color: var(--main-light-color);
+  border: 1px solid var(--main-light-color);
+}
+
+.EditMonster__tag-input::placeholder {
+  color: var(--main-light-color);
+  font-style: italic;
+}
+
+.EditMonster__tag {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--main-color);
+  padding: 2px 4px;
+  margin-right: 5px;
+  margin-top: 5px;
+  border: 1px solid var(--input-border-color);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.EditMonster__tag-remove {
+  margin-left: 2px;
+  display: inline-block;
+}
+
+.EditMonster__tag-remove i {
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--warning-light);
+  vertical-align: middle;
+  margin-left: 1px;
+  margin-right: -1px;
+}
+
+.EditMonster__tags-clear-all {
+  padding: 0 4px;
+  margin-top: 5px;
+  display: inline-block;
+  font-size: 12px;
+  color: var(--main-color);
+  text-decoration: underline;
+}
+
+.EditMonster__finish-btns-ctr {
+  float: right;
+  margin-top: 12px;
+}
+
+.EditMonster__finish-btn {
+  padding: 2px 4px;
+  margin-right: 5px;
+  font-size: 18px;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+}
+
+.EditMonster__finish-btn--disabled {
+  padding: 2px 4px;
+  margin-right: 5px;
+  font-size: 18px;
+  color: var(--main-color-disabled);
+  border: 1px solid var(--main-color-disabled);
+  border-radius: 3px;
+  cursor: not-allowed;
+}
+
+.EditMonster__finish-btn:last-child {
+  margin-right: 0;
+}
+
+.EditMonster__finish-btn:hover {
+  color: var(--main-light-color);
+  border: 1px solid var(--main-light-color);
+}
+
+.EditMonster__clear-btn-float {
+  clear: both;
+}
+
+.EditMonster__delete {
+  clear: right;
+  float: right;
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--warning-light);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.EditMonster__delete:hover {
+  color: var(--warning-dark);
+}
+
+.EditMonster__confirm-delete-ctr {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.EditMonster__confirm-btn {
+  display: inline-block;
+  color: var(--button-text-color);
+  background-color: var(--main-color);
+  border-radius: 3px;
+  padding: 6px 8px;
+  margin-left: 10px;
+}
+
+.EditMonster__confirm-btn:hover {
+  background-color: var(--main-light-color);
+}
+
+.EditMonster__undo-btn {
+  position: relative;
+  top: -1px;
+  padding: 0 2px;
+  margin-left: 3px;
+  display: inline-block;
+  font-size: 12px;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+}
+
+.EditMonster__undo-btn:hover {
+  color: var(--main-light-color);
+  border: 1px solid var(--main-light-color);
+}
+
+.EditMonster h4 {
+  margin-bottom: 3px;
+  display: inline-block;
+}
+
+.EditMonster__modal {
+  display: table;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5000;
+  background: var(--modal-color);
+  overflow: scroll;
+}
+
+.EditMonster__modal__outer-ctr {
+  display: table-cell;
+  /* vertical-align: middle; */
+  text-align: center;
+  list-style-type: none;
+}
+
+.EditMonster__modal__inner-ctr {
+  margin: 0 auto;
+  margin-top: 200px;
+  display: inline-block;
+  padding: 20px;
+  background: var(--main-container-color);
+  border-radius: 3px;
+  box-shadow: 2px 2px 2px var(--shadow-color);
+}
+
+.EditMonster__no-access-ctr {
+  margin: 50px auto 0 auto;
+  text-align: center;
+}
+
+.EditMonster__no-access-ctr i {
+  vertical-align: middle;
+  color: var(--warning-light);
+  font-size: 18px;
+  margin-top: -3px;
+}
+
+.EditMonster__no-access-btn {
+  display: inline-block;
+  padding: 2px 4px;
+  margin-top: 15px;
+  font-size: 18px;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.EditMonster__no-access-btn:hover {
+  color: var(--main-light-color);
+  border: 1px solid var(--main-light-color);
+}
+
+@media (max-width: 575px) {
+
+  .EditMonster__monster-ctr {
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 25px;
+  }
+
+  .EditMonster__edit-ctr {
+    float: none;
+  }
+
+}

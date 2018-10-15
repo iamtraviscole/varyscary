@@ -158,6 +158,7 @@
   margin-bottom: 5px;
   padding: 0 5px;
   background-color: var(--main-container-color);
+  border: 1px solid var(--main-color);
 }
 
 .NewMonster__name-input::placeholder {
@@ -184,16 +185,17 @@
 }
 
 .NewMonster__tag-input {
-  float: left;
+  display: inline;
   font-size: 13px;
   width: 290px;
   height: 25px;
   padding: 0 5px;
   background-color: var(--main-container-color);
+  border: 1px solid var(--main-color);
 }
 
 input.NewMonster__tag-add-btn {
-  float: right;
+  display: inline;
   width: 38px;
   height: 27px;
   text-align: center;
@@ -202,13 +204,6 @@ input.NewMonster__tag-add-btn {
   font-weight: bold;
   color: var(--main-color);
   cursor: pointer;
-}
-
-.NewMonster__tag-add-btn i {
-  font-size: 13px;
-  vertical-align: middle;
-  margin-top: -4px;
-  font-weight: bold;
 }
 
 .NewMonster__tag-input::placeholder {
