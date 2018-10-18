@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import axios from 'axios'
 
 import '../styles/EditMonster.css'
+import * as actions from '../actions/actions'
 
 import MonsterFromProps from './MonsterFromProps'
 
@@ -15,12 +16,18 @@ class EditMonster extends Component {
     tags: [],
     initialFetch: true,
     showModal: false,
-    deleteClicked: false
+    deleteClicked: false,
+    saveMessage: '',
+    monsterDeleted: false
+  }
+
+  monsterURL = () => {
+    return 'http://localhost:4000/api/monsters' +
+      `/${this.props.computedMatch.params.id}`
   }
 
   componentDidMount = () => {
-    axios.get('http://localhost:4000/api/monsters' +
-      `/${this.props.computedMatch.params.id}`)
+    axios.get(this.monsterURL())
       .then(res => {
         this.setState({
           monster: res.data,
@@ -44,12 +51,10 @@ class EditMonster extends Component {
     if (this.state.tags.length !== this.state.monster.tags.length) {
       return true
     }
-
     const oldTags = this.state.monster.tags
     const newTags = this.state.tags
     for (let i = 0; i < oldTags.length; i++) {
-      for (let j = 0; j < newTags.length; j++)
-      if (oldTags[i] !== newTags[j]) {
+      if (oldTags[i] !== newTags[i]) {
         return true
       }
     }
@@ -92,7 +97,10 @@ class EditMonster extends Component {
   }
 
   handleClearClick = () => {
-    this.setState({tags: []})
+    this.setState({
+      tags: [],
+      tagValue: ''
+    })
   }
 
   handleTagsUndo = () => {
@@ -100,19 +108,67 @@ class EditMonster extends Component {
   }
 
   handleMonsterSave = () => {
-    console.log('saved');
+    const updateParams = () => {
+      return {'monster': {
+        name: this.state.nameValue,
+        tags_attributes: {names: this.state.tags}
+      }}
+    }
+    axios.put(this.monsterURL(), updateParams(),
+      {'headers': {'Authorization': localStorage.getItem('user_token')}}
+    )
+    .then(res => {
+      console.log(res.data);
+      this.setState({
+        showModal: true,
+        saveMessage: 'Monster saved!',
+        monster: res.data,
+        nameValue: res.data.name,
+        tagValue: '',
+        tags: res.data.tags
+      })
+    })
+    .catch(err => {
+      console.log(err.response);
+      this.setState({
+        saveMessage: 'Something went wrong'
+      })
+      if (err.response.status === 401) {
+        this.props.logout()
+        this.props.setMessage('Session expired. Please log in.')
+      }
+    })
   }
 
   handleModalClick = () => {
     this.setState({
       showModal: false,
-      deleteClicked: false})
+      deleteClicked: false,
+      saveMessage: ''})
   }
 
   handleDeleteClick = () => {
     this.setState({
       showModal: true,
       deleteClicked: true
+    })
+  }
+
+  handleDeleteConfirm = () => {
+    axios.delete(this.monsterURL(),
+      {'headers': {'Authorization': localStorage.getItem('user_token')}}
+    )
+    .then(res => {
+      this.setState({
+        monsterDeleted: true
+      })
+    })
+    .catch(err => {
+      console.log(err.response);
+      if (err.response.status === 401) {
+        this.props.logout()
+        this.props.setMessage('Session expired. Please log in.')
+      }
     })
   }
 
@@ -125,10 +181,22 @@ class EditMonster extends Component {
 
     let modalMessage
     if (this.state.deleteClicked) {
-      modalMessage = <div className='EditMonster__confirm-delete-ctr'>
+      modalMessage = <div className='EditMonster__confirm-ctr'>
         Are you sure?
-        <button className='EditMonster__confirm-btn'>Yes</button>
-        <button className='EditMonster__confirm-btn'>No</button>
+        <div className='EditMonster__confirm-btn-ctr'>
+          <button onClick={this.handleDeleteConfirm}
+            className='EditMonster__confirm-btn'>Delete</button>
+          <button className='EditMonster__confirm-btn'>Cancel</button>
+        </div>
+      </div>
+    }
+    if (this.state.saveMessage) {
+      modalMessage = <div className='EditMonster__confirm-ctr'>
+        {this.state.saveMessage}
+        <div className='EditMonster__confirm-btn-ctr'>
+          <Link to={`/monsters/${this.props.computedMatch.params.id}`}
+            className='EditMonster__confirm-btn'>View Monster</Link>
+        </div>
       </div>
     }
 
@@ -146,110 +214,141 @@ class EditMonster extends Component {
       })
     )
 
+    let tagAddClass = 'EditMonster__tag-add-btn'
+    if (this.state.tagValue) {
+      tagAddClass += ' EditMonster__btn-pulse'
+    }
+
     return (
-      !this.state.initialFetch && this.state.monster.username === this.props.username ?
-      <Fragment>
-      {this.state.showModal
-        ? <div className='EditMonster__modal'
-            onClick={this.handleModalClick}>
-              <div className='EditMonster__modal__outer-ctr'>
-                <div className='EditMonster__modal__inner-ctr'>
-                  {modalMessage}
-                </div>
-              </div>
-            </div>
-        : null}
       <div className='EditMonster'>
-        <h1 className='EditMonster__header'>Edit Monster</h1>
-        {!this.state.initialFetch
-          ? monster
-            ? <div className='EditMonster__outer-ctr'>
-                <div className='EditMonster__monster-ctr'>
-                  <MonsterFromProps
-                    name={monster.name} id={monster.id}
-                    bodyType={monster.body_type} bodyFill={monster.body_fill}
-                    faceType={monster.face_type} faceFill={monster.face_fill}
-                    headwearType={monster.headwear_type} headwearFill={monster.headwear_fill}
-                    eyesType={monster.eyes_type} eyesFill={monster.eyes_fill}
-                    mouthType={monster.mouth_type} mouthFill={monster.mouth_fill}
-                    rightArmType={monster.right_arm_type} rightArmFill={monster.right_arm_fill}
-                    leftArmType={monster.left_arm_type} leftArmFill={monster.left_arm_fill}
-                    legsType={monster.legs_type} legsFill={monster.legs_fill}
-                    withDetails={false}
-                  />
-                </div>
-                <div className='EditMonster__edit-ctr'>
-                  <h4>Name</h4>
-                  {this.nameChanged()
-                  ? <button className='EditMonster__undo-btn'
-                      onClick={this.handleNameUndo}>
-                      undo
-                    </button>
-                  : null}
-                  <div className='EditMonster__name-ctr'>
-                    <input className='EditMonster__name'
-                      type='text'
-                      value={this.state.nameValue}
-                      onChange={this.handleNameChange} />
-                  </div>
-                  <h4>Tags</h4>
-                  {this.tagsChanged()
-                    ? <button className='EditMonster__undo-btn'
-                        onClick={this.handleTagsUndo}>undo</button>
-                    : null}
-                  <div className='EditMonster__tags-outer-ctr'>
-                    <form onSubmit={this.handleTagSubmit}>
-                      <input className='EditMonster__tag-input'
-                        value={this.state.tagValue}
-                        type='text'
-                        onChange={this.handleTagChange}/>
-                      <input className='EditMonster__tag-add-btn'
-                        value='Add'
-                        type='submit' />
-                    </form>
-                    <div className='EditMonster__tags-ctr'>
-                      {monsterTags}
-                      {this.state.tags.length > 1
-                        ? <button className='EditMonster__tags-clear-all'
-                            onClick={this.handleClearClick}>clear</button>
-                        : null}
+      {monster
+        ? <Fragment>
+          {this.state.showModal
+            ? <div className='EditMonster__modal'
+                onClick={this.handleModalClick}>
+                  <div className='EditMonster__modal__outer-ctr'>
+                    <div className='EditMonster__modal__inner-ctr'>
+                      {modalMessage}
                     </div>
                   </div>
-                  <div className='EditMonster__finish-btns-ctr'>
-                    {this.nameChanged() || this.tagsChanged()
-                      ? <button className='EditMonster__finish-btn'
-                          onClick={this.handleMonsterSave}>
-                          Save
-                        </button>
-                      : <button className='EditMonster__finish-btn--disabled'>
-                          Save
-                        </button>}
-                    <button className='EditMonster__finish-btn'
-                      onClick={this.handleGoBack}>
-                      Cancel
-                    </button>
-                  </div>
-                  <div className='EditMonster__clear-btn-float'></div>
                 </div>
-                <button className='EditMonster__delete'
-                  onClick={this.handleDeleteClick}>
-                  Delete Monster
-                </button>
+            : null}
+          {monster.username === this.props.username
+            ? <div className='EditMonster__outer-ctr'>
+              {this.state.monsterDeleted
+                ? <div className='EditMonster__monster-deleted'>
+                    <i className='material-icons'>delete_outline</i>
+                    Monster Deleted! <br />
+                    <Link to={`/${this.props.username}`} className='EditMonster__monster-deleted-btn'>
+                      Your Monsters
+                    </Link>
+                  </div>
+                : <Fragment>
+                    <h1 className='EditMonster__header'>Edit Monster</h1>
+                    <div className='EditMonster__monster-ctr'>
+                      <MonsterFromProps
+                        name={monster.name}
+                        id={monster.id}
+                        bodyType={monster.body_type}
+                        bodyFill={monster.body_fill}
+                        faceType={monster.face_type}
+                        faceFill={monster.face_fill}
+                        headwearType={monster.headwear_type}
+                        headwearFill={monster.headwear_fill}
+                        eyesType={monster.eyes_type}
+                        eyesFill={monster.eyes_fill}
+                        mouthType={monster.mouth_type}
+                        mouthFill={monster.mouth_fill}
+                        rightArmType={monster.right_arm_type}
+                        rightArmFill={monster.right_arm_fill}
+                        leftArmType={monster.left_arm_type}
+                        leftArmFill={monster.left_arm_fill}
+                        legsType={monster.legs_type}
+                        legsFill={monster.legs_fill}
+                        withDetails={false}
+                      />
+                    </div>
+                    <div className='EditMonster__edit-ctr'>
+                      <h4>Name</h4>
+                      {this.nameChanged()
+                      ? <button className='EditMonster__undo-btn'
+                          onClick={this.handleNameUndo}>
+                          undo
+                        </button>
+                      : null}
+                      <div className='EditMonster__name-ctr'>
+                        <input className='EditMonster__name'
+                          type='text'
+                          value={this.state.nameValue}
+                          onChange={this.handleNameChange} />
+                      </div>
+                      <h4>Tags</h4>
+                      {this.tagsChanged()
+                        ? <button className='EditMonster__undo-btn'
+                            onClick={this.handleTagsUndo}>undo</button>
+                        : null}
+                      <div className='EditMonster__tags-instructions-ctr'>
+                          <i className='material-icons'>info</i>
+                          press enter or click 'Add' to add tags
+                      </div>
+                      <div className='EditMonster__tags-outer-ctr'>
+                        <form onSubmit={this.handleTagSubmit}>
+                          <input className='EditMonster__tag-input'
+                            value={this.state.tagValue}
+                            type='text'
+                            onChange={this.handleTagChange}
+                            onBlur={this.handleTagLeave} />
+                          <input className={tagAddClass}
+                            value='Add'
+                            type='submit' />
+                        </form>
+                        <div className='EditMonster__tags-ctr'>
+                          {monsterTags}
+                          {this.state.tags.length > 1
+                            ? <button className='EditMonster__tags-clear-all'
+                                onClick={this.handleClearClick}>clear</button>
+                            : null}
+                        </div>
+                      </div>
+                      <div className='EditMonster__finish-btns-ctr'>
+                        {this.nameChanged() || this.tagsChanged()
+                          ? <button className='EditMonster__finish-btn'
+                              onClick={this.handleMonsterSave}>
+                              Save
+                            </button>
+                          : <button className='EditMonster__finish-btn--disabled'>
+                              Save
+                            </button>}
+                        <button className='EditMonster__finish-btn'
+                          onClick={this.handleGoBack}>
+                          Cancel
+                        </button>
+                      </div>
+                      <div className='EditMonster__clear-btn-float'></div>
+                    </div>
+                    <button className='EditMonster__delete'
+                      onClick={this.handleDeleteClick}>
+                      Delete Monster
+                    </button>
+                  </Fragment>
+                }
               </div>
-            : <div className='EditMonster__monster-not-found'>
-                Monster not found
-              </div>
-          : null}
-      </div>
-      </Fragment>
-      : <div className='EditMonster__no-access-ctr'>
-        <i className='material-icons'>error_outline</i> You do not have access to this page
-        <br />
-        <div className='EditMonster__no-access-btn'
-          onClick={this.handleGoBack}>
-          Go Back
-        </div>
-      </div>
+            : <div className='EditMonster__no-access-ctr'>
+                <i className='material-icons'>error_outline</i>
+                You do not have access to this page
+                <br />
+                <div className='EditMonster__no-access-btn'
+                  onClick={this.handleGoBack}>
+                  Go Back
+                </div>
+              </div>}
+          </Fragment>
+      : this.state.initialFetch
+        ? null
+        : <div className='EditMonster__monster-not-found'>
+            Monster not found
+          </div>}
+    </div>
     )
   }
 }
@@ -260,4 +359,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(EditMonster))
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout: () => dispatch(actions.logout()),
+    setMessage: (message) => dispatch(actions.setMessage(message))
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(EditMonster))

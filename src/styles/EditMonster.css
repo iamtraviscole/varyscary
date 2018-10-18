@@ -12,6 +12,33 @@
   margin: 0 auto;
 }
 
+.EditMonster__monster-deleted {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.EditMonster__monster-deleted-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 4px;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+.EditMonster__monster-deleted-btn:hover {
+  text-decoration: none;
+  color: var(--main-light-color);
+  border: 1px solid var(--main-light-color);
+}
+
+.EditMonster__monster-deleted i {
+  color: var(--main-color);
+  vertical-align: middle;
+  margin: -4px 2px 0 -2px;
+}
+
 .EditMonster__monster-ctr {
   float: left;
   position: relative;
@@ -47,12 +74,27 @@
 }
 
 .EditMonster__tags-outer-ctr {
+  position: relative;
   margin-bottom: 15px;
   display: inline-block;
 }
 
+.EditMonster__tags-instructions-ctr {
+  font-size: 12px;
+  color: var(--light-text-color);
+  margin-top: -2px;
+  margin-bottom: 3px;
+}
+
+.EditMonster__tags-instructions-ctr i {
+  font-size: 13px;
+  color: var(--main-color);
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
 .EditMonster__tag-input {
-  display: inline;
+  display: inline-block;
   width: 228px;
   height: 20px;
   line-height: 25px;
@@ -76,14 +118,20 @@ input.EditMonster__tag-add-btn {
   cursor: pointer;
 }
 
+.EditMonster__btn-pulse {
+  animation: btn-pulse 2s infinite;
+}
+
+@keyframes btn-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(151, 113, 205, 0) }
+  75% { box-shadow: 0 0 0 2px rgba(151, 113, 205, 0.7) }
+  100% { box-shadow: 0 0 0 1px rgba(151, 113, 205, 0) }
+}
+
 input.EditMonster__tag-add-btn:hover {
   color: var(--main-light-color);
   border: 1px solid var(--main-light-color);
-}
-
-.EditMonster__tag-input::placeholder {
-  color: var(--main-light-color);
-  font-style: italic;
+  animation: none;
 }
 
 .EditMonster__tag {
@@ -172,24 +220,6 @@ input.EditMonster__tag-add-btn:hover {
   color: var(--warning-dark);
 }
 
-.EditMonster__confirm-delete-ctr {
-  margin: 0 auto;
-  text-align: center;
-}
-
-.EditMonster__confirm-btn {
-  display: inline-block;
-  color: var(--button-text-color);
-  background-color: var(--main-color);
-  border-radius: 3px;
-  padding: 6px 8px;
-  margin-left: 10px;
-}
-
-.EditMonster__confirm-btn:hover {
-  background-color: var(--main-light-color);
-}
-
 .EditMonster__undo-btn {
   position: relative;
   top: -1px;
@@ -226,7 +256,6 @@ input.EditMonster__tag-add-btn:hover {
 
 .EditMonster__modal__outer-ctr {
   display: table-cell;
-  /* vertical-align: middle; */
   text-align: center;
   list-style-type: none;
 }
@@ -236,9 +265,42 @@ input.EditMonster__tag-add-btn:hover {
   margin-top: 200px;
   display: inline-block;
   padding: 20px;
-  background: var(--main-container-color);
+  color: var(--button-text-color);
+  background: var(--main-color);
+  border: 1px solid var(--button-text-color);
   border-radius: 3px;
-  box-shadow: 2px 2px 2px var(--shadow-color);
+  box-shadow: 4px 4px 4px var(--shadow-color);
+}
+
+.EditMonster__confirm-ctr {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.EditMonster__confirm-btn-ctr {
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.EditMonster__confirm-btn {
+  display: inline-block;
+  color: var(--button-text-color);
+  background-color: var(--main-color);
+  border: 1px solid var(--button-text-color);
+  border-radius: 3px;
+  padding: 6px 8px;
+  margin-left: 10px;
+}
+
+.EditMonster__confirm-btn:first-child {
+  margin-left: 0px;
+}
+
+.EditMonster__confirm-btn:hover {
+  color: var(--button-text-color);
+  background-color: var(--main-light-color);
+  text-decoration: none;
 }
 
 .EditMonster__no-access-ctr {
