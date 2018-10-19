@@ -131,7 +131,6 @@ input.EditMonster__tag-add-btn {
 input.EditMonster__tag-add-btn:hover {
   color: var(--main-light-color);
   border: 1px solid var(--main-light-color);
-  animation: none;
 }
 
 .EditMonster__tag {

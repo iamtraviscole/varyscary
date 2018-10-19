@@ -176,12 +176,19 @@
   display: inline-block;
 }
 
-.NewMonster__add-tags-text {
-  color: var(--input-placeholder-color);
+.NewMonster__tags-instructions-ctr {
   font-size: 12px;
+  color: var(--lighter-text-color);
   font-weight: 200;
-  margin-bottom: 2px;
-  margin-left: 1px;
+  margin-bottom: 3px;
+}
+
+.NewMonster__tags-instructions-ctr i {
+  font-size: 13px;
+  margin-top: -1px;
+  color: var(--main-color);
+  vertical-align: middle;
+  margin-right: 2px;
 }
 
 .NewMonster__tag-input {
@@ -196,14 +203,32 @@
 
 input.NewMonster__tag-add-btn {
   display: inline;
-  width: 38px;
+  width: 33px;
   height: 27px;
   text-align: center;
   font-size: 13px;
-  padding-left: 3px;
+  /* padding-left: 3px; */
+  margin-left: 5px;
   font-weight: bold;
   color: var(--main-color);
+  border: 1px solid var(--main-color);
   cursor: pointer;
+}
+
+.NewMonster__btn-pulse {
+  animation: btn-pulse 2s infinite;
+}
+
+input.NewMonster__tag-add-btn:hover {
+  color: var(--main-light-color);
+  border: 1px solid var(--main-light-color);
+  /* animation: none; */
+}
+
+@keyframes btn-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(151, 113, 205, 0) }
+  75% { box-shadow: 0 0 0 2px rgba(151, 113, 205, 0.7) }
+  100% { box-shadow: 0 0 0 1px rgba(151, 113, 205, 0) }
 }
 
 .NewMonster__tag-input::placeholder {

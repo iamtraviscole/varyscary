@@ -1,10 +1,11 @@
 import React, { PureComponent, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import axios from 'axios'
 
 import '../styles/NewMonster.css'
 import * as actions from '../actions/actions'
-import * as monsterUtil from '../utils/monster'
+// import * as monsterUtil from '../utils/monster'
 
 import MonsterFromStore from './MonsterFromStore'
 import MonsterSavedModal from './MonsterSavedModal'
@@ -111,10 +112,42 @@ class NewMonster extends PureComponent {
 
   handleSaveClick = () => {
     if (!this.state.errorMessage) {
-      monsterUtil.createMonster(this.props.monsterName, this.props.monsterTags, this.props.monster)
-      .then((saved) => {
-        if (saved) {
-          this.setState({showModal: true})
+      this.props.fetchStarted()
+      const monster = {
+        'name': this.props.monsterName,
+        'body_type': this.props.monster.body.type,
+        'body_fill': this.props.monster.body.fillColor,
+      	'face_type': this.props.monster.face.type,
+        'face_fill': this.props.monster.face.fillColor,
+      	'headwear_type': this.props.monster.headwear.type,
+        'headwear_fill': this.props.monster.headwear.fillColor,
+      	'eyes_type': this.props.monster.eyes.type,
+        'eyes_fill': this.props.monster.eyes.fillColor,
+      	'mouth_type': this.props.monster.mouth.type,
+        'mouth_fill': this.props.monster.mouth.fillColor,
+      	'left_arm_type': this.props.monster.leftArm.type,
+        'left_arm_fill': this.props.monster.leftArm.fillColor,
+      	'right_arm_type': this.props.monster.rightArm.type,
+        'right_arm_fill': this.props.monster.rightArm.fillColor,
+      	'legs_type': this.props.monster.legs.type,
+        'legs_fill': this.props.monster.legs.fillColor,
+        'tags_attributes': {'names': this.props.monsterTags}
+      }
+      axios.post('http://localhost:4000/api/monsters',
+        {'monster': monster},
+        {'headers':{'Authorization': localStorage.getItem('user_token')}}
+      )
+      .then(res => {
+        console.log(res.data);
+        this.props.fetchEnded()
+        this.setState({showModal: true})
+      })
+      .catch(err => {
+        console.log(err.response);
+        this.props.fetchEnded()
+        if (err.response.status === 401) {
+          this.props.logout()
+          this.props.setMessage('Session expired. Please log in.')
         }
       })
     }
@@ -277,8 +310,9 @@ class NewMonster extends PureComponent {
                   value={this.props.monsterName}
                   onChange={this.handleNameChange} />
                 <div className='NewMonster__tags-outer-ctr'>
-                  <div className='NewMonster__add-tags-text'>
-                    Add Tags
+                  <div className='NewMonster__tags-instructions-ctr'>
+                    <i className='material-icons'>info</i>
+                    press enter or click 'Add' to add tags
                   </div>
                   <form onSubmit={this.handleTagSubmit}>
                     <input className='NewMonster__tag-input'
@@ -288,7 +322,9 @@ class NewMonster extends PureComponent {
                         : 'tag (optional)'}
                       type='text'
                       onChange={this.handleTagChange}/>
-                    <input className='NewMonster__tag-add-btn'
+                    <input className={this.state.tagValue
+                      ? 'NewMonster__tag-add-btn NewMonster__btn-pulse'
+                      : 'NewMonster__tag-add-btn'}
                       value='Add'
                       type='submit' />
                   </form>
@@ -355,7 +391,11 @@ const mapDispatchToProps = (dispatch) => {
     setMonsterName: (name) => dispatch(actions.setMonsterName(name)),
     addMonsterTag: (tag) => dispatch(actions.addMonsterTag(tag)),
     removeMonsterTag: (tagIndex) => dispatch(actions.removeMonsterTag(tagIndex)),
-    clearMonsterTags: () => dispatch(actions.clearMonsterTags())
+    clearMonsterTags: () => dispatch(actions.clearMonsterTags()),
+    setMessage: (message, icon) => dispatch(actions.setMessage(message, icon)),
+    fetchStarted: () => dispatch(actions.fetchStarted()),
+    fetchEnded: () => dispatch(actions.fetchEnded()),
+    logout: () => dispatch(actions.logout())
   }
 }
 
