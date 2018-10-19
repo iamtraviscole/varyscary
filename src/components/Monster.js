@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import axios from 'axios'
 
 import '../styles/Monster.css'
 import * as monsterUtil from '../utils/monster'
@@ -19,10 +20,18 @@ class Monster extends Component {
   }
 
   componentDidMount = () => {
-    monsterUtil.getMonster(this.props.match.params.id)
-    .then(monster => {
-      this.setState({monster: monster, initialFetch: false})
-    })
+    this.props.fetchStarted()
+    axios.get(`http://localhost:4000/api/monsters/${this.props.match.params.id}`)
+      .then(res => {
+        console.log(res.data);
+        this.props.fetchEnded()
+        this.setState({monster: res.data, initialFetch: false})
+      })
+      .catch(err => {
+        console.log(err);
+        this.props.fetchEnded()
+        this.setState({initialFetch: false})
+      })
   }
 
   handleLikeClick = (event) => {
@@ -164,7 +173,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setMessage: (message, icon) => dispatch(actions.setMessage(message, icon))
+    setMessage: (message, icon) => dispatch(actions.setMessage(message, icon)),
+    fetchStarted: () => dispatch(actions.fetchStarted()),
+    fetchEnded: () => dispatch(actions.fetchEnded())
   }
 }
 

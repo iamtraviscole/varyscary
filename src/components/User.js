@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 import '../styles/User.css'
 import * as userUtil from '../utils/user'
@@ -19,15 +20,21 @@ class User extends Component  {
   }
 
   componentDidMount = () => {
-    userUtil.getUser(this.props.match.params.username)
-    .then(user => {
-      if (user) {
-        this.setState({
-          initialFetch: false,
-          username: user.username,
-          monsters: user.monsters
-        })
-      }
+    this.props.fetchStarted()
+    axios.get(`http://localhost:4000/api/users/${this.props.match.params.username}`)
+    .then(res => {
+      console.log(res.data);
+      this.props.fetchEnded()
+      this.setState({
+        initialFetch: false,
+        username: res.data.username,
+        monsters: res.data.monsters
+      })
+    })
+    .catch(err => {
+      console.log(err);
+      this.props.fetchEnded()
+      this.setState({initialFetch: false})
     })
   }
 
@@ -227,7 +234,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setMessage: (message, icon) => dispatch(actions.setMessage(message, icon))
+    setMessage: (message, icon) => dispatch(actions.setMessage(message, icon)),
+    fetchStarted: () => dispatch(actions.fetchStarted()),
+    fetchEnded: () => dispatch(actions.fetchEnded())
   }
 }
 
