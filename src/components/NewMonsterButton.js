@@ -10,7 +10,8 @@ const NewMonsterButton = (props) => {
 
   let button = props.noBodySelected
     ? <button className={'NewMonsterButton__features-btn-disabled'}>
-      {props.children}
+        <span className='NewMonsterButton__tooltip'>no body selected</span>
+        {props.children}
       </button>
     : <button className={'NewMonsterButton__features-btn' + active}
         onClick={() => props.handleActivePanel(props.activePanelName)}>

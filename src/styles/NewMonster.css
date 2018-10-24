@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) 352px;
   grid-column-gap: 25px;
-  margin: 0 25px;
+  margin: 25px 25px;
   grid-template-areas:
     'left monster';
 }
@@ -21,7 +21,6 @@
 
 .NewMonster__nav-ctr {
   position: relative;
-  height: 40px;
   text-align: left;
   margin-bottom: 25px;
 }
@@ -30,56 +29,51 @@
   text-align: center;
 }
 
-.NewMonster__left-arrow {
-  position: absolute;
-  top: 0;
-  left: 0;
+.NewMonster__arrow {
+  display: inline-block;
   text-align: center;
-  width: 38px;
-  height: 30px;
-  padding-top: 8px;
+  margin-top: -3px;
+  width: 34px;
+  height: 34px;
   color: var(--main-color);
   border: 1px solid var(--main-color);
   border-radius: 50%;
   cursor: pointer;
   user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.NewMonster__left-arrow:hover {
-  color: var(--button-text-color);
-  border: 1px solid var(--main-light-color);
-  background-color: var(--main-light-color);
+.NewMonster__arrow:hover {
+  color: var(--color-white);
+  background: var(--main-color);
+  user-select: none;
   -webkit-user-select: none;
 }
 
-.NewMonster__left-arrow .material-icons {
-  font-size: 22px;
+.NewMonster__arrow--left {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.NewMonster__right-arrow {
+.NewMonster__arrow--left .material-icons {
+  font-size: 22px;
+  vertical-align: middle;
+  margin-top: 6px;
+}
+
+.NewMonster__arrow--right {
   position: absolute;
   top: 0;
   right: 0;
-  text-align: center;
-  width: 36px;
-  height: 30px;
-  padding-left: 2px;
-  padding-top: 8px;
-  color: var(--main-color);
-  border: 1px solid var(--main-color);
-  border-radius: 50%;
-  cursor: pointer;
-  user-select: none;
 }
 
-.NewMonster__right-arrow:hover {
-  color: var(--button-text-color);
-  border: 1px solid var(--main-light-color);
-  background-color: var(--main-light-color);
-}
-
-.NewMonster__right-arrow .material-icons {
+.NewMonster__arrow--right .material-icons {
   font-size: 22px;
+  vertical-align: middle;
+  margin-top: 6px;
+  margin-left: 1px;
 }
 
 .NewMonster__nav {
@@ -114,9 +108,9 @@
   text-align: center;
   height: 350px;
   width: 350px;
-  border: 1px solid var(--input-border-color);
+  border: 1px solid var(--border-color);
   border-radius: 3px;
-  background: var(--main-container-color);
+  background: var(--light-container-color);
   margin-bottom: 5px;
 }
 
@@ -157,19 +151,19 @@
   height: 35px;
   margin-bottom: 5px;
   padding: 0 5px;
-  background-color: var(--main-container-color);
+  background: var(--light-container-color);
   border: 1px solid var(--main-color);
 }
 
 .NewMonster__name-input::placeholder {
-  color: var(--main-light-color);
+  color: var(--main-color-light);
   font-style: italic;
 }
 
 .NewMonster__tags-outer-ctr {
   width: 340px;
-  background: var(--main-container-color);
-  border: 1px solid var(--input-border-color);
+  background: var(--light-container-color);
+  border: 1px solid var(--border-color);
   border-radius: 3px;
   padding: 5px;
   margin-bottom: 5px;
@@ -178,7 +172,7 @@
 
 .NewMonster__tags-instructions-ctr {
   font-size: 12px;
-  color: var(--lighter-text-color);
+  color: var(--main-text-color-lighter);
   font-weight: 200;
   margin-bottom: 3px;
 }
@@ -197,7 +191,7 @@
   width: 290px;
   height: 25px;
   padding: 0 5px;
-  background-color: var(--main-container-color);
+  background: var(--light-container-color);
   border: 1px solid var(--main-color);
 }
 
@@ -207,7 +201,6 @@ input.NewMonster__tag-add-btn {
   height: 27px;
   text-align: center;
   font-size: 13px;
-  /* padding-left: 3px; */
   margin-left: 5px;
   font-weight: bold;
   color: var(--main-color);
@@ -220,9 +213,8 @@ input.NewMonster__tag-add-btn {
 }
 
 input.NewMonster__tag-add-btn:hover {
-  color: var(--main-light-color);
-  border: 1px solid var(--main-light-color);
-  /* animation: none; */
+  color: var(--hover-color-dark);
+  border: 1px solid var(--hover-color-dark);
 }
 
 @keyframes btn-pulse {
@@ -232,7 +224,7 @@ input.NewMonster__tag-add-btn:hover {
 }
 
 .NewMonster__tag-input::placeholder {
-  color: var(--main-light-color);
+  color: var(--main-color-light);
   font-style: italic;
 }
 
@@ -243,7 +235,7 @@ input.NewMonster__tag-add-btn:hover {
   padding: 2px 4px;
   margin-right: 5px;
   margin-top: 5px;
-  border: 1px solid var(--input-border-color);
+  border: 1px solid var(--border-color);
   border-radius: 3px;
   cursor: pointer;
 }
@@ -256,7 +248,7 @@ input.NewMonster__tag-add-btn:hover {
 .NewMonster__tag-remove i {
   font-size: 12px;
   font-weight: bold;
-  color: var(--warning-light);
+  color: var(--warning-color-light);
   vertical-align: middle;
   margin-left: 1px;
   margin-right: -1px;
@@ -287,7 +279,7 @@ input.NewMonster__tag-add-btn:hover {
   display: block;
   margin-bottom: 2px;
   font-size: 12px;
-  color: var(--warning-light);
+  color: var(--warning-color-light);
 }
 
 .NewMonster__error-message span {
@@ -304,8 +296,8 @@ input.NewMonster__tag-add-btn:hover {
   height: 35px;
   margin-bottom: 5px;
   font-size: 16px;
-  color: var(--button-text-color);
-  background-color: var(--main-color);
+  color: var(--color-white);
+  background: var(--main-color);
   border: 1px solid var(--main-color);
   border-radius: 3px;
 }
@@ -316,19 +308,19 @@ input.NewMonster__tag-add-btn:hover {
 }
 
 .NewMonster__button-save:hover {
-  background-color: var(--main-light-color);
-  border: 1px solid var(--main-light-color);
+  background: var(--hover-color-dark);
+  border: 1px solid var(--hover-color-dark);
 }
 
 .NewMonster__button-save--disabled {
   color: var(--main-color-disabled);
-  background-color: transparent;
+  background: transparent;
   border: 1px solid var(--main-color-disabled);
   cursor: not-allowed;
 }
 
 .NewMonster__button-save--disabled:hover {
-  background-color: transparent;
+  background: transparent;
   border: 1px solid var(--main-color-disabled);
 }
 
@@ -345,15 +337,14 @@ input.NewMonster__tag-add-btn:hover {
 }
 
 .NewMonster__button-reset:hover {
-  color: var(--main-light-color);
-  border: 1px solid var(--main-light-color);
+  color: var(--hover-color-dark);
+  border: 1px solid var(--hover-color-dark);
 }
 
 .NewMonster__button-randomize {
   display: inline-block;
   width: 119px;
   height: 30px;
-  /* padding: 10px; */
   font-size: 14px;
   color: var(--main-color);
   border: 1px solid var(--main-color);
@@ -361,8 +352,8 @@ input.NewMonster__tag-add-btn:hover {
 }
 
 .NewMonster__button-randomize:hover {
-  color: var(--main-light-color);
-  border: 1px solid var(--main-light-color);
+  color: var(--hover-color-dark);
+  border: 1px solid var(--hover-color-dark);
 }
 
 @keyframes slidein {

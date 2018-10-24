@@ -267,7 +267,7 @@ class NewMonster extends PureComponent {
             <div className='NewMonster__left-grid-ctr'>
               <div className={navCtrClass}>
                 {this.state.showArrows
-                  ? <div className='NewMonster__left-arrow'
+                  ? <div className='NewMonster__arrow NewMonster__arrow--left'
                       onClick={this.handleLeftArrowClick}>
                         <i className='material-icons'>keyboard_arrow_left</i>
                     </div>
@@ -287,7 +287,7 @@ class NewMonster extends PureComponent {
                   {newMonsterButton('legs', 'Legs')}
                 </div>
                 {this.state.showArrows
-                  ? <div className='NewMonster__right-arrow'
+                  ? <div className='NewMonster__arrow NewMonster__arrow--right'
                       onClick={this.handleRightArrowClick}>
                         <i className='material-icons'>keyboard_arrow_right</i>
                     </div>
@@ -311,7 +311,7 @@ class NewMonster extends PureComponent {
                   onChange={this.handleNameChange} />
                 <div className='NewMonster__tags-outer-ctr'>
                   <div className='NewMonster__tags-instructions-ctr'>
-                    <i className='material-icons'>info</i>
+                    <i className='material-icons'>info_outline</i>
                     press enter or click 'Add' to add tags
                   </div>
                   <form onSubmit={this.handleTagSubmit}>
