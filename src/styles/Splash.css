@@ -12,12 +12,12 @@
 .Splash__msg {
   display: inline-block;
   font-size: 80%;
-  color: var(--light-text-color);
+  color: var(--main-text-color-light);
   cursor: pointer;
 }
 
 .Splash__msg:hover {
-  color: var(--main-light-color);
+  color: var(--main-color-light);
 }
 
 .Splash__msg .material-icons {
@@ -39,7 +39,7 @@
   margin: auto;
   width: 300px;
   padding: 50px 100px;
-  background-color: var(--main-container-color);
+  background: var(--light-container-color);
   border-radius: 3px;
 }
 
@@ -53,20 +53,20 @@
   margin-bottom: 10px;
   width: 150px;
   font-weight: 300;
-  color: var(--button-text-color);
+  color: var(--color-white);
   border: 1px solid var(--main-color);
-  background-color: var(--main-color);
+  background: var(--main-color);
   border-radius: 3px;
 }
 
 .Splash__btn:hover {
-  background-color: var(--main-light-color);
-  color: var(--button-text-color);
+  background: var(--main-color-light);
+  color: var(--color-white);
   text-decoration: none;
 }
 
 .Splash__btn--login {
-  background-color: var(--main-container-color);
+  background: var(--light-container-color);
   color: var(--main-color);
 }
 

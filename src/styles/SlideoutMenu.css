@@ -26,8 +26,8 @@
 }
 
 .SlideoutMenu__button {
-  color: var(--button-text-color);
-  background-color: transparent;
+  color: var(--color-white);
+  background: transparent;
 }
 
 .SlideoutMenu__button .material-icons {
@@ -43,7 +43,7 @@
 }
 
 .SlideoutMenu__li {
-  color: var(--button-text-color);
+  color: var(--color-white);
   padding: 10px;
 }
 

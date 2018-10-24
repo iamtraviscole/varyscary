@@ -37,7 +37,7 @@
   vertical-align: top;
   height: 250px;
   width: 250px;
-  border: 1px solid var(--input-border-color);
+  border: 1px solid var(--border-color);
   border-radius: 3px;
   background: white;
 }
@@ -47,7 +47,7 @@
   top: 0;
   right: 0;
   border-radius: 3px;
-  background-color: white;
+  background: white;
   z-index: 1999;
 }
 
@@ -57,7 +57,7 @@
   font-size: 12px;
   border: 1px solid var(--main-color);
   color: var(--main-color);
-  background-color: var(--main-container-color);
+  background: var(--light-container-color);
   border-radius: 3px;
   margin: 4px 4px 0 0;
   padding: 2px;
@@ -66,7 +66,7 @@
 }
 
 .User__edit:hover {
-  color: var(--button-text-color);
+  color: var(--color-white);
   background: var(--main-color);
   text-decoration: none;
 }
@@ -76,7 +76,7 @@
   bottom: -18px;
   left: 2px;
   font-size: 13px;
-  color: var(--lighter-text-color);
+  color: var(--main-text-color-lighter);
 }
 
 .User__like-count-ctr:hover {
@@ -87,7 +87,7 @@
   position: absolute;
   right: 0px;
   bottom: -23px;
-  color: var(--lighter-text-color);
+  color: var(--main-text-color-lighter);
   z-index: 1499;
 }
 
@@ -107,7 +107,7 @@
 }
 
 .User__unlike-ctr:hover {
-  color: var(--lighter-text-color);
+  color: var(--main-text-color-lighter);
 }
 
 .User__unlike-ctr i {

@@ -29,8 +29,8 @@
 
 .EditMonster__monster-deleted-btn:hover {
   text-decoration: none;
-  color: var(--main-light-color);
-  border: 1px solid var(--main-light-color);
+  color: var(--main-color-light);
+  border: 1px solid var(--main-color-light);
 }
 
 .EditMonster__monster-deleted i {
@@ -44,9 +44,9 @@
   position: relative;
   height: 198px;
   width: 198px;
-  border: 1px solid var(--input-border-color);
+  border: 1px solid var(--border-color);
   border-radius: 3px;
-  background-color: var(--main-container-color);
+  background: var(--light-container-color);
   margin-right: 10px;
 }
 
@@ -55,7 +55,7 @@
   width: 278px;
   min-height: 178px;
   padding: 10px;
-  border: 1px solid var(--input-border-color);
+  border: 1px solid var(--border-color);
   border-radius: 3px;
 }
 
@@ -69,7 +69,7 @@
   line-height: 25px;
   padding: 5px;
   font-size: 16px;
-  background-color: var(--main-container-color);
+  background: var(--light-container-color);
   border: 1px solid var(--main-color);
 }
 
@@ -81,7 +81,7 @@
 
 .EditMonster__tags-instructions-ctr {
   font-size: 12px;
-  color: var(--light-text-color);
+  color: var(--main-text-color-light);
   margin-top: -2px;
   margin-bottom: 3px;
 }
@@ -100,7 +100,7 @@
   line-height: 25px;
   padding: 5px;
   font-size: 16px;
-  background-color: var(--main-container-color);
+  background: var(--light-container-color);
   border: 1px solid var(--main-color);
 }
 
@@ -129,8 +129,8 @@ input.EditMonster__tag-add-btn {
 }
 
 input.EditMonster__tag-add-btn:hover {
-  color: var(--main-light-color);
-  border: 1px solid var(--main-light-color);
+  color: var(--main-color-light);
+  border: 1px solid var(--main-color-light);
 }
 
 .EditMonster__tag {
@@ -140,7 +140,7 @@ input.EditMonster__tag-add-btn:hover {
   padding: 2px 4px;
   margin-right: 5px;
   margin-top: 5px;
-  border: 1px solid var(--input-border-color);
+  border: 1px solid var(--border-color);
   border-radius: 3px;
   cursor: pointer;
 }
@@ -153,7 +153,7 @@ input.EditMonster__tag-add-btn:hover {
 .EditMonster__tag-remove i {
   font-size: 12px;
   font-weight: bold;
-  color: var(--warning-light);
+  color: var(--warning-color-light);
   vertical-align: middle;
   margin-left: 1px;
   margin-right: -1px;
@@ -197,8 +197,8 @@ input.EditMonster__tag-add-btn:hover {
 }
 
 .EditMonster__finish-btn:hover {
-  color: var(--main-light-color);
-  border: 1px solid var(--main-light-color);
+  color: var(--main-color-light);
+  border: 1px solid var(--main-color-light);
 }
 
 .EditMonster__clear-btn-float {
@@ -210,13 +210,13 @@ input.EditMonster__tag-add-btn:hover {
   float: right;
   margin-top: 10px;
   font-size: 12px;
-  color: var(--warning-light);
+  color: var(--warning-color-light);
   text-decoration: underline;
   cursor: pointer;
 }
 
 .EditMonster__delete:hover {
-  color: var(--warning-dark);
+  color: var(--warning-color-dark);
 }
 
 .EditMonster__undo-btn {
@@ -232,8 +232,8 @@ input.EditMonster__tag-add-btn:hover {
 }
 
 .EditMonster__undo-btn:hover {
-  color: var(--main-light-color);
-  border: 1px solid var(--main-light-color);
+  color: var(--main-color-light);
+  border: 1px solid var(--main-color-light);
 }
 
 .EditMonster h4 {
@@ -249,7 +249,7 @@ input.EditMonster__tag-add-btn:hover {
   width: 100vw;
   height: 100vh;
   z-index: 5000;
-  background: var(--modal-color);
+  background: var(--modal-background-color);
   overflow: scroll;
 }
 
@@ -264,9 +264,9 @@ input.EditMonster__tag-add-btn:hover {
   margin-top: 200px;
   display: inline-block;
   padding: 20px;
-  color: var(--button-text-color);
+  color: var(--color-white);
   background: var(--main-color);
-  border: 1px solid var(--button-text-color);
+  border: 1px solid var(--color-white);
   border-radius: 3px;
   box-shadow: 4px 4px 4px var(--shadow-color);
 }
@@ -284,9 +284,9 @@ input.EditMonster__tag-add-btn:hover {
 
 .EditMonster__confirm-btn {
   display: inline-block;
-  color: var(--button-text-color);
-  background-color: var(--main-color);
-  border: 1px solid var(--button-text-color);
+  color: var(--color-white);
+  background: var(--main-color);
+  border: 1px solid var(--color-white);
   border-radius: 3px;
   padding: 6px 8px;
   margin-left: 10px;
@@ -297,8 +297,8 @@ input.EditMonster__tag-add-btn:hover {
 }
 
 .EditMonster__confirm-btn:hover {
-  color: var(--button-text-color);
-  background-color: var(--main-light-color);
+  color: var(--color-white);
+  background: var(--main-color-light);
   text-decoration: none;
 }
 
@@ -309,7 +309,7 @@ input.EditMonster__tag-add-btn:hover {
 
 .EditMonster__no-access-ctr i {
   vertical-align: middle;
-  color: var(--warning-light);
+  color: var(--warning-color-light);
   font-size: 18px;
   margin-top: -3px;
 }
@@ -326,8 +326,8 @@ input.EditMonster__tag-add-btn:hover {
 }
 
 .EditMonster__no-access-btn:hover {
-  color: var(--main-light-color);
-  border: 1px solid var(--main-light-color);
+  color: var(--main-color-light);
+  border: 1px solid var(--main-color-light);
 }
 
 @media (max-width: 575px) {

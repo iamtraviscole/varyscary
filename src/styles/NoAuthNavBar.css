@@ -19,26 +19,26 @@
   width: 70px;
   font-size: 90%;
   font-weight: 300;
-  color: var(--button-text-color);
+  color: var(--color-white);
   border: 1px solid var(--main-color);
-  background-color: var(--main-color);
+  background: var(--main-color);
   border-radius: 3px;
   margin-left: -5px;
 }
 
 .NoAuthNavBar__btn:hover {
-  background-color: var(--main-light-color);
-  color: var(--button-text-color);
+  background: var(--main-color-light);
+  color: var(--color-white);
   text-decoration: none;
 }
 
 .NoAuthNavBar__btn--login {
-  background-color: transparent;
+  background: transparent;
   color: var(--main-color);
 }
 
 .NoAuthNavBar__li--logo {
-  background-color: var(--main-color);
+  background: var(--main-color);
   margin-left: 15px;
   border-radius: 3px;
 }

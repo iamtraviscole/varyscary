@@ -12,12 +12,12 @@
 .Login__msg {
   display: inline-block;
   font-size: 80%;
-  color: var(--light-text-color);
+  color: var(--main-text-color-light);
   cursor: pointer;
 }
 
 .Login__msg:hover {
-  color: var(--main-light-color);
+  color: var(--main-color-light);
 }
 
 .Login__msg .material-icons {
@@ -40,7 +40,7 @@
   margin: auto;
   width: 300px;
   padding: 30px 100px;
-  background-color: var(--main-container-color);
+  background: var(--light-container-color);
   border-radius: 3px;
 }
 
@@ -64,16 +64,16 @@
   margin: 10px 0;
   width: 150px;
   font-weight: 300;
-  color: var(--button-text-color);
+  color: var(--color-white);
   border: 1px solid var(--main-color);
-  background-color: var(--main-color);
+  background: var(--main-color);
   border-style: none;
   border-radius: 3px;
 }
 
 .Login__btn:hover {
-  background-color: var(--main-light-color);
-  color: var(--button-text-color);
+  background: var(--main-color-light);
+  color: var(--color-white);
   text-decoration: none;
 }
 

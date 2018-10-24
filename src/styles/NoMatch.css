@@ -13,10 +13,10 @@
   border-radius: 3px;
   padding: 5px;
   color: var(--main-color);
-  background-color: transparent;
+  background: transparent;
 }
 
 .NoMatch__btn:hover {
-  color: var(--main-light-color);
-  border-color: var(--main-light-color);
+  color: var(--main-color-light);
+  border-color: var(--main-color-light);
 }

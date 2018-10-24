@@ -15,7 +15,7 @@
   margin: auto;
   width: 300px;
   padding: 30px 100px;
-  background-color: var(--main-container-color);
+  background: var(--light-container-color);
   border-radius: 3px;
 }
 
@@ -25,7 +25,7 @@
 
 .Signup__input-error {
   font-size: .75em;
-  color: var(--warning-light);
+  color: var(--warning-color-light);
   margin-bottom: 1px;
 }
 
@@ -45,17 +45,17 @@
   margin: 10px 0;
   width: 150px;
   font-weight: 300;
-  color: var(--button-text-color);
+  color: var(--color-white);
   border: 1px solid var(--main-color);
-  background-color: var(--main-color);
+  background: var(--main-color);
   border-style: none;
   border-radius: 3px;
   cursor: pointer;
 }
 
 .Signup__btn:hover {
-  background-color: var(--main-light-color);
-  color: var(--button-text-color);
+  background: var(--main-color-light);
+  color: var(--color-white);
   text-decoration: none;
 }
 

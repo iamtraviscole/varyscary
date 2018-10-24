@@ -6,7 +6,7 @@
   width: 100vw;
   height: 100vh;
   z-index: 5000;
-  background: var(--modal-color);
+  background: var(--modal-background-color);
   overflow: scroll;
 }
 
@@ -20,7 +20,7 @@
   margin: 0 auto;
   width: 250px;
   padding: 20px;
-  background: var(--main-container-color);
+  background: var(--light-container-color);
   border-radius: 3px;
 }
 
@@ -30,8 +30,8 @@
   text-align: center;
   width: 248px;
   height: 248px;
-  background: var(--main-container-color);
-  border: 1px solid var(--input-border-color);
+  background: var(--light-container-color);
+  border: 1px solid var(--border-color);
   border-radius: 3px;
 }
 
@@ -53,7 +53,7 @@
 .MonsterSavedModal__buttons-ctr {
   text-align: center;
   width: 250px;
-  background: var(--main-container-color);
+  background: var(--light-container-color);
 }
 
 .MonsterSavedModal__link {
@@ -61,8 +61,8 @@
   font-size: .9em;
   width: 182px;
   padding: 8px;
-  color: var(--button-text-color);
-  background-color: var(--main-color);
+  color: var(--color-white);
+  background: var(--main-color);
   border: 1px solid var(--main-color);
   border-radius: 3px;
   margin: 20px 0 5px 0;
@@ -70,21 +70,21 @@
 
 .MonsterSavedModal__link:hover {
   text-decoration: none;
-  background-color: var(--main-light-color);
-  border: 1px solid var(--main-light-color);
+  background: var(--main-color-light);
+  border: 1px solid var(--main-color-light);
 }
 
 .MonsterSavedModal__button {
   width: 200px;
   font-size: .9em;
   padding: 8px;
-  color: var(--button-text-color);
-  background-color: var(--main-color);
+  color: var(--color-white);
+  background: var(--main-color);
   border: 1px solid var(--main-color);
   border-radius: 3px;
 }
 
 .MonsterSavedModal__button:hover {
-  background-color: var(--main-light-color);
-  border: 1px solid var(--main-light-color);
+  background: var(--main-color-light);
+  border: 1px solid var(--main-color-light);
 }

@@ -11,9 +11,9 @@
   position: relative;
   height: 348px;
   width: 348px;
-  border: 1px solid var(--input-border-color);
+  border: 1px solid var(--border-color);
   border-radius: 3px;
-  background: var(--main-container-color);
+  background: var(--light-container-color);
 }
 
 .Monster__details-ctr {
@@ -26,7 +26,7 @@
     'tags';
   box-sizing: border-box;
   padding: 10px;
-  border: 1px solid var(--input-border-color);
+  border: 1px solid var(--border-color);
   border-radius: 3px;
   border-left: none;
 }
@@ -74,7 +74,7 @@
   grid-area: likes;
   margin-bottom: 30px;
   display: inline;
-  border-top: 1px dotted var(--input-border-color);
+  border-top: 1px dotted var(--border-color);
   padding-top: 10px;
 }
 
@@ -124,7 +124,7 @@
 
 .Monster__tags-header {
   font-size: .85em;
-  color: var(--lighter-text-color);
+  color: var(--main-text-color-lighter);
   margin-bottom: 2px;
 }
 
@@ -137,7 +137,7 @@
 
 .Monster__tags {
   font-size: 12px;
-  color: var(--lighter-text-color);
+  color: var(--main-text-color-lighter);
 }
 
 .Monster__tag {
@@ -171,7 +171,7 @@
   }
 
   .Monster__details-ctr {
-    border: 1px solid var(--input-border-color);
+    border: 1px solid var(--border-color);
     border-top: none;
   }
 

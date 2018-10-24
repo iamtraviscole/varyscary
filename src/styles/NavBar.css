@@ -1,42 +1,101 @@
 .NavBar {
   grid-area: header;
-  padding-top: 15px;
+  height: 60px;
+  vertical-align: center;
+  position: relative;
+  background: white;
+}
+
+.NavBar__logo {
+  float: left;
+  height: 30px;
+  padding: 0 10px;
+  text-align: center;
+  font-weight: 200;
+  color: white;
+  background: var(--main-color);
+  border-radius: 25px;
+  line-height: 30px;
+  margin: 15px 0 0 15px;
 }
 
 .NavBar__ul {
+  float: right;
   list-style-type: none;
 }
 
-.NavBar__li {
+.NavBar__link-ctr {
   float: left;
-  padding: 10px;
+  margin: 15px 15px 0 0;
+  height: 28px;
+  line-height: 28px;
+  padding-left: 10px;
+  font-size: 18px;
+  border: 1px solid var(--main-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 0 0 var(--main-color);
 }
 
-.NavBar__li--logo {
-  background-color: var(--main-color);
-  margin-left: 15px;
-  border-radius: 3px;
-}
-
-.NavBar__right {
-  float: right;
-}
-
-.NavBar__ul:last-child {
-  margin-right: 15px;
-}
-
-.NavBar__li .material-icons {
+.NavBar__link-li {
+  float: left;
+  margin-right: 10px;
   color: var(--main-color);
-  font-size: 28px;
-  margin-top: -3px;
 }
 
-.NavBar__li .material-icons:hover {
-  color: var(--main-light-color);
+.NavBar__link {
+  display: inline-block;
+}
+
+.NavBar__link:hover {
+  text-decoration: none;
+  color: var(--hover-color-dark);
+}
+
+.NavBar__user-panel-li {
+  float: right;
+  margin-top: 15px;
 }
 
 .NavBar__user-panel-btn {
-  background-color: transparent;
-  width: 28px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--main-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 0 0 var(--main-color);
+  margin-right: 15px;
+}
+
+.NavBar__user-panel-btn:hover .material-icons {
+  color: var(--hover-color-dark);
+}
+
+.NavBar__user-panel-btn .material-icons {
+  color: var(--main-color);
+  vertical-align: middle;
+  font-size: 24px;
+}
+
+.NavBar__hamburger-menu-li {
+  float: right;
+  margin-top: 15px;
+}
+
+.NavBar__hamburger-menu {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--main-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 0 0 var(--main-color);
+  margin-right: 15px;
+}
+
+.NavBar__hamburger-menu .material-icons {
+  color: var(--main-color);
+  vertical-align: middle;
+}
+
+.NavBar__hamburger-menu:hover .material-icons {
+  color: var(--hover-color-dark);
 }
