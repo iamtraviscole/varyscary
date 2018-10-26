@@ -49,6 +49,7 @@
   border-radius: 3px;
   background: var(--light-container-color);
   margin-right: 10px;
+  box-shadow: 0 3px 0 0 var(--border-color);
 }
 
 .EditMonster__edit-ctr {
@@ -58,6 +59,7 @@
   padding: 10px;
   border: 1px solid var(--border-color);
   border-radius: 3px;
+  box-shadow: 0 3px 0 0 var(--border-color);
 }
 
 .EditMonster__name-ctr {

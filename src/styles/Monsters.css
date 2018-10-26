@@ -20,6 +20,7 @@
 .Monsters__sort-ctr {
   grid-column: 1 / -1;
   margin-top: 25px;
+  margin-bottom: -15px;
 }
 
 .Monsters__sort-by-ctr {
