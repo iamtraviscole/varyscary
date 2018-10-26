@@ -111,7 +111,8 @@
   border: 1px solid var(--border-color);
   border-radius: 3px;
   background: var(--light-container-color);
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 0 0 var(--border-color);
 }
 
 .NewMonster__directions-ctr {
@@ -145,11 +146,22 @@
   color: var(--main-color);
 }
 
-.NewMonster__name-input {
-  font-size: 1em;
+.NewMonster__name-tags-outer-ctr {
   width: 340px;
-  height: 35px;
+  background: var(--light-container-color);
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  padding: 5px;
   margin-bottom: 5px;
+  display: inline-block;
+  box-shadow: 0 3px 0 0 var(--border-color);
+}
+
+.NewMonster__name-input {
+  font-size: 13px;
+  width: 328px;
+  height: 25px;
+  margin-bottom: 8px;
   padding: 0 5px;
   background: var(--light-container-color);
   border: 1px solid var(--main-color);
@@ -160,21 +172,11 @@
   font-style: italic;
 }
 
-.NewMonster__tags-outer-ctr {
-  width: 340px;
-  background: var(--light-container-color);
-  border: 1px solid var(--border-color);
-  border-radius: 3px;
-  padding: 5px;
-  margin-bottom: 5px;
-  display: inline-block;
-}
-
 .NewMonster__tags-instructions-ctr {
   font-size: 12px;
-  color: var(--main-text-color-lighter);
+  color: var(--main-text-color-light);
   font-weight: 200;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 .NewMonster__tags-instructions-ctr i {
@@ -292,14 +294,15 @@ input.NewMonster__tag-add-btn:hover {
 .NewMonster__button-save {
   display: block;
   margin: 0 auto;
-  width: 203px;
+  width: 170px;
   height: 35px;
-  margin-bottom: 5px;
-  font-size: 16px;
-  color: var(--color-white);
-  background: var(--main-color);
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: var(--main-color);
+  background: var(--light-container-color);
   border: 1px solid var(--main-color);
   border-radius: 3px;
+  box-shadow: 0 3px 0 0 var(--main-color);
 }
 
 .NewMonster__button-save i {
@@ -308,8 +311,7 @@ input.NewMonster__tag-add-btn:hover {
 }
 
 .NewMonster__button-save:hover {
-  background: var(--hover-color-dark);
-  border: 1px solid var(--hover-color-dark);
+  color: var(--hover-color-dark);
 }
 
 .NewMonster__button-save--disabled {
@@ -317,6 +319,7 @@ input.NewMonster__tag-add-btn:hover {
   background: transparent;
   border: 1px solid var(--main-color-disabled);
   cursor: not-allowed;
+  box-shadow: 0 3px 0 0 var(--main-color-disabled);
 }
 
 .NewMonster__button-save--disabled:hover {
@@ -327,33 +330,33 @@ input.NewMonster__tag-add-btn:hover {
 .NewMonster__button-reset {
   display: inline-block;
   margin: 0 auto;
-  width: 79px;
-  height: 30px;
+  width: 62px;
+  height: 25px;
   font-size: 14px;
   color: var(--main-color);
   border: 1px solid var(--main-color);
   border-radius: 3px;
-  margin-right: 5px;
+  margin-right: 10px;
+  box-shadow: 0 2px 0 0 var(--main-color);
 }
 
 .NewMonster__button-reset:hover {
   color: var(--hover-color-dark);
-  border: 1px solid var(--hover-color-dark);
 }
 
 .NewMonster__button-randomize {
   display: inline-block;
-  width: 119px;
-  height: 30px;
+  width: 97px;
+  height: 25px;
   font-size: 14px;
   color: var(--main-color);
   border: 1px solid var(--main-color);
   border-radius: 3px;
+  box-shadow: 0 2px 0 0 var(--main-color);
 }
 
 .NewMonster__button-randomize:hover {
   color: var(--hover-color-dark);
-  border: 1px solid var(--hover-color-dark);
 }
 
 @keyframes slidein {

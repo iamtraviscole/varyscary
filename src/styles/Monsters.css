@@ -1,12 +1,11 @@
 .Monsters {
   text-align: center;
   grid-area: content;
-  margin: 0 25px;
+  margin: 25px 25px 0 25px;
 }
 
 .Monsters h1 {
   border-bottom: 1px solid var(--border-color);
-  margin-top: 25px;
   padding-bottom: 25px;
 }
 

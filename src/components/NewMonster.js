@@ -303,13 +303,13 @@ class NewMonster extends PureComponent {
                 <div className='NewMonster__monster-ctr'>
                   {noFeatureSelected ? monsterDirections : <MonsterFromStore /> }
                 </div>
-                <input className='NewMonster__name-input'
-                  name='name'
-                  type='text'
-                  placeholder='name (optional)'
-                  value={this.props.monsterName}
-                  onChange={this.handleNameChange} />
-                <div className='NewMonster__tags-outer-ctr'>
+                <div className='NewMonster__name-tags-outer-ctr'>
+                  <input className='NewMonster__name-input'
+                    name='name'
+                    type='text'
+                    placeholder='name (optional)'
+                    value={this.props.monsterName}
+                    onChange={this.handleNameChange} />
                   <div className='NewMonster__tags-instructions-ctr'>
                     <i className='material-icons'>info_outline</i>
                     press enter or click 'Add' to add tags
