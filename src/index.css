@@ -1,4 +1,4 @@
-@import './styles/colors.css';
+@import 'colorVariables.css';
 
 * {
   margin: 0;
