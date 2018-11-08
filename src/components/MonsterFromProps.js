@@ -61,15 +61,23 @@ class Monster extends Component {
         {this.props.withDetails ?
           this.state.showDetails ?
             <Fragment>
-              <Link to={'/monsters/' + monster.id}
-                className='MonsterFromProps__details-ctr'
-                onClick={this.handleDetailsClick}>
-                {monster.name ?
-                  <div className='MonsterFromProps__monster-name'>
-                    {monster.name}
-                  </div>
+              {this.props.asModal ?
+                <div className='MonsterFromProps__details-ctr'
+                  onClick={this.props.showModal}>
+                  {monster.name ?
+                    <div className='MonsterFromProps__monster-name'>
+                      {monster.name}
+                    </div>
                   : null}
-              </Link>
+                  </div>
+              : <Link to={'/monsters/' + monster.id}
+                  className='MonsterFromProps__details-ctr'>
+                  {monster.name ?
+                    <div className='MonsterFromProps__monster-name'>
+                      {monster.name}
+                    </div>
+                  : null}
+                </Link>}
               <div className='MonsterFromProps__tags'>
                 {monsterTags}
               </div>
@@ -77,8 +85,8 @@ class Monster extends Component {
                 <Link to={'/' + monster.username}>{monster.username}</Link>
               </div>
             </Fragment>
-            :null
-          :null}
+          :null
+        :null}
         <div className='MonsterFromProps__feature MonsterFromProps__body'>
           {featureComponent(BodyComponent, 'bodyFill')}
         </div>

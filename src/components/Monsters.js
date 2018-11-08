@@ -9,6 +9,7 @@ import * as actions from '../actions/actions'
 import MonsterFromProps from './MonsterFromProps'
 import NoAuthNavBar from './NoAuthNavBar'
 import LikesModal from './LikesModal'
+import MonsterModal from './MonsterModal'
 import Spinner from './Spinner'
 
 class Monsters extends Component  {
@@ -23,7 +24,9 @@ class Monsters extends Component  {
     searchValue: '',
     searchedValue: '',
     showLikesModal: false,
-    likesForModal: []
+    likesForModal: [],
+    showMonsterModal: false,
+    monsterForModal: null
   }
 
   getSortByFromParams = () => {
@@ -198,13 +201,17 @@ class Monsters extends Component  {
     })
   }
 
-  setShowLikesModal = (monsterId) => {
+  setShowLikesModal = (monster) => {
     this.setState({showLikesModal: !this.state.showLikesModal})
-    let monster = this.state.monsters.find(monster => {
-      return monster.id === monsterId
-    })
     if (monster) {
       this.setState({likesForModal: monster.liked_by})
+    }
+  }
+
+  setShowMonsterModal = (monster) => {
+    this.setState({showMonsterModal: !this.state.showMonsterModal})
+    if (monster) {
+      this.setState({monsterForModal: monster})
     }
   }
 
@@ -235,9 +242,10 @@ class Monsters extends Component  {
             legsType={monster.legs_type} legsFill={monster.legs_fill}
             username={monster.username} tags={monster.tags}
             withDetails={true}
+            asModal={true} showModal={() => this.setShowMonsterModal(monster)}
           />
           <button className='Monsters__like-count-ctr'
-            onClick={() => this.setShowLikesModal(monster.id)}>
+            onClick={() => this.setShowLikesModal(monster)}>
             {monster.like_count} {monster.like_count === 1 ? 'like' : 'likes'}
           </button>
           {monstersUserLiked.includes(monster) ?
@@ -286,6 +294,11 @@ class Monsters extends Component  {
     return (
       <Fragment>
         {noAuthNav}
+        {this.state.showMonsterModal
+          ? <MonsterModal setShowMonsterModal={this.setShowMonsterModal}
+              monster={this.state.monsterForModal}
+            />
+          : null}
         {this.state.showLikesModal
           ? <LikesModal setShowLikesModal={this.setShowLikesModal}
               likes={this.state.likesForModal}
