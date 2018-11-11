@@ -8,7 +8,6 @@ const LikesModal = (props) => {
   const handleModalClick = () => {
     props.setShowLikesModal()
   }
-  console.log(props);
 
   let likes = props.likes.map((like, i) => {
     return (
