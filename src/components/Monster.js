@@ -146,9 +146,6 @@ class Monster extends Component {
                     </div>
                   {monster.tags.length > 0
                     ? <div className='Monster__tags-ctr'>
-                        <h3 className='Monster__tags-header'>
-                          <i className='material-icons'>label_outline</i> Tags
-                        </h3>
                         <ul className='Monster__tags'>
                           {monsterTags}
                         </ul>

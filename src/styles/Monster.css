@@ -5,6 +5,7 @@
   grid-template-columns: 350px 350px;
   grid-template-rows: 350px;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .Monster__monster-ctr {
@@ -22,19 +23,22 @@
 .Monster__details-ctr {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto auto auto;
   grid-template-areas:
     'creator'
     'likes'
     'tags';
   box-sizing: border-box;
+  max-height: 350px;
   padding: 10px;
   border: 1px solid var(--border-color);
   border-radius: 3px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-left: none;
+  background: var(--light-container-color);
   box-shadow: 0 3px 0 0 var(--border-color);
+  overflow-y: auto;
 }
 
 .Monster__creator-ctr {
@@ -124,21 +128,7 @@
 .Monster__tags-ctr {
   grid-area: tags;
   align-self: end;
-  overflow: auto;
-  max-height: 100%;
-}
-
-.Monster__tags-header {
-  font-size: .85em;
-  color: var(--main-text-color-lighter);
-  margin-bottom: 2px;
-}
-
-.Monster__tags-header i {
-  font-size: 15px;
-  vertical-align: middle;
-  margin-top: -2px;
-  font-weight: bold;
+  word-break: break-all;
 }
 
 .Monster__tags {
@@ -176,8 +166,16 @@
     grid-template-rows: 350px auto;
   }
 
+  .Monster__monster-ctr {
+    box-shadow: none;
+  }
+
   .Monster__details-ctr {
+    max-height: none;
     border: 1px solid var(--border-color);
+    border-radius: 0;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
     border-top: none;
   }
 
