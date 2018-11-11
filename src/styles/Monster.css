@@ -10,8 +10,9 @@
 
 .Monster__monster-ctr {
   position: relative;
-  height: 348px;
-  width: 348px;
+  box-sizing: border-box;
+  height: 350px;
+  width: 350px;
   border: 1px solid var(--border-color);
   border-radius: 3px;
   border-top-right-radius: 0;
@@ -162,12 +163,14 @@
     grid-area: content;
     display: grid;
     justify-content: center;
-    grid-template-columns: 350px;
-    grid-template-rows: 350px auto;
+    grid-template-columns: 310px;
+    grid-template-rows: 310px auto;
   }
 
   .Monster__monster-ctr {
     box-shadow: none;
+    width: 310px;
+    height: 310px;
   }
 
   .Monster__details-ctr {
