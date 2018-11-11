@@ -3,8 +3,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 5000;
   background: var(--modal-background-color);
 }
@@ -12,8 +12,6 @@
 .MonsterModal__outer-ctr {
   display: table-cell;
   vertical-align: middle;
-  width: 100%;
-  height: 100%;
 }
 
 .MonsterModal__link-inner-ctr {
@@ -70,6 +68,7 @@
 }
 
 .MonsterModal__inner-ctr {
+  position: relative;
   width: 700px;
   height: 350px;
   max-height: 80%;
@@ -90,11 +89,9 @@
   box-sizing: border-box;
   height: 350px;
   width: 350px;
-  border-right: 1px solid var(--border-color);
   border-radius: 3px;
   background: var(--light-container-color);
 }
-
 
 .MonsterModal__monster-inner-ctr {
   height: 345px;
@@ -102,6 +99,7 @@
 }
 
 .MonsterModal__details-ctr {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto 1fr;
@@ -114,7 +112,11 @@
   height: 350px;
   padding: 10px;
   background: var(--light-container-color);
+  border-left: 1px solid var(--border-color);
   border-radius: 3px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  z-index: 3000;
 }
 
 .MonsterModal__info-ctr {
@@ -173,6 +175,80 @@
   cursor: pointer;
 }
 
+.MonsterModal__likes-slideout {
+  visibility: hidden;
+  position: absolute;
+  box-sizing: border-box;
+  top: 50px;
+  left: 371px;
+  height: 250px;
+  width: 320px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-right: none;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background: var(--light-container-color);
+  box-shadow: 0 2px 0 0 var(--border-color);
+  word-break: break-all;
+  overflow-y: auto;
+  z-index: 2000;
+  transition: ease 250ms;
+}
+
+.MonsterModal__likes-slideout--show {
+  visibility: visible;
+  top: 50px;
+  left: 50px;
+}
+
+.MonsterModal__likes-slideout-h-ctr {
+  height: 28px;
+  border-bottom: 1px dotted var(--border-color);
+  margin-bottom: 5px;
+}
+
+.MonsterModal__likes-slideout h3 {
+  display: inline;
+  font-size: 18px;
+  color: var(--main-color);
+}
+
+.MonsterModal__likes-slideout-close {
+  float: right;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+  margin: -3px 0 5px 5px;
+}
+
+.MonsterModal__likes-slideout-close:hover {
+  color: var(--hover-color-dark);
+  border: 1px solid var(--hover-color-dark);
+}
+
+.MonsterModal__likes-slideout-close i {
+  vertical-align: middle;
+  font-size: 20px;
+  margin: -1px 0 0 1px;
+}
+
+.MonsterModal__likes-ul {
+  list-style-type: none;
+}
+
+.MonsterModal__like-li {
+  display: inline;
+}
+
+.MonsterModal__like-li::after {
+  content: ', '
+}
+
+.MonsterModal__like-li:last-child::after {
+  content: ''
+}
+
 .MonsterModal__likes:hover {
   text-decoration: underline;
 }
@@ -204,21 +280,7 @@
 .MonsterModal__tags-ctr {
   grid-area: tags;
   align-self: end;
-  /* overflow: auto; */
   max-height: 100%;
-}
-
-.MonsterModal__tags-header {
-  font-size: .85em;
-  color: var(--main-text-color-lighter);
-  margin-bottom: 2px;
-}
-
-.MonsterModal__tags-header i {
-  font-size: 15px;
-  vertical-align: middle;
-  margin-top: -2px;
-  font-weight: bold;
 }
 
 .MonsterModal__tags {
@@ -258,8 +320,6 @@
   .MonsterModal__monster-ctr {
     width: 278px;
     height: 278px;
-    border-right: none;
-    border-bottom: 1px solid var(--border-color);
   }
 
   .MonsterModal__monster-inner-ctr {
@@ -272,12 +332,27 @@
     width: 278px;
     height: 278px;
     height: auto;
+    border-left: none;
+    border-top: 1px solid var(--border-color);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 
-  .MonsterModal__tags-ctr {
-    align-self: baseline;
-    grid-area: tags;
-    overflow: visible;
+  .MonsterModal__likes-slideout {
+    top: 279px;
+    left: 35px;
+    height: 243px;
+    width: 248px;
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  .MonsterModal__likes-slideout--show {
+    visibility: visible;
+    top: 35px;
   }
 
 }
