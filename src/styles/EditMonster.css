@@ -50,6 +50,7 @@
   background: var(--light-container-color);
   margin-right: 10px;
   box-shadow: 0 3px 0 0 var(--border-color);
+  cursor: pointer;
 }
 
 .EditMonster__edit-ctr {

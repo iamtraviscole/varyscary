@@ -176,6 +176,10 @@ class EditMonster extends Component {
     this.props.history.goBack()
   }
 
+  handleMonsterClick = () => {
+    this.props.history.push(`/monsters/${this.state.monster.id}`)
+  }
+
   render() {
     const monster = this.state.monster
 
@@ -245,7 +249,8 @@ class EditMonster extends Component {
                   </div>
                 : <Fragment>
                     <h1 className='EditMonster__header'>Edit Monster</h1>
-                    <div className='EditMonster__monster-ctr'>
+                    <div className='EditMonster__monster-ctr'
+                      onClick={this.handleMonsterClick}>
                       <MonsterFromProps
                         name={monster.name}
                         id={monster.id}
