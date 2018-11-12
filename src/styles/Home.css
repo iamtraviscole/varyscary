@@ -58,13 +58,14 @@
   min-width: 200px;
   width: 100%;
   color: var(--main-color);
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--main-color);
   border-radius: 3px;
-  box-shadow: 0 3px 0 0 var(--border-color);
+  box-shadow: 0 3px 0 0 var(--main-color);
   background: var(--light-container-color);
 }
 
 .Home__big-btn:hover {
+  border-bottom: 1px solid var(--main-color-light);
   background: var(--main-color);
 }
 

@@ -334,6 +334,7 @@ input.NewMonster__tag-add-btn:hover {
   height: 25px;
   font-size: 14px;
   color: var(--main-color);
+  background: var(--light-container-color);
   border: 1px solid var(--main-color);
   border-radius: 3px;
   margin-right: 10px;
@@ -350,6 +351,7 @@ input.NewMonster__tag-add-btn:hover {
   height: 25px;
   font-size: 14px;
   color: var(--main-color);
+  background: var(--light-container-color);
   border: 1px solid var(--main-color);
   border-radius: 3px;
   box-shadow: 0 2px 0 0 var(--main-color);
