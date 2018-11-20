@@ -25,10 +25,6 @@ class MonsterModal extends Component {
     event.stopPropagation()
   }
 
-  handleLinkClick = () => {
-    this.props.history.push(`monsters/${this.props.monster.id}`)
-  }
-
   handleLikeClick = () => {
     this.props.handleLikeClick(null, this.props.monster)
     .then(likedMonster => {
@@ -95,9 +91,9 @@ class MonsterModal extends Component {
         <div className='MonsterModal' onClick={this.handleModalClick}>
           <div className='MonsterModal__outer-ctr'>
             <div className='MonsterModal__link-inner-ctr'>
-              <button className='MonsterModal__monster-link' onClick={this.handleLinkClick}>
+              <Link to={`monsters/${this.props.monster.id}`} className='MonsterModal__monster-link'>
                 <i className='material-icons'>launch</i> link
-              </button>
+              </Link>
               <button className='MonsterModal__close-btn'>
                 <i className='material-icons'>close</i>
               </button>

@@ -40,7 +40,7 @@ class Monster extends Component {
     .then(resp => {
       if (resp === 401) {
         this.props.history.push('/')
-        this.props.setMessage('Please log in to like monsters')
+        this.props.setMessage('Please log in or sign up to do that')
       } else {
         this.setState({monster: resp})
       }

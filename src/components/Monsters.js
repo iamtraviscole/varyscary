@@ -173,7 +173,7 @@ class Monsters extends Component  {
   handleLikeUnlike401 = () => {
     this.props.logout()
     this.props.history.push('/')
-    this.props.setMessage('Please log in or sign up to like or unlike monsters')
+    this.props.setMessage('Please log in or sign up to do that')
   }
 
   handleLikeClick = (event, modalMonster = null) => {
@@ -195,7 +195,7 @@ class Monsters extends Component  {
       .catch(err => {
         console.log(err)
         if (err.response.status === 401) {
-          this.handleLike401()
+          this.handleLikeUnlike401()
         }
         this.props.fetchEnded()
         return null
@@ -223,7 +223,7 @@ class Monsters extends Component  {
       .catch(err => {
         console.log(err)
         if (err.response.status === 401) {
-          this.handleLike401()
+          this.handleLikeUnlike401()
         }
         this.props.fetchEnded()
         return null
