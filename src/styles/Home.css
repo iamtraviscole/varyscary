@@ -1,6 +1,7 @@
 .Home {
   grid-area: content;
-  margin: 50px;
+  padding: 50px;
+  background: var(--background-color-dark);
 }
 
 .Home__btns-ctr {
@@ -51,22 +52,19 @@
 }
 
 .Home__big-btn {
+  box-sizing: border-box;
   position: relative;
   display: inline-block;
-  min-height: 200px;
-  height: 300px;
+  height: 225px;
+  min-height: 225px;
   min-width: 200px;
   width: 100%;
-  color: var(--main-color);
-  border: 1px solid var(--main-color);
   border-radius: 3px;
-  box-shadow: 0 3px 0 0 var(--main-color);
-  background: var(--light-container-color);
+  background: var(--main-color);
 }
 
-.Home__big-btn:hover {
-  border-bottom: 1px solid var(--main-color-light);
-  background: var(--main-color);
+.Home__big-btn:hover .Home__text {
+  top: 42%;
 }
 
 .Home__make-btn {
@@ -89,22 +87,20 @@
   z-index: 14;
 }
 
-.Home__big-btn-inner-ctr {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .Home__text {
+  box-sizing: border-box;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 80%;
   padding: 15px 20px;
-  color: var(--color-white);
-  background: var(--main-color);
   font-size: 28px;
-  font-weight: bold;
+  /* font-weight: bold; */
+  color: var(--color-white);
+  background: var(--background-color-dark);
+  border: 3px solid white;
+  box-shadow: 0 1px 2px 1px var(--shadow-color-dark);
   border-radius: 3px;
+  transition: ease 250ms;
 }
