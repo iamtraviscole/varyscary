@@ -4,23 +4,10 @@
   padding: 25px;
 }
 
-.User__sort-ctr {
-  width: 100%;
-  margin-top: 25px;
-}
-
-.User__sort-by {
-  display: inline;
-  font-size: 1em;
-  margin-right: 5px;
-}
-
-.User__drop-down select {
-  border: 1px solid var(--main-color);
-  background: none;
+.User h1 {
   color: var(--main-color);
-  font-size: 1em;
-  font-weight: bold;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 25px;
 }
 
 .User__monsters-ctr {
@@ -28,7 +15,28 @@
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 250px);
   grid-gap: 40px;
-  margin: 40px 0 20px 0;
+  margin: 0 0 20px 0;
+}
+
+.User__sort-ctr {
+  grid-column: 1 / -1;
+  margin-top: 25px;
+  margin-bottom: -15px;
+}
+
+.User__sort-by-ctr {
+  float: left;
+  display: inline-block;
+}
+
+.User__drop-down select {
+  vertical-align: top;
+  height: 24px;
+  border: 1px solid var(--main-color);
+  background: none;
+  color: var(--main-color);
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .User__monster-ctr {

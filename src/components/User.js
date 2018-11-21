@@ -180,21 +180,21 @@ class User extends Component  {
           <Fragment>
             <h1>{this.state.username}</h1>
              {this.state.monsters.length > 0
-              ? <Fragment>
-                  <div className='User__sort-ctr'>
-                    <div className='User__drop-down'>
-                      <div className='User__sort-by'>Sort by:</div>
-                      <select value={this.state.sortBy} onChange={this.handleSelectChange}>
-                        <option value='newest'>Newest</option>
-                        <option value='oldest'>Oldest</option>
-                        <option value='popular'>Popular</option>
-                      </select>
-                    </div>
-                  </div>
+              ?
                   <div className='User__monsters-ctr'>
+                    <div className='User__sort-ctr'>
+                      <div className='User__sort-by-ctr'>
+                        <div className='User__drop-down'>
+                          <select value={this.state.sortBy} onChange={this.handleSelectChange}>
+                            <option value='newest'>Newest</option>
+                            <option value='oldest'>Oldest</option>
+                            <option value='popular'>Popular</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
                     {monstersArr}
                   </div>
-                </Fragment>
               : <div className='User__monsters-ctr'>
                   This user has no monsters yet
                 </div>
