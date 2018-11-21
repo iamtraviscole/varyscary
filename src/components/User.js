@@ -24,17 +24,17 @@ class User extends Component  {
     axios.get(`http://localhost:4000/api/users/${this.props.match.params.username}`)
     .then(res => {
       console.log(res.data);
-      this.props.fetchEnded()
       this.setState({
         initialFetch: false,
         username: res.data.username,
         monsters: res.data.monsters
       })
+      this.props.fetchEnded()
     })
     .catch(err => {
       console.log(err);
-      this.props.fetchEnded()
       this.setState({initialFetch: false})
+      this.props.fetchEnded()
     })
   }
 

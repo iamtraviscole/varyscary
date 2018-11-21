@@ -16,7 +16,7 @@ const UserPanel = (props) => {
             <Link to={'/' + props.username}>Your profile</Link>
           </li>
           <li className='UserPanel__li'>
-            <Link to='/monsters'>Monsters you've liked</Link>
+            <Link to={`/${props.username}/likes`}>Your likes</Link>
           </li>
         </ul>
         <hr />

@@ -1,0 +1,60 @@
+.UserLikes {
+  text-align: center;
+  grid-area: content;
+  padding: 25px;
+}
+
+.UserLikes h1 {
+  color: var(--main-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 25px;
+}
+
+.UserLikes__no-likes-ctr {
+  grid-column: 1 / -1;
+}
+
+.UserLikes__no-likes-text {
+
+}
+
+.UserLikes__no-likes-btn {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 5px;
+  color: var(--color-white);
+  background: var(--main-color);
+  border-radius: 3px;
+}
+
+.UserLikes__monsters-ctr {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 150px);
+  grid-gap: 40px;
+  margin: 40px 0 20px 0;
+}
+
+.UserLikes__monster-ctr {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  height: 150px;
+  width: 150px;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  background: white;
+  box-shadow: 0 3px 0 0 var(--border-color);
+}
+
+.UserLikes__monster-ctr:hover {
+  border: 1px solid var(--hover-color-dark);
+}
+
+.UserLikes__no-user {
+  margin-top: 50px;
+}
+
+.UserLikes__spinner {
+  margin-top: 100px;
+}

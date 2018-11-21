@@ -48,9 +48,9 @@ class Home extends Component {
             <div className='Home__popup-monster Home__popup-monster-4'>
               <img src={popupMonster4} alt='monster'></img>
             </div>
-            <Link to='/home' className='Home__big-btn Home__favorites-btn'>
+            <Link to={`/${this.props.username}/likes`} className='Home__big-btn Home__favorites-btn'>
               <div className='Home__text'>
-                Your Favorites
+                Your Likes
               </div>
             </Link>
           </div>

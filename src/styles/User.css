@@ -1,7 +1,7 @@
 .User {
   text-align: center;
   grid-area: content;
-  margin: 25px 25px 0 25px;
+  padding: 25px;
 }
 
 .User__sort-ctr {

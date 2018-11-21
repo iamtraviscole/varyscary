@@ -19,6 +19,7 @@
 
 .UserPanel.show {
   position: absolute;
+  min-width: 125px;
   top: 55px;
   right: 15px;
   background: var(--light-container-color);

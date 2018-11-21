@@ -18,6 +18,7 @@ import Monster from './Monster'
 import EditMonster from './EditMonster'
 import NoMatch from './NoMatch'
 import User from './User'
+import UserLikes from './UserLikes'
 
 class App extends PureComponent {
 
@@ -68,6 +69,7 @@ class App extends PureComponent {
           <Route exact path='/monsters/:id' component={Monster} />
           <AuthRoute exact path='/monsters/:id/edit' component={EditMonster} />
           <Route exact path='/:username' component={User} />
+          <Route exact path='/:username/likes' component={UserLikes} />
           <Route component={NoMatch} />
         </Switch>
       </div>
