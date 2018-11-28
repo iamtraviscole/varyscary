@@ -19,17 +19,17 @@ const MonsterSavedModal = (props) => {
   return (
     <div className='MonsterSavedModal' onClick={handleModalClick}>
       <div className='MonsterSavedModal__outer-ctr'>
+        <div className='MonsterSavedModal__saved'>
+          Monster created!
+          <i className="material-icons">mood</i>
+        </div>
         <div className='MonsterSavedModal__inner-ctr'>
           <div className='MonsterSavedModal__monster-ctr'>
             <MonsterFromStore />
           </div>
-          <div className='MonsterSavedModal__saved'>
-            Monster created!
-            <i className="material-icons">mood</i>
-          </div>
           <div className='MonsterSavedModal__buttons-ctr'>
-            <Link className='MonsterSavedModal__link' to='/'>Go to your monsters</Link>
-            <button className='MonsterSavedModal__button'
+            <Link className='MonsterSavedModal__btn' to={`/${props.username}`}>Go to your monsters</Link>
+            <button className='MonsterSavedModal__btn'
               onClick={handleMakeAnotherClick}>
               Make another monster
             </button>

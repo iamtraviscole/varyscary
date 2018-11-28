@@ -260,7 +260,8 @@ class NewMonster extends PureComponent {
         {this.state.showModal
           ? <MonsterSavedModal setShowModal={this.setShowModal}
               resetMonster={this.props.resetMonster}
-              setActivePanelBodies={this.setActivePanelBodies} />
+              setActivePanelBodies={this.setActivePanelBodies}
+              username={this.props.username} />
           : null}
         <div className='NewMonster'>
           <div className='NewMonster__ctr'>
@@ -380,7 +381,8 @@ const mapStateToProps = (state) => {
   return {
     monsterName: state.monsterName,
     monsterTags: state.monsterTags,
-    monster: state.monster
+    monster: state.monster,
+    username: state.username
   }
 }
 
