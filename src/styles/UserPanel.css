@@ -1,6 +1,5 @@
 .UserPanel {
   z-index: 5000;
-  transition: all 250ms;
 }
 
 .UserPanel.hide {
