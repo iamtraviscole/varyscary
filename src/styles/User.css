@@ -18,6 +18,19 @@
   margin: 0 0 20px 0;
 }
 
+.User__no-monsters-ctr {
+  margin-top: 40px;
+}
+
+.User__no-monsters-btn {
+  margin-top: 10px;
+  display: inline-block;
+  padding: 5px;
+  color: var(--color-white);
+  background: var(--main-color);
+  border-radius: 3px;
+}
+
 .User__sort-ctr {
   grid-column: 1 / -1;
   margin-top: 25px;

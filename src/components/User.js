@@ -180,23 +180,30 @@ class User extends Component  {
           <Fragment>
             <h1>{this.state.username}</h1>
              {this.state.monsters.length > 0
-              ?
-                  <div className='User__monsters-ctr'>
-                    <div className='User__sort-ctr'>
-                      <div className='User__sort-by-ctr'>
-                        <div className='User__drop-down'>
-                          <select value={this.state.sortBy} onChange={this.handleSelectChange}>
-                            <option value='newest'>Newest</option>
-                            <option value='oldest'>Oldest</option>
-                            <option value='popular'>Popular</option>
-                          </select>
-                        </div>
+              ? <div className='User__monsters-ctr'>
+                  <div className='User__sort-ctr'>
+                    <div className='User__sort-by-ctr'>
+                      <div className='User__drop-down'>
+                        <select value={this.state.sortBy} onChange={this.handleSelectChange}>
+                          <option value='newest'>Newest</option>
+                          <option value='oldest'>Oldest</option>
+                          <option value='popular'>Popular</option>
+                        </select>
                       </div>
                     </div>
-                    {monstersArr}
                   </div>
-              : <div className='User__monsters-ctr'>
-                  This user has no monsters yet
+                  {monstersArr}
+                </div>
+              : <div className='User__no-monsters-ctr'>
+                  {this.props.username === this.props.match.params.username
+                    ? <Fragment>
+                        You have not created any monsters yet!
+                        <br />
+                        <Link to='/monsters/new' className='User__no-monsters-btn'>
+                          Make a monster
+                        </Link>
+                      </Fragment>
+                    : 'This user has no monsters yet'}
                 </div>
               }
             </Fragment>
