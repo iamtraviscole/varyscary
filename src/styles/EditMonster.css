@@ -250,8 +250,8 @@ input.EditMonster__tag-add-btn:hover {
   position: fixed;
   top: 0;
   right: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 5000;
   background: var(--modal-background-color);
   overflow: scroll;
@@ -268,9 +268,8 @@ input.EditMonster__tag-add-btn:hover {
   margin-top: 200px;
   display: inline-block;
   padding: 20px;
-  color: var(--color-white);
-  background: var(--main-color);
-  border: 1px solid var(--color-white);
+  background: var(--light-container-color);
+  border-bottom: 3px solid var(--border-color);
   border-radius: 3px;
   box-shadow: 4px 4px 4px var(--shadow-color);
 }
@@ -290,7 +289,6 @@ input.EditMonster__tag-add-btn:hover {
   display: inline-block;
   color: var(--color-white);
   background: var(--main-color);
-  border: 1px solid var(--color-white);
   border-radius: 3px;
   padding: 6px 8px;
   margin-left: 10px;
@@ -301,8 +299,33 @@ input.EditMonster__tag-add-btn:hover {
 }
 
 .EditMonster__confirm-btn:hover {
+  background: var(--hover-color-dark);
+  text-decoration: none;
+}
+
+.EditMonster__saved-btn-ctr {
+  display: inline-block;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.EditMonster__saved-btn {
+  width: 125px;
+  height: 35px;
+  line-height: 35px;
+  display: block;
   color: var(--color-white);
-  background: var(--main-color-light);
+  background: var(--main-color);
+  /* border: 1px solid var(--color-white); */
+  border-radius: 3px;
+}
+
+.EditMonster__saved-btn:first-child {
+  margin: 10px 0;
+}
+
+.EditMonster__saved-btn:hover {
+  background: var(--hover-color-dark);
   text-decoration: none;
 }
 

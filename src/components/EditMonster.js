@@ -186,7 +186,7 @@ class EditMonster extends Component {
     let modalMessage
     if (this.state.deleteClicked) {
       modalMessage = <div className='EditMonster__confirm-ctr'>
-        Are you sure?
+        <h3>Are you sure?</h3>
         <div className='EditMonster__confirm-btn-ctr'>
           <button onClick={this.handleDeleteConfirm}
             className='EditMonster__confirm-btn'>Delete</button>
@@ -196,10 +196,12 @@ class EditMonster extends Component {
     }
     if (this.state.saveMessage) {
       modalMessage = <div className='EditMonster__confirm-ctr'>
-        {this.state.saveMessage}
-        <div className='EditMonster__confirm-btn-ctr'>
+        <h3>{this.state.saveMessage}</h3>
+        <div className='EditMonster__saved-btn-ctr'>
           <Link to={`/monsters/${this.props.computedMatch.params.id}`}
-            className='EditMonster__confirm-btn'>View Monster</Link>
+            className='EditMonster__saved-btn'>View Monster</Link>
+          <Link to={`/${this.props.username}`}
+            className='EditMonster__saved-btn'>Your Monsters</Link>
         </div>
       </div>
     }
