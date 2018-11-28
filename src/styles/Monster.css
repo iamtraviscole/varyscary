@@ -51,7 +51,7 @@
   font-size: 1.75em;
   font-weight: bold;
   margin-bottom: 8px;
-  word-break: break-all;
+  /* word-break: break-all; */
 }
 
 .Monster__created-by {
