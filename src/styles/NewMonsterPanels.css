@@ -2,6 +2,7 @@
   position: relative;
   clear: both;
   border: 1px solid var(--border-color);
+  border-radius: 3px;
   overflow: auto;
   margin-bottom: 25px;
   padding: 25px 0 0 25px;
@@ -107,4 +108,12 @@
 
 .NewMonsterPanels__legs {
   z-index: 530;
+}
+
+@media (max-width: 685px) {
+
+  .NewMonsterPanels__features-ctr {
+    padding-left: 55px;
+  }
+
 }
