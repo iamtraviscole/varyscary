@@ -28,10 +28,6 @@ const reducer = (state = initialState, action) => {
       return {...state, isFetching: true}
     case actionTypes.FETCH_ENDED:
       return {...state, isFetching: false}
-    case actionTypes.SET_MOBILE:
-      return {...state, userOnMobile: true}
-    case actionTypes.SET_DESKTOP:
-      return {...state, userOnMobile: false}
     case actionTypes.SET_MONSTER_NAME:
       return {...state, monsterName: action.monsterName}
     case actionTypes.ADD_MONSTER_TAG:

@@ -22,30 +22,7 @@ import User from './User'
 import UserLikes from './UserLikes'
 
 class App extends PureComponent {
-
-  handleUserOnMobile = () => {
-    window.innerWidth > 580
-      ? this.props.setDesktop()
-      : this.props.setMobile()
-  }
-
-  componentDidMount = () => {
-    this.handleUserOnMobile();
-    window.addEventListener('resize', this.handleUserOnMobile)
-  }
-
-  componentWillUnmount = () => {
-    window.removeEventListener('resize', this.handleUserOnMobile)
-  }
-
-  componentWillMount = () => {
-    if (window.innerWidth > 580) {
-      this.props.setDesktop()
-    } else {
-      this.props.setMobile()
-    }
-  }
-
+  
   render() {
     let homeComponent = Splash
     let navBar = <NoAuthNavBar />
@@ -57,8 +34,7 @@ class App extends PureComponent {
       navBar = null
     } else if (this.props.username) {
       homeComponent = Home
-      navBar = <NavBar username={this.props.username}
-        userOnMobile={this.props.userOnMobile} />
+      navBar = <NavBar username={this.props.username} />
     }
 
     return (
@@ -85,8 +61,7 @@ class App extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.username,
-    userOnMobile: state.userOnMobile
+    username: state.username
   }
 }
 

@@ -6,7 +6,6 @@ const initialState = {
     text: null,
     icon: null
   },
-  userOnMobile: false,
   isFetching: false,
   monsterName: '',
   monsterTags: [],

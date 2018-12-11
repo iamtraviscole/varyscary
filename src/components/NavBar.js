@@ -9,7 +9,23 @@ import UserPanel from './UserPanel'
 class NavBar extends Component {
   state = {
     showSlideout: false,
-    showUserPanel: false
+    showUserPanel: false,
+    smallScreen: false
+  }
+
+  handleSmallScreen = () => {
+    window.innerWidth > 580
+      ? this.setState({smallScreen: false})
+      : this.setState({smallScreen: true})
+  }
+
+  componentDidMount = () => {
+    this.handleSmallScreen();
+    window.addEventListener('resize', this.handleSmallScreen)
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.handleSmallScreen)
   }
 
    handleSlideoutClick = () => {
@@ -38,7 +54,7 @@ class NavBar extends Component {
       </Fragment>
     )
 
-    if (this.props.userOnMobile) {
+    if (this.state.smallScreen) {
       navItems = (
         <li className='NavBar__hamburger-menu-li'>
           <button onClick={this.handleSlideoutClick} className='NavBar__hamburger-menu'>
@@ -56,7 +72,7 @@ class NavBar extends Component {
 
     return (
       <Fragment>
-        {this.props.userOnMobile
+        {this.state.smallScreen
           ? <SlideoutMenu
               toggleSlideout={toggleSlideout}
               handleSlideoutClick={this.handleSlideoutClick}
