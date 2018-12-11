@@ -60,7 +60,7 @@ class Monster extends Component {
     })
   }
 
-  setShowLikesModal = (monsterId) => {
+  setShowLikesModal = () => {
     this.setState({showLikesModal: !this.state.showLikesModal})
   }
 

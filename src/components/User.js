@@ -11,12 +11,15 @@ import * as actions from '../actions/actions'
 import MonsterFromProps from './MonsterFromProps'
 import NoAuthNavBar from './NoAuthNavBar'
 import Spinner from './Spinner'
+import LikesModal from './LikesModal'
 
 class User extends Component  {
   state = {
     initialFetch: true,
     username: null,
-    monsters: []
+    monsters: [],
+    showLikesModal: false,
+    likesModalMonster: null
   }
 
   componentDidMount = () => {
@@ -115,6 +118,14 @@ class User extends Component  {
     })
   }
 
+  setShowLikesModal = (monster) => {
+    this.setState({showLikesModal: !this.state.showLikesModal})
+    
+    this.state.showLikesModal
+    ? this.setState({likesModalMonster: null})
+    : this.setState({likesModalMonster: monster})
+  }
+
   handleToTopClick = () => {
     window.scrollTo(0, 0)
   }
@@ -158,7 +169,7 @@ class User extends Component  {
                 tags={monster.tags} withDetails={true}
               />
               <button className='User__like-count-ctr'
-                onClick={this.handleLikeCountClick}>
+                onClick={() => this.setShowLikesModal(monster)}>
                 {monster.like_count} {monster.like_count === 1 ? 'like' : 'likes'}
               </button>
               {monstersUserLiked.includes(monster) ?
@@ -224,6 +235,11 @@ class User extends Component  {
     return (
       <Fragment>
         {noAuthNav}
+        {this.state.showLikesModal
+          ? <LikesModal setShowLikesModal={this.setShowLikesModal}
+              likes={this.state.likesModalMonster.liked_by}
+            />
+          : null}
         <div className='User'>
           {content}
         </div>
