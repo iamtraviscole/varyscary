@@ -81,7 +81,7 @@ class User extends Component  {
     .then(resp => {
       if (resp === 401) {
         this.props.history.push('/')
-        this.props.setMessage('You must be logged in to do that.')
+        this.props.setMessage('You must be logged in to do that')
       } else {
         let monster = this.state.monsters.find(monster => {
           return monster.id === resp.id

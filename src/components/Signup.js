@@ -5,6 +5,7 @@ import '../styles/Signup.css'
 import * as userSessionUtil from '../utils/userSession'
 
 import Spinner from './Spinner'
+import AlreadyLoggedIn from './AlreadyLoggedIn'
 
 class Signup extends Component {
 
@@ -160,6 +161,14 @@ class Signup extends Component {
     }
   }
 
+  handleGoBack = () => {
+    this.props.history.goBack()
+  }
+
+  handleLogout = () => {
+    this.props.history.push('/logout')
+  }
+
   render() {
     let spinner = null
     if (this.props.isFetching) spinner = (
@@ -231,9 +240,9 @@ class Signup extends Component {
     )
 
     if (this.props.username) {
-      signupContent = <div className='Signup__already'>
-        You are already logged in.
-      </div>
+      signupContent = <AlreadyLoggedIn
+        handleGoBack={this.handleGoBack}
+        handleLogout={this.handleLogout} />
     }
 
     return (

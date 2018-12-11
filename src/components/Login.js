@@ -6,6 +6,7 @@ import * as actions from '../actions/actions'
 import { authorizeAndLogin } from '../utils/userSession'
 
 import Spinner from './Spinner'
+import AlreadyLoggedIn from './AlreadyLoggedIn'
 
 class Login extends Component {
 
@@ -35,6 +36,14 @@ class Login extends Component {
   handleLoginSubmit = (event) => {
     event.preventDefault()
     authorizeAndLogin(this.state.user, this.props.history)
+  }
+
+  handleGoBack = () => {
+    this.props.history.goBack()
+  }
+
+  handleLogout = () => {
+    this.props.history.push('/logout')
   }
 
   render() {
@@ -86,9 +95,9 @@ class Login extends Component {
     )
 
     if (this.props.username) {
-      loginContent = <div className='Login__already'>
-        You are already logged in.
-      </div>
+      loginContent = <AlreadyLoggedIn
+        handleGoBack={this.handleGoBack}
+        handleLogout={this.handleLogout} />
     }
 
     return (

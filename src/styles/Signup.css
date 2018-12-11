@@ -59,10 +59,6 @@
   text-decoration: none;
 }
 
-.Signup__already {
-  text-align: center;
-}
-
 .Signup__spinner {
   position: absolute;
   top: 50%;

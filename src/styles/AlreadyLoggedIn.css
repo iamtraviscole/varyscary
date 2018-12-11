@@ -1,0 +1,35 @@
+.AlreadyLoggedIn__ctr {
+  text-align: center;
+  margin-top: 75px;
+}
+
+.AlreadyLoggedIn__back-btn {
+  margin: 0 auto;
+  width: 80px;
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+  color: var(--color-white);
+  background: var(--main-color);
+  padding: 5px;
+  margin-top: 15px;
+}
+
+.AlreadyLoggedIn__back-btn:hover {
+  background: var(--hover-color-dark);
+  border: 1px solid var(--hover-color-dark);
+}
+
+.AlreadyLoggedIn__logout-btn {
+  margin: 0 auto;
+  width: 80px;
+  border: 1px solid var(--main-color);
+  border-radius: 3px;
+  color: var(--main-color);
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.AlreadyLoggedIn__logout-btn:hover {
+  color: var(--hover-color-dark);
+  border: 1px solid var(--hover-color-dark);
+}
