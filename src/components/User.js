@@ -9,7 +9,6 @@ import * as monsterUtil from '../utils/monster'
 import * as actions from '../actions/actions'
 
 import MonsterFromProps from './MonsterFromProps'
-import NoAuthNavBar from './NoAuthNavBar'
 import Spinner from './Spinner'
 import LikesModal from './LikesModal'
 
@@ -82,7 +81,7 @@ class User extends Component  {
     .then(resp => {
       if (resp === 401) {
         this.props.history.push('/')
-        this.props.setMessage('Session expired. Please log in')
+        this.props.setMessage('You must be logged in to do that.')
       } else {
         let monster = this.state.monsters.find(monster => {
           return monster.id === resp.id
@@ -120,7 +119,7 @@ class User extends Component  {
 
   setShowLikesModal = (monster) => {
     this.setState({showLikesModal: !this.state.showLikesModal})
-    
+
     this.state.showLikesModal
     ? this.setState({likesModalMonster: null})
     : this.setState({likesModalMonster: monster})
@@ -223,18 +222,8 @@ class User extends Component  {
       }
     }
 
-    let noAuthNav = null
-    if (!this.props.username) {
-      noAuthNav = (
-        <div className='User__NavBar'>
-          <NoAuthNavBar />
-        </div>
-      )
-    }
-
     return (
       <Fragment>
-        {noAuthNav}
         {this.state.showLikesModal
           ? <LikesModal setShowLikesModal={this.setShowLikesModal}
               likes={this.state.likesModalMonster.liked_by}

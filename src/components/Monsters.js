@@ -6,7 +6,6 @@ import '../styles/Monsters.css'
 import * as actions from '../actions/actions'
 
 import MonsterFromProps from './MonsterFromProps'
-import NoAuthNavBar from './NoAuthNavBar'
 import LikesModal from './LikesModal'
 import MonsterModal from './MonsterModal'
 import Spinner from './Spinner'
@@ -308,15 +307,6 @@ class Monsters extends Component  {
       )
     })
 
-    let noAuthNav = null
-    if (!this.props.username) {
-      noAuthNav = (
-        <div className='Monsters__no-auth-nav'>
-          <NoAuthNavBar />
-        </div>
-      )
-    }
-
     let loadButton
     if (this.state.monsters.length < this.state.limit) {
       loadButton = null
@@ -338,7 +328,6 @@ class Monsters extends Component  {
 
     return (
       <Fragment>
-        {noAuthNav}
         {this.state.showMonsterModal
           ? <MonsterModal setShowMonsterModal={this.setShowMonsterModal}
               monster={this.state.monsterForModal}

@@ -9,7 +9,6 @@ import * as actions from '../actions/actions'
 
 import MonsterFromProps from './MonsterFromProps'
 import Spinner from './Spinner'
-import NoAuthNavBar from './NoAuthNavBar'
 import LikesModal from './LikesModal'
 
 class Monster extends Component {
@@ -67,15 +66,6 @@ class Monster extends Component {
   render() {
     const monster = this.state.monster
 
-    let noAuthNav = null
-    if (!this.props.username) {
-      noAuthNav = (
-        <div className='Monster__no-auth-nav'>
-          <NoAuthNavBar />
-        </div>
-      )
-    }
-
     let monsterTags = null
     if (monster) {
       monsterTags = monster.tags.map((tag, i) => {
@@ -89,7 +79,6 @@ class Monster extends Component {
 
     return (
       <Fragment>
-        {noAuthNav}
         {this.state.showLikesModal
           ? <LikesModal setShowLikesModal={this.setShowLikesModal}
               likes={this.state.monster.liked_by}

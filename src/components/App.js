@@ -7,6 +7,7 @@ import * as actions from '../actions/actions'
 
 import AuthRoute from './AuthRoute'
 import NavBar from './NavBar'
+import NoAuthNavBar from './NoAuthNavBar'
 import Splash from './Splash'
 import Home from './Home'
 import Login from './Login'
@@ -47,9 +48,14 @@ class App extends PureComponent {
 
   render() {
     let homeComponent = Splash
-    let navBar = null
+    let navBar = <NoAuthNavBar />
 
-    if (this.props.username) {
+    if (this.props.location.pathname === '/signup' ||
+      this.props.location.pathname === '/login') {
+      navBar = null
+    } else if (this.props.location.pathname === '/' && !this.props.username) {
+      navBar = null
+    } else if (this.props.username) {
       homeComponent = Home
       navBar = <NavBar username={this.props.username}
         userOnMobile={this.props.userOnMobile} />
