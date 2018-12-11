@@ -5,6 +5,7 @@
 .NewMonster__ctr {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 352px;
+  grid-template-rows: 100vh;
   grid-column-gap: 25px;
   margin: 25px 25px;
   grid-template-areas:
@@ -93,16 +94,12 @@
 
 .NewMonster__monster-outer-ctr {
   position: relative;
-  width: 350px;
-}
-
-.NewMonster__monster-outer-ctr--fixed {
-  position: fixed;
-  width: 350px;
-  top: 25px;
+  width: 352px;
+  margin-bottom: 25px;
 }
 
 .NewMonster__monster-ctr {
+  position: relative;
   text-align: center;
   height: 350px;
   width: 350px;
@@ -110,6 +107,19 @@
   border-radius: 3px;
   background: var(--light-container-color);
   margin-bottom: 10px;
+  box-shadow: 0 3px 0 0 var(--border-color);
+}
+
+.NewMonster__slide-monster-ctr {
+  position: absolute;
+  right: 25px;
+  text-align: center;
+  height: 350px;
+  width: 350px;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  background: var(--light-container-color);
+  margin-bottom: 25px;
   box-shadow: 0 3px 0 0 var(--border-color);
 }
 
@@ -150,7 +160,7 @@
   border: 1px solid var(--border-color);
   border-radius: 3px;
   padding: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   display: inline-block;
   box-shadow: 0 3px 0 0 var(--border-color);
 }
@@ -264,7 +274,6 @@ input.NewMonster__tag-add-btn:hover {
 }
 
 .NewMonster__buttons-ctr {
-  margin-top: 15px;
   text-align: center;
 }
 
@@ -388,15 +397,13 @@ input.NewMonster__tag-add-btn:hover {
     width: 300px;
   }
 
-  .NewMonster__monster-outer-ctr--fixed {
-    position: relative;
-    width: 300px;
-    top: 0;
-  }
-
   .NewMonster__monster-ctr {
     height: 298px;
     width: 298px;
+  }
+
+  .NewMonster__slide-monster-ctr {
+    display: none;
   }
 
   .NewMonster__directions-ctr {

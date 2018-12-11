@@ -5,7 +5,6 @@ import axios from 'axios'
 
 import '../styles/NewMonster.css'
 import * as actions from '../actions/actions'
-// import * as monsterUtil from '../utils/monster'
 
 import MonsterFromStore from './MonsterFromStore'
 import MonsterSavedModal from './MonsterSavedModal'
@@ -22,11 +21,12 @@ import NewMonsterLegs from './NewMonsterPanels/NewMonsterLegs'
 class NewMonster extends PureComponent {
   state = {
     showArrows: false,
-    fixedMonsterCtr: false,
     activePanel: 'bodies',
     errorMessage: null,
     showModal: false,
-    tagValue: ''
+    tagValue: '',
+    showSlideMonster: false,
+    slideMonsterTop: 0
   }
 
   setShowArrows = () => {
@@ -37,11 +37,35 @@ class NewMonster extends PureComponent {
     : this.setState({showArrows: false})
   }
 
-  setFixMonster = () => {
-    window.scrollY > 75
-      ? this.setState({fixedMonsterCtr: true})
-      : this.setState({fixedMonsterCtr: false})
+  setSlideMonster = () => {
+    let featurePanelHeightFromTop =
+      document.getElementsByClassName('NewMonsterPanels__features-ctr')[0].offsetHeight
+      + document.getElementsByClassName('NewMonsterPanels__features-ctr')[0].offsetTop
+    let monsterCtrHeight =
+      document.getElementsByClassName('NewMonster__monster-ctr')[0].offsetHeight
+
+    // 60 = navbar height
+    // 25 = monster container top margin
+    // if scrolled further than monster container and not further than feature
+    //  panel then show monster slider 25px from top
+    if (window.scrollY > monsterCtrHeight + 60 + 25
+      && window.scrollY + monsterCtrHeight + 25  < featurePanelHeightFromTop) {
+        this.setState({
+          showSlideMonster: true,
+          slideMonsterTop: window.scrollY + 25
+        })
+    // if scrolled further than feature panel then show monster slider 25px
+    //  from bottom
+  } else if (window.scrollY + monsterCtrHeight + 25 > featurePanelHeightFromTop) {
+        this.setState({
+          showSlideMonster: true,
+          slideMonsterTop: window.scrollY + window.innerHeight - (monsterCtrHeight + 25)
+        })
+    } else {
+        this.setState({showSlideMonster: false, slideMonsterTop: 0})
+    }
   }
+
 
   componentDidMount = () => {
     this.setShowArrows()
@@ -51,12 +75,12 @@ class NewMonster extends PureComponent {
       this.setState({errorMessage: null})
     }
     window.addEventListener('resize', this.setShowArrows)
-    window.addEventListener('scroll', this.setFixMonster)
+    window.addEventListener('scroll', this.setSlideMonster)
   }
 
   componentWillUnmount = () => {
     window.removeEventListener('resize', this.setShowArrows)
-    window.removeEventListener('scroll', this.setFixMonster)
+    window.removeEventListener('scroll', this.setSlideMonster)
   }
 
   componentDidUpdate = () => {
@@ -212,11 +236,6 @@ class NewMonster extends PureComponent {
       )
     }
 
-    let monsterContainerStyle = 'NewMonster__monster-outer-ctr'
-    if (this.state.fixedMonsterCtr) {
-     monsterContainerStyle = 'NewMonster__monster-outer-ctr--fixed'
-    }
-
     let monsterDirections = (
       <div className='NewMonster__directions-ctr'>
         <h1 className='NewMonster__directions-header'>Make a monster!</h1>
@@ -300,9 +319,9 @@ class NewMonster extends PureComponent {
               </div>
             </div>
             <div className='NewMonster__right-grid-ctr'>
-              <div className={monsterContainerStyle}>
+              <div className='NewMonster__monster-outer-ctr'>
                 <div className='NewMonster__monster-ctr'>
-                  {noFeatureSelected ? monsterDirections : <MonsterFromStore /> }
+                  {noFeatureSelected ? monsterDirections : <MonsterFromStore />}
                 </div>
                 <div className='NewMonster__name-tags-outer-ctr'>
                   <input className='NewMonster__name-input'
@@ -369,6 +388,12 @@ class NewMonster extends PureComponent {
                   </button>
                 </div>
               </div>
+              { this.state.showSlideMonster
+                ? <div className='NewMonster__slide-monster-ctr' style={{top: this.state.slideMonsterTop}}>
+                    {noFeatureSelected ? monsterDirections : <MonsterFromStore />}
+                  </div>
+                : null
+              }
             </div>
           </div>
         </div>
