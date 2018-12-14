@@ -70,6 +70,12 @@ class NavBar extends Component {
     let toggleUserPanel = 'hide'
     if (this.state.showUserPanel) toggleUserPanel = 'show'
 
+    if (this.state.showSlideout) {
+      document.documentElement.setAttribute('style', 'overflow-y: hidden');
+    } else {
+      document.documentElement.removeAttribute('style');
+    }
+
     return (
       <Fragment>
         {this.state.smallScreen
