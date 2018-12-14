@@ -11,12 +11,16 @@ const SlideoutMenu = (props) => {
           <i className='material-icons'>close</i>
         </button>
       </div>
-      <ul className='SlideoutMenu__ul'>
-        <li className='SlideoutMenu__li'><NavLink to={'/home'}>Home</NavLink></li>
-        <li className='SlideoutMenu__li'><NavLink to='/monsters/new'>Make</NavLink></li>
-        <li className='SlideoutMenu__li'><NavLink to='/monsters'>Explore</NavLink></li>
-        <li className='SlideoutMenu__li'><NavLink to='/logout'>Log Out</NavLink></li>
-      </ul>
+      <div className='SlideoutMenu__link-ctr'>
+        <div className='SlideoutMenu__link-inner-ctr'>
+          <NavLink className='SlideoutMenu__link' to='/home'>Home</NavLink>
+          <NavLink className='SlideoutMenu__link' to='/monsters/new'>Make</NavLink>
+          <NavLink className='SlideoutMenu__link' to='/monsters'>Explore</NavLink>
+          <NavLink className='SlideoutMenu__link' to={`/${props.username}`}>Your Monsters</NavLink>
+          <NavLink className='SlideoutMenu__link' to={`/${props.username}/likes`}>Your Likes</NavLink>
+          <NavLink className='SlideoutMenu__link' to='/logout'>Log Out</NavLink>
+        </div>
+      </div>
     </nav>
   )
 }
