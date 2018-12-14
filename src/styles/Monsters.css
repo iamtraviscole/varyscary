@@ -200,6 +200,11 @@
     float: none;
     display: block;
     margin-left: -21px;
+    margin-bottom: 5px;
+  }
+
+  .Monsters__searched-ctr {
+    display: block;
   }
 
 }

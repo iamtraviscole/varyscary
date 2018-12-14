@@ -22,7 +22,7 @@ import User from './User'
 import UserLikes from './UserLikes'
 
 class App extends PureComponent {
-  
+
   render() {
     let homeComponent = Splash
     let navBar = <NoAuthNavBar />
