@@ -1,5 +1,6 @@
 .NewMonster {
   grid-area: content;
+  /* max-width: 100; */
 }
 
 .NewMonster__ctr {
@@ -386,7 +387,7 @@ input.NewMonster__tag-add-btn:hover {
     grid-template-columns: 300px;
     grid-template-rows: 550px 1fr;
     grid-column-gap: 25px;
-    margin: 25px 25px;
+    margin: 25px auto;
     grid-template-areas:
       'monster'
       'left';
