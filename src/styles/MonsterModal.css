@@ -308,7 +308,8 @@
     grid-template-columns: 278px;
     grid-template-rows: 278px auto;
     width: 278px;
-    height: 80%;
+    height: auto;
+    max-height: 80%;
     overflow: auto;
   }
 
