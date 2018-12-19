@@ -275,18 +275,10 @@ class Monsters extends Component  {
       return (
         <div key={monster.id} className='Monsters__monster-ctr'>
           <MonsterFromProps
-            name={monster.name} id={monster.id}
-            bodyType={monster.body_type} bodyFill={monster.body_fill}
-            faceType={monster.face_type} faceFill={monster.face_fill}
-            headwearType={monster.headwear_type} headwearFill={monster.headwear_fill}
-            eyesType={monster.eyes_type} eyesFill={monster.eyes_fill}
-            mouthType={monster.mouth_type} mouthFill={monster.mouth_fill}
-            rightArmType={monster.right_arm_type} rightArmFill={monster.right_arm_fill}
-            leftArmType={monster.left_arm_type} leftArmFill={monster.left_arm_fill}
-            legsType={monster.legs_type} legsFill={monster.legs_fill}
-            username={monster.username} tags={monster.tags}
+            monster={monster}
             withDetails={true}
-            asModal={true} showModal={() => this.setShowMonsterModal(monster)}
+            asModal={true}
+            showModal={() => this.setShowMonsterModal(monster)}
           />
           <button className='Monsters__like-count-ctr'
             onClick={() => this.setShowLikesModal(monster)}>

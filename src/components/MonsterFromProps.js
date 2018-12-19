@@ -26,16 +26,16 @@ class Monster extends Component {
   }
 
   render() {
-    const monster = this.props
+    const monster = this.props.monster
 
-    let BodyComponent = MonsterBodies[monster.bodyType]
-    let FaceComponent = MonsterFaces[monster.faceType]
-    let HeadwearComponent = MonsterHeadwear[monster.headwearType]
-    let EyesComponent = MonsterEyes[monster.eyesType]
-    let MouthComponent = MonsterMouths[monster.mouthType]
-    let LeftArmComponent = MonsterLeftArms[monster.leftArmType]
-    let RightArmComponent = MonsterRightArms[monster.rightArmType]
-    let LegsComponent = MonsterLegs[monster.legsType]
+    let BodyComponent = MonsterBodies[monster.body_type]
+    let FaceComponent = MonsterFaces[monster.face_type]
+    let HeadwearComponent = MonsterHeadwear[monster.headwear_type]
+    let EyesComponent = MonsterEyes[monster.eyes_type]
+    let MouthComponent = MonsterMouths[monster.mouth_type]
+    let LeftArmComponent = MonsterLeftArms[monster.left_arm_type]
+    let RightArmComponent = MonsterRightArms[monster.right_arm_type]
+    let LegsComponent = MonsterLegs[monster.legs_type]
 
     const featureComponent = (FeatureComponent, fill) => {
       return FeatureComponent ?
@@ -88,28 +88,28 @@ class Monster extends Component {
           :null
         :null}
         <div className='MonsterFromProps__feature MonsterFromProps__body'>
-          {featureComponent(BodyComponent, 'bodyFill')}
+          {featureComponent(BodyComponent, 'body_fill')}
         </div>
         <div className='MonsterFromProps__feature MonsterFromProps__face'>
-          {featureComponent(FaceComponent, 'faceFill')}
+          {featureComponent(FaceComponent, 'face_fill')}
         </div>
         <div className='MonsterFromProps__feature MonsterFromProps__headwear'>
-          {featureComponent(HeadwearComponent, 'headwearFill')}
+          {featureComponent(HeadwearComponent, 'headwear_fill')}
         </div>
         <div className='MonsterFromProps__feature MonsterFromProps__eyes'>
-          {featureComponent(EyesComponent, 'eyesFill')}
+          {featureComponent(EyesComponent, 'eyes_fill')}
         </div>
         <div className='MonsterFromProps__feature MonsterFromProps__mouth'>
-          {featureComponent(MouthComponent, 'mouthFill')}
+          {featureComponent(MouthComponent, 'mouth_fill')}
         </div>
         <div className='MonsterFromProps__feature MonsterFromProps__rightArm'>
-          {featureComponent(RightArmComponent, 'rightArmFill')}
+          {featureComponent(RightArmComponent, 'right_arm_fill')}
         </div>
         <div className='MonsterFromProps__feature MonsterFromProps__leftArm'>
-          {featureComponent(LeftArmComponent, 'leftArmFill')}
+          {featureComponent(LeftArmComponent, 'left_arm_fill')}
         </div>
         <div className='MonsterFromProps__feature MonsterFromProps__legs'>
-          {featureComponent(LegsComponent, 'legsFill')}
+          {featureComponent(LegsComponent, 'legs_fill')}
         </div>
       </div>
     )
