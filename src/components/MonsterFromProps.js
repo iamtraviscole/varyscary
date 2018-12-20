@@ -48,7 +48,7 @@ class Monster extends Component {
       monsterTags = monster.tags.map((tag, i) => {
         return (
           <li key={i} className='MonsterFromProps__tag'>
-            <Link to={`/monsters?sort_by=newest&search=${tag}`}>#{tag}</Link>
+            #{tag}
           </li>
         )
       })
@@ -56,37 +56,27 @@ class Monster extends Component {
 
     return (
       <div className='MonsterFromProps__monster-ctr'
-        onMouseEnter={this.handleMonsterEnter}
-        onMouseLeave={this.handleMonsterLeave}>
+        onMouseEnter={this.props.withDetails ? this.handleMonsterEnter : null}
+        onMouseLeave={this.props.withDetails ? this.handleMonsterLeave : null}>
         {this.props.withDetails ?
           this.state.showDetails ?
             <Fragment>
-              {this.props.asModal ?
-                <div className='MonsterFromProps__details-ctr'
-                  onClick={this.props.showModal}>
-                  {monster.name ?
-                    <div className='MonsterFromProps__monster-name'>
-                      {monster.name}
-                    </div>
-                  : null}
+              <div className='MonsterFromProps__details-ctr'>
+                {monster.name ?
+                  <div className='MonsterFromProps__monster-name'>
+                    {monster.name}
                   </div>
-              : <Link to={'/monsters/' + monster.id}
-                  className='MonsterFromProps__details-ctr'>
-                  {monster.name ?
-                    <div className='MonsterFromProps__monster-name'>
-                      {monster.name}
-                    </div>
-                  : null}
-                </Link>}
-              <div className='MonsterFromProps__tags'>
-                {monsterTags}
+                : null}
+                <div className='MonsterFromProps__tags'>
+                  {monsterTags}
+                </div>
               </div>
               <div className='MonsterFromProps__username'>
                 <Link to={'/' + monster.username}>{monster.username}</Link>
               </div>
             </Fragment>
-          :null
-        :null}
+          : null
+        : null}
         <div className='MonsterFromProps__feature MonsterFromProps__body'>
           {featureComponent(BodyComponent, 'body_fill')}
         </div>

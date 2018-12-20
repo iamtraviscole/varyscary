@@ -77,22 +77,25 @@
   vertical-align: middle;
 }
 
+.Monsters__monster-outer-ctr {
+  width: 225px;
+  /* monster-outer-ctr height - 225px - 3px for monster box-shadow */
+  margin-bottom: -22px;
+}
+
 .Monsters__monster-ctr {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
   height: 225px;
   width: 225px;
   border: 1px solid var(--border-color);
   border-radius: 5px;
   box-shadow: 0 3px 0 0 var(--border-color);
   background: var(--light-container-color);
+  cursor: pointer;
+  margin-bottom: 3px;
 }
 
 .Monsters__like-count-ctr {
-  position: absolute;
-  bottom: -20px;
-  left: 2px;
+  float: left;
   font-size: 13px;
   color: var(--main-text-color-lighter);
 }
@@ -102,11 +105,8 @@
 }
 
 .Monsters__like-ctr {
-  position: absolute;
-  right: 0px;
-  bottom: -25px;
+  float: right;
   color: var(--main-text-color-lighter);
-  z-index: 1499;
 }
 
 .Monsters__like-ctr:hover {
@@ -118,9 +118,7 @@
 }
 
 .Monsters__unlike-ctr {
-  position: absolute;
-  right: 0px;
-  bottom: -25px;
+  float: right;
   color: var(--main-color);
 }
 

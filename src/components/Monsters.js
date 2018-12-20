@@ -273,13 +273,11 @@ class Monsters extends Component  {
 
     let monstersArr = this.state.monsters.map(monster => {
       return (
-        <div key={monster.id} className='Monsters__monster-ctr'>
-          <MonsterFromProps
-            monster={monster}
-            withDetails={true}
-            asModal={true}
-            showModal={() => this.setShowMonsterModal(monster)}
-          />
+        <div key={monster.id} className='Monsters__monster-outer-ctr'>
+          <div className='Monsters__monster-ctr'
+            onClick={() => this.setShowMonsterModal(monster)}>
+            <MonsterFromProps monster={monster} withDetails={true} />
+          </div>
           <button className='Monsters__like-count-ctr'
             onClick={() => this.setShowLikesModal(monster)}>
             {monster.like_count} {monster.like_count === 1 ? 'like' : 'likes'}
@@ -325,13 +323,11 @@ class Monsters extends Component  {
               monster={this.state.monsterForModal}
               handleModalLikeOrUnlike={this.handleModalLikeOrUnlike}
               handleLikeClick={this.handleLikeClick}
-              handleUnlikeClick={this.handleUnlikeClick}
-            />
+              handleUnlikeClick={this.handleUnlikeClick} />
           : null}
         {this.state.showLikesModal
           ? <LikesModal setShowLikesModal={this.setShowLikesModal}
-              likes={this.state.likesForModal}
-            />
+              likes={this.state.likesForModal} />
           : null}
         <div className='Monsters'>
           <h1>Explore Monsters</h1>
