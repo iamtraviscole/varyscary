@@ -129,6 +129,10 @@ class User extends Component  {
     window.scrollTo(0, 0)
   }
 
+  handleMonsterClick = (monster) => {
+    this.props.history.push(`/monsters/${monster.id}`)
+  }
+
   render() {
     let monstersUserLiked = []
     this.state.monsters.forEach(monster => {
@@ -147,7 +151,7 @@ class User extends Component  {
       if (this.state.username) {
         let monstersArr = this.state.monsters.map(monster => {
           return (
-            <div key={monster.id} className='User__monster-ctr'>
+            <div key={monster.id} className='User__monster-outer-ctr'>
               {monster.username === this.props.username
                 ? <div className='User__edit-ctr'>
                     <Link to={`/monsters/${monster.id}/edit`} className='User__edit'>
@@ -155,10 +159,10 @@ class User extends Component  {
                     </Link>
                   </div>
                 : null}
-              <MonsterFromProps
-                monster={monster}
-                withDetails={true}
-              />
+              <div className='User__monster-ctr'
+                onClick={() => this.handleMonsterClick(monster)}>
+                <MonsterFromProps monster={monster} withDetails={true} />
+              </div>
               <button className='User__like-count-ctr'
                 onClick={() => this.setShowLikesModal(monster)}>
                 {monster.like_count} {monster.like_count === 1 ? 'like' : 'likes'}

@@ -52,6 +52,13 @@
   font-weight: bold;
 }
 
+.User__monster-outer-ctr {
+  position: relative;
+  width: 252px;
+  /* monster-outer-ctr height - 250px - 3px for monster box-shadow */
+  margin-bottom: -22px;
+}
+
 .User__monster-ctr {
   position: relative;
   display: inline-block;
@@ -62,12 +69,14 @@
   border-radius: 3px;
   background: white;
   box-shadow: 0 3px 0 0 var(--border-color);
+  margin-bottom: 3px;
+  cursor: pointer;
 }
 
 .User__edit-ctr {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 1px;
+  right: 1px;
   border-radius: 3px;
   background: white;
   z-index: 1999;
@@ -88,15 +97,13 @@
 }
 
 .User__edit:hover {
-  color: var(--color-white);
+  color: var(--hover-color-light);
   background: var(--main-color);
   text-decoration: none;
 }
 
 .User__like-count-ctr {
-  position: absolute;
-  bottom: -20px;
-  left: 2px;
+  float: left;
   font-size: 13px;
   color: var(--main-text-color-lighter);
 }
@@ -106,11 +113,8 @@
 }
 
 .User__like-ctr {
-  position: absolute;
-  right: 0px;
-  bottom: -25px;
+  float: right;
   color: var(--main-text-color-lighter);
-  z-index: 1499;
 }
 
 .User__like-ctr:hover {
@@ -122,10 +126,8 @@
 }
 
 .User__unlike-ctr {
-  position: absolute;
-  right: 0px;
-  bottom: -25px;
-  color: var(--main-color);
+  float: right;
+  color: var(--main-text-color-lighter);
 }
 
 .User__unlike-ctr:hover {
