@@ -331,7 +331,6 @@
   .MonsterModal__details-ctr {
     width: 278px;
     height: 278px;
-    height: auto;
     border-left: none;
     border-top: 1px solid var(--border-color);
     border-top-left-radius: 0;

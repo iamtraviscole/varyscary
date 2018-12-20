@@ -165,6 +165,7 @@
     justify-content: center;
     grid-template-columns: 310px;
     grid-template-rows: 310px auto;
+    align-items: start;
   }
 
   .Monster__monster-ctr {
