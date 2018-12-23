@@ -60,7 +60,8 @@
 }
 
 .Splash__btn:hover {
-  background: var(--main-color-light);
+  background: var(--hover-color-dark);
+  border: 1px solid var(--hover-color-dark);
   color: var(--color-white);
   text-decoration: none;
 }

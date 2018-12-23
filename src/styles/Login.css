@@ -72,7 +72,7 @@
 }
 
 .Login__btn:hover {
-  background: var(--main-color-light);
+  background: var(--hover-color-dark);
   color: var(--color-white);
   text-decoration: none;
 }
