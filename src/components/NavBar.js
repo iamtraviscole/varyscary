@@ -41,7 +41,7 @@ class NavBar extends Component {
       <Fragment>
         <div className='NavBar__link-ctr'>
           <li className='NavBar__link-li'><NavLink to='/home' className='NavBar__link'>Home</NavLink></li>
-          <li className='NavBar__link-li'><NavLink to='/monsters/new' className='NavBar__link'>Make</NavLink></li>
+          <li className='NavBar__link-li'><NavLink to='/monsters/new' className='NavBar__link'>Create</NavLink></li>
           <li className='NavBar__link-li'><NavLink to='/monsters' className='NavBar__link'>Explore</NavLink></li>
         </div>
         <li className='NavBar__user-panel-li'>

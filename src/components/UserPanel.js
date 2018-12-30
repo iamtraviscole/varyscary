@@ -13,10 +13,10 @@ const UserPanel = (props) => {
         <p className='UserPanel__username'>{props.username}</p>
         <ul className='UserPanel__ul'>
           <li className='UserPanel__li'>
-            <Link to={'/' + props.username}>Your profile</Link>
+            <Link to={'/' + props.username}>Your monsters</Link>
           </li>
           <li className='UserPanel__li'>
-            <Link to={`/${props.username}/likes`}>Your likes</Link>
+            <Link to={`/${props.username}/likes`}>Your favorites</Link>
           </li>
         </ul>
         <hr />

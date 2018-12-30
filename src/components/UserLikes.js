@@ -36,7 +36,6 @@ class UserLikes extends Component {
   }
 
   render() {
-    console.log(this.state);
     let monstersLikedArr = (
       this.props.username === this.state.username ?
         <div className='UserLikes__no-likes-ctr'>
@@ -73,8 +72,8 @@ class UserLikes extends Component {
               <Fragment>
                 <h1>
                   {this.props.username === this.state.username ?
-                    'Your Likes'
-                  : `${this.state.username}'s likes`}
+                    'Your Favorites'
+                  : `${this.state.username}'s Favorites`}
                 </h1>
                 <div className='UserLikes__monsters-ctr'>
                   {monstersLikedArr}

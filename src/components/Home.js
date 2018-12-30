@@ -42,7 +42,7 @@ class Home extends Component {
           <h2>{this.props.username}</h2>
           <br />
           <div className='Home__top-stat'>
-            Total Monsters: {this.state.monsterCount === null
+            Monsters: {this.state.monsterCount === null
               ? '...'
               : this.state.monsterCount}
           </div>
@@ -62,7 +62,7 @@ class Home extends Component {
               </div>
               <Link to='/monsters/new' className='Home__big-btn Home__make-btn'>
                 <div className='Home__text'>
-                  Make
+                  Create
                 </div>
               </Link>
             </div>
@@ -92,7 +92,7 @@ class Home extends Component {
               </div>
               <Link to={`/${this.props.username}/likes`} className='Home__big-btn Home__favorites-btn'>
                 <div className='Home__text'>
-                  Your Likes
+                  Your Favorites
                 </div>
               </Link>
             </div>
