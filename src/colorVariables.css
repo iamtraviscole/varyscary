@@ -1,12 +1,13 @@
 :root {
   --background-color: #f1f3f5;
-  --background-color-dark: #2e2e2e;
+  --background-color-dark: #3e3e3e;
   --light-container-color: white;
 
   --color-black: black;
   --color-white: white;
 
   --main-color: #7c5aed;
+  --main-color-dark: #573fa4;
   --main-color-light: #ac96f7;
   --main-color-lighter: #ddd2ff;
   --main-color-disabled: #c0bad4;
@@ -22,6 +23,7 @@
   --warning-color-dark: #de6666;
 
   --border-color: #dadee2;
+  --border-color-dark: #3e3e3e;
 
   --modal-background-color: rgba(0, 0, 0, .6);
 
