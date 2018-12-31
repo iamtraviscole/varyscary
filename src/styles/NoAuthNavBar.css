@@ -1,34 +1,32 @@
 .NoAuthNavBar {
   grid-area: header;
-  padding-top: 15px;
+  height: 60px;
+  background: var(--color-white);
 }
 
-.NoAuthNavBar__ul {
-  list-style-type: none;
-}
-
-.NoAuthNavBar__li {
-  float: left;
-  padding: 10px;
+.NoAuthNavBar__right {
+  float: right;
 }
 
 .NoAuthNavBar__btn {
+  margin: 15px 15px 0 0;
+  height: 28px;
+  line-height: 28px;
   text-align: center;
   display: inline-block;
-  padding: 6px 0;
-  width: 70px;
-  font-size: 90%;
+  width: 60px;
+  font-size: 14px;
   font-weight: 300;
   color: var(--color-white);
   border: 1px solid var(--main-color);
   background: var(--main-color);
   border-radius: 3px;
-  margin-left: -5px;
 }
 
 .NoAuthNavBar__btn:hover {
-  background: var(--main-color-light);
-  color: var(--color-white);
+  background: var(--hover-color-dark);
+  border: 1px solid var(--hover-color-dark);
+  color: var(--hover-color-light);
   text-decoration: none;
 }
 
@@ -37,16 +35,15 @@
   color: var(--main-color);
 }
 
-.NoAuthNavBar__li--logo {
+.NoAuthNavBar__logo {
+  float: left;
+  height: 30px;
+  padding: 0 10px;
+  text-align: center;
+  font-weight: 200;
+  color: var(--color-white);
   background: var(--main-color);
-  margin-left: 15px;
-  border-radius: 3px;
-}
-
-.NoAuthNavBar__right {
-  float: right;
-}
-
-.NoAuthNavBar__ul:last-child {
-  margin-right: 15px;
+  border-radius: 25px;
+  line-height: 30px;
+  margin: 15px 0 0 15px;
 }
