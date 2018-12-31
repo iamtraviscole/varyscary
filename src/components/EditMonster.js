@@ -244,7 +244,8 @@ class EditMonster extends Component {
               {this.state.monsterDeleted
                 ? <div className='EditMonster__monster-deleted'>
                     <i className='material-icons'>delete_outline</i>
-                    Monster Deleted! <br />
+                    <h3> Monster Deleted!</h3>
+                    <br />
                     <Link to={`/${this.props.username}`} className='EditMonster__monster-deleted-btn'>
                       Your Monsters
                     </Link>

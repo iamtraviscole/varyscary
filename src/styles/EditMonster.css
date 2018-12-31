@@ -30,8 +30,8 @@
 
 .EditMonster__monster-deleted-btn:hover {
   text-decoration: none;
-  color: var(--main-color-light);
-  border: 1px solid var(--main-color-light);
+  color: var(--hover-color-dark);
+  border: 1px solid var(--hover-color-dark);
 }
 
 .EditMonster__monster-deleted i {
@@ -133,8 +133,8 @@ input.EditMonster__tag-add-btn {
 }
 
 input.EditMonster__tag-add-btn:hover {
-  color: var(--main-color-light);
-  border: 1px solid var(--main-color-light);
+  color: var(--hover-color-dark);
+  border: 1px solid var(--hover-color-dark);
 }
 
 .EditMonster__tag {
@@ -201,8 +201,8 @@ input.EditMonster__tag-add-btn:hover {
 }
 
 .EditMonster__finish-btn:hover {
-  color: var(--main-color-light);
-  border: 1px solid var(--main-color-light);
+  color: var(--hover-color-dark);
+  border: 1px solid var(--hover-color-dark);
 }
 
 .EditMonster__clear-btn-float {
@@ -236,8 +236,8 @@ input.EditMonster__tag-add-btn:hover {
 }
 
 .EditMonster__undo-btn:hover {
-  color: var(--main-color-light);
-  border: 1px solid var(--main-color-light);
+  color: var(--hover-color-dark);
+  border: 1px solid var(--hover-color-dark);
 }
 
 .EditMonster h4 {
@@ -316,7 +316,6 @@ input.EditMonster__tag-add-btn:hover {
   display: block;
   color: var(--color-white);
   background: var(--main-color);
-  /* border: 1px solid var(--color-white); */
   border-radius: 3px;
 }
 
@@ -353,8 +352,8 @@ input.EditMonster__tag-add-btn:hover {
 }
 
 .EditMonster__no-access-btn:hover {
-  color: var(--main-color-light);
-  border: 1px solid var(--main-color-light);
+  color: var(--hover-color-dark);
+  border: 1px solid var(--hover-color-dark);
 }
 
 @media (max-width: 575px) {
