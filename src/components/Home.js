@@ -52,8 +52,7 @@ class Home extends Component {
               : this.state.likesCount}
           </div>
         </div>
-        <div className='Home__top-angle-ctr'>
-        </div>
+        <div className='Home__top-angle-ctr'></div>
         <div className='Home__btns-outer-ctr'>
           <div className='Home__btns-ctr'>
             <div className='Home__btn-ctr'>
