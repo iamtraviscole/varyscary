@@ -18,10 +18,20 @@
   text-align: center;
 }
 
+.EditMonster__monster-deleted i {
+  color: var(--main-color);
+  vertical-align: middle;
+  margin: -5px 3px 0 -2px;
+}
+
+.EditMonster__monster-deleted h3 {
+  display: inline-block;
+}
+
 .EditMonster__monster-deleted-btn {
   display: inline-block;
-  margin-top: 15px;
-  padding: 4px;
+  margin-top: 20px;
+  padding: 3px 4px;
   color: var(--main-color);
   border: 1px solid var(--main-color);
   border-radius: 3px;
@@ -32,12 +42,6 @@
   text-decoration: none;
   color: var(--hover-color-dark);
   border: 1px solid var(--hover-color-dark);
-}
-
-.EditMonster__monster-deleted i {
-  color: var(--main-color);
-  vertical-align: middle;
-  margin: -4px 2px 0 -2px;
 }
 
 .EditMonster__monster-ctr {
@@ -310,9 +314,9 @@ input.EditMonster__tag-add-btn:hover {
 }
 
 .EditMonster__saved-btn {
-  width: 125px;
-  height: 35px;
-  line-height: 35px;
+  width: 115px;
+  height: 32px;
+  line-height: 32px;
   display: block;
   color: var(--color-white);
   background: var(--main-color);
