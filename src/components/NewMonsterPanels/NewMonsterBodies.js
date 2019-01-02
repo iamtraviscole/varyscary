@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import * as actions from '../../actions/actions'
+import * as actions from '../../actions/index'
 
 import * as MonsterBodies from '../MonsterFeatures/MonsterBodies'
 import NewMonsterTemplate from './NewMonsterTemplate'

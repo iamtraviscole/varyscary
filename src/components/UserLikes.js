@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import '../styles/UserLikes.css'
-import * as actions from '../actions/actions'
+import * as actions from '../actions/index'
 
 import MonsterFromProps from './MonsterFromProps'
 import Spinner from './Spinner'

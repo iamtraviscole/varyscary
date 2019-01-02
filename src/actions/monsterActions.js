@@ -34,47 +34,6 @@ let getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-export const fetchStarted = () => {
-  return {
-    type: actionTypes.FETCH_STARTED
-  }
-}
-
-export const fetchEnded = () => {
-  return {
-    type: actionTypes.FETCH_ENDED
-  }
-}
-
-export const login = (username) => {
-  localStorage.setItem('username', username)
-  return {
-    type: actionTypes.LOGIN,
-    username: username
-  }
-}
-
-export const logout = () => {
-  localStorage.clear()
-  return {
-    type: actionTypes.LOGOUT
-  }
-}
-
-export const setMessage = (text, icon = 'error') => {
-  return {
-    type: actionTypes.SET_MESSAGE,
-    text: text,
-    icon: icon
-  }
-}
-
-export const clearMessage = () => {
-  return {
-    type: actionTypes.CLEAR_MESSAGE
-  }
-}
-
 export const setMonsterName = (monsterName) => {
   return {
     type: actionTypes.SET_MONSTER_NAME,

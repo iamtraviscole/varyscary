@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 
 import '../styles/Logout.css'
-import * as actions from '../actions/actions'
+import * as actions from '../actions/index'
 
 class Logout extends Component {
 

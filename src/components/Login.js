@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import '../styles/Login.css'
-import * as actions from '../actions/actions'
+import * as actions from '../actions/index'
 import { authorizeAndLogin } from '../utils/userSession'
 
 import Spinner from './Spinner'

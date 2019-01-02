@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 
 import '../styles/NewMonster.css'
-import * as actions from '../actions/actions'
+import * as actions from '../actions/index'
 
 import MonsterFromStore from './MonsterFromStore'
 import MonsterSavedModal from './MonsterSavedModal'

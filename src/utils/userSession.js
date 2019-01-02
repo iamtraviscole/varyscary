@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import store from '../store/store'
-import * as actions from '../actions/actions'
+import * as actions from '../actions/index'
 
 const BASE_URL = 'http://localhost:4000/api'
 

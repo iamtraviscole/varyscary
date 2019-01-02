@@ -3,7 +3,7 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import '../styles/App.css'
-import * as actions from '../actions/actions'
+import * as actions from '../actions/index'
 
 import AuthRoute from './AuthRoute'
 import NavBar from './NavBar'

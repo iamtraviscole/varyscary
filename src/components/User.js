@@ -6,7 +6,7 @@ import axios from 'axios'
 import '../styles/User.css'
 import * as userUtil from '../utils/user'
 import * as monsterUtil from '../utils/monster'
-import * as actions from '../actions/actions'
+import * as actions from '../actions/index'
 
 import MonsterFromProps from './MonsterFromProps'
 import Spinner from './Spinner'

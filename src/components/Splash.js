@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import '../styles/Splash.css'
-import * as actions from '../actions/actions'
+import * as actions from '../actions/index'
 
 class Splash extends Component {
 
