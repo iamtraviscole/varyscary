@@ -67,8 +67,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setMobile: () => dispatch(actions.setMobile()),
-    setDesktop: () => dispatch(actions.setDesktop()),
     setMessage: (icon, text) => dispatch(actions.setMessage(icon, text))
   }
 }
