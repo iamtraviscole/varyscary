@@ -69,7 +69,7 @@ class NewMonster extends PureComponent {
 
   componentDidMount = () => {
     this.setShowArrows()
-    if (!this.props.monster.body.type) {
+    if (!this.props.monster.monsterFeatures.body.type) {
       this.setState({errorMessage: 'Body required'})
     } else {
       this.setState({errorMessage: null})
@@ -84,9 +84,9 @@ class NewMonster extends PureComponent {
   }
 
   componentDidUpdate = () => {
-    if (!this.props.monster.body.type) {
+    if (!this.props.monster.monsterFeatures.body.type) {
       this.setState({errorMessage: 'Body required'})
-    } else if (this.props.monsterName.length > 25) {
+    } else if (this.props.monster.monsterName.length > 25) {
       this.setState({errorMessage: 'Name too long (25 characters max)'})
     } else {
       this.setState({errorMessage: null})
@@ -135,27 +135,29 @@ class NewMonster extends PureComponent {
   }
 
   handleSaveClick = () => {
+    const monsterFeatures = this.props.monster.monsterFeatures
+
     if (!this.state.errorMessage) {
       this.props.fetchStarted()
       const monster = {
-        'name': this.props.monsterName,
-        'body_type': this.props.monster.body.type,
-        'body_fill': this.props.monster.body.fillColor,
-      	'face_type': this.props.monster.face.type,
-        'face_fill': this.props.monster.face.fillColor,
-      	'headwear_type': this.props.monster.headwear.type,
-        'headwear_fill': this.props.monster.headwear.fillColor,
-      	'eyes_type': this.props.monster.eyes.type,
-        'eyes_fill': this.props.monster.eyes.fillColor,
-      	'mouth_type': this.props.monster.mouth.type,
-        'mouth_fill': this.props.monster.mouth.fillColor,
-      	'left_arm_type': this.props.monster.leftArm.type,
-        'left_arm_fill': this.props.monster.leftArm.fillColor,
-      	'right_arm_type': this.props.monster.rightArm.type,
-        'right_arm_fill': this.props.monster.rightArm.fillColor,
-      	'legs_type': this.props.monster.legs.type,
-        'legs_fill': this.props.monster.legs.fillColor,
-        'tags_attributes': {'names': this.props.monsterTags}
+        'name': this.props.monster.monsterName,
+        'body_type': monsterFeatures.body.type,
+        'body_fill': monsterFeatures.body.fillColor,
+      	'face_type': monsterFeatures.face.type,
+        'face_fill': monsterFeatures.face.fillColor,
+      	'headwear_type': monsterFeatures.headwear.type,
+        'headwear_fill': monsterFeatures.headwear.fillColor,
+      	'eyes_type': monsterFeatures.eyes.type,
+        'eyes_fill': monsterFeatures.eyes.fillColor,
+      	'mouth_type': monsterFeatures.mouth.type,
+        'mouth_fill': monsterFeatures.mouth.fillColor,
+      	'left_arm_type': monsterFeatures.leftArm.type,
+        'left_arm_fill': monsterFeatures.leftArm.fillColor,
+      	'right_arm_type': monsterFeatures.rightArm.type,
+        'right_arm_fill': monsterFeatures.rightArm.fillColor,
+      	'legs_type': monsterFeatures.legs.type,
+        'legs_fill': monsterFeatures.legs.fillColor,
+        'tags_attributes': {'names': this.props.monster.monsterTags}
       }
       axios.post('http://localhost:4000/api/monsters',
         {'monster': monster},
@@ -199,8 +201,8 @@ class NewMonster extends PureComponent {
     const { monster } = this.props
 
     let noFeatureSelected = true
-    for (const feature in {...this.props.monster}) {
-      if (this.props.monster[feature].type !== null) {
+    for (const feature in {...monster.monsterFeatures}) {
+      if (monster.monsterFeatures[feature].type !== null) {
         noFeatureSelected = false
         break
       }
@@ -214,7 +216,7 @@ class NewMonster extends PureComponent {
     }
 
     let noBodySelected = true
-    if (monster.body.type) noBodySelected = false
+    if (monster.monsterFeatures.body.type) noBodySelected = false
 
     const activePanel = {
       bodies: <NewMonsterBodies />,
@@ -250,7 +252,7 @@ class NewMonster extends PureComponent {
     )
 
     let monsterTags = (
-      this.props.monsterTags.map( (tag, i) => {
+      monster.monsterTags.map( (tag, i) => {
         return (
           <div key={i} className='NewMonster__tag'
             onClick={() => this.handleRemoveTag(i)}>
@@ -328,7 +330,7 @@ class NewMonster extends PureComponent {
                     name='name'
                     type='text'
                     placeholder='name (optional)'
-                    value={this.props.monsterName}
+                    value={monster.monsterName}
                     onChange={this.handleNameChange} />
                   <div className='NewMonster__tags-instructions-ctr'>
                     <i className='material-icons'>info_outline</i>
@@ -337,7 +339,7 @@ class NewMonster extends PureComponent {
                   <form onSubmit={this.handleTagSubmit}>
                     <input className='NewMonster__tag-input'
                       value={this.state.tagValue}
-                      placeholder={this.props.monsterTags.length > 0
+                      placeholder={monster.monsterTags.length > 0
                         ? 'another tag (optional)'
                         : 'tag (optional)'}
                       type='text'
@@ -350,7 +352,7 @@ class NewMonster extends PureComponent {
                   </form>
                   <div className='NewMonster__tags-ctr'>
                     {monsterTags}
-                    {this.props.monsterTags.length > 1
+                    {monster.monsterTags.length > 1
                       ? <button className='NewMonster__tags-clear-all'
                           onClick={this.handleClearClick}>clear</button>
                       : null}
@@ -404,10 +406,8 @@ class NewMonster extends PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    monsterName: state.monsterName,
-    monsterTags: state.monsterTags,
     monster: state.monster,
-    username: state.username
+    username: state.user.username
   }
 }
 

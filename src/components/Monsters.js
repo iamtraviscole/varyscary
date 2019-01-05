@@ -385,8 +385,7 @@ class Monsters extends Component  {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.username,
-    isFetching: state.isFetching
+    username: state.user.username
   }
 }
 

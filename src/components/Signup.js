@@ -253,8 +253,8 @@ class Signup extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.username,
-    isFetching: state.isFetching
+    username: state.user.username,
+    isFetching: state.request.isFetching
   }
 }
 

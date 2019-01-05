@@ -45,7 +45,7 @@ class Splash extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    message: state.message
+    message: state.user.message
   }
 }
 

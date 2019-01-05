@@ -18,7 +18,7 @@ class NewMonsterTemplate extends Component {
   }
 
   render () {
-    const monster = this.props.monster
+    const { monsterFeatures } = this.props
 
     const bodySvgStroke = {
       fillColor: '#ffffff',
@@ -35,7 +35,7 @@ class NewMonsterTemplate extends Component {
     let featuresDivs = []
 
     if (this.props.allowNoSelection) {
-      if (monster[this.props.monsterFeature].type === null) {
+      if (monsterFeatures[this.props.monsterFeature].type === null) {
         featuresDivs.push(
           <div className='NewMonsterPanels__features NewMonsterPanels__features--active'
             onClick={this.handleNullClick}
@@ -69,10 +69,10 @@ class NewMonsterTemplate extends Component {
       }
     }
 
-    let MonsterBodyComponent = MonsterBodies[monster.body.type]
+    let MonsterBodyComponent = MonsterBodies[monsterFeatures.body.type]
 
     let bodyOutlineDiv = null
-    if (monster.body.type) {
+    if (monsterFeatures.body.type) {
       bodyOutlineDiv = (
         <div className='NewMonsterPanels__feature NewMonsterPanels__body'>
           <MonsterBodyComponent {...bodySvgStroke} />
@@ -82,7 +82,7 @@ class NewMonsterTemplate extends Component {
 
     for (const feature in this.props.features) {
       let Component = this.props.features[feature]
-      if (monster[this.props.monsterFeature].type === feature) {
+      if (monsterFeatures[this.props.monsterFeature].type === feature) {
         featuresDivs.push(
           <div className='NewMonsterPanels__features NewMonsterPanels__features--active'
             data-feature-selection={feature}
@@ -94,10 +94,10 @@ class NewMonsterTemplate extends Component {
                   check
                 </i>
               </div>
-              {monster[this.props.monsterFeature].fillColor === '#ffffff'
-                ? <Component fillColor={monster[this.props.monsterFeature].fillColor}
+              {monsterFeatures[this.props.monsterFeature].fillColor === '#ffffff'
+                ? <Component fillColor={monsterFeatures[this.props.monsterFeature].fillColor}
                     {...featureSvgStroke} />
-                : <Component fillColor={monster[this.props.monsterFeature].fillColor} />
+                : <Component fillColor={monsterFeatures[this.props.monsterFeature].fillColor} />
               }
             </div>
             {this.props.bodyOutline ? bodyOutlineDiv : null}
@@ -109,10 +109,10 @@ class NewMonsterTemplate extends Component {
           onClick={this.handleClick}
           key={feature}>
           <div className={`NewMonsterPanels__feature NewMonsterPanels__${this.props.monsterFeature}`}>
-            {monster[this.props.monsterFeature].fillColor === '#ffffff'
-              ? <Component fillColor={monster[this.props.monsterFeature].fillColor}
+            {monsterFeatures[this.props.monsterFeature].fillColor === '#ffffff'
+              ? <Component fillColor={monsterFeatures[this.props.monsterFeature].fillColor}
                   {...featureSvgStroke} />
-              : <Component fillColor={monster[this.props.monsterFeature].fillColor} />
+              : <Component fillColor={monsterFeatures[this.props.monsterFeature].fillColor} />
             }
           </div>
           {this.props.bodyOutline ? bodyOutlineDiv : null}
@@ -124,7 +124,7 @@ class NewMonsterTemplate extends Component {
         <div className='NewMonsterPanels__features-inner-ctr'>
           <div className='NewMonsterPanels__color-picker'>
             <ColorPicker
-              color={monster[this.props.monsterFeature].fillColor}
+              color={monsterFeatures[this.props.monsterFeature].fillColor}
               dispatchColor={this.props.featureFillDispatch} />
           </div>
           {featuresDivs}
@@ -136,7 +136,7 @@ class NewMonsterTemplate extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    monster: state.monster,
+    monsterFeatures: state.monster.monsterFeatures,
     svgStrokeStyle: state.svgStrokeStyle
   }
 }

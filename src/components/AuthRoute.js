@@ -24,7 +24,7 @@ class AuthRoute extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.username
+    username: state.user.username
   }
 }
 

@@ -38,7 +38,7 @@ class ColorPicker extends Component {
   }
 
   render() {
-    const { monster } = this.props
+    const { monsterFeatures } = this.props
 
     let colors = [
       '#80f0ff', '#2e7bed', '#034887', '#01ff70', '#32cd32', '#136b48',
@@ -82,9 +82,9 @@ class ColorPicker extends Component {
       </div>
 
     let currentColors = []
-    for (const feature in monster) {
-      if (!currentColors.includes(monster[feature].fillColor)) {
-        currentColors.push(monster[feature].fillColor)
+    for (const feature in monsterFeatures) {
+      if (!currentColors.includes(monsterFeatures[feature].fillColor)) {
+        currentColors.push(monsterFeatures[feature].fillColor)
       }
     }
 
@@ -144,7 +144,7 @@ class ColorPicker extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    monster: state.monster
+    monsterFeatures: state.monster.monsterFeatures
   }
 }
 

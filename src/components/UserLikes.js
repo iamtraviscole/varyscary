@@ -87,8 +87,8 @@ class UserLikes extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    isFetching: state.isFetching,
-    username: state.username
+    isFetching: state.request.isFetching,
+    username: state.user.username
   }
 }
 
