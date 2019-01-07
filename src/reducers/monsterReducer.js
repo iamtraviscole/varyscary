@@ -195,7 +195,8 @@ const monsterReducer = (state = initialState, action) => {
                   ...state.monsterFeatures,
                   body: {
                     ...state.monsterFeatures.body,
-                    type: action.bodyType
+                    type: action.bodyType,
+                    fillColor: action.bodyColor
                   },
                   face: {
                     ...state.monsterFeatures.face,
@@ -203,27 +204,33 @@ const monsterReducer = (state = initialState, action) => {
                   },
                   headwear: {
                     ...state.monsterFeatures.headwear,
-                    type: action.headwearType
+                    type: action.headwearType,
+                    fillColor: action.headwearColor
                   },
                   eyes: {
                     ...state.monsterFeatures.eyes,
-                    type: action.eyesType
+                    type: action.eyesType,
+                    fillColor: action.eyesColor
                   },
                   mouth: {
                     ...state.monsterFeatures.mouth,
-                    type: action.mouthType
+                    type: action.mouthType,
+                    fillColor: action.mouthColor
                   },
                   rightArm: {
                     ...state.monsterFeatures.rightArm,
-                    type: action.rightArmType
+                    type: action.rightArmType,
+                    fillColor: action.rightArmColor
                   },
                   leftArm: {
                     ...state.monsterFeatures.leftArm,
-                    type: action.leftArmType
+                    type: action.leftArmType,
+                    fillColor: action.leftArmColor
                   },
                   legs: {
                     ...state.monsterFeatures.legs,
-                    type: action.legsType
+                    type: action.legsType,
+                    fillColor: action.legsColor
                   }
                 }
               }
