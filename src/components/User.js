@@ -5,7 +5,6 @@ import axios from 'axios'
 
 import '../styles/User.css'
 import * as userUtil from '../utils/user'
-import * as monsterUtil from '../utils/monster'
 import * as actions from '../actions/index'
 
 import MonsterFromProps from './MonsterFromProps'
@@ -74,46 +73,62 @@ class User extends Component  {
     }
   }
 
+  handleLikeUnlike401 = () => {
+    this.props.logout()
+    this.props.history.push('/')
+    this.props.setMessage('Please log in or sign up to do that')
+  }
+
+  handleLikeUnlikeSetState = (res) => {
+    let monster = this.state.monsters.find(monster => {
+      return monster.id === res.data.id
+    })
+    let monsterIndex = this.state.monsters.indexOf(monster)
+    let updatedMonsters = [...this.state.monsters]
+    updatedMonsters.splice(monsterIndex, 1, res.data)
+    this.setState({
+      monsters: updatedMonsters
+    })
+  }
 
   handleLikeClick = (event) => {
+    this.props.fetchStarted()
     let monsterId = event.currentTarget.dataset.monsterId
-    monsterUtil.likeMonster(monsterId)
-    .then(resp => {
-      if (resp === 401) {
-        this.props.history.push('/')
-        this.props.setMessage('You must be logged in to do that')
-      } else {
-        let monster = this.state.monsters.find(monster => {
-          return monster.id === resp.id
-        })
-        let monsterIndex = this.state.monsters.indexOf(monster)
-        let updatedMonsters = [...this.state.monsters]
-        updatedMonsters.splice(monsterIndex, 1, resp)
-        this.setState({
-          monsters: updatedMonsters
-        })
+    axios.post(`http://localhost:4000/api/like?monster_id=${monsterId}`,
+      null,
+      {'headers': {'Authorization': localStorage.getItem('user_token')}}
+    )
+    .then(res => {
+      console.log(res.data);
+      this.handleLikeUnlikeSetState(res)
+      this.props.fetchEnded()
+    })
+    .catch(err => {
+      console.log(err);
+      if (err.response.status === 401) {
+        this.handleLikeUnlike401()
       }
+      this.props.fetchEnded()
     })
   }
 
   handleUnlikeClick = (event) => {
+    this.props.fetchStarted()
     let monsterId = event.currentTarget.dataset.monsterId
-    monsterUtil.unlikeMonster(monsterId)
-    .then(resp => {
-      if (resp === 401) {
-        this.props.history.push('/')
-        this.props.setMessage('Session expired. Please log in')
-      } else {
-        let monster = this.state.monsters.find(monster => {
-          return monster.id === resp.id
-        })
-        let monsterIndex = this.state.monsters.indexOf(monster)
-        let updatedMonsters = [...this.state.monsters]
-        updatedMonsters.splice(monsterIndex, 1, resp)
-        this.setState({
-          monsters: updatedMonsters
-        })
+    axios.delete(`http://localhost:4000/api/unlike?monster_id=${monsterId}`,
+      {'headers': {'Authorization': localStorage.getItem('user_token')}}
+    )
+    .then(res => {
+      console.log(res.data);
+      this.handleLikeUnlikeSetState(res)
+      this.props.fetchEnded()
+    })
+    .catch(err => {
+      console.log(err);
+      if (err.response.status === 401) {
+        this.handleLikeUnlike401()
       }
+      this.props.fetchEnded()
     })
   }
 
@@ -244,7 +259,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setMessage: (message, icon) => dispatch(actions.setMessage(message, icon)),
     fetchStarted: () => dispatch(actions.fetchStarted()),
-    fetchEnded: () => dispatch(actions.fetchEnded())
+    fetchEnded: () => dispatch(actions.fetchEnded()),
+    logout: () => dispatch(actions.logout())
   }
 }
 

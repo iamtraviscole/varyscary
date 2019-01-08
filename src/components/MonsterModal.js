@@ -53,7 +53,6 @@ class MonsterModal extends Component {
 
   render() {
     const monster = this.state.monster
-    console.log(this.state);
 
     let monsterTags = null
     if (monster) {
