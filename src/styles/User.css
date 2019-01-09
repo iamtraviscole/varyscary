@@ -127,7 +127,7 @@
 
 .User__unlike-ctr {
   float: right;
-  color: var(--main-text-color-lighter);
+  color: var(--main-color);
 }
 
 .User__unlike-ctr:hover {
