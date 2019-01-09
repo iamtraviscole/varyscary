@@ -21,13 +21,12 @@ class EditMonster extends Component {
     monsterDeleted: false
   }
 
-  monsterURL = () => {
-    return 'http://localhost:4000/api/monsters' +
-      `/${this.props.computedMatch.params.id}`
-  }
+  monsterURL = 'http://localhost:4000/api/monsters/' +
+    this.props.computedMatch.params.id
+
 
   componentDidMount = () => {
-    axios.get(this.monsterURL())
+    axios.get(this.monsterURL)
       .then(res => {
         this.setState({
           monster: res.data,
@@ -114,7 +113,7 @@ class EditMonster extends Component {
         tags_attributes: {names: this.state.tags}
       }}
     }
-    axios.put(this.monsterURL(), updateParams(),
+    axios.put(this.monsterURL, updateParams(),
       {'headers': {'Authorization': localStorage.getItem('user_token')}}
     )
     .then(res => {
@@ -155,7 +154,7 @@ class EditMonster extends Component {
   }
 
   handleDeleteConfirm = () => {
-    axios.delete(this.monsterURL(),
+    axios.delete(this.monsterURL,
       {'headers': {'Authorization': localStorage.getItem('user_token')}}
     )
     .then(res => {

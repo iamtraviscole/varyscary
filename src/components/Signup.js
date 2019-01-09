@@ -25,6 +25,8 @@ class Signup extends Component {
     }
   }
 
+  baseURL = 'http://localhost:4000/api'
+
   noFieldErrors = () => {
     for (var key in this.state.errors) {
       if (this.state.errors[key] !== null)
@@ -34,7 +36,7 @@ class Signup extends Component {
   }
 
   login = (token) => {
-    axios.get('http://localhost:4000/api/current_user_info',
+    axios.get(`${this.baseURL}/current_user_info`,
       {'headers': {'Authorization': token} }
     )
     .then(res => {
@@ -52,7 +54,7 @@ class Signup extends Component {
 
   authorize = (user) => {
     this.props.fetchStarted()
-    axios.post('http://localhost:4000/api/user_token',
+    axios.post(`${this.baseURL}/user_token`,
       {'auth':
         {'email': user.email,
         'password': user.password}
@@ -72,10 +74,10 @@ class Signup extends Component {
 
   handleSignupSubmit = (event) => {
     event.preventDefault()
-    let user = this.state.user
+    const user = this.state.user
     if (this.noFieldErrors() && this.state.user.username) {
       this.props.fetchStarted()
-      axios.post('http://localhost:4000/api/users',
+      axios.post(`${this.baseURL}/users`,
         {'user':
           {'username': user.username,
             'email': user.email,
@@ -102,7 +104,7 @@ class Signup extends Component {
   }
 
   checkUsernameAvail = (username) => {
-    let usernameAvail = axios.get(`http://localhost:4000/api/check_username_avail?username=${username}`)
+    let usernameAvail = axios.get(`${this.baseURL}/check_username_avail?username=${username}`)
     .then(res => {
       return res.data ? true : false
     })
@@ -113,7 +115,7 @@ class Signup extends Component {
   }
 
   checkEmailAvail = (email) => {
-    let emailAvail = axios.get(`http://localhost:4000/api//check_email_avail?email=${email}`)
+    let emailAvail = axios.get(`${this.baseURL}/check_email_avail?email=${email}`)
     .then(res => {
       return res.data ? true : false
     })
@@ -124,35 +126,37 @@ class Signup extends Component {
   }
 
   handleUsernameLeave = () => {
-    if (this.state.user.username.length < 3) {
+    const username = this.state.user.username
+    const errors = this.state.errors
+    if (username.length < 3) {
       this.setState({
-        errors: {...this.state.errors,
+        errors: {...errors,
           username: 'Username too short (3 characters min)'
         }
       })
-    } else if (this.state.user.username.length > 25) {
+    } else if (username.length > 25) {
       this.setState({
-        errors: {...this.state.errors,
+        errors: {...errors,
           username: 'Username too long (25 characters max)'
         }
       })
-    } else if (this.state.user.username.includes(' ')) {
+    } else if (username.includes(' ')) {
         this.setState({
-          errors: {...this.state.errors,
+          errors: {...errors,
             username: 'Username can\'t contain spaces'
           }
       })
     } else {
-      this.checkUsernameAvail(this.state.user.username).then((avail) => {
+      this.checkUsernameAvail(username).then((avail) => {
         if (!avail) {
           this.setState({
-            errors: {...this.state.errors,
+            errors: {...errors,
               username: 'Username already taken'
             }
           })
         } else {
           this.setState({
-            errors: {...this.state.errors,
+            errors: {...errors,
               username: null
             }
           })
@@ -162,35 +166,37 @@ class Signup extends Component {
   }
 
   handleEmailLeave = (event) => {
-    if (this.state.user.email.length === 0) {
+    const email = this.state.user.email
+    const errors = this.state.errors
+    if (email.length === 0) {
       this.setState({
-        errors: {...this.state.errors,
+        errors: {...errors,
           email: 'Email can\'t be blank'
         }
       })
-    } else if (!this.state.user.email.includes('@')) {
+    } else if (!email.includes('@')) {
       this.setState({
-        errors: {...this.state.errors,
+        errors: {...errors,
           email: 'Invalid email'
         }
       })
-    } else if (this.state.user.email.includes(' ')) {
+    } else if (email.includes(' ')) {
       this.setState({
-        errors: {...this.state.errors,
+        errors: {...errors,
           email: 'Email can\'t contain spaces'
         }
       })
     } else {
-      this.checkEmailAvail(this.state.user.email).then((avail) => {
+      this.checkEmailAvail(email).then((avail) => {
         if (!avail) {
           this.setState({
-            errors: {...this.state.errors,
+            errors: {...errors,
               email: 'Email already taken'
             }
           })
         } else {
           this.setState({
-            errors: {...this.state.errors,
+            errors: {...errors,
               email: null
             }
           })

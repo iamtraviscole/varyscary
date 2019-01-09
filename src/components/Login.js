@@ -17,6 +17,8 @@ class Login extends Component {
     }
   }
 
+  baseURL = 'http://localhost:4000/api'
+
   componentWillUnmount = () => {
     this.props.clearMessage()
   }
@@ -34,7 +36,7 @@ class Login extends Component {
   }
 
   login = (token) => {
-    axios.get('http://localhost:4000/api/current_user_info',
+    axios.get(`${this.baseURL}/current_user_info`,
       {'headers': {'Authorization': token} }
     )
     .then(res => {
@@ -53,10 +55,11 @@ class Login extends Component {
   handleLoginSubmit = (event) => {
     event.preventDefault()
     this.props.fetchStarted()
-    axios.post('http://localhost:4000/api/user_token',
+    const user = this.state.user
+    axios.post(`${this.baseURL}/user_token`,
       {'auth':
-        {'email': this.state.user.email,
-        'password': this.state.user.password}
+        {'email': user.email,
+        'password': user.password}
       }
     )
     .then(res => {
