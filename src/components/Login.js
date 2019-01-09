@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import axios from 'axios'
 
 import '../styles/Login.css'
 import * as actions from '../actions/index'
-import { authorizeAndLogin } from '../utils/userSession'
 
 import Spinner from './Spinner'
 import AlreadyLoggedIn from './AlreadyLoggedIn'
@@ -33,9 +33,42 @@ class Login extends Component {
     })
   }
 
+  login = (token) => {
+    axios.get('http://localhost:4000/api/current_user_info',
+      {'headers': {'Authorization': token} }
+    )
+    .then(res => {
+      this.props.login(res.data.username)
+      this.props.history.push('/')
+      this.props.fetchEnded()
+    })
+    .catch(err => {
+      if (err.response.status === 401) {
+        this.props.logout()
+      }
+      this.props.fetchEnded()
+    })
+  }
+
   handleLoginSubmit = (event) => {
     event.preventDefault()
-    authorizeAndLogin(this.state.user, this.props.history)
+    this.props.fetchStarted()
+    axios.post('http://localhost:4000/api/user_token',
+      {'auth':
+        {'email': this.state.user.email,
+        'password': this.state.user.password}
+      }
+    )
+    .then(res => {
+      if (res.data.jwt) {
+        localStorage.setItem('user_token', res.data.jwt)
+        this.login(res.data.jwt)
+      }
+    })
+    .catch(err => {
+      this.props.fetchEnded()
+      this.props.setMessage('Incorrect email or password')
+    })
   }
 
   handleGoBack = () => {
@@ -120,7 +153,8 @@ const mapDispatchToProps = (dispatch) => {
     logout: () => dispatch(actions.logout()),
     fetchStarted: () => dispatch(actions.fetchStarted()),
     fetchEnded: () => dispatch(actions.fetchEnded()),
-    clearMessage: () => dispatch(actions.clearMessage()),
+    setMessage: (message) => dispatch(actions.setMessage(message)),
+    clearMessage: () => dispatch(actions.clearMessage())
   }
 }
 

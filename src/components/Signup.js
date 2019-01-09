@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import axios from 'axios'
 
 import '../styles/Signup.css'
-import * as userSessionUtil from '../utils/userSession'
+import * as actions from '../actions/index'
 
 import Spinner from './Spinner'
 import AlreadyLoggedIn from './AlreadyLoggedIn'
@@ -32,10 +33,63 @@ class Signup extends Component {
     return true
   }
 
+  login = (token) => {
+    axios.get('http://localhost:4000/api/current_user_info',
+      {'headers': {'Authorization': token} }
+    )
+    .then(res => {
+      this.props.login(res.data.username)
+      this.props.history.push('/')
+      this.props.fetchEnded()
+    })
+    .catch(err => {
+      if (err.response.status === 401) {
+        this.props.logout()
+      }
+      this.props.fetchEnded()
+    })
+  }
+
+  authorize = (user) => {
+    this.props.fetchStarted()
+    axios.post('http://localhost:4000/api/user_token',
+      {'auth':
+        {'email': user.email,
+        'password': user.password}
+      }
+    )
+    .then(res => {
+      if (res.data.jwt) {
+        localStorage.setItem('user_token', res.data.jwt)
+        this.login(res.data.jwt)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+      this.props.fetchEnded()
+    })
+  }
+
   handleSignupSubmit = (event) => {
     event.preventDefault()
+    let user = this.state.user
     if (this.noFieldErrors() && this.state.user.username) {
-      userSessionUtil.signupAuthorizeAndLogin(this.state.user, this.props.history)
+      this.props.fetchStarted()
+      axios.post('http://localhost:4000/api/users',
+        {'user':
+          {'username': user.username,
+            'email': user.email,
+            'password': user.password,
+            'password_confirmation': user.passwordConfirmation}
+        }
+      )
+      .then(res => {
+        this.authorize(user)
+      })
+      .catch(err => {
+        console.log(err.response);
+        this.props.fetchEnded()
+      })
     }
   }
 
@@ -45,6 +99,28 @@ class Signup extends Component {
         [event.target.name]: event.target.value
       }
     })
+  }
+
+  checkUsernameAvail = (username) => {
+    let usernameAvail = axios.get(`http://localhost:4000/api/check_username_avail?username=${username}`)
+    .then(res => {
+      return res.data ? true : false
+    })
+    .catch(err => {
+      console.log(err.response);
+    })
+    return usernameAvail
+  }
+
+  checkEmailAvail = (email) => {
+    let emailAvail = axios.get(`http://localhost:4000/api//check_email_avail?email=${email}`)
+    .then(res => {
+      return res.data ? true : false
+    })
+    .catch(err => {
+      console.log(err.response);
+    })
+    return emailAvail
   }
 
   handleUsernameLeave = () => {
@@ -67,7 +143,7 @@ class Signup extends Component {
           }
       })
     } else {
-      userSessionUtil.checkUsernameAvail(this.state.user.username).then((avail) => {
+      this.checkUsernameAvail(this.state.user.username).then((avail) => {
         if (!avail) {
           this.setState({
             errors: {...this.state.errors,
@@ -105,7 +181,7 @@ class Signup extends Component {
         }
       })
     } else {
-      userSessionUtil.checkEmailAvail(this.state.user.email).then((avail) => {
+      this.checkEmailAvail(this.state.user.email).then((avail) => {
         if (!avail) {
           this.setState({
             errors: {...this.state.errors,
@@ -258,4 +334,13 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Signup)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    login: (username) => dispatch(actions.login(username)),
+    logout: () => dispatch(actions.logout()),
+    fetchStarted: () => dispatch(actions.fetchStarted()),
+    fetchEnded: () => dispatch(actions.fetchEnded())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)
