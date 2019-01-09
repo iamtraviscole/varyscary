@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
+import '../styles/Home.css'
 import * as actions from '../actions/index'
 import popupMonster1 from '../images/popup-monster-1.svg'
 import popupMonster2 from '../images/popup-monster-2.svg'
 import popupMonster3 from '../images/popup-monster-3.svg'
 import popupMonster4 from '../images/popup-monster-4.svg'
-
-import '../styles/Home.css'
 
 class Home extends Component {
 

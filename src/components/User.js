@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import '../styles/User.css'
-import * as userUtil from '../utils/user'
 import * as actions from '../actions/index'
 
 import MonsterFromProps from './MonsterFromProps'
@@ -22,7 +21,8 @@ class User extends Component  {
 
   componentDidMount = () => {
     this.props.fetchStarted()
-    axios.get(`http://localhost:4000/api/users/${this.props.match.params.username}`)
+    let username = this.props.match.params.username
+    axios.get(`http://localhost:4000/api/users/${username}`)
     .then(res => {
       console.log(res.data);
       this.setState({
@@ -37,21 +37,6 @@ class User extends Component  {
       this.setState({initialFetch: false})
       this.props.fetchEnded()
     })
-  }
-
-  componentDidUpdate = (prevProps, prevState) => {
-    if (this.props.match.params.username !== prevProps.match.params.username) {
-      userUtil.getUser(this.props.match.params.username)
-      .then(user => {
-        if (user) {
-          this.setState({
-            initialFetch: false,
-            username: user.username,
-            monsters: user.monsters
-          })
-        }
-      })
-    }
   }
 
   handleSelectChange = (event) => {
