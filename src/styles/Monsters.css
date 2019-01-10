@@ -141,7 +141,7 @@
   height: 60px;
   width: 225px;
   padding-top: 10px;
-  color: var(--color-white);
+  color: white;
   background: var(--main-color);
   border-radius: 3px;
 }

@@ -52,7 +52,7 @@
 
 .UserPanel__logout-btn {
   float: right;
-  color: var(--color-white);
+  color: white;
   font-size: 14px;
   background: var(--main-color);
   padding: 5px 7px;

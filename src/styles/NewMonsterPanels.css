@@ -50,7 +50,7 @@
   top: 5px;
   left: 5px;
   font-size: 14px;
-  color: var(--color-black);
+  color: black;
 }
 
 .NewMonsterPanels__features-null {
@@ -75,7 +75,7 @@
 }
 
 .NewMonsterPanels__features--active {
-  border: 1px solid var(--color-black);
+  border: 1px solid black;
 }
 
 .NewMonsterPanels__feature {

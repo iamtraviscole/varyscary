@@ -30,7 +30,7 @@
 .MonsterSavedModal__saved {
   text-align: center;
   font-size: 19px;
-  color: var(--color-white);
+  color: white;
   margin-bottom: 5px;
 }
 
@@ -62,7 +62,7 @@
   width: 200px;
   height: 38px;
   line-height: 38px;
-  color: var(--color-white);
+  color: white;
   background: var(--main-color);
   border-radius: 3px;
 }

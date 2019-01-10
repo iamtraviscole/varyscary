@@ -47,7 +47,7 @@
 }
 
 .NewMonster__arrow:hover {
-  color: var(--color-white);
+  color: white;
   background: var(--main-color);
   user-select: none;
   -webkit-user-select: none;

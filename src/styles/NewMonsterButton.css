@@ -21,7 +21,7 @@
 }
 
 .NewMonsterButton__features-btn--active {
-  color: var(--color-white);
+  color: white;
   background: var(--main-color)
 }
 
@@ -40,7 +40,7 @@
   font-size: 12px;
   padding: 2px 4px;
   border-radius: 3px;
-  color: var(--color-white);
+  color: white;
   background: var(--warning-color-light);
   z-index: 5000;
 }

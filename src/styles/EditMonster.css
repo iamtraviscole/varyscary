@@ -291,7 +291,7 @@ input.EditMonster__tag-add-btn:hover {
 
 .EditMonster__confirm-btn {
   display: inline-block;
-  color: var(--color-white);
+  color: white;
   background: var(--main-color);
   border-radius: 3px;
   padding: 6px 8px;
@@ -318,7 +318,7 @@ input.EditMonster__tag-add-btn:hover {
   height: 32px;
   line-height: 32px;
   display: block;
-  color: var(--color-white);
+  color: white;
   background: var(--main-color);
   border-radius: 3px;
 }

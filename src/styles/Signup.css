@@ -45,7 +45,7 @@
   margin: 10px 0;
   width: 150px;
   font-weight: 300;
-  color: var(--color-white);
+  color: white;
   border: 1px solid var(--main-color);
   background: var(--main-color);
   border-style: none;
@@ -55,7 +55,7 @@
 
 .Signup__btn:hover {
   background: var(--hover-color-dark);
-  color: var(--color-white);
+  color: white;
   text-decoration: none;
 }
 

@@ -7,7 +7,7 @@
 
 .Home__top-ctr {
   text-align: center;
-  color: var(--color-white);
+  color: white;
   background: var(--main-color);
   padding: 25px;
 }
@@ -21,7 +21,7 @@
 }
 
 .Home__top-stat {
-  border: 1px solid var(--color-white);
+  border: 1px solid white;
   border-radius: 3px;
   padding: 2px 4px;
   font-size: 14px;

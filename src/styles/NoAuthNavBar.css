@@ -1,7 +1,7 @@
 .NoAuthNavBar {
   grid-area: header;
   height: 60px;
-  background: var(--color-white);
+  background: white;
 }
 
 .NoAuthNavBar__right {
@@ -17,7 +17,7 @@
   width: 60px;
   font-size: 14px;
   font-weight: 300;
-  color: var(--color-white);
+  color: white;
   border: 1px solid var(--main-color);
   background: var(--main-color);
   border-radius: 3px;
@@ -41,7 +41,7 @@
   padding: 0 10px;
   text-align: center;
   font-weight: 200;
-  color: var(--color-white);
+  color: white;
   background: var(--main-color);
   border-radius: 25px;
   line-height: 30px;

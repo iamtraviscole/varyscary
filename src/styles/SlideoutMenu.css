@@ -25,7 +25,7 @@
 }
 
 .SlideoutMenu__button {
-  color: var(--color-white);
+  color: white;
   background: transparent;
 }
 
@@ -48,8 +48,8 @@
 
 .SlideoutMenu__link {
   text-align: center;
-  color: var(--color-white);
-  border: 1px solid var(--color-white);
+  color: white;
+  border: 1px solid white;
   border-radius: 3px;
   margin-bottom: 10px;
   padding: 5px 10px;
@@ -58,6 +58,6 @@
 
 .SlideoutMenu__link:hover {
   font-weight: bold;
-  box-shadow: 0 0 0 1px var(--color-white);
+  box-shadow: 0 0 0 1px white;
   text-decoration: none;
 }
