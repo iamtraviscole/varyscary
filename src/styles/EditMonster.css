@@ -219,8 +219,14 @@ input.EditMonster__tag-add-btn:hover {
   margin-top: 10px;
   font-size: 12px;
   color: var(--warning-color-light);
-  text-decoration: underline;
   cursor: pointer;
+}
+
+.EditMonster__delete i {
+  font-size: 12px;
+  vertical-align: middle;
+  margin-right: 1px;
+  margin-top: -2px;
 }
 
 .EditMonster__delete:hover {
@@ -340,7 +346,7 @@ input.EditMonster__tag-add-btn:hover {
 .EditMonster__no-access-ctr i {
   vertical-align: middle;
   color: var(--warning-color-light);
-  font-size: 18px;
+  font-size: 32px;
   margin-top: -3px;
 }
 
@@ -358,6 +364,10 @@ input.EditMonster__tag-add-btn:hover {
 .EditMonster__no-access-btn:hover {
   color: var(--hover-color-dark);
   border: 1px solid var(--hover-color-dark);
+}
+
+.EditMonster__monster-not-found {
+  margin-top: 50px;
 }
 
 @media (max-width: 575px) {

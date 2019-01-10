@@ -134,6 +134,7 @@ class User extends Component  {
   }
 
   render() {
+    console.log(this.props.location);
     let monstersUserLiked = []
     this.state.monsters.forEach(monster => {
       if (monster.liked_by.includes(this.props.username)) {
@@ -185,8 +186,24 @@ class User extends Component  {
         content =
           <Fragment>
             <h1>{this.state.username}</h1>
+            {this.props.location.state
+              ? this.props.location.state.message
+                  ? <div className='User__message-ctr'>
+                    <i className='material-icons'>check_circle_outline</i>
+                      {this.props.location.state.message}
+                    </div>
+                  : null
+              : null}
              {this.state.monsters.length > 0
               ? <div className='User__monsters-ctr'>
+                {/* {this.props.location.state
+                  ? this.props.location.state.message
+                      ? <div className='User__message-ctr'>
+                        <i className='material-icons'>check_circle_outline</i>
+                          {this.props.location.state.message}
+                        </div>
+                      : null
+                  : null} */}
                   <div className='User__sort-ctr'>
                     <div className='User__sort-by-ctr'>
                       <div className='User__drop-down'>

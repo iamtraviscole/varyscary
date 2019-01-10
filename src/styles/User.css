@@ -36,6 +36,19 @@
   text-decoration: none;
 }
 
+.User__message-ctr {
+  width: 100%;
+  font-size: 14px;
+  padding: 5px 0;
+  color: var(--success-color);
+}
+
+.User__message-ctr i {
+  font-size: 14px;
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
 .User__sort-ctr {
   grid-column: 1 / -1;
   margin-top: 25px;
