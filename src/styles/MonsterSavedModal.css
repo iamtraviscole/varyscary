@@ -29,9 +29,10 @@
 
 .MonsterSavedModal__saved {
   text-align: center;
-  font-size: 19px;
-  color: white;
-  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--main-color);
+  margin: -10px 0 15px 0;
 }
 
 .MonsterSavedModal__saved i {
@@ -58,7 +59,7 @@
 
 .MonsterSavedModal__btn {
   display: inline-block;
-  font-size: 14px;
+  font-size: 17px;
   width: 200px;
   height: 38px;
   line-height: 38px;
