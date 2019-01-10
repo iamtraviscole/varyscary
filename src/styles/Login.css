@@ -5,6 +5,13 @@
   z-index: 1000;
 }
 
+.Login__ctr {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding: 25px 0;
+}
+
 .Login__msg-ctr {
   margin-bottom: 6px;
 }
@@ -29,17 +36,11 @@
   padding-right: 4px;
 }
 
-.Login__ctr {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-}
-
-.Login__inner-ctr {
+.Login__form {
   position: relative;
   margin: auto;
   width: 300px;
-  padding: 30px 100px;
+  padding: 20px;
   background: var(--light-container-color);
   border-radius: 3px;
 }
@@ -69,12 +70,20 @@
   background: var(--main-color);
   border-style: none;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .Login__btn:hover {
   background: var(--hover-color-dark);
   color: white;
   text-decoration: none;
+}
+
+.Login__signup-link-ctr {
+  margin: auto;
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--main-text-color-lighter);
 }
 
 .Login__spinner {
@@ -86,7 +95,7 @@
 
 @media (max-width: 580px) {
 
-  .Login__inner-ctr {
+  .Login__form {
     width: 250px;
     padding: 20px;
   }

@@ -9,12 +9,13 @@
   display: table-cell;
   vertical-align: middle;
   text-align: center;
+  padding: 20px 0;
 }
 
-.Signup__inner-ctr {
+.Signup__form {
   margin: auto;
   width: 300px;
-  padding: 30px 100px;
+  padding: 20px;
   background: var(--light-container-color);
   border-radius: 3px;
 }
@@ -59,6 +60,13 @@
   text-decoration: none;
 }
 
+.Signup__login-link-ctr {
+  margin: auto;
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--main-text-color-lighter);
+}
+
 .Signup__spinner {
   position: absolute;
   top: 50%;
@@ -68,7 +76,7 @@
 
 @media (max-width: 580px) {
 
-  .Signup__inner-ctr {
+  .Signup__form {
     width: 250px;
     padding: 20px;
   }

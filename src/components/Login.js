@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
@@ -102,11 +103,10 @@ class Login extends Component {
     }
 
     let loginContent = (
-    <div>
-      <form className='Login' onSubmit={this.handleLoginSubmit}>
+    <div className='Login'>
         <div className='Login__ctr'>
           {message}
-          <div className='Login__inner-ctr'>
+          <form className='Login__form' onSubmit={this.handleLoginSubmit}>
             <h1 className='Login__h1'>Log In</h1>
             {spinner}
             <input className='Login__input'
@@ -124,9 +124,11 @@ class Login extends Component {
             <input className='Login__btn'
               type='submit'
               value='Log In'/>
-            </div>
+          </form>
+          <div className='Login__signup-link-ctr'>
+            <Link to='/signup' className='Login__signup-link'>no account? signup</Link>
           </div>
-        </form>
+          </div>
       </div>
     )
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
@@ -260,9 +261,9 @@ class Signup extends Component {
     )
 
     let signupContent = (
-      <form className='Signup' onSubmit={this.handleSignupSubmit}>
+      <div className='Signup'>
         <div className='Signup__ctr'>
-          <div className='Signup__inner-ctr'>
+          <form className='Signup__form' onSubmit={this.handleSignupSubmit}>
             <h1 className='Signup__h1'>Sign Up</h1>
             {spinner}
             {this.state.errors.username
@@ -316,9 +317,12 @@ class Signup extends Component {
             <input className='Signup__btn'
               type='submit'
               value='Sign Up' />
+          </form>
+          <div className='Signup__login-link-ctr'>
+            <Link to='/login'>already have an account? login</Link>
           </div>
         </div>
-      </form>
+      </div>
     )
 
     if (this.props.username) {
