@@ -110,47 +110,55 @@ class Monster extends Component {
             </div>
           : monster
             ? <div className='Monster'>
-                <div className='Monster__monster-ctr'>
-                  <MonsterFromProps monster={monster} />
-                </div>
-                <div className='Monster__details-ctr'>
-                  <div className='Monster__creator-ctr'>
-                    <h1 className='Monster__name'>{monster.name}</h1>
-                    <p className='Monster__created-by'>by</p>
-                    <div className='Monster__creator'>
-                      <Link to={'/' + monster.username}>{monster.username}</Link>
-                    </div>
-                    <br></br>
-                    <p className='Monster__created-on'>on</p>
-                    <p className='Monster__created-on-date'>{monster.created_at_day_year}</p>
+                <div className='Monster__inner-ctr'>
+                  <div className='Monster__monster-ctr'>
+                    <MonsterFromProps monster={monster} />
                   </div>
-                  <div className='Monster__likes-ctr'>
-                    <button className='Monster__likes'
-                      onClick={this.setShowLikesModal}
-                      likes={this.state.monster.liked_by}>
-                      {monster.like_count} {monster.like_count === 1 ? 'like' : 'likes'}
-                    </button>
-                    {monster.liked_by.includes(this.props.username) ?
-                      <button className='Monster__unlike-btn'
-                        data-monster-id={monster.id}
-                        onClick={this.handleUnlikeClick}>
-                          <i className='material-icons'>favorite</i>
-                      </button>
-                      : <button className='Monster__like-btn'
-                        data-monster-id={monster.id}
-                        onClick={this.handleLikeClick}>
-                          <i className='material-icons'>favorite_border</i>
-                      </button>}
-                    </div>
-                  {monster.tags.length > 0
-                    ? <div className='Monster__tags-ctr'>
-                        <ul className='Monster__tags'>
-                          {monsterTags}
-                        </ul>
+                  <div className='Monster__details-ctr'>
+                    <div className='Monster__creator-ctr'>
+                      <h1 className='Monster__name'>{monster.name}</h1>
+                      <p className='Monster__created-by'>by</p>
+                      <div className='Monster__creator'>
+                        <Link to={'/' + monster.username}>{monster.username}</Link>
                       </div>
-                    : null}
+                      <br></br>
+                      <p className='Monster__created-on'>on</p>
+                      <p className='Monster__created-on-date'>{monster.created_at_day_year}</p>
+                    </div>
+                    <div className='Monster__likes-ctr'>
+                      <button className='Monster__likes'
+                        onClick={this.setShowLikesModal}
+                        likes={this.state.monster.liked_by}>
+                        {monster.like_count} {monster.like_count === 1 ? 'like' : 'likes'}
+                      </button>
+                      {monster.liked_by.includes(this.props.username) ?
+                        <button className='Monster__unlike-btn'
+                          data-monster-id={monster.id}
+                          onClick={this.handleUnlikeClick}>
+                            <i className='material-icons'>favorite</i>
+                        </button>
+                        : <button className='Monster__like-btn'
+                          data-monster-id={monster.id}
+                          onClick={this.handleLikeClick}>
+                            <i className='material-icons'>favorite_border</i>
+                        </button>}
+                      </div>
+                    {monster.tags.length > 0
+                      ? <div className='Monster__tags-ctr'>
+                          <ul className='Monster__tags'>
+                            {monsterTags}
+                          </ul>
+                        </div>
+                      : null}
+                  </div>
                 </div>
-              </div>
+                {this.props.username === monster.username
+                  ? <div className='Monster__edit'>
+                      <i className='material-icons'>edit</i>
+                      <Link to={`/monsters/${monster.id}/edit`}>edit monster</Link>
+                    </div>
+                  : null}
+            </div>
             : <div className='Monster__other'>
                 <h3>Monster not found</h3>
               </div>
