@@ -21,10 +21,15 @@
 .UserLikes__no-likes-btn {
   margin-top: 10px;
   display: inline-block;
-  padding: 5px;
+  padding: 5px 7px;
   color: white;
   background: var(--main-color);
   border-radius: 3px;
+}
+
+.UserLikes__no-likes-btn:hover {
+  background: var(--hover-color-dark);
+  text-decoration: none;
 }
 
 .UserLikes__monsters-ctr {

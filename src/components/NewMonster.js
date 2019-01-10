@@ -240,7 +240,7 @@ class NewMonster extends PureComponent {
 
     let monsterDirections = (
       <div className='NewMonster__directions-ctr'>
-        <h1 className='NewMonster__directions-header'>Make a monster!</h1>
+        <h1 className='NewMonster__directions-header'>Create a monster!</h1>
         <p>Start by choosing a body</p>
         <p>or</p>
         <button className='NewMonster__directions-randomize-btn'

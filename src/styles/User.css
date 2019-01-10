@@ -25,10 +25,15 @@
 .User__no-monsters-btn {
   margin-top: 10px;
   display: inline-block;
-  padding: 5px;
+  padding: 5px 7px;
   color: white;
   background: var(--main-color);
   border-radius: 3px;
+}
+
+.User__no-monsters-btn:hover {
+  background: var(--hover-color-dark);
+  text-decoration: none;
 }
 
 .User__sort-ctr {
@@ -136,6 +141,10 @@
 
 .User__unlike-ctr i {
   font-size: 17px;
+}
+
+.User__not-found {
+  margin-top: 50px;
 }
 
 .User__spinner-ctr {

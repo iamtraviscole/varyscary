@@ -203,10 +203,9 @@ class User extends Component  {
               : <div className='User__no-monsters-ctr'>
                   {this.props.username === this.props.match.params.username
                     ? <Fragment>
-                        You have not created any monsters yet!
-                        <br />
+                        <h4>You have not created any monsters yet!</h4>
                         <Link to='/monsters/new' className='User__no-monsters-btn'>
-                          Make a monster
+                          Create a monster
                         </Link>
                       </Fragment>
                     : 'This user has no monsters yet'}
@@ -214,7 +213,7 @@ class User extends Component  {
               }
             </Fragment>
       } else {
-        content = <div>User Not Found</div>
+        content = <div className='User__not-found'><h3>User Not Found</h3></div>
       }
     }
 

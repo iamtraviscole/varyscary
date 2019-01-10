@@ -152,7 +152,7 @@ class Monster extends Component {
                 </div>
               </div>
             : <div className='Monster__other'>
-                Monster not found
+                <h3>Monster not found</h3>
               </div>
         }
       </Fragment>
