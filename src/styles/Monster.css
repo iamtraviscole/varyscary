@@ -48,36 +48,35 @@
 }
 
 .Monster__name {
-  font-size: 1.75em;
+  font-size: 24px;
   font-weight: bold;
   margin-bottom: 8px;
-  /* word-break: break-all; */
 }
 
 .Monster__created-by {
   display: inline;
   margin-right: 5px;
-  font-size: 1em;
+  font-size: 16px;
 }
 
 .Monster__creator {
   display: inline;
   color: var(--main-color);
-  font-size: 1em;
+  font-size: 16px;
   font-weight: bold;
   word-break: break-all;
 }
 
 .Monster__created-on {
   display: inline;
-  font-size: .8em;
+  font-size: 13px;
   margin-right: 5px;
   font-style: italic;
 }
 
 .Monster__created-on-date {
   display: inline;
-  font-size: .8em;
+  font-size: 13px;
   font-style: italic;
 }
 
@@ -93,7 +92,7 @@
   float: left;
   margin-top: 5px;
   font-weight: bold;
-  font-size: .9em;
+  font-size: 14px;
   display: inline;
   cursor: pointer;
 }
