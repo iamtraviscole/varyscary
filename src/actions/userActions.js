@@ -9,7 +9,9 @@ export const login = (username) => {
 }
 
 export const logout = () => {
+  const lastUser = localStorage.getItem('username')
   localStorage.clear()
+  localStorage.setItem('last_user', lastUser)
   return {
     type: actionTypes.LOGOUT
   }

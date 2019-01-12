@@ -42,6 +42,9 @@ class Login extends Component {
     )
     .then(res => {
       this.props.login(res.data.username)
+      if (res.data.username !== localStorage.getItem('last_user')) {
+        this.props.resetMonster()
+      }
       this.props.history.push('/')
       this.props.fetchEnded()
     })
@@ -156,6 +159,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     login: (username) => dispatch(actions.login(username)),
     logout: () => dispatch(actions.logout()),
+    resetMonster: () => dispatch(actions.resetMonster()),
     fetchStarted: () => dispatch(actions.fetchStarted()),
     fetchEnded: () => dispatch(actions.fetchEnded()),
     setMessage: (message) => dispatch(actions.setMessage(message)),
