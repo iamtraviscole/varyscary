@@ -19,6 +19,7 @@ const MonsterSavedModal = (props) => {
   return (
     <div className='MonsterSavedModal' onClick={handleModalClick}>
       <div className='MonsterSavedModal__outer-ctr'>
+        <button className='MonsterSavedModal__close'> <i className="material-icons">close</i></button>
         <div className='MonsterSavedModal__inner-ctr'>
           <div className='MonsterSavedModal__saved'>
             Monster created!

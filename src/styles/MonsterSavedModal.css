@@ -15,6 +15,18 @@
   list-style-type: none;
 }
 
+.MonsterSavedModal__close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.MonsterSavedModal__close i {
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+}
+
 .MonsterSavedModal__inner-ctr {
   margin: 0 auto;
   width: 200px;

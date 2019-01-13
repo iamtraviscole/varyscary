@@ -200,6 +200,12 @@ class NewMonster extends PureComponent {
   render() {
     const { monster } = this.props
 
+    if (this.state.showModal) {
+      document.documentElement.setAttribute('style', 'overflow-y: hidden');
+    } else {
+      document.documentElement.removeAttribute('style');
+    }
+
     let noFeatureSelected = true
     for (const feature in {...monster.monsterFeatures}) {
       if (monster.monsterFeatures[feature].type !== null) {
