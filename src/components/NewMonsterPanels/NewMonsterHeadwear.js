@@ -10,6 +10,7 @@ class NewMonsterHeadwear extends Component {
   render() {
     let headwearProps = {
       featureTypeDispatch: this.props.setHeadwearType,
+      featureTypeHoverDispatch: this.props.setHeadwearTypeHover,
       featureFillDispatch: this.props.setHeadwearFill,
       features: MonsterHeadwear,
       monsterFeature: 'headwear',
@@ -27,6 +28,7 @@ class NewMonsterHeadwear extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     setHeadwearType: (headwearType) => dispatch(actions.setHeadwearType(headwearType)),
+    setHeadwearTypeHover: (headwearTypeHover) => dispatch(actions.setHeadwearTypeHover(headwearTypeHover)),
     setHeadwearFill: (headwearFill) => dispatch(actions.setHeadwearFill(headwearFill))
   }
 }

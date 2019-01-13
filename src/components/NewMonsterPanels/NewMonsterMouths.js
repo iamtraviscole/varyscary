@@ -10,6 +10,7 @@ class NewMonsterMouths extends Component {
   render() {
     let mouthsProps = {
       featureTypeDispatch: this.props.setMouthType,
+      featureTypeHoverDispatch: this.props.setMouthTypeHover,
       featureFillDispatch: this.props.setMouthFill,
       features: MonsterMouths,
       monsterFeature: 'mouth',
@@ -27,6 +28,7 @@ class NewMonsterMouths extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     setMouthType: (mouthType) => dispatch(actions.setMouthType(mouthType)),
+    setMouthTypeHover: (mouthTypeHover) => dispatch(actions.setMouthTypeHover(mouthTypeHover)),
     setMouthFill: (mouthFill) => dispatch(actions.setMouthFill(mouthFill))
   }
 }

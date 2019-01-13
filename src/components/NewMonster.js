@@ -208,7 +208,8 @@ class NewMonster extends PureComponent {
 
     let noFeatureSelected = true
     for (const feature in {...monster.monsterFeatures}) {
-      if (monster.monsterFeatures[feature].type !== null) {
+      if (monster.monsterFeatures[feature].type !== null ||
+        monster.monsterFeatures[feature].hoverType !== null) {
         noFeatureSelected = false
         break
       }

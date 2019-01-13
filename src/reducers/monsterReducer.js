@@ -6,34 +6,42 @@ const initialState = {
   monsterFeatures: {
     body: {
       type: null,
+      hoverType: null,
       fillColor: '#000000'
     },
     face: {
       type: null,
+      hoverType: null,
       fillColor: '#ffffff'
     },
     headwear: {
       type: null,
+      hoverType: null,
       fillColor: '#000000'
     },
     eyes: {
       type: null,
+      hoverType: null,
       fillColor: '#000000'
     },
     mouth: {
       type: null,
+      hoverType: null,
       fillColor: '#000000'
     },
     leftArm: {
       type: null,
+      hoverType: null,
       fillColor: '#000000'
     },
     rightArm: {
       type: null,
+      hoverType: null,
       fillColor: '#000000'
     },
     legs: {
       type: null,
+      hoverType: null,
       fillColor: '#000000'
     }
   }
@@ -117,6 +125,70 @@ const monsterReducer = (state = initialState, action) => {
                   }
                 }
               }
+              case actionTypes.SET_BODY_TYPE_HOVER:
+                return {...state,
+                          monsterFeatures: {...state.monsterFeatures,
+                            body: {...state.monsterFeatures.body,
+                              hoverType: action.bodyTypeHover
+                            }
+                          }
+                        }
+              case actionTypes.SET_FACE_TYPE_HOVER:
+                return {...state,
+                          monsterFeatures: {...state.monsterFeatures,
+                            face: {...state.monsterFeatures.face,
+                              hoverType: action.faceTypeHover
+                            }
+                          }
+                        }
+              case actionTypes.SET_HEADWEAR_TYPE_HOVER:
+                return {...state,
+                          monsterFeatures: {...state.monsterFeatures,
+                            headwear: {...state.monsterFeatures.headwear,
+                              hoverType: action.headwearTypeHover
+                            }
+                          }
+                        }
+              case actionTypes.SET_EYES_TYPE_HOVER:
+                return {...state,
+                          monsterFeatures: {...state.monsterFeatures,
+                            eyes: {...state.monsterFeatures.eyes,
+                              hoverType: action.eyesTypeHover
+                            }
+                          }
+                        }
+              case actionTypes.SET_MOUTH_TYPE_HOVER:
+                return {...state,
+                          monsterFeatures: {...state.monsterFeatures,
+                            mouth: {...state.monsterFeatures.mouth,
+                              hoverType: action.mouthTypeHover
+                            }
+                          }
+                        }
+              case actionTypes.SET_LEFT_ARM_TYPE_HOVER:
+                return {...state,
+                          monsterFeatures: {...state.monsterFeatures,
+                            leftArm: {...state.monsterFeatures.leftArm,
+                              hoverType: action.leftArmTypeHover
+                            }
+                          }
+                        }
+              case actionTypes.SET_RIGHT_ARM_TYPE_HOVER:
+                return {...state,
+                          monsterFeatures: {...state.monsterFeatures,
+                            rightArm: {...state.monsterFeatures.rightArm,
+                              hoverType: action.rightArmTypeHover
+                            }
+                          }
+                        }
+              case actionTypes.SET_LEGS_TYPE_HOVER:
+                return {...state,
+                          monsterFeatures: {...state.monsterFeatures,
+                            legs: {...state.monsterFeatures.legs,
+                              hoverType: action.legsTypeHover
+                            }
+                          }
+                        }
     case actionTypes.SET_BODY_FILL:
       return {...state,
                 monsterFeatures: {...state.monsterFeatures,

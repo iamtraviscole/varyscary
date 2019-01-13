@@ -10,6 +10,7 @@ class NewMonsterBodies extends Component {
   render() {
     let bodyProps = {
       featureTypeDispatch: this.props.setBodyType,
+      featureTypeHoverDispatch: this.props.setBodyTypeHover,
       featureFillDispatch: this.props.setBodyFill,
       features: MonsterBodies,
       monsterFeature: 'body',
@@ -27,6 +28,7 @@ class NewMonsterBodies extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     setBodyType: (bodyType) => dispatch(actions.setBodyType(bodyType)),
+    setBodyTypeHover: (bodyTypeHover) => dispatch(actions.setBodyTypeHover(bodyTypeHover)),
     setBodyFill: (bodyFill) => dispatch(actions.setBodyFill(bodyFill))
   }
 }

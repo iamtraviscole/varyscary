@@ -10,6 +10,7 @@ class NewMonsterLeftArms extends Component {
   render() {
     let leftArmsProps = {
       featureTypeDispatch: this.props.setLeftArmType,
+      featureTypeHoverDispatch: this.props.setLeftArmTypeHover,
       featureFillDispatch: this.props.setLeftArmFill,
       features: MonsterLeftArms,
       monsterFeature: 'leftArm',
@@ -27,6 +28,7 @@ class NewMonsterLeftArms extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     setLeftArmType: (leftArmType) => dispatch(actions.setLeftArmType(leftArmType)),
+    setLeftArmTypeHover: (leftArmTypeHover) => dispatch(actions.setLeftArmTypeHover(leftArmTypeHover)),
     setLeftArmFill: (leftArmFill) => dispatch(actions.setLeftArmFill(leftArmFill))
   }
 }

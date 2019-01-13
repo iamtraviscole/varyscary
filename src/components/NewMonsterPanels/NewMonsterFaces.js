@@ -10,6 +10,7 @@ class NewMonsterFaces extends Component {
   render() {
     let faceProps = {
       featureTypeDispatch: this.props.setFaceType,
+      featureTypeHoverDispatch: this.props.setFaceTypeHover,
       featureFillDispatch: this.props.setFaceFill,
       features: MonsterFaces,
       monsterFeature: 'face',
@@ -27,6 +28,7 @@ class NewMonsterFaces extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     setFaceType: (faceType) => dispatch(actions.setFaceType(faceType)),
+    setFaceTypeHover: (faaceTypeHover) => dispatch(actions.setFaceTypeHover(faaceTypeHover)),
     setFaceFill: (faceFill) => dispatch(actions.setFaceFill(faceFill))
   }
 }

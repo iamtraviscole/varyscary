@@ -9,12 +9,27 @@ import * as MonsterBodies from '../MonsterFeatures/MonsterBodies'
 class NewMonsterTemplate extends Component {
 
   handleClick = (event) => {
+    // touch triggers onMouseEnter event and sets feature's hoverType but it
+    //  doesn't get cleared because onMouseLeave doesn't fire. This clears it.
+    if (this.props.monsterFeatures[this.props.monsterFeature].hoverType) {
+      this.props.featureTypeHoverDispatch(null)
+    }
+
     const featureSelection = event.currentTarget.dataset.featureSelection
     this.props.featureTypeDispatch(featureSelection)
   }
 
   handleNullClick = () => {
     this.props.featureTypeDispatch(null)
+  }
+
+  handleMouseEnter = (event) => {
+    const featureSelectionHover = event.currentTarget.dataset.featureSelection
+    this.props.featureTypeHoverDispatch(featureSelectionHover)
+  }
+
+  handleMouseLeave = () => {
+    this.props.featureTypeHoverDispatch(null)
   }
 
   render () {
@@ -106,6 +121,8 @@ class NewMonsterTemplate extends Component {
       } else {
         featuresDivs.push(<div className='NewMonsterPanels__features'
           data-feature-selection={feature}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
           onClick={this.handleClick}
           key={feature}>
           <div className={`NewMonsterPanels__feature NewMonsterPanels__${this.props.monsterFeature}`}>

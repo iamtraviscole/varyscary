@@ -84,6 +84,62 @@ export const setLegsType = (legsType) => {
   }
 }
 
+export const setBodyTypeHover = (bodyTypeHover) => {
+  return {
+    type: actionTypes.SET_BODY_TYPE_HOVER,
+    bodyTypeHover: bodyTypeHover
+  }
+}
+
+export const setFaceTypeHover = (faceTypeHover) => {
+  return {
+    type: actionTypes.SET_FACE_TYPE_HOVER,
+    faceTypeHover: faceTypeHover
+  }
+}
+
+export const setHeadwearTypeHover = (headwearTypeHover) => {
+  return {
+    type: actionTypes.SET_HEADWEAR_TYPE_HOVER,
+    headwearTypeHover: headwearTypeHover
+  }
+}
+
+export const setEyesTypeHover = (eyesTypeHover) => {
+  return {
+    type: actionTypes.SET_EYES_TYPE_HOVER,
+    eyesTypeHover: eyesTypeHover
+  }
+}
+
+export const setMouthTypeHover = (mouthTypeHover) => {
+  return {
+    type: actionTypes.SET_MOUTH_TYPE_HOVER,
+    mouthTypeHover: mouthTypeHover
+  }
+}
+
+export const setLeftArmTypeHover = (leftArmTypeHover) => {
+  return {
+    type: actionTypes.SET_LEFT_ARM_TYPE_HOVER,
+    leftArmTypeHover: leftArmTypeHover
+  }
+}
+
+export const setRightArmTypeHover = (rightArmTypeHover) => {
+  return {
+    type: actionTypes.SET_RIGHT_ARM_TYPE_HOVER,
+    rightArmTypeHover: rightArmTypeHover
+  }
+}
+
+export const setLegsTypeHover = (legsTypeHover) => {
+  return {
+    type: actionTypes.SET_LEGS_TYPE_HOVER,
+    legsTypeHover: legsTypeHover
+  }
+}
+
 export const setBodyFill = (bodyFill) => {
   return {
     type: actionTypes.SET_BODY_FILL,
