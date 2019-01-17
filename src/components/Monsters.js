@@ -24,7 +24,8 @@ class Monsters extends Component  {
     showLikesModal: false,
     likesForModal: [],
     showMonsterModal: false,
-    monsterForModal: null
+    monsterForModal: null,
+    mountTime: null
   }
 
   getSortByFromParams = () => {
@@ -40,11 +41,15 @@ class Monsters extends Component  {
   }
 
   makeParamString = (offset = 0) => {
-    let paramString = `?sort_by=newest&limit=${this.state.limit}&offset=${offset}`
+    let sinceString = this.state.mountTime
+      ? `&since=${this.state.mountTime}`
+      : ''
+    let paramString = `?sort_by=newest&limit=${this.state.limit}&offset=${offset}` +
+      sinceString
     if (this.props.location.search) {
       paramString = this.props.location.search +
         `&limit=${this.state.limit}` +
-        `&offset=${offset}`
+        `&offset=${offset}` + sinceString
     }
 
     return paramString
@@ -53,7 +58,8 @@ class Monsters extends Component  {
   componentDidMount = () => {
     this.setState({
       sortBy: this.getSortByFromParams() || 'newest',
-      searchedValue: this.getSearchFromParams()
+      searchedValue: this.getSearchFromParams(),
+      mountTime: Math.floor(Date.now() / 1000)
     })
 
     this.props.fetchStarted()
@@ -233,7 +239,6 @@ class Monsters extends Component  {
   }
 
   handleModalLikeOrUnlike = (modalMonster) => {
-    console.log(modalMonster);
     let monster = this.state.monsters.find(monster => {
       return monster.id === modalMonster.id
     })
