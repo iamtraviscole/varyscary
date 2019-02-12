@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 import '../styles/NavBar.css'
 
 import SlideoutMenu from './SlideoutMenu'
 import UserPanel from './UserPanel'
+import logo from '../images/varyscary-logo.png'
 
 class NavBar extends Component {
   state = {
@@ -28,19 +29,19 @@ class NavBar extends Component {
     window.removeEventListener('resize', this.handleSmallScreen)
   }
 
-   handleSlideoutClick = () => {
-     this.setState({showSlideout: !this.state.showSlideout})
-   }
+  handleSlideoutClick = () => {
+    this.setState({showSlideout: !this.state.showSlideout})
+  }
 
-   handleUserPanelClick = () => {
-     this.setState({showUserPanel: !this.state.showUserPanel})
-   }
+  handleUserPanelClick = () => {
+    this.setState({showUserPanel: !this.state.showUserPanel})
+  }
 
   render () {
     let navItems = (
       <Fragment>
         <div className='NavBar__link-ctr'>
-          <li className='NavBar__link-li'><NavLink to='/home' className='NavBar__link'>Home</NavLink></li>
+          <li className='NavBar__link-li'><NavLink to='/' className='NavBar__link'>Home</NavLink></li>
           <li className='NavBar__link-li'><NavLink to='/monsters/new' className='NavBar__link'>Create</NavLink></li>
           <li className='NavBar__link-li'><NavLink to='/monsters' className='NavBar__link'>Explore</NavLink></li>
         </div>
@@ -88,7 +89,9 @@ class NavBar extends Component {
               handleUserPanelClick={this.handleUserPanelClick}
               username={this.props.username} />}
         <nav className='NavBar'>
-          <div className='NavBar__logo'>Logo Here</div>
+          <Link to='/'>
+            <img className='NavBar__logo' src={logo} alt='logo' height='30'></img>
+          </Link>
           <ul className='NavBar__ul'>
             {navItems}
           </ul>

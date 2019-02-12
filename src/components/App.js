@@ -45,7 +45,6 @@ class App extends PureComponent {
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/logout' component={Logout} />
-          <AuthRoute exact path='/home' component={Home} />
           <Route exact path='/monsters' component={Monsters} />
           <AuthRoute exact path='/monsters/new' component={NewMonster} />
           <Route exact path='/monsters/:id' component={Monster} />
