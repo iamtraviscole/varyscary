@@ -110,6 +110,10 @@
   box-shadow: 0 3px 0 0 var(--border-color);
 }
 
+.NewMonster__monster-ctr--hidden {
+  visibility: hidden;
+}
+
 .NewMonster__slide-monster-ctr {
   position: absolute;
   right: 25px;

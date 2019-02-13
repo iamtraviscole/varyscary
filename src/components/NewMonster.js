@@ -48,7 +48,7 @@ class NewMonster extends PureComponent {
     // 25 = monster container top margin
     // if scrolled further than monster container and not further than feature
     //  panel then show monster slider 25px from top
-    if (window.scrollY > monsterCtrHeight + 60 + 25
+    if (window.scrollY > (monsterCtrHeight / 3) + 60 + 25
       && window.scrollY + monsterCtrHeight + 25  < featurePanelHeightFromTop) {
         this.setState({
           showSlideMonster: true,
@@ -283,6 +283,11 @@ class NewMonster extends PureComponent {
       saveButtonClass = 'NewMonster__button-save NewMonster__button-save--disabled'
     }
 
+    let monsterCtrClass = 'NewMonster__monster-ctr'
+    if (this.state.showSlideMonster) {
+      monsterCtrClass += ' NewMonster__monster-ctr--hidden'
+    }
+
     return (
       <Fragment>
         {this.state.showModal
@@ -329,7 +334,7 @@ class NewMonster extends PureComponent {
             </div>
             <div className='NewMonster__right-grid-ctr'>
               <div className='NewMonster__monster-outer-ctr'>
-                <div className='NewMonster__monster-ctr'>
+                <div className={monsterCtrClass}>
                   {noFeatureSelected ? monsterDirections : <MonsterFromStore />}
                 </div>
                 <div className='NewMonster__name-tags-outer-ctr'>
