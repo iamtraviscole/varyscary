@@ -78,9 +78,9 @@
 }
 
 .Monsters__monster-outer-ctr {
-  width: 225px;
-  /* monster-outer-ctr height - 225px - 3px for monster box-shadow */
-  margin-bottom: -22px;
+  width: 227px;
+  /* monster-outer-ctr height - 250 monster-ctr height - box shadow */
+  margin-bottom: -23px;
 }
 
 .Monsters__monster-ctr {
@@ -91,7 +91,7 @@
   box-shadow: 0 3px 0 0 var(--border-color);
   background: var(--light-container-color);
   cursor: pointer;
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 
 .Monsters__like-count-ctr {

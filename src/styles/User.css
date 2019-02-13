@@ -73,8 +73,8 @@
 .User__monster-outer-ctr {
   position: relative;
   width: 252px;
-  /* monster-outer-ctr height - 250px - 3px for monster box-shadow */
-  margin-bottom: -22px;
+  /* monster-outer-ctr height - 250 monster-ctr height - box shadow */
+  margin-bottom: -23px;
 }
 
 .User__monster-ctr {
@@ -87,7 +87,7 @@
   border-radius: 3px;
   background: white;
   box-shadow: 0 3px 0 0 var(--border-color);
-  margin-bottom: 3px;
+  margin-bottom: 4px;
   cursor: pointer;
 }
 
