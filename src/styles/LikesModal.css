@@ -15,7 +15,7 @@
   max-height: 60%;
   width: 300px;
   padding: 10px;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   box-shadow: 5px 5px 5px 0px var(--shadow-color);
   border-radius: 3px;
   word-break: break-all;

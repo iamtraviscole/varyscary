@@ -19,7 +19,7 @@
 .NewMonsterPanels__color-picker {
   position: relative;
   float: left;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   margin: 0 25px 25px 0;
   width: 190px;
   height: 190px;
@@ -31,7 +31,7 @@
 .NewMonsterPanels__features {
   position: relative;
   float: left;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   margin: 0 25px 25px 0;
   width: 190px;
   height: 190px;

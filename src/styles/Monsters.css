@@ -89,7 +89,7 @@
   border: 1px solid var(--border-color);
   border-radius: 5px;
   box-shadow: 0 3px 0 0 var(--border-color);
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   cursor: pointer;
   margin-bottom: 4px;
 }

@@ -19,7 +19,7 @@
   width: 740px;
   height: 35px;
   margin: 0 auto;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   border-bottom: none;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -90,7 +90,7 @@
   height: 350px;
   width: 350px;
   border-radius: 3px;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
 }
 
 .MonsterModal__monster-inner-ctr {
@@ -111,7 +111,7 @@
   width: 350px;
   height: 350px;
   padding: 10px;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   border-left: 1px solid var(--border-color);
   border-radius: 3px;
   border-top-left-radius: 0;
@@ -187,7 +187,7 @@
   border-right: none;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   box-shadow: 0 2px 0 0 var(--border-color);
   word-break: break-all;
   overflow-y: auto;

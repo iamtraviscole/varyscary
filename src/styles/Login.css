@@ -41,7 +41,7 @@
   margin: auto;
   width: 300px;
   padding: 20px;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   border-radius: 3px;
 }
 

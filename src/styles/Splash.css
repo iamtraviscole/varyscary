@@ -39,7 +39,7 @@
   margin: auto;
   width: 300px;
   padding: 50px 100px;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   border-radius: 3px;
 }
 
@@ -67,7 +67,7 @@
 }
 
 .Splash__btn--login {
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   color: var(--main-color);
 }
 

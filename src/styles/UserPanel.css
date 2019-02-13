@@ -10,7 +10,7 @@
   right: 15px;
   border: 1px solid var(--main-color);
   border-radius: 3px;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   opacity: 0;
   pointer-events: none;
   visibility: hidden;
@@ -21,7 +21,7 @@
   min-width: 125px;
   top: 55px;
   right: 15px;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   border: 1px solid var(--main-color);
   border-bottom: 3px solid var(--main-color);
   border-radius: 3px;

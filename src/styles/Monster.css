@@ -20,7 +20,7 @@
   border-radius: 3px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   box-shadow: 0 3px 0 0 var(--border-color);
 }
 
@@ -40,7 +40,7 @@
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-left: none;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   box-shadow: 0 3px 0 0 var(--border-color);
   overflow-y: auto;
 }

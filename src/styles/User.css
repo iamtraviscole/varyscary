@@ -106,7 +106,7 @@
   font-size: 12px;
   border: 1px solid var(--main-color);
   color: var(--main-color);
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   border-radius: 3px;
   margin: 4px 4px 0 0;
   padding: 2px;

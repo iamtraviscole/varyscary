@@ -105,7 +105,7 @@
   width: 350px;
   border: 1px solid var(--border-color);
   border-radius: 3px;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   margin-bottom: 10px;
   box-shadow: 0 3px 0 0 var(--border-color);
 }
@@ -118,7 +118,7 @@
   width: 350px;
   border: 1px solid var(--border-color);
   border-radius: 3px;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   margin-bottom: 25px;
   box-shadow: 0 3px 0 0 var(--border-color);
 }
@@ -156,7 +156,7 @@
 
 .NewMonster__name-tags-outer-ctr {
   width: 340px;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   border: 1px solid var(--border-color);
   border-radius: 3px;
   padding: 5px;
@@ -171,7 +171,7 @@
   height: 25px;
   margin-bottom: 8px;
   padding: 0 5px;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   border: 1px solid var(--main-color);
 }
 
@@ -201,7 +201,7 @@
   width: 290px;
   height: 25px;
   padding: 0 5px;
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   border: 1px solid var(--main-color);
 }
 
@@ -306,7 +306,7 @@ input.NewMonster__tag-add-btn:hover {
   margin-bottom: 12px;
   font-size: 18px;
   color: var(--main-color);
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   border: 1px solid var(--main-color);
   border-radius: 3px;
   box-shadow: 0 3px 0 0 var(--main-color);
@@ -341,7 +341,7 @@ input.NewMonster__tag-add-btn:hover {
   height: 25px;
   font-size: 14px;
   color: var(--main-color);
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   border: 1px solid var(--main-color);
   border-radius: 3px;
   margin-right: 10px;
@@ -358,7 +358,7 @@ input.NewMonster__tag-add-btn:hover {
   height: 25px;
   font-size: 14px;
   color: var(--main-color);
-  background: var(--light-container-color);
+  background: var(--container-color-light);
   border: 1px solid var(--main-color);
   border-radius: 3px;
   box-shadow: 0 2px 0 0 var(--main-color);
@@ -420,7 +420,7 @@ input.NewMonster__tag-add-btn:hover {
     height: 25px;
     margin-bottom: 8px;
     padding: 0 5px;
-    background: var(--light-container-color);
+    background: var(--container-color-light);
     border: 1px solid var(--main-color);
   }
 
@@ -430,7 +430,7 @@ input.NewMonster__tag-add-btn:hover {
     width: 238px;
     height: 25px;
     padding: 0 5px;
-    background: var(--light-container-color);
+    background: var(--container-color-light);
     border: 1px solid var(--main-color);
   }
 

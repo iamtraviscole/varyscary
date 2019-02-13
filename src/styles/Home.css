@@ -91,7 +91,7 @@
   border: 1px solid var(--main-color);
   border-radius: 3px;
   box-shadow: 0 2px 0 0 var(--main-color);
-  background: var(--light-container-color);
+  background: var(--container-color-light);
 }
 
 .Home__text {
