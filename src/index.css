@@ -44,7 +44,7 @@ input {
 }
 
 input::placeholder {
-  color: var(--text-color-lighter);
+  color: var(--main-text-color-lighter);
   font-weight: 300;
 }
 
