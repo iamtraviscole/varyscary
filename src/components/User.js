@@ -51,7 +51,10 @@ class User extends Component  {
       })
       this.setState({monsters: oldest})
     } else if (event.target.value === 'popular') {
-      let popular = [...this.state.monsters].sort((a,b) => {
+      let monstersNewest = [...this.state.monsters].sort((a,b) => {
+        return new Date(b.created_at) - new Date(a.created_at)
+      })
+      let popular = monstersNewest.sort((a,b) => {
         return b.like_count - a.like_count
       })
       this.setState({monsters: popular})
