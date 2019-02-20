@@ -14,8 +14,8 @@
   grid-column: 1 / -1;
 }
 
-.UserLikes__no-likes-text {
-
+.UserLikes__no-likes-ctr h4 {
+  font-weight: normal;
 }
 
 .UserLikes__no-likes-btn {

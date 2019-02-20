@@ -152,7 +152,7 @@ class Signup extends Component {
         if (!avail) {
           this.setState({
             errors: {...errors,
-              username: 'Username already taken'
+              username: 'Username unavailable'
             }
           })
         } else {

@@ -22,6 +22,10 @@
   margin-top: 40px;
 }
 
+.User__no-monsters-ctr h4 {
+  font-weight: normal;
+}
+
 .User__no-monsters-btn {
   margin-top: 10px;
   display: inline-block;

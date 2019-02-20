@@ -85,15 +85,24 @@
   font-style: italic;
 }
 
-.Monster__edit {
+.Monster__edit-ctr {
   color: var(--main-color);
   font-size: 12px;
   width: 700px;
-  margin: 5px auto 0 auto;
+  margin: 10px auto 0 auto;
   text-align: right;
 }
 
-.Monster__edit i {
+.Monster__edit-text {
+  display: inline-block;
+}
+
+.Monster__edit-text:hover {
+  text-decoration: none;
+  color: var(--hover-color-dark);
+}
+
+.Monster__edit-text i {
   position: relative;
   top: 2px;
   font-size: 12px;

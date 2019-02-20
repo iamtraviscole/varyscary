@@ -39,7 +39,7 @@ class UserLikes extends Component {
     let monstersLikedArr = (
       this.props.username === this.state.username ?
         <div className='UserLikes__no-likes-ctr'>
-          <div className='UserLikes__no-likes-text'><h4>You have not liked any monsters yet!</h4></div>
+          <h4>You have not liked any monsters yet!</h4>
           <Link to='/monsters' className='UserLikes__no-likes-btn'>Explore</Link>
         </div>
       : <div className='UserLikes__no-likes-ctr'>

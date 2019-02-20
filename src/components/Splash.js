@@ -33,9 +33,9 @@ class Splash extends Component {
           {message}
           <div className='Splash__inner-ctr'>
             <h1 className='Splash__h1'>Make some monsters</h1>
-            <Link to='/signup' className='Splash__btn'>Sign Up</Link>
-            <br />
             <Link to='/login' className='Splash__btn Splash__btn--login'>Log In</Link>
+            <br />
+            <Link to='/signup' className='Splash__btn'>Sign Up</Link>
           </div>
         </div>
       </div>

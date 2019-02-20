@@ -153,9 +153,12 @@ class Monster extends Component {
                   </div>
                 </div>
                 {this.props.username === monster.username
-                  ? <div className='Monster__edit'>
-                      <i className='material-icons'>edit</i>
-                      <Link to={`/monsters/${monster.id}/edit`}>edit monster</Link>
+                  ? <div className='Monster__edit-ctr'>
+                      <Link to={`/monsters/${monster.id}/edit`}
+                        className='Monster__edit-text'>
+                        <i className='material-icons'>edit</i>
+                        edit
+                      </Link>
                     </div>
                   : null}
             </div>
