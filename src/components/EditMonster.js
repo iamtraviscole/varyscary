@@ -15,9 +15,7 @@ class EditMonster extends Component {
     tagValue: '',
     tags: [],
     initialFetch: true,
-    showModal: false,
-    deleteClicked: false,
-    saveMessage: ''
+    showDeleteModal: false
   }
 
   monsterURL = 'http://localhost:4000/api/monsters/' +
@@ -118,19 +116,18 @@ class EditMonster extends Component {
     .then(res => {
       console.log(res.data);
       this.setState({
-        showModal: true,
-        saveMessage: 'Monster saved!',
         monster: res.data,
         nameValue: res.data.name,
         tagValue: '',
         tags: res.data.tags
       })
+      this.props.history.push({
+        pathname: `/monsters/${res.data.id}`,
+        state: {message: 'monster saved!'}
+      })
     })
     .catch(err => {
       console.log(err.response);
-      this.setState({
-        saveMessage: 'Something went wrong'
-      })
       if (err.response.status === 401) {
         this.props.logout()
         this.props.setMessage('Session expired. Please log in.')
@@ -140,15 +137,13 @@ class EditMonster extends Component {
 
   handleModalClick = () => {
     this.setState({
-      showModal: false,
-      deleteClicked: false,
-      saveMessage: ''})
+      showDeleteModal: false
+    })
   }
 
   handleDeleteClick = () => {
     this.setState({
-      showModal: true,
-      deleteClicked: true
+      showDeleteModal: true
     })
   }
 
@@ -182,29 +177,6 @@ class EditMonster extends Component {
   render() {
     const monster = this.state.monster
 
-    let modalMessage
-    if (this.state.deleteClicked) {
-      modalMessage = <div className='EditMonster__confirm-ctr'>
-        <h3>Are you sure?</h3>
-        <div className='EditMonster__confirm-btn-ctr'>
-          <button onClick={this.handleDeleteConfirm}
-            className='EditMonster__confirm-btn'>Delete</button>
-          <button className='EditMonster__confirm-btn'>Cancel</button>
-        </div>
-      </div>
-    }
-    if (this.state.saveMessage) {
-      modalMessage = <div className='EditMonster__confirm-ctr'>
-        <h3>{this.state.saveMessage}</h3>
-        <div className='EditMonster__saved-btn-ctr'>
-          <Link to={`/monsters/${this.props.computedMatch.params.id}`}
-            className='EditMonster__saved-btn'>View Monster</Link>
-          <Link to={`/${this.props.username}`}
-            className='EditMonster__saved-btn'>Your Monsters</Link>
-        </div>
-      </div>
-    }
-
     let monsterTags = (
       this.state.tags.map((tag, i) => {
         return (
@@ -228,19 +200,26 @@ class EditMonster extends Component {
       <div className='EditMonster'>
       {monster
         ? <Fragment>
-          {this.state.showModal
+          {this.state.showDeleteModal
             ? <div className='EditMonster__modal'
                 onClick={this.handleModalClick}>
                   <div className='EditMonster__modal__outer-ctr'>
                     <div className='EditMonster__modal__inner-ctr'>
-                      {modalMessage}
+                      <div className='EditMonster__confirm-ctr'>
+                        <h3>Are you sure?</h3>
+                        <div className='EditMonster__confirm-btn-ctr'>
+                          <button onClick={this.handleDeleteConfirm}
+                            className='EditMonster__confirm-btn'>Delete</button>
+                          <button className='EditMonster__confirm-btn'>Cancel</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
             : null}
           {monster.username === this.props.username
             ? <div className='EditMonster__outer-ctr'>
-                <h1 className='EditMonster__header'>Edit Monster</h1>
+                <h1>Edit Monster</h1>
                 <div className='EditMonster__monster-ctr'
                   onClick={this.handleMonsterClick}>
                   <MonsterFromProps monster={monster} />

@@ -3,10 +3,10 @@
   margin-top: 25px;
 }
 
-.EditMonster__header {
-  font-size: 24px;
+.EditMonster h1 {
   text-align: center;
-  margin-bottom: 25px;
+  color: var(--main-color);
+  padding-bottom: 25px;
 }
 
 .EditMonster__outer-ctr {
@@ -309,31 +309,6 @@ input.EditMonster__tag-add-btn:hover {
 }
 
 .EditMonster__confirm-btn:hover {
-  background: var(--hover-color-dark);
-  text-decoration: none;
-}
-
-.EditMonster__saved-btn-ctr {
-  display: inline-block;
-  margin: 0 auto;
-  margin-top: 10px;
-}
-
-.EditMonster__saved-btn {
-  width: 115px;
-  height: 32px;
-  line-height: 32px;
-  display: block;
-  color: white;
-  background: var(--main-color);
-  border-radius: 3px;
-}
-
-.EditMonster__saved-btn:first-child {
-  margin: 10px 0;
-}
-
-.EditMonster__saved-btn:hover {
   background: var(--hover-color-dark);
   text-decoration: none;
 }
