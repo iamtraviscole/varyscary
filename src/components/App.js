@@ -3,9 +3,9 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import '../styles/App.css'
-import * as actions from '../actions/index'
 
 import AuthRoute from './AuthRoute'
+import MessageFromState from './MessageFromState'
 import NavBar from './NavBar'
 import NoAuthNavBar from './NoAuthNavBar'
 import Splash from './Splash'
@@ -40,6 +40,7 @@ class App extends PureComponent {
     return (
       <div className='App__grid-container'>
         {navBar}
+        <MessageFromState />
         <Switch>
           <Route exact path='/' component={homeComponent} />
           <Route exact path='/login' component={Login} />
@@ -64,10 +65,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setMessage: (icon, text) => dispatch(actions.setMessage(icon, text))
-  }
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+export default withRouter(connect(mapStateToProps)(App))

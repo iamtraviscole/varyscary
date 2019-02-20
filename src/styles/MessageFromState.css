@@ -1,0 +1,20 @@
+.MessageFromState__message-ctr {
+  width: 100%;
+  text-align: center;
+}
+
+.MessageFromState__message {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 16px;
+  color: var(--success-color);
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.MessageFromState__message-ctr i {
+  font-size: 17px;
+  vertical-align: middle;
+  margin-right: 2px;
+  margin-top: -1px;
+}
