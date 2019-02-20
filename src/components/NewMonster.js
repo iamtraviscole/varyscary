@@ -7,7 +7,6 @@ import '../styles/NewMonster.css'
 import * as actions from '../actions/index'
 
 import MonsterFromStore from './MonsterFromStore'
-import MonsterSavedModal from './MonsterSavedModal'
 import NewMonsterButton from './NewMonsterButton'
 import NewMonsterBodies from './NewMonsterPanels/NewMonsterBodies'
 import NewMonsterFaces from './NewMonsterPanels/NewMonsterFaces'
@@ -23,7 +22,6 @@ class NewMonster extends PureComponent {
     showArrows: false,
     activePanel: 'bodies',
     errorMessage: null,
-    showModal: false,
     tagValue: '',
     showSlideMonster: false,
     slideMonsterTop: 0
@@ -166,7 +164,10 @@ class NewMonster extends PureComponent {
       .then(res => {
         console.log(res.data);
         this.props.fetchEnded()
-        this.setState({showModal: true})
+        this.props.resetMonster()
+        this.props.history.push({
+          pathname: `/monsters/${res.data.id}`
+        })
       })
       .catch(err => {
         console.log(err.response);
@@ -177,10 +178,6 @@ class NewMonster extends PureComponent {
         }
       })
     }
-  }
-
-  setShowModal = () => {
-    this.setState({showModal: !this.state.showModal})
   }
 
   setActivePanelBodies = () => {
@@ -199,12 +196,6 @@ class NewMonster extends PureComponent {
 
   render() {
     const { monster } = this.props
-
-    if (this.state.showModal) {
-      document.documentElement.setAttribute('style', 'overflow-y: hidden');
-    } else {
-      document.documentElement.removeAttribute('style');
-    }
 
     let noFeatureSelected = true
     for (const feature in {...monster.monsterFeatures}) {
@@ -290,12 +281,6 @@ class NewMonster extends PureComponent {
 
     return (
       <Fragment>
-        {this.state.showModal
-          ? <MonsterSavedModal setShowModal={this.setShowModal}
-              resetMonster={this.props.resetMonster}
-              setActivePanelBodies={this.setActivePanelBodies}
-              username={this.props.username} />
-          : null}
         <div className='NewMonster'>
           <div className='NewMonster__ctr'>
             <div className='NewMonster__left-grid-ctr'>
