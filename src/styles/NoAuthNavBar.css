@@ -36,14 +36,6 @@
 }
 
 .NoAuthNavBar__logo {
-  float: left;
-  height: 30px;
-  padding: 0 10px;
-  text-align: center;
-  font-weight: 200;
-  color: white;
-  background: var(--main-color);
-  border-radius: 25px;
-  line-height: 30px;
   margin: 15px 0 0 15px;
+  cursor: pointer;
 }
