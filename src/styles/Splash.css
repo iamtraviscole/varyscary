@@ -5,6 +5,9 @@
   z-index: 1000;
 }
 
+.Splash__logo {
+}
+
 .Splash__msg-ctr {
   margin-bottom: 6px;
 }
@@ -20,8 +23,8 @@
   color: var(--main-color-light);
 }
 
-.Splash__msg .material-icons {
-  font-size: 18px;
+.Splash__msg i {
+  font-size: 16px;
   position: relative;
   top: 3px;
   color: var(--main-color);
@@ -36,21 +39,21 @@
 }
 
 .Splash__inner-ctr {
-  margin: auto;
+  margin: 0 auto;
   width: 300px;
-  padding: 50px 100px;
+  padding: 30px 50px;
   background: var(--container-color-light);
   border-radius: 3px;
 }
 
-.Splash__h1 {
-  margin-bottom: 40px;
+.Splash__ctr h1 {
+  margin-bottom: 5px;
+  font-weight: normal;
 }
 
 .Splash__btn {
   display: inline-block;
   padding: 10px 0;
-  margin-bottom: 10px;
   width: 150px;
   font-weight: 300;
   color: white;
@@ -67,8 +70,20 @@
 }
 
 .Splash__btn--login {
+  margin: 10px 0;
   background: var(--container-color-light);
   color: var(--main-color);
+}
+
+.Splash__explore-btn {
+  display: inline-block;
+  margin-top: 5px;
+  color: var(--main-color);
+}
+
+.Splash__explore-btn:hover {
+  text-decoration: none;
+  color: var(--hover-color-dark);
 }
 
 @media (max-width: 580px) {

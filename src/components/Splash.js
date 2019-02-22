@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import '../styles/Splash.css'
+import logomark from '../images/varyscary-logomark.svg'
 import * as actions from '../actions/index'
 
 class Splash extends Component {
@@ -32,11 +33,13 @@ class Splash extends Component {
         <div className='Splash__ctr'>
           {message}
           <div className='Splash__inner-ctr'>
-            <h1 className='Splash__h1'>Make some monsters</h1>
+            <img className='Splash__logo' src={logomark} alt='logomark' height='40'></img>
+            <h1>Make monsters</h1>
             <Link to='/login' className='Splash__btn Splash__btn--login'>Log In</Link>
             <br />
             <Link to='/signup' className='Splash__btn'>Sign Up</Link>
           </div>
+          <Link  to='/monsters' className='Splash__explore-btn'>Explore</Link>
         </div>
       </div>
     )
