@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import '../styles/NoAuthNavBar.css'
-import logo from '../images/varyscary-logo.png'
+import logo from '../images/varyscary-logo.svg'
 
 const NoAuthNavBar = (props) => {
   return (

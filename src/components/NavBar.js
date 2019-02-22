@@ -5,7 +5,7 @@ import '../styles/NavBar.css'
 
 import SlideoutMenu from './SlideoutMenu'
 import UserPanel from './UserPanel'
-import logo from '../images/varyscary-logo.png'
+import logo from '../images/varyscary-logo.svg'
 
 class NavBar extends Component {
   state = {
