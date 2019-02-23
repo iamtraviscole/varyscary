@@ -219,6 +219,9 @@ input.EditMonster__tag-add-btn:hover {
   margin-top: 10px;
   font-size: 12px;
   color: var(--warning-color-light);
+  border: 1px solid var(--warning-color-light);
+  border-radius: 3px;
+  padding: 1px 2px;
   cursor: pointer;
 }
 
@@ -231,6 +234,7 @@ input.EditMonster__tag-add-btn:hover {
 
 .EditMonster__delete:hover {
   color: var(--warning-color-dark);
+  border: 1px solid var(--warning-color-dark);
 }
 
 .EditMonster__undo-btn {

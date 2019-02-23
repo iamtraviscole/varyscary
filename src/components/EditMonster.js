@@ -123,7 +123,7 @@ class EditMonster extends Component {
       })
       this.props.history.push({
         pathname: `/monsters/${res.data.id}`,
-        state: {message: 'monster saved!'}
+        state: {message: 'monster updated!'}
       })
     })
     .catch(err => {
@@ -206,7 +206,7 @@ class EditMonster extends Component {
                   <div className='EditMonster__modal__outer-ctr'>
                     <div className='EditMonster__modal__inner-ctr'>
                       <div className='EditMonster__confirm-ctr'>
-                        <h3>Are you sure?</h3>
+                        <h3>Delete monster?</h3>
                         <div className='EditMonster__confirm-btn-ctr'>
                           <button onClick={this.handleDeleteConfirm}
                             className='EditMonster__confirm-btn'>Delete</button>
@@ -285,7 +285,7 @@ class EditMonster extends Component {
                 <button className='EditMonster__delete'
                   onClick={this.handleDeleteClick}>
                   <i className='material-icons'>delete_outline</i>
-                  delete monster
+                  delete
                 </button>
               </div>
             : <div className='EditMonster__no-access-ctr'>

@@ -164,8 +164,7 @@ class NewMonster extends PureComponent {
         this.props.fetchEnded()
         this.props.resetMonster()
         this.props.history.push({
-          pathname: `/monsters/${res.data.id}`,
-          state: {message: 'monster created!'}
+          pathname: `/monsters/${res.data.id}`
         })
       })
       .catch(err => {
