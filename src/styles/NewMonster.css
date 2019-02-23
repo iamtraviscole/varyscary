@@ -93,9 +93,48 @@
 }
 
 .NewMonster__monster-outer-ctr {
-  position: relative;
   width: 352px;
-  margin-bottom: 25px;
+}
+
+.NewMonster__monster-outer-ctr--fixed {
+  position: fixed;
+  top: 25px;
+}
+
+.NewMonster__tab {
+  box-sizing: border-box;
+  display: inline-block;
+  font-size: 14px;
+  text-align: center;
+  width: 176px;
+  height: 30px;
+  background: var(--container-color-light);
+  border: 1px solid var(--border-color);
+  border-bottom: none;
+  border-radius: 3px;
+  padding-top: 6px;
+  cursor: pointer;
+}
+
+.NewMonster__tab i {
+  position: relative;
+  top: -1px;
+  font-size: 14px;
+  vertical-align: middle;
+  margin-right: 3px;
+  margin-left: -3px;
+}
+
+.NewMonster__tab:hover {
+  color: var(--main-color);
+}
+
+.NewMonster__tab--inactive {
+  background: var(--background-color);
+}
+
+.NewMonster__tab:last-child {
+  border-left: none;
 }
 
 .NewMonster__monster-ctr {
@@ -106,42 +145,34 @@
   border: 1px solid var(--border-color);
   border-radius: 3px;
   background: var(--container-color-light);
-  margin-bottom: 10px;
   box-shadow: 0 3px 0 0 var(--border-color);
 }
 
-.NewMonster__monster-ctr--hidden {
-  visibility: hidden;
-}
-
-.NewMonster__slide-monster-ctr {
-  position: absolute;
-  right: 25px;
-  text-align: center;
+.NewMonster__monster-details-ctr {
+  position: relative;
   height: 350px;
   width: 350px;
   border: 1px solid var(--border-color);
   border-radius: 3px;
   background: var(--container-color-light);
-  margin-bottom: 25px;
   box-shadow: 0 3px 0 0 var(--border-color);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .NewMonster__directions-ctr {
   position: relative;
   text-align: center;
-  padding-top: 120px;
+  padding-top: 130px;
+  font-size: 18px;
 }
 
-.NewMonster__directions-header {
-  margin-bottom: 15px;
-}
-
-.NewMonster__directions-randomize-btn  {
+.NewMonster__directions-randomize-btn {
   margin-top: 5px;
-  border-radius: 3px;
-  padding: 2px 6px 4px 6px;
+  font-size: 16px;
+  padding: 2px 4px;
   border: 1px solid var(--main-text-color);
+  border-radius: 3px;
   color: var(--main-text-color);
 }
 
@@ -151,29 +182,25 @@
 }
 
 .NewMonster__directions-randomize-btn i {
-  position: relative;
-  top: 3px;
+  vertical-align: middle;
   font-size: 16px;
-  margin-right: 5px;
-  color: var(--main-color);
+  margin-right: 3px;
+  margin-top: -2px;
 }
 
 .NewMonster__name-tags-outer-ctr {
-  width: 340px;
-  background: var(--container-color-light);
-  border: 1px solid var(--border-color);
+  width: 300px;
   border-radius: 3px;
-  padding: 5px;
-  margin-bottom: 15px;
+  margin: 25px;
   display: inline-block;
-  box-shadow: 0 3px 0 0 var(--border-color);
 }
 
 .NewMonster__name-input {
+  box-sizing: border-box;
   font-size: 13px;
-  width: 328px;
-  height: 25px;
-  margin-bottom: 8px;
+  width: 300px;
+  height: 30px;
+  margin-bottom: 15px;
   padding: 0 5px;
   background: var(--container-color-light);
   border: 1px solid var(--main-color);
@@ -185,10 +212,11 @@
 }
 
 .NewMonster__tags-instructions-ctr {
+  text-align: left;
   font-size: 12px;
   color: var(--main-text-color-light);
   font-weight: 200;
-  margin-bottom: 2px;
+  margin-bottom: 5px;
 }
 
 .NewMonster__tags-instructions-ctr i {
@@ -200,10 +228,11 @@
 }
 
 .NewMonster__tag-input {
+  box-sizing: border-box;
   display: inline;
   font-size: 13px;
-  width: 290px;
-  height: 25px;
+  width: 262px;
+  height: 30px;
   padding: 0 5px;
   background: var(--container-color-light);
   border: 1px solid var(--main-color);
@@ -212,7 +241,7 @@
 input.NewMonster__tag-add-btn {
   display: inline;
   width: 33px;
-  height: 27px;
+  height: 30px;
   text-align: center;
   font-size: 13px;
   margin-left: 5px;
@@ -279,6 +308,7 @@ input.NewMonster__tag-add-btn:hover {
 
 .NewMonster__buttons-ctr {
   text-align: center;
+  margin-top: 15px;
 }
 
 .NewMonster__buttons-ctr i {
@@ -306,19 +336,19 @@ input.NewMonster__tag-add-btn:hover {
   display: block;
   margin: 0 auto;
   width: 170px;
-  height: 35px;
-  margin-bottom: 12px;
+  height: 32px;
+  margin-bottom: 10px;
   font-size: 18px;
   color: var(--main-color);
   background: var(--container-color-light);
   border: 1px solid var(--main-color);
   border-radius: 3px;
-  box-shadow: 0 3px 0 0 var(--main-color);
+  box-shadow: 0 2px 0 0 var(--main-color);
 }
 
 .NewMonster__button-save i {
   font-size: 16px;
-  margin-top: -3px;
+  font-weight: bold;
 }
 
 .NewMonster__button-save:hover {
@@ -330,10 +360,11 @@ input.NewMonster__tag-add-btn:hover {
   background: transparent;
   border: 1px solid var(--main-color-disabled);
   cursor: not-allowed;
-  box-shadow: 0 3px 0 0 var(--main-color-disabled);
+  box-shadow: 0 2px 0 0 var(--main-color-disabled);
 }
 
 .NewMonster__button-save--disabled:hover {
+  color: var(--main-color-disabled);
   background: transparent;
   border: 1px solid var(--main-color-disabled);
 }
@@ -341,7 +372,7 @@ input.NewMonster__tag-add-btn:hover {
 .NewMonster__button-reset {
   display: inline-block;
   margin: 0 auto;
-  width: 62px;
+  width: 63px;
   height: 25px;
   font-size: 14px;
   color: var(--main-color);
@@ -388,7 +419,7 @@ input.NewMonster__tag-add-btn:hover {
     display: grid;
     justify-content: center;
     grid-template-columns: 300px;
-    grid-template-rows: 550px 1fr;
+    grid-template-rows: 475px 1fr;
     grid-column-gap: 25px;
     margin: 25px auto;
     grid-template-areas:
@@ -401,13 +432,23 @@ input.NewMonster__tag-add-btn:hover {
     width: 300px;
   }
 
+  .NewMonster__monster-outer-ctr--fixed {
+    position: relative;
+    top: 0;
+  }
+
+  .NewMonster__tab {
+    width: 150px;
+  }
+
   .NewMonster__monster-ctr {
     height: 298px;
     width: 298px;
   }
 
-  .NewMonster__slide-monster-ctr {
-    display: none;
+  .NewMonster__monster-details-ctr {
+    height: 298px;
+    width: 298px;
   }
 
   .NewMonster__directions-ctr {
@@ -415,27 +456,15 @@ input.NewMonster__tag-add-btn:hover {
   }
 
   .NewMonster__name-tags-outer-ctr {
-    width: 288px;
+    width: 250px;
   }
 
   .NewMonster__name-input {
-    font-size: 13px;
-    width: 276px;
-    height: 25px;
-    margin-bottom: 8px;
-    padding: 0 5px;
-    background: var(--container-color-light);
-    border: 1px solid var(--main-color);
+    width: 250px;
   }
 
   .NewMonster__tag-input {
-    display: inline;
-    font-size: 13px;
-    width: 238px;
-    height: 25px;
-    padding: 0 5px;
-    background: var(--container-color-light);
-    border: 1px solid var(--main-color);
+    width: 212px;
   }
 
 }

@@ -23,8 +23,35 @@ class NewMonster extends PureComponent {
     activePanel: 'bodies',
     errorMessage: null,
     tagValue: '',
-    showSlideMonster: false,
-    slideMonsterTop: 0
+    showPreview: true,
+    showDetails: false,
+    setFixedTop: false
+  }
+
+  componentDidMount = () => {
+    this.setShowArrows()
+    if (!this.props.monster.monsterFeatures.body.type) {
+      this.setState({errorMessage: 'Body required'})
+    } else {
+      this.setState({errorMessage: null})
+    }
+    window.addEventListener('resize', this.setShowArrows)
+    window.addEventListener('scroll', this.setFixedTop)
+  }
+
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', this.setShowArrows)
+    window.removeEventListener('scroll', this.setFixedTop)
+  }
+
+  componentDidUpdate = () => {
+    if (!this.props.monster.monsterFeatures.body.type) {
+      this.setState({errorMessage: 'Body required'})
+    } else if (this.props.monster.monsterName.length > 25) {
+      this.setState({errorMessage: 'Name too long (25 characters max)'})
+    } else {
+      this.setState({errorMessage: null})
+    }
   }
 
   setShowArrows = () => {
@@ -35,59 +62,16 @@ class NewMonster extends PureComponent {
     : this.setState({showArrows: false})
   }
 
-  setSlideMonster = () => {
-    let featurePanelHeightFromTop =
-      document.getElementsByClassName('NewMonsterPanels__features-ctr')[0].offsetHeight
-      + document.getElementsByClassName('NewMonsterPanels__features-ctr')[0].offsetTop
-    let monsterCtrHeight =
-      document.getElementsByClassName('NewMonster__monster-ctr')[0].offsetHeight
-
-    // 60 = navbar height
-    // 25 = monster container top margin
-    // if scrolled further than monster container and not further than feature
-    //  panel then show monster slider 25px from top
-    if (window.scrollY > (monsterCtrHeight / 3) + 60 + 25
-      && window.scrollY + monsterCtrHeight + 25  < featurePanelHeightFromTop) {
-        this.setState({
-          showSlideMonster: true,
-          slideMonsterTop: window.scrollY + 25
-        })
-    // if scrolled further than feature panel then show monster slider 25px
-    //  from bottom
-  } else if (window.scrollY + monsterCtrHeight + 25 > featurePanelHeightFromTop) {
-        this.setState({
-          showSlideMonster: true,
-          slideMonsterTop: window.scrollY + window.innerHeight - (monsterCtrHeight + 25)
-        })
+  setFixedTop = () => {
+    const navBarHeight = document.getElementsByClassName('NavBar')[0].offsetHeight
+    const monsterOuterCtrHeight = document.getElementsByClassName('NewMonster__monster-outer-ctr')[0].offsetHeight
+      // if scrolled passed nav bar and window is larger than monster
+      // outer ctr + 25px top margin
+    if (window.scrollY > navBarHeight &&
+      window.innerHeight > monsterOuterCtrHeight + 25) {
+      this.setState({setFixedTop: true})
     } else {
-        this.setState({showSlideMonster: false, slideMonsterTop: 0})
-    }
-  }
-
-
-  componentDidMount = () => {
-    this.setShowArrows()
-    if (!this.props.monster.monsterFeatures.body.type) {
-      this.setState({errorMessage: 'Body required'})
-    } else {
-      this.setState({errorMessage: null})
-    }
-    window.addEventListener('resize', this.setShowArrows)
-    window.addEventListener('scroll', this.setSlideMonster)
-  }
-
-  componentWillUnmount = () => {
-    window.removeEventListener('resize', this.setShowArrows)
-    window.removeEventListener('scroll', this.setSlideMonster)
-  }
-
-  componentDidUpdate = () => {
-    if (!this.props.monster.monsterFeatures.body.type) {
-      this.setState({errorMessage: 'Body required'})
-    } else if (this.props.monster.monsterName.length > 25) {
-      this.setState({errorMessage: 'Name too long (25 characters max)'})
-    } else {
-      this.setState({errorMessage: null})
+      this.setState({setFixedTop: false})
     }
   }
 
@@ -101,6 +85,20 @@ class NewMonster extends PureComponent {
 
   handleActivePanel = (buttonClicked) => {
     this.setState({activePanel: buttonClicked})
+  }
+
+  handlePreviewTabClick = () => {
+    this.setState({
+      showPreview: true,
+      showDetails: false
+    })
+  }
+
+  handleDetailsTabClick = () => {
+    this.setState({
+      showPreview: false,
+      showDetails: true
+    })
   }
 
   handleNameChange = (event) => {
@@ -187,6 +185,10 @@ class NewMonster extends PureComponent {
 
   handleRandomizeClick = () => {
     this.props.randomizeMonster()
+    this.setState({
+      showPreview: true,
+      showDetails: false
+    })
   }
 
   handleResetClick = () => {
@@ -239,13 +241,12 @@ class NewMonster extends PureComponent {
 
     let monsterDirections = (
       <div className='NewMonster__directions-ctr'>
-        <h1 className='NewMonster__directions-header'>Create a monster!</h1>
         <p>Start by choosing a body</p>
         <p>or</p>
         <button className='NewMonster__directions-randomize-btn'
           type='button'
           onClick={this.handleRandomizeClick}>
-          randomize
+          <i className="material-icons">help_outline</i>randomize
         </button>
       </div>
     )
@@ -275,9 +276,9 @@ class NewMonster extends PureComponent {
       saveButtonClass = 'NewMonster__button-save NewMonster__button-save--disabled'
     }
 
-    let monsterCtrClass = 'NewMonster__monster-ctr'
-    if (this.state.showSlideMonster) {
-      monsterCtrClass += ' NewMonster__monster-ctr--hidden'
+    let monsterOuterCtrClass = 'NewMonster__monster-outer-ctr'
+    if (this.state.setFixedTop) {
+      monsterOuterCtrClass += ' NewMonster__monster-outer-ctr--fixed'
     }
 
     return (
@@ -319,43 +320,64 @@ class NewMonster extends PureComponent {
               </div>
             </div>
             <div className='NewMonster__right-grid-ctr'>
-              <div className='NewMonster__monster-outer-ctr'>
-                <div className={monsterCtrClass}>
-                  {noFeatureSelected ? monsterDirections : <MonsterFromStore />}
-                </div>
-                <div className='NewMonster__name-tags-outer-ctr'>
-                  <input className='NewMonster__name-input'
-                    name='name'
-                    type='text'
-                    placeholder='name (optional)'
-                    value={monster.monsterName}
-                    onChange={this.handleNameChange} />
-                  <div className='NewMonster__tags-instructions-ctr'>
-                    <i className='material-icons'>info_outline</i>
-                    press enter or click 'Add' to add tags
+              <div className={monsterOuterCtrClass}>
+                <div className='NewMonster__tabs-ctr'>
+                  <div className={this.state.showPreview ?
+                    'NewMonster__tab' :
+                    'NewMonster__tab NewMonster__tab--inactive'}
+                    onClick={this.handlePreviewTabClick}>
+                    <i className='material-icons'>visibility</i>Preview
                   </div>
-                  <form onSubmit={this.handleTagSubmit}>
-                    <input className='NewMonster__tag-input'
-                      value={this.state.tagValue}
-                      placeholder={monster.monsterTags.length > 0
-                        ? 'another tag (optional)'
-                        : 'tag (optional)'}
-                      type='text'
-                      onChange={this.handleTagChange}/>
-                    <input className={this.state.tagValue
-                      ? 'NewMonster__tag-add-btn NewMonster__btn-pulse'
-                      : 'NewMonster__tag-add-btn'}
-                      value='Add'
-                      type='submit' />
-                  </form>
-                  <div className='NewMonster__tags-ctr'>
-                    {monsterTags}
-                    {monster.monsterTags.length > 1
-                      ? <button className='NewMonster__tags-clear-all'
-                          onClick={this.handleClearClick}>clear</button>
-                      : null}
+                  <div className={this.state.showDetails ?
+                    'NewMonster__tab' :
+                    'NewMonster__tab NewMonster__tab--inactive'}
+                    onClick={this.handleDetailsTabClick}>
+                    <i className='material-icons'>notes</i>Name & Tags
                   </div>
                 </div>
+                {this.state.showPreview
+                  ? <div className='NewMonster__monster-ctr'>
+                      {noFeatureSelected ? monsterDirections : <MonsterFromStore />}
+                    </div>
+                  : null}
+                {this.state.showDetails
+                  ? <div className='NewMonster__monster-details-ctr'>
+                      <div className='NewMonster__name-tags-outer-ctr'>
+                        <input className='NewMonster__name-input'
+                          name='name'
+                          type='text'
+                          placeholder='monster name (optional)'
+                          value={monster.monsterName}
+                          onChange={this.handleNameChange} />
+                        <div className='NewMonster__tags-instructions-ctr'>
+                          <i className='material-icons'>info_outline</i>
+                          Press enter or click 'Add' to add tags.
+                          To add multiple tags at once, separate by a space.
+                        </div>
+                        <form onSubmit={this.handleTagSubmit}>
+                          <input className='NewMonster__tag-input'
+                            value={this.state.tagValue}
+                            placeholder={monster.monsterTags.length > 0
+                              ? 'another tag (optional)'
+                              : 'tag (optional)'}
+                            type='text'
+                            onChange={this.handleTagChange}/>
+                          <input className={this.state.tagValue
+                            ? 'NewMonster__tag-add-btn NewMonster__btn-pulse'
+                            : 'NewMonster__tag-add-btn'}
+                            value='Add'
+                            type='submit' />
+                        </form>
+                        <div className='NewMonster__tags-ctr'>
+                          {monsterTags}
+                          {monster.monsterTags.length > 1
+                            ? <button className='NewMonster__tags-clear-all'
+                                onClick={this.handleClearClick}>clear</button>
+                            : null}
+                        </div>
+                      </div>
+                    </div>
+                  : null}
                 <div className='NewMonster__buttons-ctr'>
                   {errorMessage}
                   <button className={saveButtonClass}
@@ -376,24 +398,16 @@ class NewMonster extends PureComponent {
                     <i className="material-icons">
                       refresh
                     </i>
-                    Reset
+                    reset
                   </button>
                   <button className='NewMonster__button-randomize'
                     onClick={this.handleRandomizeClick}
                     type='button'>
-                    <i className="material-icons">
-                      help_outline
-                    </i>
-                    Randomize
+                    <i className="material-icons">help_outline</i>
+                    randomize
                   </button>
                 </div>
               </div>
-              { this.state.showSlideMonster
-                ? <div className='NewMonster__slide-monster-ctr' style={{top: this.state.slideMonsterTop}}>
-                    {noFeatureSelected ? monsterDirections : <MonsterFromStore />}
-                  </div>
-                : null
-              }
             </div>
           </div>
         </div>
